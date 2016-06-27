@@ -1,0 +1,6 @@
+1 2 3 4 5
+LIGHT		posx posy posz intensite
+SPHERE		posx posy posz r
+CYLYNDRE	posx posy posz rotx roty rotz h
+CONE		posx posy posz rotx roty rotz h
+PLAN		posx posy posz rotx roty rotz w h
