@@ -40,8 +40,15 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ)
+	rm -Rf **/*~
+	make clean -C libft/
+	make clean -C minilibx_macos/
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f libft/libft.a
 
 re: fclean all
+
+test: re
+	./rtv1 scenes/scene_00.rt
