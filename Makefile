@@ -24,6 +24,7 @@ SRC =	main.c \
 		init.c \
 		get_next_line.c \
 		parser.c \
+		parser_counts.c \
 		hooks.c \
 		draw.c \
 		errors.c
@@ -51,4 +52,7 @@ fclean: clean
 re: fclean all
 
 test: re
+	./rtv1 scenes/scene_00.rt
+
+retest:
 	./rtv1 scenes/scene_00.rt

@@ -64,6 +64,7 @@ typedef struct		s_env
 void				init(t_env *e, char *filename);
 
 void				parse_scene(t_scene *s, char *filename);
+void				parse_counts(t_scene *s, int fd);
 int					get_next_line(int const fd, char **line);
 
 int					expose_hook(t_env *e);
@@ -72,6 +73,6 @@ int					key_hook(int k, t_env *e);
 void				draw_image(t_env *e);
 void				draw_pixel(char *buf, int x, int y, int color);
 
-void				error(int n, char *mes);			
+void				error(int n, char *mes);
 
 #endif
