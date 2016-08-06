@@ -56,7 +56,7 @@ static int	cut_next_line(int fd, char **line, char **str, char *pos)
 	return (*line ? 1 : -1);
 }
 
-int			get_next_line(int const fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static char	*str;
 	int			ret;

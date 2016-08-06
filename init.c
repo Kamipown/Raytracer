@@ -14,10 +14,15 @@
 
 void		init(t_env *e, char *filename)
 {
-	e->mlx = mlx_init();
-	e->win = mlx_new_window(e->mlx, SCREEN_W, SCREEN_H, "Rtv1");
-	e->img = (t_img *)malloc(sizeof(t_img));
-	e->img->data = mlx_new_image(e->mlx, SCREEN_W, SCREEN_H);
-	e->scene = (t_scene *)malloc(sizeof(t_scene));
+	if (!(e->mlx = mlx_init()))
+		error(-4, "Unable to initialize mlx.");
+	if (!(e->win = mlx_new_window(e->mlx, SCREEN_W, SCREEN_H, "Rtv1")))
+		error(-5, "Unable to create a new window.");
+	if (!(e->img = (t_img *)malloc(sizeof(t_img))))
+		error(-6, "Unable to create a new image.");
+	if (!(e->img->data = mlx_new_image(e->mlx, SCREEN_W, SCREEN_H)))
+		error(-7, "Unable to create image data.");
+	if (!(e->scene = (t_scene *)malloc(sizeof(t_scene))))
+		error(-8, "Unable to create the scene.");
 	parse_scene(e->scene, filename);
 }

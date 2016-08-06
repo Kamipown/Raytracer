@@ -10,26 +10,25 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	rtv1
+NAME =		rtv1
 
-cc =	cc
+cc =		cc
 
-FLG =	-Wall -Wextra -Werror
+FLG =		-Wall -Wextra -Werror
 
-INC =	-I ./includes -I ./libft/includes/
+INC =		-I ./includes -I ./libft/includes/
 
-CFLAGS=	$(INC) $(FLG)
+CFLAGS =	$(INC) $(FLG)
 
-SRC =	main.c \
-		init.c \
-		get_next_line.c \
-		parser.c \
-		parser_counts.c \
-		hooks.c \
-		draw.c \
-		errors.c
+SRC =		main.c \
+			init.c \
+			get_next_line.c \
+			parser.c \
+			hooks.c \
+			draw.c \
+			errors.c
 
-OBJ =	$(SRC:.c=.o)
+OBJ =		$(SRC:.c=.o)
 
 all: $(NAME)
 

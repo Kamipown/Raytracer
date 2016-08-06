@@ -15,19 +15,21 @@
 static void	check(int argc)
 {
 	if (SCREEN_W < 1 || SCREEN_H < 1)
-		error(1, "bad screen size.");
+		error(-1, "Bad screen size.");
 	if (argc < 2)
-		error(2, "missing file.");
+		error(-2, "Missing file.");
 }
 
 int			main(int argc, char *argv[])
 {
-	t_env	e;
+	t_env	*e;
 
 	check(argc);
-	init(&e, argv[1]);
-	mlx_expose_hook(e.win, expose_hook, &e);
-	mlx_hook(e.win, 2, (1L << 0), key_hook, &e);
-	mlx_loop(e.mlx);
+	if (!(e = (t_env *)malloc(sizeof(t_env))))
+		error(-3, "Unable to initialize environment.");
+	init(e, argv[1]);
+	mlx_expose_hook(e->win, expose_hook, e);
+	mlx_hook(e->win, 2, (1L << 0), key_hook, e);
+	mlx_loop(e->mlx);
 	return (0);
 }
