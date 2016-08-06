@@ -55,3 +55,6 @@ test: re
 
 retest:
 	./rtv1 scenes/scene_00.rt
+
+norm:
+	norminette *.c includes/*.h libft/*.c libft/includes/*.h
