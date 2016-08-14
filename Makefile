@@ -24,6 +24,7 @@ SRC =		main.c \
 			errors.c \
 			init.c \
 			parser.c \
+			file_reader.c \
 			data_reader.c \
 			get_next_line.c \
 			hooks.c \

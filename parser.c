@@ -18,7 +18,8 @@ void	parse_scene(t_scene *s, char *filename)
 
 	if (!s && 0)
 		return ;
-	data = read_data(filename);
-	ft_putendl(data);
+	data = read_file(filename);
+	ft_putnbr(read_data(data, "lights.0.pos.y"));
+	ft_putchar('\n');
 	free(data);
 }

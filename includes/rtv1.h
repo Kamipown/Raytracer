@@ -64,7 +64,8 @@ typedef struct		s_env
 void				init(t_env *e, char *filename);
 
 void				parse_scene(t_scene *s, char *filename);
-char				*read_data(char *filename);
+char				*read_file(char *filename);
+int					read_data(char *data, char *request);
 int					get_next_line(const int fd, char **line);
 
 int					expose_hook(t_env *e);
