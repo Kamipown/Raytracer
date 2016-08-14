@@ -14,17 +14,11 @@
 
 void	parse_scene(t_scene *s, char *filename)
 {
-	if (s && filename)
-		return ;
-	// int		fd;
+	char	*data;
 
-	// if ((fd = open(filename, O_RDONLY)) == -1)
-	// 	error(3, "Unable to open the file. Check path.");
-	// parse_counts(s, fd);
-	// parse_lights(s, fd);
-	// parse_spheres(s, fd);
-	// parse_cylinders(s, fd);
-	// parse_cones(s, fd);
-	// parse_planes(s, fd);
-	// close(fd);
+	if (!s && 0)
+		return ;
+	data = read_data(filename);
+	ft_putendl(data);
+	free(data);
 }

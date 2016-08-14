@@ -21,12 +21,13 @@ INC =		-I ./includes -I ./libft/includes/
 CFLAGS =	$(INC) $(FLG)
 
 SRC =		main.c \
+			errors.c \
 			init.c \
-			get_next_line.c \
 			parser.c \
+			data_reader.c \
+			get_next_line.c \
 			hooks.c \
-			draw.c \
-			errors.c
+			draw.c
 
 OBJ =		$(SRC:.c=.o)
 

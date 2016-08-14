@@ -1,0 +1,52 @@
+config
+	screen
+		width:800
+		height:600
+	counts
+		lights:1
+		sphere:1
+		cylinders:0
+		cones:0
+		planes:2
+
+lights
+	0
+		pos
+			x:100
+			y:100
+			z:100
+		intensity:100
+
+spheres
+	0
+		pos
+			x:150
+			y:200
+			z:350
+		ray:10
+
+planes
+	0
+		pos
+			x:300
+			y:300
+			z:300
+		rot
+			x:90
+			y:0
+			z:0
+		size:
+			width:500
+			height:500
+	1
+		pos
+			x:300
+			y:300
+			z:300
+		rot
+			x:0
+			y:0
+			z:0
+		size:
+			width:800
+			height:800

@@ -64,12 +64,7 @@ typedef struct		s_env
 void				init(t_env *e, char *filename);
 
 void				parse_scene(t_scene *s, char *filename);
-// void				parse_counts(t_scene *s, int fd);
-// void				parse_lights(t_scene *s, int fd);
-// void				parse_spheres(t_scene *s, int fd);
-// void				parse_cylinders(t_scene *s, int fd);
-// void				parse_cones(t_scene *s, int fd);
-// void				parse_planes(t_scene *s, int fd);
+char				*read_data(char *filename);
 int					get_next_line(const int fd, char **line);
 
 int					expose_hook(t_env *e);
