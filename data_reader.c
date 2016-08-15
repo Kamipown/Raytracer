@@ -12,9 +12,50 @@
 
 #include "rtv1.h"
 
-int		read_data(char *data, char *request)
+static int	count_tabs(char *request)
 {
-	if (data && request)
-		return (1);
-	return (0);
+	int		ret;
+
+	ret = 0;
+	while (*request)
+	{
+		if (*request == '.')
+			++ret;
+		++request;
+	}
+	return (ret);
+}
+
+static char	*browse(char *data, char *request, int tab)
+{
+	int		i;
+
+	i = 0;
+	while (i <= tab)
+	{
+		while (*request && *request != '.')
+		{
+			++request;
+		}
+		++request;
+		++i;
+	}
+	ft_putendl(request);
+	ft_putchar('\n');
+	return (data);
+}
+
+int			read_data(char *data, char *request)
+{
+	int		tab_count;
+	int		tab;
+
+	tab_count = count_tabs(request);
+	tab = 0;
+	while (tab < tab_count)
+	{
+		data = browse(data, request, tab);
+		++tab;
+	}
+	return (tab_count);
 }
