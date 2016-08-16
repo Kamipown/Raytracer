@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include <fcntl.h>
-# include <sys/uio.h>
-# include <sys/types.h>
 # include <unistd.h>
 # include <math.h>
 # include <mlx.h>
@@ -66,7 +64,6 @@ void				init(t_env *e, char *filename);
 void				parse_scene(t_scene *s, char *filename);
 char				*read_file(char *filename);
 int					read_data(char *data, char *request);
-int					get_next_line(const int fd, char **line);
 
 int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);
