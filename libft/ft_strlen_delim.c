@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_ff.c                                    :+:      :+:    :+:   */
+/*   ft_strlen_delim.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/16 12:31:06 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/11/16 12:31:34 by pdelobbe         ###   ########.fr       */
+/*   Created: 2016/08/16 02:03:51 by pdelobbe          #+#    #+#             */
+/*   Updated: 2016/08/16 02:05:37 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_ff(char *s1, char *s2)
+size_t	ft_strlen_delim(const char *s, const char delim)
 {
-	char	*str;
-	int		i;
-	int		j;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	if ((str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
-	{
-		while (s1[i])
-		{
-			str[i] = s1[i];
-			++i;
-		}
-		while (s2[j])
-		{
-			str[i + j] = s2[j];
-			++j;
-		}
-		str[i + j] = '\0';
-		free(s2);
-		free(s2);
-		return (str);
-	}
-	return (NULL);
+	while (s[i] && s[i] != delim)
+		++i;
+	return (i);
 }

@@ -12,50 +12,62 @@
 
 #include "rtv1.h"
 
-static int	count_tabs(char *request)
-{
-	int		ret;
+// static int	count_tabs(char *request)
+// {
+// 	int		ret;
 
-	ret = 0;
-	while (*request)
-	{
-		if (*request == '.')
-			++ret;
-		++request;
-	}
-	return (ret);
-}
+// 	ret = 0;
+// 	while (*request)
+// 	{
+// 		if (*request == '.')
+// 			++ret;
+// 		++request;
+// 	}
+// 	return (ret);
+// }
 
-static char	*browse(char *data, char *request, int tab)
-{
-	int		i;
+// static char	*get_line()
+// {
+	
+// }
 
-	i = 0;
-	while (i <= tab)
-	{
-		while (*request && *request != '.')
-		{
-			++request;
-		}
-		++request;
-		++i;
-	}
-	ft_putendl(request);
-	ft_putchar('\n');
-	return (data);
-}
+// static char	*proceed_data(char *data, char *request, int tab_count)
+// {
+// 	int		i;
+
+// 	i = 0;
+// 	while (*data)
+// 	{
+
+// 		++data;
+// 	}
+// }
+
+// static int	browse(char *data, char *request, int tab_count)
+// {
+// 	int		i;
+
+// 	i = 0;
+// 	while (i < tab_count)
+// 	{
+// 		data = proceed_data(data, request, i);
+// 		request = proceed_request();
+// 		++i;
+// 	}
+// 	ft_putendl(request);
+// 	ft_putchar('\n');
+// 	return (data);
+// }
 
 int			read_data(char *data, char *request)
 {
-	int		tab_count;
-	int		tab;
+	// int		tab_count;
+	// int		ret;
 
-	tab_count = count_tabs(request);
-	tab = 0;
-	while (tab < tab_count)
-	{
-		data = browse(data, request, tab);
-		++tab;
-	}
-	return (tab_count);
+	// tab_count = count_tabs(request);
+	// ret = browse(data, request, tab_count);
+	// return (ret);
+	if (data && request)
+		return (1);
+	return (0);
 }

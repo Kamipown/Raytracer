@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/02 14:14:54 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/11/16 12:28:31 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/08/16 04:07:15 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/uio.h>
+# include <sys/types.h>
+
+# define BUFF_SIZE 32
 
 typedef struct		s_list
 {
@@ -96,5 +100,10 @@ char				*ft_strjoin_ff(char *s1, char *s2);
 char				*ft_strrev(const char *s);
 char				*ft_strtrunc(const char *s, const char c);
 char				*ft_strmax(const char *s, const size_t c);
+int					get_next_line(int const fd, char **line);
+size_t				ft_strlen_delim(const char *s, const char delim);
+char				*ft_strdup_delim(const char *s1, const char delim);
+int					ft_iswhitespace(const char c);
+char				*ft_skip_line(char *s);
 
 #endif
