@@ -12,62 +12,65 @@
 
 #include "rtv1.h"
 
-// static int	count_tabs(char *request)
-// {
-// 	int		ret;
-
-// 	ret = 0;
-// 	while (*request)
-// 	{
-// 		if (*request == '.')
-// 			++ret;
-// 		++request;
-// 	}
-// 	return (ret);
-// }
-
-// static char	*get_line()
-// {
-	
-// }
-
-// static char	*proceed_data(char *data, char *request, int tab_count)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (*data)
-// 	{
-
-// 		++data;
-// 	}
-// }
-
-// static int	browse(char *data, char *request, int tab_count)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (i < tab_count)
-// 	{
-// 		data = proceed_data(data, request, i);
-// 		request = proceed_request();
-// 		++i;
-// 	}
-// 	ft_putendl(request);
-// 	ft_putchar('\n');
-// 	return (data);
-// }
-
-int			read_data(char *data, char *request)
+static int		browse(char *line, char *request, int tabs)
 {
-	// int		tab_count;
-	// int		ret;
-
-	// tab_count = count_tabs(request);
-	// ret = browse(data, request, tab_count);
-	// return (ret);
-	if (data && request)
+	while (*line && *line == '\t')
+	{
+		++line;
+		--tabs;
+	}
+	while (*line && *request && *line == *request && tabs == 0)
+	{
+		++line;
+		++request;
+	}
+	if (*request == '.' && *line == '\0')
 		return (1);
+	else if (*request == '\0' && *line == ':')
+		return (2);
+	return (0);
+}
+
+static char		*proceed_request(char *request)
+{
+	while (*request && *request != '.')
+		++request;
+	return (request + 1);
+}
+
+static int		read_value(char *line)
+{
+	int		ret;
+	int		i;
+
+	i = 0;
+	while (line[i] && line[i] != ':')
+		++i;
+	ret = (line[i + 1] ? ft_atoi(&line[i + 1]) : 0);
+	free(line);
+	return (ret);
+}
+
+int				read_data(char *data, char *request)
+{
+	char	*line;
+	int		tabs;
+	int		ret;
+
+	tabs = 0;
+	while (*data)
+	{
+		line = ft_strdup_delim(data, '\n');
+		data = ft_skip_line(data);
+		ret = browse(line, request, tabs);
+		if (ret == 1)
+		{
+			request = proceed_request(request);
+			tabs++;
+		}
+		else if (ret == 2)
+			return (read_value(line));
+		free(line);
+	}
 	return (0);
 }

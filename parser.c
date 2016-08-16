@@ -19,7 +19,11 @@ void	parse_scene(t_scene *s, char *filename)
 	if (!s && 0)
 		return ;
 	data = read_file(filename);
-	ft_putnbr(read_data(data, "lights.0.pos.y"));
-	ft_putchar('\n');
+	ft_putnbr_endl(read_data(data, "config.screen.width"));
+	ft_putnbr_endl(read_data(data, "config.screen.height"));
+	ft_putnbr_endl(read_data(data, "config.counts.lights"));
+	ft_putnbr_endl(read_data(data, "spheres.0.ray"));
+	ft_putnbr_endl(read_data(data, "planes.1.size.width"));
+	ft_putnbr_endl(read_data(data, "planes.1.size.height"));
 	free(data);
 }

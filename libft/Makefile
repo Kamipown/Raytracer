@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/02 14:03:15 by pdelobbe          #+#    #+#              #
-#    Updated: 2016/08/16 04:06:36 by pdelobbe         ###   ########.fr        #
+#    Updated: 2016/08/16 07:28:10 by pdelobbe         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -87,7 +87,8 @@ SRC =	ft_memset.c \
 		ft_strlen_delim.c \
 		ft_strdup_delim.c \
 		ft_iswhitespace.c \
-		ft_skip_line.c
+		ft_skip_line.c \
+		ft_putnbr_endl.c
 
 OBJ =	$(SRC:.c=.o)
 

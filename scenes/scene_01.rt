@@ -23,7 +23,7 @@ spheres
 			x:150
 			y:200
 			z:350
-		ray:10
+		rayray:10
 
 planes
 	0
@@ -35,7 +35,7 @@ planes
 			x:90
 			y:0
 			z:0
-		size:
+		size
 			width:500
 			height:500
 	1
@@ -47,6 +47,6 @@ planes
 			x:0
 			y:0
 			z:0
-		size:
+		size
 			width:800
 			height:800
