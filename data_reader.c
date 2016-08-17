@@ -38,20 +38,20 @@ static char		*proceed_request(char *request)
 	return (request + 1);
 }
 
-static int		read_value(char *line)
+static char		*read_value(char *line)
 {
-	int		ret;
+	char	*ret;
 	int		i;
 
 	i = 0;
 	while (line[i] && line[i] != ':')
 		++i;
-	ret = (line[i + 1] ? ft_atoi(&line[i + 1]) : 0);
+	ret = (line[i + 1] ? ft_strdup(&line[i + 1]) : 0);
 	free(line);
 	return (ret);
 }
 
-int				read_data(char *data, char *request)
+char			*read_data(char *data, char *request)
 {
 	char	*line;
 	int		tabs;

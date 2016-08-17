@@ -23,7 +23,7 @@ spheres
 			x:150
 			y:200
 			z:350
-		rayray:10
+		ray:10
 
 planes
 	0

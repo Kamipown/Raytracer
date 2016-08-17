@@ -63,7 +63,7 @@ void				init(t_env *e, char *filename);
 
 void				parse_scene(t_scene *s, char *filename);
 char				*read_file(char *filename);
-int					read_data(char *data, char *request);
+char				*read_data(char *data, char *request);
 
 int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);

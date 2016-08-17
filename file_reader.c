@@ -48,7 +48,6 @@ char		*read_file(char *filename)
 	if ((fd = open(filename, O_RDONLY)) == -1)
 		error(-9, "Unable to open the file. Check path or read access.");
 	data = ft_strdup("");
-	line = ft_strdup("");
 	while (get_next_line(fd, &line) > 0)
 		data = join_data(data, line);
 	free(line);

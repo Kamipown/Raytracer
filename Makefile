@@ -12,11 +12,13 @@
 
 NAME =		rtv1
 
-cc =		cc
+cc =		gcc
 
 FLG =		-Wall -Wextra -Werror
 
 INC =		-I ./includes -I ./libft/includes/
+
+LIB =		-L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 
 CFLAGS =	$(INC) $(FLG)
 
@@ -35,9 +37,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C libft/
-	make -C minilibx_macos
+	make -C minilibx_macos/
 	$(CC) -O3 $(FLG) $(INC) -c $(SRC)
-	$(CC) -g -o $(NAME) $(OBJ) -L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
+	$(CC) -g -o $(NAME) $(OBJ) $(LIB)
 
 clean:
 	rm -f $(OBJ)
