@@ -72,8 +72,13 @@ char				*read_file(char *filename);
 char				*read_data(char *data, char *request);
 int					read_int_data(char *data, char *request);
 
-void				fill_screen_data(t_scene *scene, char *data);
-void				fill_counts_data(t_scene *scene, char *data);
+void				fill_screen_data(t_scene *s, char *data);
+void				fill_counts_data(t_scene *s, char *data);
+void				fill_lights_data(t_scene *s, char *data);
+void				fill_spheres_data(t_scene *s, char *data);
+void				fill_cylinders_data(t_scene *s, char *data);
+void				fill_cones_data(t_scene *s, char *data);
+void				fill_planes_data(t_scene *s, char *data);
 
 int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);
