@@ -22,12 +22,16 @@
 # include "libft.h"
 # include "shapes.h"
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE		32
 
-# define SCREEN_W 800
-# define SCREEN_H 600
+# define MIN_SCREEN_W	640
+# define MIN_SCREEN_H	480
+# define SCREEN_W		800
+# define SCREEN_H		600
+# define MAX_SCREEN_W	2560
+# define MAX_SCREEN_H	1440
 
-# define ESCAPE 53
+# define ESCAPE			53
 
 typedef struct		s_scene
 {
@@ -41,6 +45,8 @@ typedef struct		s_scene
 	int				n_cylinder;
 	int				n_cone;
 	int				n_plane;
+	int				screen_w;
+	int				screen_h;
 }					t_scene;
 
 typedef struct		s_img
@@ -64,6 +70,9 @@ void				init(t_env *e, char *filename);
 void				parse_scene(t_scene *s, char *filename);
 char				*read_file(char *filename);
 char				*read_data(char *data, char *request);
+int					read_int_data(char *data, char *request);
+
+void				fill_screen_data(t_scene *scene, char *data);
 
 int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);

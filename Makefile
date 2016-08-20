@@ -28,6 +28,7 @@ SRC =		main.c \
 			parser.c \
 			file_reader.c \
 			data_reader.c \
+			scene_data.c \
 			hooks.c \
 			draw.c
 

@@ -51,6 +51,17 @@ static char		*read_value(char *line)
 	return (ret);
 }
 
+int				read_int_data(char *data, char *request)
+{
+	char	*str_value;
+	int		int_value;
+
+	str_value = read_data(data, request);
+	int_value = ft_atoi(str_value);
+	free(str_value);
+	return (int_value);
+}
+
 char			*read_data(char *data, char *request)
 {
 	char	*line;

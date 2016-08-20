@@ -16,9 +16,9 @@ void	parse_scene(t_scene *s, char *filename)
 {
 	char	*data;
 
-	if (!s && 0)
-		return ;
 	data = read_file(filename);
-	ft_putendl(data);
+	fill_screen_data(s, data);
+	ft_putnbr_endl(s->screen_w);
+	ft_putnbr_endl(s->screen_h);
 	free(data);
 }
