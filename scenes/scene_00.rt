@@ -4,7 +4,7 @@ config
 		height:960
 	counts
 		lights:1
-		sphere:1
+		spheres:1
 		cylinders:0
 		cones:0
 		planes:2

@@ -57,7 +57,7 @@ int				read_int_data(char *data, char *request)
 	int		int_value;
 
 	str_value = read_data(data, request);
-	int_value = ft_atoi(str_value);
+	int_value = str_value ? ft_atoi(str_value) : 0;
 	free(str_value);
 	return (int_value);
 }

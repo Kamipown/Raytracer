@@ -73,6 +73,7 @@ char				*read_data(char *data, char *request);
 int					read_int_data(char *data, char *request);
 
 void				fill_screen_data(t_scene *scene, char *data);
+void				fill_counts_data(t_scene *scene, char *data);
 
 int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);

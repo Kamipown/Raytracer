@@ -18,7 +18,6 @@ void	parse_scene(t_scene *s, char *filename)
 
 	data = read_file(filename);
 	fill_screen_data(s, data);
-	ft_putnbr_endl(s->screen_w);
-	ft_putnbr_endl(s->screen_h);
+	fill_counts_data(s, data);
 	free(data);
 }
