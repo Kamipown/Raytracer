@@ -12,17 +12,25 @@
 
 NAME =		rtv1
 
-cc =		gcc
+CC =		gcc
 
-FLG =		-Wall -Wextra -Werror
+FLG =		-Wall \
+			-Wextra \
+			-Werror
 
-INC =		-I ./includes -I ./libft/includes/
+INC =		-I ./includes \
+			-I ./libft/includes/
 
-LIB =		-L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
+LIB =		-L./libft/ -lft \
+			-L./minilibx_macos/ -lmlx \
+			-framework OpenGL \
+			-framework AppKit
 
 CFLAGS =	$(INC) $(FLG)
 
-SRC =		main.c \
+SRC_DIR =	sources/
+
+SRC_FILES =	main.c \
 			errors.c \
 			init.c \
 			parser.c \
@@ -33,25 +41,44 @@ SRC =		main.c \
 			hooks.c \
 			draw.c
 
-OBJ =		$(SRC:.c=.o)
+SRC =		$(addprefix $(SRC_DIR), $(SRC_FILES))
+
+OBJ =		$(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C libft/
-	make -C minilibx_macos/
-	$(CC) -O3 $(FLG) $(INC) -c $(SRC)
-	$(CC) -g -o $(NAME) $(OBJ) $(LIB)
+	@echo "\033[33m[Step 2/4]\033[37m Libft"
+	@make -C libft/
+	@echo "\033[33m[Step 3/4]\033[37m Libmlx"
+	@make -C minilibx_macos/
+	@echo "\033[33m[Step 4/4]\033[37m Raytracer"
+	@echo "\t\033[35m[Creating]\033[37m executable"
+	@$(CC) -o $(NAME) $(OBJ) $(LIB)
+	@echo "\033[32m[ Done ! ]"
+
+$(OBJ):
+	@echo "\033[33m[Step 1/4]\033[37m Raytracer"
+	@echo "\t\033[35m[Creating]\033[37m object files"
+	@$(CC) -c -O3 $(FLG) $(INC) $(SRC)
+
 
 clean:
-	rm -f $(OBJ)
-	rm -Rf **/*~
-	make clean -C libft/
-	make clean -C minilibx_macos/
+	@echo "\033[33m[clean]"
+	@echo "\t\033[31m[Deleting]\033[37m object files"
+	@echo "\t\033[31m[Deleting]\033[37m temporary files"
+	@rm -f $(OBJ)
+	@rm -Rf **/*~
+	@make clean -C libft/
+	@make clean -C minilibx_macos/
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f libft/libft.a
+	@echo "\033[33m[fclean]"
+	@echo "\t\033[31m[Deleting]\033[37m libs"
+	@echo "\t\033[31m[Deleting]\033[37m executable"
+	@rm -f $(NAME)
+	@make fclean -C libft/
+	@make fclean -C minilibx_macos/
 
 re: fclean all
 
@@ -63,3 +90,6 @@ retest:
 
 norm:
 	norminette *.c includes/*.h libft/*.c libft/includes/*.h
+
+aaa:
+	gcc $(TTT)
