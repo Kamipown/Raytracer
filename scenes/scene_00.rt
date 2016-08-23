@@ -15,10 +15,7 @@ lights
 			x:100
 			y:100
 			z:100
-		color:
-			r:255
-			g:255
-			b:255
+		color:#cc5555
 		intensity:100
 
 spheres

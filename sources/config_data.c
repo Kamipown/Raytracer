@@ -48,11 +48,6 @@ void		fill_counts_data(t_scene *s, char *data)
 	s->n_cylinder = s->n_cylinder < 0 ? 0 : s->n_cylinder;
 	s->n_cone = s->n_cone < 0 ? 0 : s->n_cone;
 	s->n_plane = s->n_plane < 0 ? 0 : s->n_plane;
-	ft_putnbr_endl(s->n_light);
-	ft_putnbr_endl(s->n_sphere);
-	ft_putnbr_endl(s->n_cylinder);
-	ft_putnbr_endl(s->n_cone);
-	ft_putnbr_endl(s->n_plane);
 	malloc_counts(s);
 }
 
@@ -63,6 +58,6 @@ void		fill_screen_data(t_scene *s, char *data)
 
 	sw = read_int_data(data, "config.screen.width");
 	sh = read_int_data(data, "config.screen.height");
-	s->screen_w = sw >= MIN_SCREEN_W && sw <= MAX_SCREEN_W ? sw : SCREEN_W;
-	s->screen_h = sh >= MIN_SCREEN_H && sh <= MAX_SCREEN_H ? sh : SCREEN_H;
+	s->size.w = sw >= MIN_SCREEN_W && sw <= MAX_SCREEN_W ? sw : SCREEN_W;
+	s->size.h = sh >= MIN_SCREEN_H && sh <= MAX_SCREEN_H ? sh : SCREEN_H;
 }

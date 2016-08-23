@@ -45,8 +45,7 @@ typedef struct		s_scene
 	int				n_cylinder;
 	int				n_cone;
 	int				n_plane;
-	int				screen_w;
-	int				screen_h;
+	t_size			size;
 }					t_scene;
 
 typedef struct		s_img
@@ -71,6 +70,7 @@ void				parse_scene(t_scene *s, char *filename);
 char				*read_file(char *filename);
 char				*read_data(char *data, char *request);
 int					read_int_data(char *data, char *request);
+int					read_color_data(char *data, char *request);
 
 void				fill_screen_data(t_scene *s, char *data);
 void				fill_counts_data(t_scene *s, char *data);
@@ -84,7 +84,7 @@ int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);
 
 void				draw_image(t_env *e);
-void				draw_pixel(char *buf, int x, int y, int color);
+void				draw_pixel(char *buf, t_pixel p, t_size *size);
 
 void				error(int n, char *mes);
 

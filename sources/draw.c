@@ -12,15 +12,15 @@
 
 #include "rtv1.h"
 
-void		draw_pixel(char *buf, int x, int y, int color)
+void		draw_pixel(char *buf, t_pixel p, t_size *size)
 {
-	if (x > 0 && x < SCREEN_W && y > 0 && y < SCREEN_H)
+	if (p.x > 0 && p.x < size->w && p.y > 0 && p.y < size->h)
 	{
-		x *= 4;
-		y *= 4;
-		buf[(x++) + (y * SCREEN_W)] = color;
-		buf[(x++) + (y * SCREEN_W)] = color >> 8;
-		buf[(x) + (y * SCREEN_W)] = color >> 16;
+		p.x *= 4;
+		p.y *= 4;
+		buf[(p.x++) + (p.y * size->w)] = p.color;
+		buf[(p.x++) + (p.y * size->w)] = p.color >> 8;
+		buf[(p.x) + (p.y * size->w)] = p.color >> 16;
 	}
 }
 
@@ -33,6 +33,6 @@ void		draw_image(t_env *e)
 		&e->img->bpp,
 		&e->img->size,
 		&e->img->endian);
-	draw_pixel(buf, 5, 5, 0xff0000);
+	draw_pixel(buf, (t_pixel){100, 100, 0xff0000}, &e->scene->size);
 	mlx_put_image_to_window(e->mlx, e->win, e->img->data, 0, 0);
 }

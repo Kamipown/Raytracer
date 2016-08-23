@@ -36,6 +36,7 @@ SRC_FILES =	main.c \
 			parser.c \
 			file_reader.c \
 			data_reader.c \
+			data_transform.c \
 			config_data.c \
 			objects_data.c \
 			hooks.c \
@@ -89,7 +90,7 @@ retest:
 	./rtv1 scenes/scene_00.rt
 
 norm:
-	norminette *.c includes/*.h libft/*.c libft/includes/*.h
+	norminette sources/*.c includes/*.h libft/*.c libft/includes/*.h
 
 aaa:
 	gcc $(TTT)

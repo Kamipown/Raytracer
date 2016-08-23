@@ -28,7 +28,7 @@ static void	init_minilibx(t_env *e)
 static void	init_window(t_env *e)
 {
 	if (!(e->win = mlx_new_window(e->mlx,
-		e->scene->screen_w, e->scene->screen_h, "Rtv1")))
+		e->scene->size.w, e->scene->size.h, "Rtv1")))
 		error(-6, "Unable to create a new window.");
 }
 
@@ -37,7 +37,7 @@ static void	init_image(t_env *e)
 	if (!(e->img = (t_img *)malloc(sizeof(t_img))))
 		error(-7, "Unable to create a new image.");
 	if (!(e->img->data = mlx_new_image(e->mlx,
-		e->scene->screen_w, e->scene->screen_h)))
+		e->scene->size.w, e->scene->size.h)))
 		error(-8, "Unable to create image data.");
 }
 

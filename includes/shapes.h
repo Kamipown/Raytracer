@@ -13,6 +13,19 @@
 #ifndef SHAPES_H
 # define SHAPES_H
 
+typedef struct		s_pixel
+{
+	int				x;
+	int				y;
+	int				color;
+}					t_pixel;
+
+typedef struct		s_size
+{
+	int				w;
+	int				h;
+}					t_size;
+
 typedef struct		s_vec3
 {
 	int				x;
