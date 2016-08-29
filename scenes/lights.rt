@@ -1,0 +1,34 @@
+config
+	screen
+		width:1000
+		height:1000
+	counts
+		lights:3
+		spheres:0
+		cylinders:0
+		cones:0
+		planes:0
+
+lights
+	0
+		pos
+			x:-1
+			y:-2
+			z:-3
+		color:#ffffff
+		intensity:100
+	1
+		pos
+			x:75
+			y:-50
+			z:30
+		color:#cc5555
+		intensity:70
+
+	2
+		pos
+			x:10
+			y:11
+			z:12
+		color:#00aaff
+		intensity:94

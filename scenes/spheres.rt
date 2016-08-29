@@ -1,0 +1,42 @@
+config
+	screen
+		width:800
+		height:600
+	counts
+		lights:1
+		spheres:3
+		cylinders:0
+		cones:0
+		planes:0
+
+lights
+	0
+		pos
+			x:0
+			y:0
+			z:0
+		color:#ffffff
+		intensity:100
+
+spheres
+	0
+		pos
+			x:-25
+			y:0
+			z:350
+		radius:50
+		color:#cc5555
+	1
+		pos
+			x:0
+			y:0
+			z:350
+		radius:50
+		color:#55cc55
+	2
+		pos
+			x:25
+			y:0
+			z:350
+		radius:50
+		color:#5555cc

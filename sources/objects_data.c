@@ -35,9 +35,3 @@ void	fill_spheres_data(t_scene *s, char *data)
 	if (s && data)
 		return ;
 }
-
-void	fill_lights_data(t_scene *s, char *data)
-{
-	if (s && data)
-		return ;
-}

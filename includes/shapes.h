@@ -36,6 +36,7 @@ typedef struct		s_vec3
 typedef struct		s_light
 {
 	t_vec3			pos;
+	int				color;
 	int				intensity;
 }					t_light;
 

@@ -35,9 +35,11 @@ SRC_FILES =	main.c \
 			init.c \
 			parser.c \
 			file_reader.c \
+			request_constructor.c \
 			data_reader.c \
 			data_transform.c \
-			config_data.c \
+			data_config.c \
+			data_lights.c \
 			objects_data.c \
 			hooks.c \
 			draw.c

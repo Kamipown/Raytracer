@@ -71,6 +71,7 @@ char				*read_file(char *filename);
 char				*read_data(char *data, char *request);
 int					read_int_data(char *data, char *request);
 int					read_color_data(char *data, char *request);
+char				*construct_request_int(char *request, int n);
 
 void				fill_screen_data(t_scene *s, char *data);
 void				fill_counts_data(t_scene *s, char *data);
