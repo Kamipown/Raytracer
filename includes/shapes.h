@@ -43,7 +43,8 @@ typedef struct		s_light
 typedef struct		s_sphere
 {
 	t_vec3			pos;
-	int				ray;
+	int				color;
+	int				radius;
 }					t_sphere;
 
 typedef struct		s_cylinder

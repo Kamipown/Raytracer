@@ -40,6 +40,7 @@ SRC_FILES =	main.c \
 			data_transform.c \
 			data_config.c \
 			data_lights.c \
+			data_spheres.c \
 			objects_data.c \
 			hooks.c \
 			draw.c
