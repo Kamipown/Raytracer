@@ -33,6 +33,6 @@ void		draw_image(t_env *e)
 		&e->img->bpp,
 		&e->img->size,
 		&e->img->endian);
-	draw_pixel(buf, (t_pixel){100, 100, 0xff0000}, &e->scene->size);
+	raytrace(e, buf);
 	mlx_put_image_to_window(e->mlx, e->win, e->img->data, 0, 0);
 }
