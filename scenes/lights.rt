@@ -24,7 +24,6 @@ lights
 			z:30
 		color:#cc5555
 		intensity:70
-
 	2
 		pos
 			x:10

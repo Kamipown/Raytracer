@@ -88,6 +88,8 @@ int					key_hook(int k, t_env *e);
 void				draw_image(t_env *e);
 void				draw_pixel(char *buf, t_pixel p, t_size *size);
 
+void				raytrace(t_env *e, char *buf);
+
 void				error(int n, char *mes);
 
 #endif

@@ -19,12 +19,20 @@ static void	print_lights(t_scene *s)
 	i = 0;
 	while (i < s->n_light)
 	{
-		ft_putstr("Light "); ft_putnbr(i); ft_putstr(" : ");
-		ft_putstr("\tpos("); ft_putnbr(s->lights[i].pos.x); ft_putstr(", ");
-		ft_putnbr(s->lights[i].pos.y); ft_putstr(", ");
+		ft_putstr("Light ");
+		ft_putnbr(i);
+		ft_putstr(" : ");
+		ft_putstr("\tpos(");
+		ft_putnbr(s->lights[i].pos.x);
+		ft_putstr(", ");
+		ft_putnbr(s->lights[i].pos.y);
+		ft_putstr(", ");
 		ft_putnbr(s->lights[i].pos.z);
-		ft_putstr(") color("); ft_putnbr(s->lights[i].color);
-		ft_putstr(") intensity("); ft_putnbr(s->lights[i].intensity); ft_putendl(")");
+		ft_putstr(") color(");
+		ft_putnbr(s->lights[i].color);
+		ft_putstr(") intensity(");
+		ft_putnbr(s->lights[i].intensity);
+		ft_putendl(")");
 		++i;
 	}
 	ft_putchar('\n');

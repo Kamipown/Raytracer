@@ -19,12 +19,20 @@ static void	print_spheres(t_scene *s)
 	i = 0;
 	while (i < s->n_sphere)
 	{
-		ft_putstr("Sphere "); ft_putnbr(i); ft_putstr(" : ");
-		ft_putstr("\tpos("); ft_putnbr(s->spheres[i].pos.x); ft_putstr(", ");
-		ft_putnbr(s->spheres[i].pos.y); ft_putstr(", ");
+		ft_putstr("Sphere ");
+		ft_putnbr(i);
+		ft_putstr(" : ");
+		ft_putstr("\tpos(");
+		ft_putnbr(s->spheres[i].pos.x);
+		ft_putstr(", ");
+		ft_putnbr(s->spheres[i].pos.y);
+		ft_putstr(", ");
 		ft_putnbr(s->spheres[i].pos.z);
-		ft_putstr(") color("); ft_putnbr(s->spheres[i].color);
-		ft_putstr(") radius("); ft_putnbr(s->spheres[i].radius); ft_putendl(")");
+		ft_putstr(") color(");
+		ft_putnbr(s->spheres[i].color);
+		ft_putstr(") radius(");
+		ft_putnbr(s->spheres[i].radius);
+		ft_putendl(")");
 		++i;
 	}
 	ft_putchar('\n');

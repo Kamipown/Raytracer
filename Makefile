@@ -43,7 +43,8 @@ SRC_FILES =	main.c \
 			data_spheres.c \
 			objects_data.c \
 			hooks.c \
-			draw.c
+			draw.c \
+			raytracer.c
 
 SRC =		$(addprefix $(SRC_DIR), $(SRC_FILES))
 
