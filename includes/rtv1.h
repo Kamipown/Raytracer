@@ -33,6 +33,9 @@
 
 # define ESCAPE			53
 
+# define RAY_START		-1000.0f
+# define RAY_END		1000.0f
+
 typedef struct		s_scene
 {
 	t_light			*lights;
@@ -54,6 +57,7 @@ typedef struct		s_img
 	int				bpp;
 	int				size;
 	int				endian;
+	char			*buf;
 }					t_img;
 
 typedef struct		s_env
@@ -86,9 +90,12 @@ int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);
 
 void				draw_image(t_env *e);
-void				draw_pixel(char *buf, t_pixel p, t_size *size);
+void				draw_pixel(t_env *e, t_pixel p);
 
-void				raytrace(t_env *e, char *buf);
+void				raytrace(t_env *e);
+
+void				update_ray(t_ray *ray, int x, int y);
+t_ray				*init_ray(void);
 
 void				error(int n, char *mes);
 

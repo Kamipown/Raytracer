@@ -33,6 +33,12 @@ typedef struct		s_vec3
 	int				z;
 }					t_vec3;
 
+typedef struct		s_ray
+{
+	t_vec3			pos;
+	t_vec3			vec;
+}					t_ray;
+
 typedef struct		s_light
 {
 	t_vec3			pos;
@@ -52,6 +58,7 @@ typedef struct		s_cylinder
 	t_vec3			pos;
 	t_vec3			rot;
 	int				height;
+	int				radius;
 }					t_cylinder;
 
 typedef struct		s_cone
