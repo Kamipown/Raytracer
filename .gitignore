@@ -1,9 +1,11 @@
-# ignore les fichiers objets et les archives
+#	Ignore les fichiers suivants :
+#		executable
+#		fichiers objets
+#		archives
+#		fichiers temporaires
+#		dossier tmp/
+
 rtv1
 **/*.[oa]
-
-# ignore le dossier tmp
-tmp/
-
-# ignore les fichiers temporaires
 **/*~
+tmp/
