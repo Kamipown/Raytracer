@@ -1,0 +1,9 @@
+# ignore les fichiers objets et les archives
+rtv1
+**/*.[oa]
+
+# ignore le dossier tmp
+tmp/
+
+# ignore les fichiers temporaires
+**/*~
