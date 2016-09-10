@@ -6,7 +6,7 @@
 /*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/04/18 19:46:46 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/10 13:21:43 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <mlx.h>
 
+# include "SDL.h"
 # include "libft.h"
 # include "shapes.h"
 
