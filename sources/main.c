@@ -39,6 +39,9 @@ void		sdl_loop(t_env *e)
 		if (e->event.type == SDL_KEYDOWN)
 			if (e->event.key.keysym.sym == SDLK_ESCAPE)
 				quit = TRUE;
+		if (e->event.type == SDL_QUIT)
+				quit = TRUE;
+
 	}
 }
 
@@ -52,10 +55,13 @@ int			main(int argc, char *argv[])
 	init(e, argv[1]);
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		error(-20, (char *)SDL_GetError());
+
+	/* ajout sdl */
 	sdl_init(e);
 	sdl_loop(e);
 	SDL_DestroyWindow(e->sdl_win);
 	SDL_Quit();
+
 	mlx_expose_hook(e->win, expose_hook, e);
 	mlx_hook(e->win, 2, (1L << 0), key_hook, e);
 	mlx_loop(e->mlx);
