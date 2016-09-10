@@ -22,10 +22,12 @@ static void	check(int argc)
 
 void		sdl_init(t_env *e)
 {
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+		error(-20, (char *)SDL_GetError());
 	if ((e->sdl_win = SDL_CreateWindow("RT - 42", SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED, e->scene->size.w, e->scene->size.h,
 		SDL_WINDOW_RESIZABLE)) == NULL)
-		error(-20, (char *)SDL_GetError());
+		error(-21, (char *)SDL_GetError());
 }
 
 void		sdl_loop(t_env *e)
@@ -41,7 +43,6 @@ void		sdl_loop(t_env *e)
 				quit = TRUE;
 		if (e->event.type == SDL_QUIT)
 				quit = TRUE;
-
 	}
 }
 
@@ -53,8 +54,6 @@ int			main(int argc, char *argv[])
 	if (!(e = (t_env *)malloc(sizeof(t_env))))
 		error(-3, "Unable to initialize environment.");
 	init(e, argv[1]);
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-		error(-20, (char *)SDL_GetError());
 
 	/* ajout sdl */
 	sdl_init(e);
