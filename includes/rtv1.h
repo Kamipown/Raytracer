@@ -67,6 +67,8 @@ typedef struct		s_env
 	void			*win;
 	t_img			*img;
 	t_scene			*scene;
+	// add sdl win
+	SDL_Window* 	sdl_win;
 }					t_env;
 
 void				init(t_env *e, char *filename);

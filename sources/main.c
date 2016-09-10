@@ -33,3 +33,43 @@ int			main(int argc, char *argv[])
 	mlx_loop(e->mlx);
 	return (0);
 }
+
+
+// OPEN CLOSE WINDOWS
+// int quit = 0;
+// SDL_Event event;
+// if (SDL_Init(SDL_INIT_VIDEO) != 0 )
+// 	error(-20, (char *)SDL_GetError());
+// else
+// {
+// 	e->sdl_win = NULL;
+// 	e->sdl_win = SDL_CreateWindow(
+// 		"An SDL2 window",                  // window title
+// 		SDL_WINDOWPOS_UNDEFINED,           // initial x position
+// 		SDL_WINDOWPOS_UNDEFINED,           // initial y position
+// 		40,                               // width, in pixels
+// 		40,                               // height, in pixels
+// 		SDL_WINDOW_OPENGL                  // flags - see below
+// 	);
+//
+// 	if(e->sdl_win)
+// 	{
+// 		while (quit == 0)
+// 		{
+// 			SDL_WaitEvent(&event);
+// 			switch(event.type) {
+// 				case SDL_KEYDOWN:
+// 					switch(event.key.keysym.sym) {
+// 					case SDLK_ESCAPE:
+// 						quit = 1;
+// 						break;
+// 					}
+// 					break;
+// 			}
+// 		}
+// 		SDL_DestroyWindow(e->sdl_win);
+// 	}
+// 	else
+// 		error(-20, (char *)SDL_GetError());
+// }
+// SDL_Quit();
