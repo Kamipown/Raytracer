@@ -6,7 +6,7 @@
 #    By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/18 19:44:49 by pdelobbe          #+#    #+#              #
-#    Updated: 2016/09/10 13:21:56 by dcognata         ###   ########.fr        #
+#    Updated: 2016/04/18 19:44:57 by pdelobbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,12 @@ FLG =		-Wall \
 			-Werror
 
 INC =		-I ./includes \
-			-I ./libft/includes/ \
-			-I ./sdl2/include/
-			
+			-I ./libft/includes/
+
 LIB =		-L./libft/ -lft \
 			-L./minilibx_macos/ -lmlx \
 			-framework OpenGL \
-			-framework AppKit \
-			-framework Cocoa \
-			-framework SDL2
+			-framework AppKit
 
 CFLAGS =	$(INC) $(FLG)
 
