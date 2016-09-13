@@ -14,7 +14,9 @@ NAME =		rtv1
 
 CC =		gcc
 
-FLG =		-Wall -Wextra -Werror -O3
+FLG =		-Wall \
+			-Wextra \
+			-Werror
 
 INC =		-I ./includes \
 			-I ./libft/includes/ \

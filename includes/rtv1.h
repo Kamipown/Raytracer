@@ -37,11 +37,6 @@
 # define RAY_START		-1000.0f
 # define RAY_END		1000.0f
 
-# define TRUE			1
-# define FALSE			0
-
-# define t_boolean	unsigned int
-
 typedef struct		s_scene
 {
 	t_light			*lights;
@@ -73,8 +68,7 @@ typedef struct		s_env
 	t_img			*img;
 	t_scene			*scene;
 	// add sdl win
-	SDL_Window		*sdl_win;
-	SDL_Event		event;
+	SDL_Window* 	sdl_win;
 }					t_env;
 
 void				init(t_env *e, char *filename);
