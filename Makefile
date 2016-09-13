@@ -21,7 +21,7 @@ FLG =		-Wall \
 INC =		-I ./includes \
 			-I ./libft/includes/ \
 			-I ./sdl2/include/
-
+			
 LIB =		-L./libft/ -lft \
 			-L./minilibx_macos/ -lmlx \
 			-framework OpenGL \
