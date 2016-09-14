@@ -24,7 +24,7 @@ spheres
 			x:150
 			y:200
 			z:350
-		ray:10
+		radius:10
 
 planes
 	0
