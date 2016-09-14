@@ -26,6 +26,8 @@ LIB =		-L./libft/ -lft \
 			-framework OpenGL \
 			-framework AppKit
 
+FLG =	-Wall -Wextra -pedantic -O3 #-Werror
+
 CFLAGS =	$(INC) $(FLG)
 
 SRC_DIR =	sources/

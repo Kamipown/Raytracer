@@ -66,6 +66,13 @@ typedef struct		s_env
 	void			*win;
 	t_img			*img;
 	t_scene			*scene;
+<<<<<<< HEAD
+=======
+	// add sdl win
+	SDL_Window		*sdl_win;
+	SDL_Event		event;
+	SDL_Renderer	*renderer;
+>>>>>>> origin/sdl
 }					t_env;
 
 void				init(t_env *e, char *filename);
