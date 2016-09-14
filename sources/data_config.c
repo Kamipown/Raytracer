@@ -64,5 +64,4 @@ void		fill_screen_data(t_scene *s, char *data)
 	s->size.s_y = -s->size.h / 2;
 	s->size.e_x = s->size.w / 2;
 	s->size.e_y = s->size.h / 2;
-	printf("%d %d | %d %d | %d %d\n", s->size.w, s->size.h, s->size.s_x, s->size.s_y, s->size.e_x, s->size.e_y);
 }
