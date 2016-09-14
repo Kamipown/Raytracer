@@ -20,29 +20,36 @@ static void	check(int argc)
 		error(-2, "Missing file.");
 }
 
-void		sdl_init(t_env *e)
-{
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-		error(-20, (char *)SDL_GetError());
-	if ((e->sdl_win = SDL_CreateWindow("RT - 42", SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, e->scene->size.w, e->scene->size.h,
-		SDL_WINDOW_RESIZABLE)) == NULL)
-		error(-21, (char *)SDL_GetError());
-}
-
 void		sdl_loop(t_env *e)
 {
 	t_boolean quit;
+	t_boolean fullscreen;
 
+	fullscreen = FALSE;
 	quit = FALSE;
 	while (quit == FALSE)
 	{
+		SDL_SetRenderDrawColor(e->renderer, 255, 0, 0, 255);
+		SDL_RenderPresent(e->renderer);
 		SDL_WaitEvent(&e->event);
 		if (e->event.type == SDL_KEYDOWN)
+		{
 			if (e->event.key.keysym.sym == SDLK_ESCAPE)
 				quit = TRUE;
+			if (e->event.key.keysym.sym == SDLK_f && fullscreen == FALSE)
+			{
+				fullscreen = TRUE;
+				SDL_SetWindowFullscreen(e->sdl_win, SDL_WINDOW_FULLSCREEN);
+			}
+			else if (e->event.key.keysym.sym == SDLK_f && fullscreen == TRUE)
+			{
+				fullscreen = FALSE;
+				SDL_SetWindowFullscreen(e->sdl_win, 0);
+			}
+		}
 		if (e->event.type == SDL_QUIT)
 				quit = TRUE;
+		SDL_RenderClear(e->renderer);
 	}
 }
 
@@ -54,15 +61,9 @@ int			main(int argc, char *argv[])
 	if (!(e = (t_env *)malloc(sizeof(t_env))))
 		error(-3, "Unable to initialize environment.");
 	init(e, argv[1]);
-
 	/* ajout sdl */
-	sdl_init(e);
 	sdl_loop(e);
 	SDL_DestroyWindow(e->sdl_win);
 	SDL_Quit();
-
-	mlx_expose_hook(e->win, expose_hook, e);
-	mlx_hook(e->win, 2, (1L << 0), key_hook, e);
-	mlx_loop(e->mlx);
 	return (0);
 }

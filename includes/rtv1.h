@@ -75,6 +75,7 @@ typedef struct		s_env
 	// add sdl win
 	SDL_Window		*sdl_win;
 	SDL_Event		event;
+	SDL_Renderer	*renderer;
 }					t_env;
 
 void				init(t_env *e, char *filename);

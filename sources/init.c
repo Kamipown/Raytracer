@@ -19,32 +19,30 @@ static void	init_scene(t_env *e, char *filename)
 	parse_scene(e->scene, filename);
 }
 
-static void	init_minilibx(t_env *e)
-{
-	if (!(e->mlx = mlx_init()))
-		error(-5, "Unable to initialize mlx.");
-}
-
 static void	init_window(t_env *e)
 {
-	if (!(e->win = mlx_new_window(e->mlx,
-		e->scene->size.w, e->scene->size.h, "Rtv1")))
-		error(-6, "Unable to create a new window.");
+	if ((e->sdl_win = SDL_CreateWindow("RT - 42", SDL_WINDOWPOS_UNDEFINED,
+		SDL_WINDOWPOS_UNDEFINED, e->scene->size.w, e->scene->size.h,
+		SDL_WINDOW_RESIZABLE)) == NULL)
+		error(-21, (char *)SDL_GetError());
 }
 
 static void	init_image(t_env *e)
 {
-	if (!(e->img = (t_img *)malloc(sizeof(t_img))))
-		error(-7, "Unable to create a new image.");
-	if (!(e->img->data = mlx_new_image(e->mlx,
-		e->scene->size.w, e->scene->size.h)))
-		error(-8, "Unable to create image data.");
+	if ((e->renderer = SDL_CreateRenderer(e->sdl_win, -1, SDL_RENDERER_ACCELERATED)) == NULL)
+		error(-22, (char *)SDL_GetError());
+}
+
+static void	init_sdl(t_env *e)
+{
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+		error(-20, (char *)SDL_GetError());
 }
 
 void		init(t_env *e, char *filename)
 {
 	init_scene(e, filename);
-	init_minilibx(e);
+	init_sdl(e);
 	init_window(e);
 	init_image(e);
 }
