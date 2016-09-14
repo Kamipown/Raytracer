@@ -12,9 +12,9 @@
 
 #include "rtv1.h"
 
-int			inter_spheres(t_env *e, t_vec3 *pos)
+int			inter_spheres(t_env *e, t_ray *ray)
 {
-	if (e && pos)
+	if (e && ray)
 		;
 	return (0);
 }

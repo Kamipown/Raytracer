@@ -14,18 +14,14 @@
 
 static void	throw_ray(t_env *e, t_ray *ray)
 {
-	while (ray->pos.z <= RAY_END)
-	{
-		if (inter_spheres(e, &ray->pos))
-			return ;
-		// if (inter_cylinder(e, &ray->pos))
-		// 	return ;
-		// if (inter_cones(e, &ray->pos))
-		// 	return ;
-		// if (inter_planes(e, &ray->pos))
-		// 	return ;
-		++ray->pos.z;
-	}
+	if (inter_spheres(e, ray))
+		return ;
+	// if (inter_cylinder(e, ray))
+	// 	return ;
+	// if (inter_cones(e, ray))
+	// 	return ;
+	// if (inter_planes(e, ray))
+	// 	return ;
 }
 
 void		raytrace(t_env *e)
@@ -34,12 +30,13 @@ void		raytrace(t_env *e)
 	int		y;
 	t_ray	*ray;
 
+	printf("%d %d | %d %d | %d %d\n", e->scene->size.w, e->scene->size.h, e->scene->size.s_x, e->scene->size.s_y, e->scene->size.e_x, e->scene->size.e_y);
 	ray = init_ray();
-	y = 0;
-	while (y < e->scene->size.h)
+	y = e->scene->size.s_y;
+	while (y < e->scene->size.e_y)
 	{
-		x = 0;
-		while (x < e->scene->size.w)
+		x = e->scene->size.s_x;
+		while (x < e->scene->size.e_x)
 		{
 			update_ray(ray, x, y);
 			throw_ray(e, ray);

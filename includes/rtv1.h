@@ -35,6 +35,7 @@
 # define ESCAPE			53
 
 # define RAY_START		-1000.0f
+# define RAY_ZERO		0.0f
 # define RAY_END		1000.0f
 
 # define TRUE			1
@@ -101,7 +102,7 @@ void				raytrace(t_env *e);
 void				update_ray(t_ray *ray, int x, int y);
 t_ray				*init_ray(void);
 
-int					inter_spheres(t_env *e, t_vec3 *pos);
+int					inter_spheres(t_env *e, t_ray *ray);
 
 void				error(int n, char *mes);
 
