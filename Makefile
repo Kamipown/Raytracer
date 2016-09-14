@@ -45,7 +45,8 @@ SRC = main.c				\
 	  hooks.c				\
 	  draw.c				\
 	  raytracer.c			\
-	  ray.c
+	  ray.c					\
+	  inter_spheres.c
 
 SRCS = $(addprefix $(PATH_SRC), $(SRC))
 

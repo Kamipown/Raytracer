@@ -12,31 +12,19 @@
 
 #include "rtv1.h"
 
-// void		apply_lights(t_sphere *e->scene->spheres)
-// {
-	
-// }
-
-// int			inter_spheres()
-// {
-// 	if (intersection e->scene->spheres[3])
-// 	{
-// 		apply_lights(e->scene->spheres[3]);
-// 		return (1);
-// 	}
-// 	return (0);
-// }
-
 static void	throw_ray(t_env *e, t_ray *ray)
 {
 	while (ray->pos.z <= RAY_END)
 	{
-		// if (inter_spheres(ray->pos, ))
+		if (inter_spheres(e, &ray->pos))
+			return ;
+		// if (inter_cylinder(e, &ray->pos))
 		// 	return ;
-		// if (inter_cylinder(ray->pos, ))
+		// if (inter_cones(e, &ray->pos))
 		// 	return ;
-		if (e)
-			++ray->pos.z;
+		// if (inter_planes(e, &ray->pos))
+		// 	return ;
+		++ray->pos.z;
 	}
 }
 

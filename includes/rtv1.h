@@ -101,6 +101,8 @@ void				raytrace(t_env *e);
 void				update_ray(t_ray *ray, int x, int y);
 t_ray				*init_ray(void);
 
+int					inter_spheres(t_env *e, t_vec3 *pos);
+
 void				error(int n, char *mes);
 
 #endif
