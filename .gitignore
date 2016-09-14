@@ -5,7 +5,7 @@
 #		fichiers temporaires
 #		dossier tmp/
 
-rtv1
+rt
 **/*.[oa]
 **/*~
 tmp/
