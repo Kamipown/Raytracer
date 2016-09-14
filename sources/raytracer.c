@@ -30,7 +30,6 @@ void		raytrace(t_env *e)
 	int		y;
 	t_ray	*ray;
 
-	printf("%d %d | %d %d | %d %d\n", e->scene->size.w, e->scene->size.h, e->scene->size.s_x, e->scene->size.s_y, e->scene->size.e_x, e->scene->size.e_y);
 	ray = init_ray();
 	y = e->scene->size.s_y;
 	while (y < e->scene->size.e_y)
@@ -39,6 +38,17 @@ void		raytrace(t_env *e)
 		while (x < e->scene->size.e_x)
 		{
 			update_ray(ray, x, y);
+			ft_putnbr(ray->start.x);
+			ft_putchar('|');
+			ft_putnbr(ray->start.y);
+			ft_putchar('|');
+			ft_putnbr(ray->start.z);
+			ft_putchar('|');
+			ft_putnbr(ray->end.x);
+			ft_putchar('|');
+			ft_putnbr(ray->end.y);
+			ft_putchar('|');
+			ft_putnbr_endl(ray->end.z);
 			throw_ray(e, ray);
 			++x;
 		}

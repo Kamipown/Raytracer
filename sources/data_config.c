@@ -58,8 +58,8 @@ void		fill_screen_data(t_scene *s, char *data)
 
 	sw = read_int_data(data, "config.screen.width");
 	sh = read_int_data(data, "config.screen.height");
-	s->size.w = sw >= MIN_SCREEN_W && sw <= MAX_SCREEN_W ? sw : SCREEN_W;
-	s->size.h = sh >= MIN_SCREEN_H && sh <= MAX_SCREEN_H ? sh : SCREEN_H;
+	s->size.w = 8;//sw >= MIN_SCREEN_W && sw <= MAX_SCREEN_W ? sw : SCREEN_W;
+	s->size.h = 6;//sh >= MIN_SCREEN_H && sh <= MAX_SCREEN_H ? sh : SCREEN_H;
 	s->size.s_x = -s->size.w / 2;
 	s->size.s_y = -s->size.h / 2;
 	s->size.e_x = s->size.w / 2;
