@@ -3,101 +3,74 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/04/18 19:44:49 by pdelobbe          #+#    #+#              #
-#    Updated: 2016/04/18 19:44:57 by pdelobbe         ###   ########.fr        #
+#    Created: 2015/12/11 13:43:04 by dcognata          #+#    #+#              #
+#    Updated: 2016/03/02 15:17:41 by dcognata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		rtv1
+NAME = rt
 
-CC =		gcc
+CC = gcc
 
-FLG =		-Wall \
-			-Wextra \
-			-Werror
+PATH_SRC = ./sources/
 
-INC =		-I ./includes \
-			-I ./libft/includes/
+INCLUDES = -I./libft/includes/		\
+		   -I./includes 			\
+		   -I./sdl2/include/
 
-LIB =		-L./libft/ -lft \
-			-L./minilibx_macos/ -lmlx \
-			-framework OpenGL \
-			-framework AppKit
+FLG =	-Wall -Wextra -pedantic -O3 -Werror
 
-FLG =	-Wall -Wextra -pedantic -O3 #-Werror
+CFLAGS = $(INCLUDES) $(FLG)
 
-CFLAGS =	$(INC) $(FLG)
+MLX = -framework OpenGL -framework AppKit
 
-SRC_DIR =	sources/
+LIBFT = -L./libft/ -lft
 
-SRC_FILES =	main.c \
-			errors.c \
-			init.c \
-			parser.c \
-			file_reader.c \
-			request_constructor.c \
-			data_reader.c \
-			data_transform.c \
-			data_config.c \
-			data_lights.c \
-			data_spheres.c \
-			objects_data.c \
-			hooks.c \
-			draw.c \
-			raytracer.c \
-			ray.c
+SDLFT = -framework Cocoa -framework SDL2
 
-SRC =		$(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC = main.c				\
+	  errors.c				\
+	  init.c				\
+	  parser.c				\
+	  file_reader.c			\
+	  request_constructor.c	\
+	  data_reader.c			\
+	  data_transform.c		\
+	  data_config.c			\
+	  data_lights.c			\
+	  data_spheres.c		\
+	  objects_data.c		\
+	  hooks.c				\
+	  draw.c				\
+	  raytracer.c			\
+	  ray.c
 
-OBJ =		$(SRC_FILES:.c=.o)
+SRCS = $(addprefix $(PATH_SRC), $(SRC))
 
-all: $(NAME)
+SRCO = $(SRCS:.c=.o)
 
-$(NAME): $(OBJ)
-	@echo "\033[33m[Step 2/4]\033[37m Libft"
-	@make -C libft/
-	@echo "\033[33m[Step 3/4]\033[37m Libmlx"
-	@make -C minilibx_macos/
-	@echo "\033[33m[Step 4/4]\033[37m Raytracer"
-	@echo "\t\033[35m[Creating]\033[37m executable"
-	@$(CC) -o $(NAME) $(OBJ) $(LIB)
-	@echo "\033[32m[ Done ! ]"
+all: libft $(NAME)
 
-$(OBJ):
-	@echo "\033[33m[Step 1/4]\033[37m Raytracer"
-	@echo "\t\033[35m[Creating]\033[37m object files"
-	@$(CC) -c -O3 $(FLG) $(INC) $(SRC)
+$(NAME): $(SRCO)
+	@echo "\033[1;30mRT : Sources compiling...\033[0m"
+	@$(CC) $(FLAGS) -o $@ $(SRCO) $(LIBFT) $(SDLFT) $(MLX)
+	@echo "\033[0;36mRT compile with success !\033[0m"
 
+libft:
+	make -C libft
 
 clean:
-	@echo "\033[33m[clean]"
-	@echo "\t\033[31m[Deleting]\033[37m object files"
-	@echo "\t\033[31m[Deleting]\033[37m temporary files"
-	@rm -f $(OBJ)
-	@rm -Rf **/*~
-	@make clean -C libft/
-	@make clean -C minilibx_macos/
+	@make -C libft/ clean
+	@/bin/rm -f $(SRCO)
+	@echo "\033[0;36mObjects removed...\033[0m"
 
 fclean: clean
-	@echo "\033[33m[fclean]"
-	@echo "\t\033[31m[Deleting]\033[37m libs"
-	@echo "\t\033[31m[Deleting]\033[37m executable"
-	@rm -f $(NAME)
-	@make fclean -C libft/
-	@make fclean -C minilibx_macos/
+	@make -C libft/ fclean
+	@/bin/rm -f $(NAME)
+	@echo "\033[0;36mRT binary removed...\033[0m"
 
 re: fclean all
 
-test: re
-	./rtv1 scenes/scene_00.rt
-
-retest:
-	./rtv1 scenes/scene_00.rt
-
-norm:
-	norminette sources/*.c includes/*.h libft/*.c libft/includes/*.h
-
-aaa:
-	gcc $(TTT)
+.PHONY: clean fclean libft all $(NAME)

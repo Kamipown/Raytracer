@@ -6,7 +6,7 @@
 /*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/04/18 19:46:46 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/10 13:21:43 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <mlx.h>
 
+# include "./sdl2/SDL.h"
 # include "libft.h"
 # include "shapes.h"
 
@@ -36,6 +37,11 @@
 # define RAY_START		-1000.0f
 # define RAY_END		1000.0f
 
+# define TRUE			1
+# define FALSE			0
+
+# define t_boolean	unsigned int
+
 typedef struct		s_scene
 {
 	t_light			*lights;
@@ -51,28 +57,19 @@ typedef struct		s_scene
 	t_size			size;
 }					t_scene;
 
-typedef struct		s_img
+typedef struct		s_sdl_options
 {
-	void			*data;
-	int				bpp;
-	int				size;
-	int				endian;
-	char			*buf;
-}					t_img;
+	t_boolean		quit;
+	t_boolean		fullscreen;
+}					t_sdl_options;
 
 typedef struct		s_env
 {
-	void			*mlx;
-	void			*win;
-	t_img			*img;
 	t_scene			*scene;
-<<<<<<< HEAD
-=======
-	// add sdl win
 	SDL_Window		*sdl_win;
 	SDL_Event		event;
 	SDL_Renderer	*renderer;
->>>>>>> origin/sdl
+	t_sdl_options	sdl_opt;
 }					t_env;
 
 void				init(t_env *e, char *filename);

@@ -16,21 +16,13 @@ void		draw_pixel(t_env *e, t_pixel p)
 {
 	if (p.x > 0 && p.x < e->scene->size.w && p.y > 0 && p.y < e->scene->size.h)
 	{
-		p.x *= 4;
-		p.y *= 4;
-		e->img->buf[(p.x++) + (p.y * e->scene->size.w)] = p.color;
-		e->img->buf[(p.x++) + (p.y * e->scene->size.w)] = p.color >> 8;
-		e->img->buf[(p.x) + (p.y * e->scene->size.w)] = p.color >> 16;
+        SDL_SetRenderDrawColor(e->renderer, p.color >> 16, p.color >> 8, p.color, 255);
+        SDL_RenderDrawPoint(e->renderer, p.x, p.y);
 	}
 }
 
 void		draw_image(t_env *e)
 {
-	e->img->buf = mlx_get_data_addr(
-		e->img->data,
-		&e->img->bpp,
-		&e->img->size,
-		&e->img->endian);
 	raytrace(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->img->data, 0, 0);
+    SDL_RenderPresent(e->renderer);
 }

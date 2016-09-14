@@ -6,7 +6,7 @@
 /*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:33 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/04/18 19:46:34 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/10 13:23:40 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,42 +20,22 @@ static void	check(int argc)
 		error(-2, "Missing file.");
 }
 
-<<<<<<< HEAD
-=======
 void		sdl_loop(t_env *e)
 {
-	t_boolean quit;
-	t_boolean fullscreen;
-
-	fullscreen = FALSE;
-	quit = FALSE;
-	while (quit == FALSE)
+	e->sdl_opt.fullscreen = FALSE;
+	e->sdl_opt.quit = FALSE;
+	while (e->sdl_opt.quit == FALSE)
 	{
-		SDL_SetRenderDrawColor(e->renderer, 255, 0, 0, 255);
-		SDL_RenderPresent(e->renderer);
+		expose_hook(e);
 		SDL_WaitEvent(&e->event);
 		if (e->event.type == SDL_KEYDOWN)
-		{
-			if (e->event.key.keysym.sym == SDLK_ESCAPE)
-				quit = TRUE;
-			if (e->event.key.keysym.sym == SDLK_f && fullscreen == FALSE)
-			{
-				fullscreen = TRUE;
-				SDL_SetWindowFullscreen(e->sdl_win, SDL_WINDOW_FULLSCREEN);
-			}
-			else if (e->event.key.keysym.sym == SDLK_f && fullscreen == TRUE)
-			{
-				fullscreen = FALSE;
-				SDL_SetWindowFullscreen(e->sdl_win, 0);
-			}
-		}
+			key_hook(e->event.key.keysym.sym, e);
 		if (e->event.type == SDL_QUIT)
-				quit = TRUE;
+				e->sdl_opt.quit = TRUE;
 		SDL_RenderClear(e->renderer);
 	}
 }
 
->>>>>>> origin/sdl
 int			main(int argc, char *argv[])
 {
 	t_env	*e;
@@ -64,15 +44,8 @@ int			main(int argc, char *argv[])
 	if (!(e = (t_env *)malloc(sizeof(t_env))))
 		error(-3, "Unable to initialize environment.");
 	init(e, argv[1]);
-<<<<<<< HEAD
-	mlx_expose_hook(e->win, expose_hook, e);
-	mlx_hook(e->win, 2, (1L << 0), key_hook, e);
-	mlx_loop(e->mlx);
-=======
-	/* ajout sdl */
 	sdl_loop(e);
 	SDL_DestroyWindow(e->sdl_win);
 	SDL_Quit();
->>>>>>> origin/sdl
 	return (0);
 }
