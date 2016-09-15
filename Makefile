@@ -46,6 +46,8 @@ SRC = main.c				\
 	  draw.c				\
 	  raytracer.c			\
 	  ray.c					\
+	  vec3_calc.c			\
+	  vec3_calc_float.c		\
 	  inter_spheres.c
 
 SRCS = $(addprefix $(PATH_SRC), $(SRC))

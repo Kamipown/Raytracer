@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
 
 # include "./sdl2/SDL.h"
 # include "libft.h"
@@ -101,6 +100,15 @@ void				raytrace(t_env *e);
 
 void				update_ray(t_ray *ray, int x, int y);
 t_ray				*init_ray(void);
+
+t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
+t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
+t_vec3				vec_mul(t_vec3 *v1, t_vec3 *v2);
+t_vec3				vec_div(t_vec3 *v1, t_vec3 *v2);
+float				vec_add_to_f(t_vec3 *v1, t_vec3 *v2);
+float				vec_sub_to_f(t_vec3 *v1, t_vec3 *v2);
+float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
+float				vec_div_to_f(t_vec3 *v1, t_vec3 *v2);
 
 int					inter_spheres(t_env *e, t_ray *ray);
 
