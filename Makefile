@@ -33,6 +33,7 @@ SDLFT = -framework Cocoa -framework SDL2
 SRC = main.c				\
 	  errors.c				\
 	  init.c				\
+	  quit.c				\
 	  parser.c				\
 	  file_reader.c			\
 	  request_constructor.c	\
@@ -42,6 +43,7 @@ SRC = main.c				\
 	  data_lights.c			\
 	  data_spheres.c		\
 	  objects_data.c		\
+	  loop.c				\
 	  hooks.c				\
 	  draw.c				\
 	  raytracer.c			\

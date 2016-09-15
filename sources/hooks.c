@@ -22,16 +22,16 @@ int		expose_hook(t_env *e)
 int		key_hook(int k, t_env *e)
 {
     if (k == SDLK_ESCAPE)
-        e->sdl_opt.quit = TRUE;
-    if (k == SDLK_f && e->sdl_opt.fullscreen == FALSE)
+        e->options.quit = TRUE;
+    if (k == SDLK_f && e->options.fullscreen == FALSE)
     {
-        e->sdl_opt.fullscreen = TRUE;
-        SDL_SetWindowFullscreen(e->sdl_win, SDL_WINDOW_FULLSCREEN);
+        e->options.fullscreen = TRUE;
+        SDL_SetWindowFullscreen(e->win, SDL_WINDOW_FULLSCREEN);
     }
-    else if (k == SDLK_f && e->sdl_opt.fullscreen == TRUE)
+    else if (k == SDLK_f && e->options.fullscreen == TRUE)
     {
-        e->sdl_opt.fullscreen = FALSE;
-        SDL_SetWindowFullscreen(e->sdl_win, 0);
+        e->options.fullscreen = FALSE;
+        SDL_SetWindowFullscreen(e->win, 0);
     }
 	return (0);
 }

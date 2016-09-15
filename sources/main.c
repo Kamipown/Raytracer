@@ -20,27 +20,6 @@ static void	check(int argc)
 		error(-2, "Missing file.");
 }
 
-void		sdl_loop(t_env *e)
-{
-				int tmp = 1;
-	e->sdl_opt.fullscreen = FALSE;
-	e->sdl_opt.quit = FALSE;
-	while (e->sdl_opt.quit == FALSE)
-	{
-		if (tmp == 1)
-		{
-			expose_hook(e);
-			tmp = 0;
-		}
-		SDL_WaitEvent(&e->event);
-		if (e->event.type == SDL_KEYDOWN)
-			key_hook(e->event.key.keysym.sym, e);
-		if (e->event.type == SDL_QUIT)
-				e->sdl_opt.quit = TRUE;
-		SDL_RenderClear(e->renderer);
-	}
-}
-
 int			main(int argc, char *argv[])
 {
 	t_env	*e;
@@ -49,8 +28,7 @@ int			main(int argc, char *argv[])
 	if (!(e = (t_env *)malloc(sizeof(t_env))))
 		error(-3, "Unable to initialize environment.");
 	init(e, argv[1]);
-	sdl_loop(e);
-	SDL_DestroyWindow(e->sdl_win);
-	SDL_Quit();
+	loop(e);
+	quit(e);
 	return (0);
 }

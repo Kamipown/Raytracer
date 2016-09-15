@@ -39,7 +39,7 @@
 # define TRUE			1
 # define FALSE			0
 
-# define t_boolean	unsigned int
+typedef unsigned int	t_bool;
 
 typedef struct		s_scene
 {
@@ -56,22 +56,23 @@ typedef struct		s_scene
 	t_size			size;
 }					t_scene;
 
-typedef struct		s_sdl_options
+typedef struct		s_options
 {
-	t_boolean		quit;
-	t_boolean		fullscreen;
-}					t_sdl_options;
+	t_bool			fullscreen;
+	t_bool			quit;
+}					t_options;
 
 typedef struct		s_env
 {
 	t_scene			*scene;
-	SDL_Window		*sdl_win;
-	SDL_Event		event;
+	SDL_Window		*win;
 	SDL_Renderer	*renderer;
-	t_sdl_options	sdl_opt;
+	SDL_Event		event;
+	t_options		options;
 }					t_env;
 
 void				init(t_env *e, char *filename);
+void				quit(t_env *e);
 
 void				parse_scene(t_scene *s, char *filename);
 char				*read_file(char *filename);
@@ -88,6 +89,8 @@ void				fill_spheres_data(t_scene *s, char *data);
 void				fill_cylinders_data(t_scene *s, char *data);
 void				fill_cones_data(t_scene *s, char *data);
 void				fill_planes_data(t_scene *s, char *data);
+
+void				loop(t_env *e);
 
 int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);
