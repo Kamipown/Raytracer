@@ -14,6 +14,7 @@
 
 int		expose_hook(t_env *e)
 {
+    draw_background(e);
 	draw_image(e);
 	return (0);
 }

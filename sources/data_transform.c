@@ -35,6 +35,8 @@ static int		data_to_hex(char *s)
 			ret = (ret << 4) | (quartet & 0x0f);
 		}
 	}
+	if (ret < 0)
+		return (0);
 	return (ret > 0xffffff ? 0xffffff : ret);
 }
 

@@ -21,6 +21,24 @@ void		draw_pixel(t_env *e, t_pixel p)
 	}
 }
 
+void		draw_background(t_env *e)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < e->scene->size.h)
+	{
+		x = 0;
+		while (x < e->scene->size.w)
+		{
+			draw_pixel(e, (t_pixel){x, y, 0x000000});
+			++x;
+		}
+		++y;
+	}
+}
+
 void		draw_image(t_env *e)
 {
 	raytrace(e);

@@ -24,10 +24,6 @@ typedef struct		s_size
 {
 	int				w;
 	int				h;
-	int				s_x;
-	int				s_y;
-	int				e_x;
-	int				e_y;
 }					t_size;
 
 typedef struct		s_vec3
@@ -40,7 +36,7 @@ typedef struct		s_vec3
 typedef struct		s_ray
 {
 	t_vec3			start;
-	t_vec3			end;
+	t_vec3			dir;
 }					t_ray;
 
 typedef struct		s_light

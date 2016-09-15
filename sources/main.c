@@ -22,11 +22,16 @@ static void	check(int argc)
 
 void		sdl_loop(t_env *e)
 {
+				int tmp = 1;
 	e->sdl_opt.fullscreen = FALSE;
 	e->sdl_opt.quit = FALSE;
 	while (e->sdl_opt.quit == FALSE)
 	{
-		expose_hook(e);
+		if (tmp == 1)
+		{
+			expose_hook(e);
+			tmp = 0;
+		}
 		SDL_WaitEvent(&e->event);
 		if (e->event.type == SDL_KEYDOWN)
 			key_hook(e->event.key.keysym.sym, e);

@@ -21,8 +21,8 @@ lights
 spheres
 	0
 		pos
-			x:0
-			y:0
-			z:350
-		radius:50
+			x:400
+			y:300
+			z:1000
+		radius:1
 		color:#cc5555

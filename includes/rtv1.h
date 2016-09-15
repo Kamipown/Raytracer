@@ -34,9 +34,8 @@
 
 # define ESCAPE			53
 
-# define RAY_START		-1000.0f
-# define RAY_ZERO		0.0f
-# define RAY_END		1000.0f
+# define RAY_START		-10000.0f
+# define RAY_END		20000.0f
 
 # define TRUE			1
 # define FALSE			0
@@ -95,6 +94,7 @@ int					expose_hook(t_env *e);
 int					key_hook(int k, t_env *e);
 
 void				draw_image(t_env *e);
+void				draw_background(t_env *e);
 void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);

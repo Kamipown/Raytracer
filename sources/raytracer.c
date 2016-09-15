@@ -31,28 +31,18 @@ void		raytrace(t_env *e)
 	t_ray	*ray;
 
 	ray = init_ray();
-	y = e->scene->size.s_y;
-	while (y < e->scene->size.e_y)
+	y = 0;
+	while (y < e->scene->size.h)
 	{
-		x = e->scene->size.s_x;
-		while (x < e->scene->size.e_x)
+		x = 0;
+		while (x < e->scene->size.w)
 		{
 			update_ray(ray, x, y);
-			ft_putnbr(ray->start.x);
-			ft_putchar('|');
-			ft_putnbr(ray->start.y);
-			ft_putchar('|');
-			ft_putnbr(ray->start.z);
-			ft_putchar('|');
-			ft_putnbr(ray->end.x);
-			ft_putchar('|');
-			ft_putnbr(ray->end.y);
-			ft_putchar('|');
-			ft_putnbr_endl(ray->end.z);
 			throw_ray(e, ray);
 			++x;
 		}
 		++y;
 	}
+	ft_putendl("raytrace");
 	free(ray);
 }

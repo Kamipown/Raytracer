@@ -4,7 +4,7 @@ config
 		height:600
 	counts
 		lights:1
-		spheres:3
+		spheres:2
 		cylinders:0
 		cones:0
 		planes:0
@@ -21,22 +21,17 @@ lights
 spheres
 	0
 		pos
-			x:-25
-			y:0
-			z:350
-		radius:50
+			x:450
+			y:350
+			z:100
+		radius:60
 		color:#cc5555
+			// rouge
 	1
 		pos
-			x:0
-			y:0
-			z:350
-		radius:50
-		color:#55cc55
-	2
-		pos
-			x:25
-			y:0
-			z:350
-		radius:50
+			x:400
+			y:300
+			z:300
+		radius:100
 		color:#5555cc
+			// bleu
