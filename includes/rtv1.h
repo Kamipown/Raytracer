@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/17 13:39:39 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/09/17 15:23:59 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct		s_options
 {
 	t_bool			fullscreen;
 	t_bool			quit;
+	t_bool			need_redraw;
 }					t_options;
 
 typedef struct		s_env
