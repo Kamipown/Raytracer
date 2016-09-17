@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/10 13:21:43 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/09/17 13:39:39 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_div_to_f(t_vec3 *v1, t_vec3 *v2);
 
 int					inter_spheres(t_env *e, t_ray *ray);
+int					inter_planes(t_env *e, t_ray *ray);
 
 void				error(int n, char *mes);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shapes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 16:49:39 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/04/27 16:49:40 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/17 14:06:52 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct		s_plane
 	t_vec3			rot;
 	int				width;
 	int				height;
+	int				color;
 }					t_plane;
 
 #endif

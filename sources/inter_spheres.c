@@ -6,13 +6,13 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 14:42:48 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/14 14:42:50 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/17 13:38:35 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
 #include <stdio.h>
+
 static int	test_hit(t_ray *ray, t_sphere *s)
 {
 	t_vec3	dist;
@@ -45,7 +45,8 @@ int			inter_spheres(t_env *e, t_ray *ray)
 	{
 		if (test_hit(ray, &e->scene->spheres[i]))
 		{
-			draw_pixel(e, (t_pixel){ray->start.x, ray->start.y, e->scene->spheres[i].color});
+			draw_pixel(e, (t_pixel){ray->start.x, ray->start.y,
+				e->scene->spheres[i].color});
 			return (1);
 		}
 		++i;

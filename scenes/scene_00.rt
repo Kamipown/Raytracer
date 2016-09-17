@@ -39,6 +39,7 @@ planes
 		size
 			width:500
 			height:500
+		color:#cc5555
 	1
 		pos
 			x:300
@@ -51,3 +52,4 @@ planes
 		size
 			width:800
 			height:800
+		color:#dd8855

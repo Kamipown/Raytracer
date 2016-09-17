@@ -6,7 +6,7 @@
 #    By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/11 13:43:04 by dcognata          #+#    #+#              #
-#    Updated: 2016/03/02 15:17:41 by dcognata         ###   ########.fr        #
+#    Updated: 2016/09/17 14:24:08 by dcognata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INCLUDES = -I./libft/includes/		\
 		   -I./includes 			\
 		   -I./sdl2/include/
 
-FLG =	-Wall -Wextra -pedantic -O3 -Werror
+FLG =	-Wall -Wextra -pedantic -O3 #-Werror
 
 CFLAGS = $(INCLUDES) $(FLG)
 
@@ -41,6 +41,7 @@ SRC = main.c				\
 	  data_transform.c		\
 	  data_config.c			\
 	  data_lights.c			\
+	  data_planes.c			\
 	  data_spheres.c		\
 	  objects_data.c		\
 	  loop.c				\
@@ -50,6 +51,7 @@ SRC = main.c				\
 	  ray.c					\
 	  vec3_calc.c			\
 	  vec3_calc_float.c		\
+	  inter_planes.c		\
 	  inter_spheres.c
 
 SRCS = $(addprefix $(PATH_SRC), $(SRC))

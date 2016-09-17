@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:47:11 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/04/18 19:47:12 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/17 13:57:43 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		draw_background(t_env *e)
 		x = 0;
 		while (x < e->scene->size.w)
 		{
-			draw_pixel(e, (t_pixel){x, y, 0x000000});
+			draw_pixel(e, (t_pixel){x, y, 0x003366});
 			++x;
 		}
 		++y;

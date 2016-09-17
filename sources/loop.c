@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:47:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/15 17:47:44 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/17 14:00:01 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void				loop(t_env *e)
 		}
 		SDL_WaitEvent(&e->event);
 		if (e->event.type == SDL_KEYDOWN)
+		{
 			key_hook(e->event.key.keysym.sym, e);
+			need_redraw = TRUE;
+		}
 		if (e->event.type == SDL_QUIT)
 				e->options.quit = TRUE;
 		SDL_RenderClear(e->renderer);
