@@ -28,14 +28,14 @@ typedef struct		s_size
 
 typedef struct		s_vec3
 {
-	int				x;
-	int				y;
-	int				z;
+	float			x;
+	float			y;
+	float			z;
 }					t_vec3;
 
 typedef struct		s_ray
 {
-	t_vec3			start;
+	t_vec3			origin;
 	t_vec3			dir;
 }					t_ray;
 
@@ -76,5 +76,12 @@ typedef struct		s_plane
 	int				height;
 	int				color;
 }					t_plane;
+
+typedef struct		s_cam
+{
+	t_vec3			pos;
+	t_vec3			target;
+	int				fov;
+}					t_cam;
 
 #endif

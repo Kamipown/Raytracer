@@ -15,7 +15,9 @@
 
 static int	test_hit(t_ray *ray, t_plane *p)
 {
-	return 0;
+	if (ray && p)
+		return (0);
+	return (0);
 }
 
 int			inter_planes(t_env *e, t_ray *ray)
@@ -27,7 +29,7 @@ int			inter_planes(t_env *e, t_ray *ray)
 	{
 		if (test_hit(ray, &e->scene->planes[i]))
 		{
-			draw_pixel(e, (t_pixel){ray->start.x, ray->start.y, 0x000000});
+			draw_pixel(e, (t_pixel){ray->origin.x, ray->origin.y, 0x000000});
 			return (1);
 		}
 		++i;

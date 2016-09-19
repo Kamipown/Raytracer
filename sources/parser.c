@@ -19,10 +19,13 @@ void	parse_scene(t_scene *s, char *filename)
 	data = read_file(filename);
 	fill_screen_data(s, data);
 	fill_counts_data(s, data);
+	fill_camera_data(s, data);
 	fill_lights_data(s, data);
 	fill_spheres_data(s, data);
 	fill_cylinders_data(s, data);
 	fill_cones_data(s, data);
 	fill_planes_data(s, data);
+
+	ft_putnbr_endl(s->cam->fov);
 	free(data);
 }

@@ -21,9 +21,8 @@ static int	test_hit(t_ray *ray, t_sphere *s)
 	float	z1;
 	float	z2;
 
-	dist = vec_sub(&s->pos, &ray->start);
+	dist = vec_sub(&s->pos, &ray->origin);
 	b = vec_mul_to_f(&ray->dir, &dist);
-	d = b * b - vec_mul_to_f(&dist, &dist) + s->radius * s->radius;
 	d = b * b - vec_mul_to_f(&dist, &dist) + s->radius * s->radius;
 	if (d < 0.0f)
 		return (0);
@@ -45,7 +44,7 @@ int			inter_spheres(t_env *e, t_ray *ray)
 	{
 		if (test_hit(ray, &e->scene->spheres[i]))
 		{
-			draw_pixel(e, (t_pixel){ray->start.x, ray->start.y,
+			draw_pixel(e, (t_pixel){ray->origin.x, ray->origin.y,
 				e->scene->spheres[i].color});
 			return (1);
 		}

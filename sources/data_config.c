@@ -36,6 +36,20 @@ static void	malloc_counts(t_scene *s)
 			error(-15, "Unable to create planes.");
 }
 
+void		fill_camera_data(t_scene *s, char *data)
+{
+	float	f;
+
+	if (!(s->cam = (t_cam *)malloc(sizeof(t_cam))))
+		error (-16, "Unable to create camera.");
+	s->cam->fov = read_int_data(data, "config.camera.fov");
+	s->cam->fov = s->cam->fov < 1 || s->cam->fov > 90 ? FOV : s->cam->fov;
+	s->cam->pos = (t_vec3){0, 0, 0};
+	f = -(s->size.w / (2 * tanf(s->cam->fov / 2)));
+	s->cam->target = (t_vec3){0, 0, f};
+	ft_putnbr_endl(s->cam->target.z);
+}
+
 void		fill_counts_data(t_scene *s, char *data)
 {
 	s->n_light = read_int_data(data, "config.counts.lights");
@@ -51,7 +65,6 @@ void		fill_counts_data(t_scene *s, char *data)
 	malloc_counts(s);
 }
 
-#include <stdio.h>
 void		fill_screen_data(t_scene *s, char *data)
 {
 	int		sw;

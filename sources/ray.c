@@ -14,9 +14,9 @@
 
 void	update_ray(t_ray *ray, int x, int y)
 {
-	ray->start.x = x;
-	ray->start.y = y;
-	ray->start.z = RAY_START;
+	ray->origin.x = x;
+	ray->origin.y = y;
+	ray->origin.z = RAY_START;
 }
 
 t_ray	*init_ray(void)

@@ -33,6 +33,8 @@
 
 # define ESCAPE			53
 
+# define FOV			30
+
 # define RAY_START		-10000.0f
 # define RAY_END		20000.0f
 
@@ -43,6 +45,7 @@ typedef unsigned int	t_bool;
 
 typedef struct		s_scene
 {
+	t_cam			*cam;
 	t_light			*lights;
 	t_sphere		*spheres;
 	t_cylinder		*cylinders;
@@ -84,6 +87,7 @@ char				*construct_request_int(char *request, int n);
 
 void				fill_screen_data(t_scene *s, char *data);
 void				fill_counts_data(t_scene *s, char *data);
+void				fill_camera_data(t_scene *s, char *data);
 void				fill_lights_data(t_scene *s, char *data);
 void				fill_spheres_data(t_scene *s, char *data);
 
