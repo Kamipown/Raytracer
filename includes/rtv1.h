@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/20 15:47:50 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/09/20 16:00:48 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_mul(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_div(t_vec3 *v1, t_vec3 *v2);
-t_vec3 				*vector_normalize(t_vec3 *vec);
+t_vec3 				vector_normalize(t_vec3 *vec);
 float				vec_add_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_sub_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
