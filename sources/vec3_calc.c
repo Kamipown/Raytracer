@@ -12,6 +12,18 @@
 
 #include "rtv1.h"
 
+t_vec3 		vector_normalize(t_vec3 *vec)
+{
+	float len;
+
+	len = sqrtf((vec.x * vec.x) + (vec.y * vec.y) + (vec.z * vec.z));	
+	vec.x /= len;
+	vec.y /= len;
+	vec.z /= len;
+	return (vec);
+}
+
+
 t_vec3		vec_add(t_vec3 *v1, t_vec3 *v2)
 {
 	t_vec3	ret;

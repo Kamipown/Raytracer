@@ -113,6 +113,7 @@ t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_mul(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_div(t_vec3 *v1, t_vec3 *v2);
+t_vec3 				vector_normalize(t_vec3 *vec);
 float				vec_add_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_sub_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
