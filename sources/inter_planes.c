@@ -6,17 +6,23 @@
 /*   By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 13:35:39 by dcognata          #+#    #+#             */
-/*   Updated: 2016/09/17 13:57:20 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/09/20 17:34:06 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-#include <stdio.h>
 
 static int	test_hit(t_ray *ray, t_plane *p)
 {
-	if (ray && p)
-		return (0);
+	//if (ray && p)
+	//	return (0);
+	t_vec3	origin;
+	t_vec3 	dir;
+	float	ret;
+
+	origin = vec_sub(&p->pos, &ray->origin);
+	dir = ray->dir;
+	ret = -origin.y / dir.y;
 	return (0);
 }
 
