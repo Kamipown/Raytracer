@@ -8,6 +8,8 @@ config
 		cylinders:0
 		cones:0
 		planes:2
+	camera
+		fov:90
 
 lights
 	0

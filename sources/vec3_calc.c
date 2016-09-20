@@ -6,20 +6,20 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 16:33:47 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/15 16:33:48 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/09/20 15:47:35 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_vec3 		vector_normalize(t_vec3 *vec)
+t_vec3 		*vector_normalize(t_vec3 *vec)
 {
 	float len;
 
-	len = sqrtf((vec.x * vec.x) + (vec.y * vec.y) + (vec.z * vec.z));	
-	vec.x /= len;
-	vec.y /= len;
-	vec.z /= len;
+	len = sqrtf((vec->x * vec->x) + (vec->y * vec->y) + (vec->z * vec->z));
+	vec->x /= len;
+	vec->y /= len;
+	vec->z /= len;
 	return (vec);
 }
 
