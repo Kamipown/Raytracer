@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 16:50:07 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/20 16:01:18 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/09/20 17:15:23 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 t_vec3 	vector_normalize(t_vec3 *vec)
 {
 	t_vec3	ret;
+	t_vec3	tmp;
 	float len;
 
-	len = sqrtf((vec->x * vec->x) + (vec->y * vec->y) + (vec->z * vec->z));
-	ret.x /= len;
-	ret.y /= len;
-	ret.z /= len;
+	tmp.x /= vec->x * vec->x;
+	tmp.y /= vec->y * vec->y;
+	tmp.z /= vec->z * vec->z;
+	len = sqrtf((tmp.x) + (tmp.y) + (tmp.z));
+	ret.x = tmp.x / len;
+	ret.y = tmp.y / len;
+	ret.z = tmp.z / len;
 	return (ret);
 }
 
