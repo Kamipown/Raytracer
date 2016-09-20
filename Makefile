@@ -6,7 +6,7 @@
 #    By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/11 13:43:04 by dcognata          #+#    #+#              #
-#    Updated: 2016/09/17 14:24:08 by dcognata         ###   ########.fr        #
+#    Updated: 2016/09/20 16:11:06 by opettex-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC = main.c				\
 	  vec3_calc.c			\
 	  vec3_calc_float.c		\
 	  inter_planes.c		\
+	  inter_cones.c			\
 	  inter_spheres.c
 
 SRCS = $(addprefix $(PATH_SRC), $(SRC))

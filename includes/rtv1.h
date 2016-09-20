@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/20 16:00:48 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/09/20 16:13:18 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ float				vec_div_to_f(t_vec3 *v1, t_vec3 *v2);
 
 int					inter_spheres(t_env *e, t_ray *ray);
 int					inter_planes(t_env *e, t_ray *ray);
+int					inter_cones(t_env *e, t_ray *ray);
 
 void				error(int n, char *mes);
 
