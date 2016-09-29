@@ -12,6 +12,16 @@
 
 #include "rtv1.h"
 
+void		fill_camera_data(t_scene *s, char *data)
+{
+	if (!(s->cam = (t_cam *)malloc(sizeof(t_cam))))
+		error(-16, "Unable to create camera.");
+	s->cam->pos = (t_vec3){0, 0, 0};
+	s->cam->fov = read_int_data(data, "config.camera.fov");
+	s->cam->fov = s->cam->fov < 1 || s->cam->fov > 90 ? FOV : s->cam->fov;
+	s->cam->focal_dist = -(s->size.w / (2 * tanf(s->cam->fov / 2)));
+}
+
 static void	malloc_counts(t_scene *s)
 {
 	if (s->n_light)
@@ -36,20 +46,6 @@ static void	malloc_counts(t_scene *s)
 			error(-15, "Unable to create planes.");
 }
 
-void		fill_camera_data(t_scene *s, char *data)
-{
-	float	f;
-
-	if (!(s->cam = (t_cam *)malloc(sizeof(t_cam))))
-		error (-16, "Unable to create camera.");
-	s->cam->fov = read_int_data(data, "config.camera.fov");
-	s->cam->fov = s->cam->fov < 1 || s->cam->fov > 90 ? FOV : s->cam->fov;
-	s->cam->pos = (t_vec3){0, 0, 0};
-	f = -(s->size.w / (2 * tanf(s->cam->fov / 2)));
-	s->cam->target = (t_vec3){0, 0, f};
-	ft_putnbr_endl(s->cam->target.z);
-}
-
 void		fill_counts_data(t_scene *s, char *data)
 {
 	s->n_light = read_int_data(data, "config.counts.lights");
@@ -57,11 +53,12 @@ void		fill_counts_data(t_scene *s, char *data)
 	s->n_cylinder = read_int_data(data, "config.counts.cylinders");
 	s->n_cone = read_int_data(data, "config.counts.cones");
 	s->n_plane = read_int_data(data, "config.counts.planes");
-	s->n_light = s->n_light < 0 ? 0 : s->n_light;
-	s->n_sphere = s->n_sphere < 0 ? 0 : s->n_sphere;
-	s->n_cylinder = s->n_cylinder < 0 ? 0 : s->n_cylinder;
-	s->n_cone = s->n_cone < 0 ? 0 : s->n_cone;
-	s->n_plane = s->n_plane < 0 ? 0 : s->n_plane;
+	s->n_light = s->n_light < 0 || s->n_light > 100 ? 0 : s->n_light;
+	s->n_sphere = s->n_sphere < 0 || s->n_sphere > 100 ? 0 : s->n_sphere;
+	s->n_cylinder = s->n_cylinder < 0 || s->n_cylinder > 100 ?
+		0 : s->n_cylinder;
+	s->n_cone = s->n_cone < 0 || s->n_cone > 100 ? 0 : s->n_cone;
+	s->n_plane = s->n_plane < 0 || s->n_plane > 100 ? 0 : s->n_plane;
 	malloc_counts(s);
 }
 

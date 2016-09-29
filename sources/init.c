@@ -12,17 +12,17 @@
 
 #include "rtv1.h"
 
+static void	init_sdl(void)
+{
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+		error(-20, (char *)SDL_GetError());
+}
+
 static void	init_scene(t_env *e, char *filename)
 {
 	if (!(e->scene = (t_scene *)malloc(sizeof(t_scene))))
 		error(-4, "Unable to create the scene.");
 	parse_scene(e->scene, filename);
-}
-
-static void	init_sdl(void)
-{
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-		error(-20, (char *)SDL_GetError());
 }
 
 static void	init_window(t_env *e)
@@ -41,8 +41,8 @@ static void	init_image(t_env *e)
 
 void		init(t_env *e, char *filename)
 {
-	init_scene(e, filename);
 	init_sdl();
+	init_scene(e, filename);
 	init_window(e);
 	init_image(e);
 }

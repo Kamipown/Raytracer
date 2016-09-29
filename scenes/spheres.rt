@@ -8,6 +8,8 @@ config
 		cylinders:0
 		cones:0
 		planes:0
+	camera
+		fov:30
 
 lights
 	0
@@ -21,17 +23,17 @@ lights
 spheres
 	0
 		pos
-			x:450
-			y:350
-			z:100
+			x:0
+			y:0
+			z:400
 		radius:60
 		color:#cc5555
 			// rouge
 	1
 		pos
-			x:400
-			y:300
-			z:300
-		radius:100
+			x:350
+			y:250
+			z:700
+		radius:150
 		color:#5555cc
 			// bleu

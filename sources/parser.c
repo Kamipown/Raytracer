@@ -25,7 +25,5 @@ void	parse_scene(t_scene *s, char *filename)
 	fill_cylinders_data(s, data);
 	fill_cones_data(s, data);
 	fill_planes_data(s, data);
-
-	ft_putnbr_endl(s->cam->fov);
 	free(data);
 }

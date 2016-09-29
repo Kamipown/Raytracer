@@ -12,9 +12,9 @@
 
 #include "rtv1.h"
 
-static void	throw_ray(t_env *e, t_ray *ray)
+static void	throw_ray(t_env *e, t_ray *ray, int x, int y)
 {
-	if (inter_spheres(e, ray))
+	if (inter_spheres(e, ray, x, y))
 		return ;
 	// if (inter_cylinder(e, ray))
 	// 	return ;
@@ -24,60 +24,29 @@ static void	throw_ray(t_env *e, t_ray *ray)
 	// 	return ;
 }
 
-void		raytrace2(t_env *e)
+void		raytrace(t_env *e)
 {
 	int		x;
 	int		y;
-
-	t_vec3 origin;
-	t_vec3 dir;
-	t_vec3 b;
-	origin.x = 0;
-	origin.y = 0;
-	origin.z = 0;
-
+	t_ray	*ray;
+	
+	ray = init_ray(&e->scene->cam->pos);
 	y = 0;
 	while (y < e->scene->size.h)
 	{
 		x = 0;
 		while (x < e->scene->size.w)
 		{
-			b.x = (e->scene->size.w / 2) - x;
-			b.y = (e->scene->size.h / 2) - y;
-			b.z = 640 / e->scene->cam->fov * -1;
-			b = vector_normalize(&b);
-
-			dir.x = b.x - origin.x;
-			dir.y = b.y - origin.y;
-			dir.z = b.z - origin.z;
-			dir = vector_normalize(&dir);
+			update_ray(ray, (t_vec3)
+			{
+				x - (e->scene->size.w / 2),
+				y - (e->scene->size.h / 2),
+				e->scene->cam->focal_dist
+			});
+			throw_ray(e, ray, x, y);
 			++x;
 		}
 		++y;
 	}
-}
-
-
-void		raytrace(t_env *e)
-{
-	raytrace2(e);
-	// int		x;
-	// int		y;
-	// t_ray	*ray;
-	//
-	// ray = init_ray();
-	// y = 0;
-	// while (y < e->scene->size.h)
-	// {
-	// 	x = 0;
-	// 	while (x < e->scene->size.w)
-	// 	{
-	// 		update_ray(ray, x, y);
-	// 		throw_ray(e, ray);
-	// 		++x;
-	// 	}
-	// 	++y;
-	// }
-	// ft_putendl("raytrace");
-	// free(ray);
+	free(ray);
 }

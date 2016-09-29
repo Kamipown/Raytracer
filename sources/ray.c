@@ -12,21 +12,23 @@
 
 #include "rtv1.h"
 
-void	update_ray(t_ray *ray, int x, int y)
+void	update_ray(t_ray *ray, t_vec3 target)
 {
-	ray->origin.x = x;
-	ray->origin.y = y;
-	ray->origin.z = RAY_START;
+	vec_normalize(&target);
+	ray->dir.x = target.x - ray->origin.x;
+	ray->dir.y = target.y - ray->origin.y;
+	ray->dir.z = target.z - ray->origin.z;
+	vec_normalize(&ray->dir);
 }
 
-t_ray	*init_ray(void)
+t_ray	*init_ray(t_vec3 *cam_pos)
 {
 	t_ray	*ray;
 
 	if (!(ray = (t_ray *)malloc(sizeof(t_ray))))
 		error(-16, "Unable to create ray.");
-	ray->dir.x = 0;
-	ray->dir.y = 0;
-	ray->dir.z = 1;
+	ray->origin.x = cam_pos->x;
+	ray->origin.y = cam_pos->y;
+	ray->origin.z = cam_pos->z;
 	return (ray);
 }

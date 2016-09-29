@@ -80,8 +80,8 @@ typedef struct		s_plane
 typedef struct		s_cam
 {
 	t_vec3			pos;
-	t_vec3			target;
 	int				fov;
+	float			focal_dist;
 }					t_cam;
 
 #endif

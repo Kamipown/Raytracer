@@ -106,20 +106,21 @@ void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
 
-void				update_ray(t_ray *ray, int x, int y);
-t_ray				*init_ray(void);
+t_ray				*init_ray(t_vec3 *cam_pos);
+void				update_ray(t_ray *ray, t_vec3 target);
 
 t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_mul(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_div(t_vec3 *v1, t_vec3 *v2);
+void				vec_normalize(t_vec3 *v);
 t_vec3 				vector_normalize(t_vec3 *vec);
 float				vec_add_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_sub_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_div_to_f(t_vec3 *v1, t_vec3 *v2);
 
-int					inter_spheres(t_env *e, t_ray *ray);
+int					inter_spheres(t_env *e, t_ray *ray, int x, int y);
 int					inter_planes(t_env *e, t_ray *ray);
 int					inter_cones(t_env *e, t_ray *ray);
 
