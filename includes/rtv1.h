@@ -106,8 +106,9 @@ void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
 
-t_ray				*init_ray(t_vec3 *cam_pos);
-void				update_ray(t_ray *ray, t_vec3 target);
+t_ray				*create_ray(t_vec3 *from, t_vec3 to);
+// t_ray				*init_ray(t_vec3 *cam_pos);
+// void				update_ray(t_ray *ray, t_vec3 target);
 
 t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);

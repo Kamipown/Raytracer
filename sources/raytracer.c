@@ -29,15 +29,15 @@ void		raytrace(t_env *e)
 	int		x;
 	int		y;
 	t_ray	*ray;
-	
-	ray = init_ray(&e->scene->cam->pos);
+
+	//ray = init_ray(&e->scene->cam->pos);
 	y = 0;
 	while (y < e->scene->size.h)
 	{
 		x = 0;
 		while (x < e->scene->size.w)
 		{
-			update_ray(ray, (t_vec3)
+			ray = create_ray(&e->scene->cam->pos, (t_vec3)
 			{
 				x - (e->scene->size.w / 2),
 				y - (e->scene->size.h / 2),

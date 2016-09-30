@@ -49,7 +49,10 @@ char		*read_file(char *filename)
 		error(-9, "Unable to open the file. Check path or read access.");
 	data = ft_strdup("");
 	while (get_next_line(fd, &line) > 0)
+	{
+		ft_putendl(line);
 		data = join_data(data, line);
+	}
 	free(line);
 	close(fd);
 	return (data);

@@ -28,7 +28,6 @@ spheres
 			z:400
 		radius:60
 		color:#cc5555
-			// rouge
 	1
 		pos
 			x:350
@@ -36,4 +35,3 @@ spheres
 			z:700
 		radius:150
 		color:#5555cc
-			// bleu
