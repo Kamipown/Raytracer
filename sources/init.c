@@ -29,7 +29,7 @@ static void	init_window(t_env *e)
 {
 	if ((e->win = SDL_CreateWindow("RT - 42", SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED, e->scene->size.w, e->scene->size.h,
-		SDL_WINDOW_RESIZABLE)) == NULL)
+		0)) == NULL)
 		error(-21, (char *)SDL_GetError());
 }
 

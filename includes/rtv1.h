@@ -59,6 +59,15 @@ typedef struct		s_scene
 	t_size			size;
 }					t_scene;
 
+typedef struct		s_inputs
+{
+	t_bool			escape;
+	t_bool			key_f;
+	t_bool			mouse_left;
+	int				mouse_x;
+	int				mouse_y;
+}					t_inputs;
+
 typedef struct		s_options
 {
 	t_bool			fullscreen;
@@ -72,6 +81,7 @@ typedef struct		s_env
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
 	SDL_Event		event;
+	t_inputs		inputs;
 	t_options		options;
 }					t_env;
 
@@ -97,8 +107,11 @@ void				fill_planes_data(t_scene *s, char *data);
 
 void				loop(t_env *e);
 
+void				get_inputs(t_env *e);
+
 int					expose_hook(t_env *e);
-int					key_hook(int k, t_env *e);
+void				key_hook(t_env *e);
+void				mouse_hook(t_env *e);
 
 void				draw_image(t_env *e);
 void				draw_background(t_env *e);
@@ -107,7 +120,8 @@ void				draw_pixel(t_env *e, t_pixel p);
 void				raytrace(t_env *e);
 
 t_ray				*create_ray(t_vec3 *from, t_vec3 to);
-// t_ray				*init_ray(t_vec3 *cam_pos);
+void				throw_ray(t_env *e, t_ray *ray, int x, int y);
+// t_ray			*init_ray(t_vec3 *cam_pos);
 // void				update_ray(t_ray *ray, t_vec3 target);
 
 t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);

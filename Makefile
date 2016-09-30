@@ -45,6 +45,7 @@ SRC = main.c				\
 	  data_spheres.c		\
 	  objects_data.c		\
 	  loop.c				\
+	  inputs.c				\
 	  hooks.c				\
 	  draw.c				\
 	  raytracer.c			\

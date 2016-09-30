@@ -49,3 +49,15 @@ t_ray	*create_ray(t_vec3 *from, t_vec3 to)
 	vec_normalize(&ray->dir);
 	return (ray);
 }
+
+void	throw_ray(t_env *e, t_ray *ray, int x, int y)
+{
+	if (inter_spheres(e, ray, x, y))
+		return ;
+	// if (inter_cylinder(e, ray))
+	// 	return ;
+	// if (inter_cones(e, ray))
+	// 	return ;
+	// if (inter_planes(e, ray))
+	// 	return ;
+}

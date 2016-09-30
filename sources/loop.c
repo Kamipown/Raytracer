@@ -34,11 +34,9 @@ void				loop(t_env *e)
 			expose_hook(e);
 			e->options.need_redraw = FALSE;
 		}
-		SDL_WaitEvent(&e->event);
-		if (e->event.type == SDL_KEYDOWN)
-			key_hook(e->event.key.keysym.sym, e);
-		if (e->event.type == SDL_QUIT)
-				e->options.quit = TRUE;
+		get_inputs(e);
+		key_hook(e);
+		mouse_hook(e);
 		SDL_RenderClear(e->renderer);
 	}
 }

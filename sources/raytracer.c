@@ -12,18 +12,6 @@
 
 #include "rtv1.h"
 
-static void	throw_ray(t_env *e, t_ray *ray, int x, int y)
-{
-	if (inter_spheres(e, ray, x, y))
-		return ;
-	// if (inter_cylinder(e, ray))
-	// 	return ;
-	// if (inter_cones(e, ray))
-	// 	return ;
-	// if (inter_planes(e, ray))
-	// 	return ;
-}
-
 void		raytrace(t_env *e)
 {
 	int		x;
@@ -44,9 +32,9 @@ void		raytrace(t_env *e)
 				e->scene->cam->focal_dist
 			});
 			throw_ray(e, ray, x, y);
+			free(ray);
 			++x;
 		}
 		++y;
 	}
-	free(ray);
 }
