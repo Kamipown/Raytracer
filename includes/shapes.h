@@ -13,32 +13,6 @@
 #ifndef SHAPES_H
 # define SHAPES_H
 
-typedef struct		s_pixel
-{
-	int				x;
-	int				y;
-	int				color;
-}					t_pixel;
-
-typedef struct		s_size
-{
-	int				w;
-	int				h;
-}					t_size;
-
-typedef struct		s_vec3
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_vec3;
-
-typedef struct		s_ray
-{
-	t_vec3			origin;
-	t_vec3			dir;
-}					t_ray;
-
 typedef struct		s_light
 {
 	t_vec3			pos;
@@ -76,12 +50,5 @@ typedef struct		s_plane
 	int				height;
 	int				color;
 }					t_plane;
-
-typedef struct		s_cam
-{
-	t_vec3			pos;
-	int				fov;
-	float			focal_dist;
-}					t_cam;
 
 #endif

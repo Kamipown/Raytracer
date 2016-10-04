@@ -20,6 +20,7 @@
 
 # include "./sdl2/SDL.h"
 # include "libft.h"
+# include "structs.h"
 # include "shapes.h"
 
 # define BUFF_SIZE		32
@@ -38,8 +39,13 @@
 # define RAY_START		-10000.0f
 # define RAY_END		20000.0f
 
-# define TRUE			1
 # define FALSE			0
+# define TRUE			1
+
+# define SPHERE			0
+# define CYLINDER		1
+# define CONE			2
+# define PLANE			3
 
 typedef unsigned int	t_bool;
 
@@ -119,15 +125,13 @@ void				raytrace(t_env *e);
 
 t_ray				*create_ray(t_vec3 *from, t_vec3 to);
 void				throw_ray(t_env *e, t_ray *ray, int x, int y);
-// t_ray			*init_ray(t_vec3 *cam_pos);
-// void				update_ray(t_ray *ray, t_vec3 target);
 
 t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_mul(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_div(t_vec3 *v1, t_vec3 *v2);
 void				vec_normalize(t_vec3 *v);
-t_vec3 				vector_normalize(t_vec3 *vec);
+t_vec3				vector_normalize(t_vec3 *vec);
 float				vec_add_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_sub_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
