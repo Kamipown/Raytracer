@@ -12,11 +12,11 @@
 
 #include "rtv1.h"
 
-t_vec3 	vector_normalize(t_vec3 *vec)
+t_vec3	vector_normalize(t_vec3 *vec)
 {
 	t_vec3	ret;
 	t_vec3	tmp;
-	float len;
+	float	len;
 
 	tmp.x /= vec->x * vec->x;
 	tmp.y /= vec->y * vec->y;

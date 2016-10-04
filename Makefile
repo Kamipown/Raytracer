@@ -52,9 +52,10 @@ SRC = main.c				\
 	  ray.c					\
 	  vec3_calc.c			\
 	  vec3_calc_float.c		\
-	  inter_planes.c		\
+	  inter_spheres.c		\
+	  inter_cylinders.c		\
 	  inter_cones.c			\
-	  inter_spheres.c
+	  inter_planes.c
 
 SRCS = $(addprefix $(PATH_SRC), $(SRC))
 

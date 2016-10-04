@@ -18,7 +18,6 @@ void		raytrace(t_env *e)
 	int		y;
 	t_ray	*ray;
 
-	//ray = init_ray(&e->scene->cam->pos);
 	y = 0;
 	while (y < e->scene->size.h)
 	{

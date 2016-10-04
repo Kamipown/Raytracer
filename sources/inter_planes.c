@@ -14,10 +14,8 @@
 
 static int	test_hit(t_ray *ray, t_plane *p)
 {
-	//if (ray && p)
-	//	return (0);
 	t_vec3	origin;
-	t_vec3 	dir;
+	t_vec3	dir;
 	float	ret;
 
 	origin = vec_sub(&p->pos, &ray->origin);

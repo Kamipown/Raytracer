@@ -12,7 +12,6 @@
 
 #include "rtv1.h"
 
-
 t_vec3		vec_add(t_vec3 *v1, t_vec3 *v2)
 {
 	t_vec3	ret;

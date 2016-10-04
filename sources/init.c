@@ -35,7 +35,8 @@ static void	init_window(t_env *e)
 
 static void	init_image(t_env *e)
 {
-	if ((e->renderer = SDL_CreateRenderer(e->win, -1, SDL_RENDERER_ACCELERATED)) == NULL)
+	if ((e->renderer =
+		SDL_CreateRenderer(e->win, -1, SDL_RENDERER_ACCELERATED)) == NULL)
 		error(-22, (char *)SDL_GetError());
 }
 

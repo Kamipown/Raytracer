@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   inter_cylinders.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/15 17:47:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/17 15:33:39 by dcognata         ###   ########.fr       */
+/*   Created: 2016/10/04 21:57:15 by pdelobbe          #+#    #+#             */
+/*   Updated: 2016/10/04 21:57:16 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static t_options	get_options(void)
+static int	test_hit(t_ray *ray, t_cylinder *c)
 {
-	t_options opt;
-
-	opt.fullscreen = FALSE;
-	opt.quit = FALSE;
-	return (opt);
+	if (ray && c)
+		return (0);
+	return (0);
 }
 
-void				loop(t_env *e)
+int			inter_cylinders(t_env *e, t_ray *ray)
 {
-	e->options.need_redraw = TRUE;
-	e->options = get_options();
-	while (e->options.quit == FALSE)
+	int		i;
+
+	i = 0;
+	while (i < e->scene->n_cylinder)
 	{
-		if (e->options.need_redraw)
+		if (test_hit(ray, &e->scene->cylinders[i]))
 		{
-			draw(e);
-			e->options.need_redraw = FALSE;
+			draw_pixel(e, (t_pixel){ray->origin.x, ray->origin.y,
+				e->scene->spheres[i].color});
+			return (1);
 		}
-		get_inputs(e);
-		key_hook(e);
-		mouse_hook(e);
+		++i;
 	}
+	return (0);
 }

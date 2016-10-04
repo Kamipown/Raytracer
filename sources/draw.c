@@ -12,35 +12,28 @@
 
 #include "rtv1.h"
 
-void		draw_pixel(t_env *e, t_pixel p)
+static void		draw_background(SDL_Renderer *renderer)
+{
+	SDL_SetRenderDrawColor(renderer, 17, 17, 17, 255);
+	SDL_RenderClear(renderer);
+}
+
+void			draw_pixel(t_env *e, t_pixel p)
 {
 	if (p.x > 0 && p.x < e->scene->size.w && p.y > 0 && p.y < e->scene->size.h)
 	{
-		SDL_SetRenderDrawColor(e->renderer, p.color >> 16, p.color >> 8, p.color, 255);
+		SDL_SetRenderDrawColor(e->renderer,
+			p.color >> 16,
+			p.color >> 8,
+			p.color,
+			255);
 		SDL_RenderDrawPoint(e->renderer, p.x, p.y);
 	}
 }
 
-void		draw_background(t_env *e)
+void			draw(t_env *e)
 {
-	int		x;
-	int		y;
-
-	y = 0;
-	while (y < e->scene->size.h)
-	{
-		x = 0;
-		while (x < e->scene->size.w)
-		{
-			draw_pixel(e, (t_pixel){x, y, 0x000000});
-			++x;
-		}
-		++y;
-	}
-}
-
-void		draw_image(t_env *e)
-{
+	draw_background(e->renderer);
 	raytrace(e);
-    SDL_RenderPresent(e->renderer);
+	SDL_RenderPresent(e->renderer);
 }

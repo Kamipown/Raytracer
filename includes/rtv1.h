@@ -109,12 +109,10 @@ void				loop(t_env *e);
 
 void				get_inputs(t_env *e);
 
-int					expose_hook(t_env *e);
 void				key_hook(t_env *e);
 void				mouse_hook(t_env *e);
 
-void				draw_image(t_env *e);
-void				draw_background(t_env *e);
+void				draw(t_env *e);
 void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
@@ -136,8 +134,9 @@ float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_div_to_f(t_vec3 *v1, t_vec3 *v2);
 
 int					inter_spheres(t_env *e, t_ray *ray, int x, int y);
-int					inter_planes(t_env *e, t_ray *ray);
+int					inter_cylinders(t_env *e, t_ray *ray);
 int					inter_cones(t_env *e, t_ray *ray);
+int					inter_planes(t_env *e, t_ray *ray);
 
 void				error(int n, char *mes);
 
