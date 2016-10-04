@@ -13,6 +13,8 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+typedef unsigned int	t_bool;
+
 typedef struct		s_vec3
 {
 	float			x;
@@ -45,5 +47,102 @@ typedef struct		s_cam
 	int				fov;
 	float			focal_dist;
 }					t_cam;
+
+typedef struct		s_light
+{
+	t_vec3			pos;
+	int				color;
+	int				intensity;
+}					t_light;
+
+typedef struct		s_sphere
+{
+	t_vec3			pos;
+	int				color;
+	int				radius;
+}					t_sphere;
+
+typedef struct		s_cylinder
+{
+	t_vec3			pos;
+	t_vec3			rot;
+	int				height;
+	int				radius;
+}					t_cylinder;
+
+typedef struct		s_cone
+{
+	t_vec3			pos;
+	t_vec3			rot;
+	int				height;
+}					t_cone;
+
+typedef struct		s_plane
+{
+	t_vec3			pos;
+	t_vec3			rot;
+	int				width;
+	int				height;
+	int				color;
+}					t_plane;
+
+typedef enum		e_shape
+{
+	SPHERE,
+	CYLINDER,
+	CONE,
+	PLANE
+}					t_shape;
+
+typedef struct		s_intersection
+{
+	t_shape			shape;
+	t_sphere		*sphere;
+	t_cylinder		*cylinder;
+	t_cone			*cone;
+	t_plane			*plane;
+}					t_intersection;
+
+typedef struct		s_scene
+{
+	t_cam			*cam;
+	t_light			*lights;
+	t_sphere		*spheres;
+	t_cylinder		*cylinders;
+	t_cone			*cones;
+	t_plane			*planes;
+	int				n_light;
+	int				n_sphere;
+	int				n_cylinder;
+	int				n_cone;
+	int				n_plane;
+	t_size			size;
+}					t_scene;
+
+typedef struct		s_inputs
+{
+	t_bool			escape;
+	t_bool			key_f;
+	t_bool			mouse_left;
+	int				mouse_x;
+	int				mouse_y;
+}					t_inputs;
+
+typedef struct		s_options
+{
+	t_bool			fullscreen;
+	t_bool			quit;
+	t_bool			need_redraw;
+}					t_options;
+
+typedef struct		s_env
+{
+	t_scene			*scene;
+	SDL_Window		*win;
+	SDL_Renderer	*renderer;
+	SDL_Event		event;
+	t_inputs		inputs;
+	t_options		options;
+}					t_env;
 
 #endif
