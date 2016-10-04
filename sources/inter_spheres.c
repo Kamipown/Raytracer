@@ -30,8 +30,8 @@ static int	test_hit(t_ray *ray, t_sphere *s)
 	z2 = b + sqrtf(d);
 	if (z1 > 0.1f && z1 < RAY_END)
 		return (1);
-	// if (z2 > 0.0f && z2 < z1)
-	// 	return (1);
+	if (z2 > 0.0f && z2 < z1)
+		return (1);
 	return (0);
 }
 

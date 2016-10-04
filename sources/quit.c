@@ -15,5 +15,6 @@
 void	quit(t_env *e)
 {
 	SDL_DestroyWindow(e->win);
+	// DESTROY RENDERER
 	SDL_Quit();
 }
