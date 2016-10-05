@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/21 13:50:52 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:46:01 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,9 @@
 # define CYLINDER		2
 # define CONE			3
 # define PLANE			4
+
+# define MODE_NULL      0
+# define MODE_CAMERA    1
+# define MODE_SELECT    2
 
 #endif

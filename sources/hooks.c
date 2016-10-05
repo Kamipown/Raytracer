@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:56 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/17 15:24:28 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/05 17:47:02 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,22 @@ void	key_hook(t_env *e)
 		if (e->scene->selected->shape_type == SPHERE)
 		{
 			e->scene->selected->sphere->pos.y += 20;
+			e->options.need_redraw = TRUE;
+		}
+	}
+	if (e->inputs.key_z_more && e->scene->selected)
+	{
+		if (e->scene->selected->shape_type == SPHERE)
+		{
+			e->scene->selected->sphere->pos.z += 20;
+			e->options.need_redraw = TRUE;
+		}
+	}
+	if (e->inputs.key_z_less && e->scene->selected)
+	{
+		if (e->scene->selected->shape_type == SPHERE)
+		{
+			e->scene->selected->sphere->pos.z -= 20;
 			e->options.need_redraw = TRUE;
 		}
 	}

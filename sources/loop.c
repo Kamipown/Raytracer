@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:47:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/17 15:33:39 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:50:35 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ static t_options	get_options(void)
 
 	opt.fullscreen = FALSE;
 	opt.quit = FALSE;
+	opt.mode = MODE_NULL;
+	opt.need_redraw = TRUE;
 	return (opt);
 }
 
 void				loop(t_env *e)
 {
-	e->options.need_redraw = TRUE;
 	e->options = get_options();
 	while (e->options.quit == FALSE)
 	{

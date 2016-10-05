@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:21:09 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/04 22:21:11 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/05 17:43:41 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void				fill_planes_data(t_scene *s, char *data);
 void				loop(t_env *e);
 
 void				get_inputs(t_env *e);
+
+void				switch_mode(t_env *e);
+void				move(t_env *e);
 
 void				key_hook(t_env *e);
 void				mouse_hook(t_env *e);

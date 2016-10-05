@@ -6,7 +6,7 @@
 #    By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/11 13:43:04 by dcognata          #+#    #+#              #
-#    Updated: 2016/09/20 16:11:06 by opettex-         ###   ########.fr        #
+#    Updated: 2016/10/05 16:40:33 by dcognata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRC = main.c				\
 	  objects_data.c		\
 	  loop.c				\
 	  inputs.c				\
+	  inputs_switch.c       \
+	  move.c                \
 	  hooks.c				\
 	  draw.c				\
 	  raytracer.c			\

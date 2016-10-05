@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/04 22:01:45 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/05 17:44:00 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ typedef struct		s_inputs
 	t_bool			key_up;
 	t_bool			key_down;
 	t_bool			mouse_left;
+	t_bool			key_z_more;
+	t_bool			key_z_less;
 	int				mouse_x;
 	int				mouse_y;
 }					t_inputs;
@@ -131,6 +133,7 @@ typedef struct		s_options
 	t_bool			fullscreen;
 	t_bool			quit;
 	t_bool			need_redraw;
+	t_bool			mode;
 }					t_options;
 
 typedef struct		s_env
