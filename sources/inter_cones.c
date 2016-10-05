@@ -19,7 +19,7 @@ static int	test_hit(t_ray *ray, t_cone *c)
 	return (0);
 }
 
-int			inter_cones(t_env *e, t_ray *ray)
+t_cone		*inter_cones(t_env *e, t_ray *ray)
 {
 	int		i;
 
@@ -30,7 +30,7 @@ int			inter_cones(t_env *e, t_ray *ray)
 		{
 			draw_pixel(e, (t_pixel){ray->origin.x, ray->origin.y,
 				e->scene->spheres[i].color});
-			return (1);
+			return (&e->scene->cones[i]);
 		}
 		++i;
 	}

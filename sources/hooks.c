@@ -29,11 +29,43 @@ void	key_hook(t_env *e)
 		e->options.need_redraw = TRUE;
 		SDL_SetWindowFullscreen(e->win, 0);
 	}
+	if (e->inputs.key_left && e->scene->selected)
+	{
+		if (e->scene->selected->shape_type == SPHERE)
+		{
+			e->scene->selected->sphere->pos.x -= 20;
+			e->options.need_redraw = TRUE;
+		}
+	}
+	if (e->inputs.key_right && e->scene->selected)
+	{
+		if (e->scene->selected->shape_type == SPHERE)
+		{
+			e->scene->selected->sphere->pos.x += 20;
+			e->options.need_redraw = TRUE;
+		}
+	}
+	if (e->inputs.key_up && e->scene->selected)
+	{
+		if (e->scene->selected->shape_type == SPHERE)
+		{
+			e->scene->selected->sphere->pos.y -= 20;
+			e->options.need_redraw = TRUE;
+		}
+	}
+	if (e->inputs.key_down && e->scene->selected)
+	{
+		if (e->scene->selected->shape_type == SPHERE)
+		{
+			e->scene->selected->sphere->pos.y += 20;
+			e->options.need_redraw = TRUE;
+		}
+	}
 }
 
 void	mouse_hook(t_env *e)
 {
-	t_ray	*ray;
+	t_ray			*ray;
 
 	if (e->inputs.mouse_left)
 	{
@@ -43,14 +75,22 @@ void	mouse_hook(t_env *e)
 		e->inputs.mouse_y - (e->scene->size.h / 2),
 		e->scene->cam->focal_dist
 		});
-		printf("Rayon lance :\n origin(%f, %f, %f) - direction(%f, %f, %f)\n",
-		ray->origin.x,
-		ray->origin.y,
-		ray->origin.z,
-		ray->dir.x,
-		ray->dir.y,
-		ray->dir.z);
-		throw_ray(e, ray, e->inputs.mouse_x, e->inputs.mouse_y);
+		// printf("Rayon lance :\n origin(%f, %f, %f) - direction(%f, %f, %f)\n",
+		// ray->origin.x,
+		// ray->origin.y,
+		// ray->origin.z,
+		// ray->dir.x,
+		// ray->dir.y,
+		// ray->dir.z);
+		e->scene->selected = throw_ray(e, ray, e->inputs.mouse_x, e->inputs.mouse_y);
+		if (e->scene->selected->shape_type == SPHERE)
+			ft_putendl("Sphere selected");
+		else if (e->scene->selected->shape_type == CYLINDER)
+			ft_putendl("Cylinder selected");
+		else if (e->scene->selected->shape_type == CONE)
+			ft_putendl("Cone selected");
+		else if (e->scene->selected->shape_type == PLANE)
+			ft_putendl("Plane selected");
 		free(ray);
 	}
 }

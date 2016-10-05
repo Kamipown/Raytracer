@@ -23,6 +23,7 @@ static void	init_scene(t_env *e, char *filename)
 	if (!(e->scene = (t_scene *)malloc(sizeof(t_scene))))
 		error(-4, "Unable to create the scene.");
 	parse_scene(e->scene, filename);
+	e->scene->selected = 0;
 }
 
 static void	init_window(t_env *e)

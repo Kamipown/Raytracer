@@ -42,9 +42,9 @@
 # define FALSE			0
 # define TRUE			1
 
-# define SPHERE			0
-# define CYLINDER		1
-# define CONE			2
-# define PLANE			3
+# define SPHERE			1
+# define CYLINDER		2
+# define CONE			3
+# define PLANE			4
 
 #endif

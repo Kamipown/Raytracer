@@ -86,21 +86,13 @@ typedef struct		s_plane
 	int				color;
 }					t_plane;
 
-typedef enum		e_shape
-{
-	SPHERE,
-	CYLINDER,
-	CONE,
-	PLANE
-}					t_shape;
-
 typedef struct		s_intersection
 {
-	t_shape			shape;
 	t_sphere		*sphere;
 	t_cylinder		*cylinder;
 	t_cone			*cone;
 	t_plane			*plane;
+	int				shape_type;
 }					t_intersection;
 
 typedef struct		s_scene
@@ -117,12 +109,17 @@ typedef struct		s_scene
 	int				n_cone;
 	int				n_plane;
 	t_size			size;
+	t_intersection	*selected;
 }					t_scene;
 
 typedef struct		s_inputs
 {
 	t_bool			escape;
 	t_bool			key_f;
+	t_bool			key_left;
+	t_bool			key_right;
+	t_bool			key_up;
+	t_bool			key_down;
 	t_bool			mouse_left;
 	int				mouse_x;
 	int				mouse_y;

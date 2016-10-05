@@ -14,9 +14,10 @@
 
 void		raytrace(t_env *e)
 {
-	int		x;
-	int		y;
-	t_ray	*ray;
+	int				x;
+	int				y;
+	t_ray			*ray;
+	t_intersection	*inter;
 
 	y = 0;
 	while (y < e->scene->size.h)
@@ -30,7 +31,7 @@ void		raytrace(t_env *e)
 				y - (e->scene->size.h / 2),
 				e->scene->cam->focal_dist
 			});
-			throw_ray(e, ray, x, y);
+			inter = throw_ray(e, ray, x, y);
 			free(ray);
 			++x;
 		}

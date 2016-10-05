@@ -35,7 +35,7 @@ static int	test_hit(t_ray *ray, t_sphere *s)
 	return (0);
 }
 
-int			inter_spheres(t_env *e, t_ray *ray, int x, int y)
+t_sphere	*inter_spheres(t_env *e, t_ray *ray, int x, int y)
 {
 	int		i;
 
@@ -45,7 +45,7 @@ int			inter_spheres(t_env *e, t_ray *ray, int x, int y)
 		if (test_hit(ray, &e->scene->spheres[i]))
 		{
 			draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
-			return (1);
+			return (&e->scene->spheres[i]);
 		}
 		++i;
 	}

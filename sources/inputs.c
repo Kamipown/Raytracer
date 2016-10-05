@@ -16,6 +16,10 @@ void	reset_inputs(t_inputs *inputs)
 {
 	inputs->escape = FALSE;
 	inputs->key_f = FALSE;
+	inputs->key_left = FALSE;
+	inputs->key_right = FALSE;
+	inputs->key_up = FALSE;
+	inputs->key_down = FALSE;
 	inputs->mouse_left = FALSE;
 	inputs->mouse_x = 0;
 	inputs->mouse_y = 0;
@@ -34,6 +38,14 @@ void	get_inputs(t_env *e)
 				e->inputs.escape = TRUE;
 			else if (e->event.key.keysym.sym == SDLK_f)
 				e->inputs.key_f = TRUE;
+			else if (e->event.key.keysym.sym == SDLK_LEFT)
+				e->inputs.key_left = TRUE;
+			else if (e->event.key.keysym.sym == SDLK_RIGHT)
+				e->inputs.key_right = TRUE;
+			else if (e->event.key.keysym.sym == SDLK_UP)
+				e->inputs.key_up = TRUE;
+			else if (e->event.key.keysym.sym == SDLK_DOWN)
+				e->inputs.key_down = TRUE;
 		}
 		else if (e->event.type == SDL_MOUSEBUTTONDOWN)
 		{
