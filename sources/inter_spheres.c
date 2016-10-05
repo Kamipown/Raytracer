@@ -28,6 +28,12 @@ static int	test_hit(t_ray *ray, t_sphere *s)
 		return (0);
 	z1 = b - sqrtf(d);
 	z2 = b + sqrtf(d);
+	// ft_putnbr_endl(z1);
+	// ft_putnbr_endl(z2);
+	// Verifier que (z1 || z2 > 0.1f)
+	// prendre le plus proche
+	// en faisant attention a RAY_END
+	//
 	if (z1 > 0.1f && z1 < RAY_END)
 		return (1);
 	if (z2 > 0.0f && z2 < z1)

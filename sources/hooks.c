@@ -65,23 +65,16 @@ void	key_hook(t_env *e)
 
 void	mouse_hook(t_env *e)
 {
-	t_ray			*ray;
+	t_ray	*ray;
 
 	if (e->inputs.mouse_left)
 	{
 		ray = create_ray(&e->scene->cam->pos, (t_vec3)
 		{
-		e->inputs.mouse_x - (e->scene->size.w / 2),
-		e->inputs.mouse_y - (e->scene->size.h / 2),
-		e->scene->cam->focal_dist
+			e->inputs.mouse_x - (e->scene->size.w / 2),
+			e->inputs.mouse_y - (e->scene->size.h / 2),
+			e->scene->cam->focal_dist
 		});
-		// printf("Rayon lance :\n origin(%f, %f, %f) - direction(%f, %f, %f)\n",
-		// ray->origin.x,
-		// ray->origin.y,
-		// ray->origin.z,
-		// ray->dir.x,
-		// ray->dir.y,
-		// ray->dir.z);
 		e->scene->selected = throw_ray(e, ray, e->inputs.mouse_x, e->inputs.mouse_y);
 		if (e->scene->selected->shape_type == SPHERE)
 			ft_putendl("Sphere selected");

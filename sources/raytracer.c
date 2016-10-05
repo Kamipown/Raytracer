@@ -31,7 +31,11 @@ void		raytrace(t_env *e)
 				y - (e->scene->size.h / 2),
 				e->scene->cam->focal_dist
 			});
-			inter = throw_ray(e, ray, x, y);
+			if ((inter = throw_ray(e, ray, x, y)))
+			{
+				// calcul lights
+				free(inter);
+			}
 			free(ray);
 			++x;
 		}

@@ -92,6 +92,7 @@ typedef struct		s_intersection
 	t_cylinder		*cylinder;
 	t_cone			*cone;
 	t_plane			*plane;
+	//int				z;
 	int				shape_type;
 }					t_intersection;
 
