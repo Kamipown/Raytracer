@@ -36,12 +36,23 @@ void				fill_planes_data(t_scene *s, char *data);
 void				loop(t_env *e);
 
 void				get_inputs(t_env *e);
+void				get_inputs_keys(t_env *e);
+void				get_inputs_mouse(t_env *e);
 
 void				switch_mode(t_env *e);
 void				move(t_env *e);
 
 void				key_hook(t_env *e);
 void				mouse_hook(t_env *e);
+
+void				toggle_fullscreen(t_env *e);
+
+void				move_left(t_env *e);
+void				move_right(t_env *e);
+void				move_up(t_env *e);
+void				move_down(t_env *e);
+void				move_forward(t_env *e);
+void				move_backward(t_env *e);
 
 void				draw(t_env *e);
 void				draw_pixel(t_env *e, t_pixel p);

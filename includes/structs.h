@@ -116,14 +116,16 @@ typedef struct		s_scene
 typedef struct		s_inputs
 {
 	t_bool			escape;
+	t_bool			key_1;
+	t_bool			key_2;
 	t_bool			key_f;
 	t_bool			key_left;
 	t_bool			key_right;
 	t_bool			key_up;
 	t_bool			key_down;
+	t_bool			key_forward;
+	t_bool			key_backward;
 	t_bool			mouse_left;
-	t_bool			key_z_more;
-	t_bool			key_z_less;
 	int				mouse_x;
 	int				mouse_y;
 }					t_inputs;

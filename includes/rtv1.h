@@ -51,4 +51,6 @@
 # define MODE_CAMERA    1
 # define MODE_SELECT    2
 
+# define MOVE_SPEED		20
+
 #endif
