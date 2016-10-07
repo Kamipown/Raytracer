@@ -17,9 +17,9 @@ typedef unsigned int	t_bool;
 
 typedef struct		s_vec3
 {
-	float			x;
-	float			y;
-	float			z;
+	double			x;
+	double			y;
+	double			z;
 }					t_vec3;
 
 typedef struct		s_pixel
@@ -45,7 +45,7 @@ typedef struct		s_cam
 {
 	t_vec3			pos;
 	int				fov;
-	float			focal_dist;
+	double			focal_dist;
 }					t_cam;
 
 typedef struct		s_light

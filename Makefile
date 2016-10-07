@@ -57,7 +57,7 @@ SRC =	main.c					\
 		raytracer.c				\
 		ray.c					\
 		vec3_calc.c				\
-		vec3_calc_float.c		\
+		vec3_calc_double.c		\
 		inter_spheres.c			\
 		inter_cylinders.c		\
 		inter_cones.c			\

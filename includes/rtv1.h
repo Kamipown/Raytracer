@@ -36,8 +36,8 @@
 
 # define FOV			30
 
-# define RAY_START		-10000.0f
-# define RAY_END		20000.0f
+# define RAY_START		-10000.0
+# define RAY_END		20000.0
 
 # define FALSE			0
 # define TRUE			1

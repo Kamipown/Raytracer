@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_calc_float.c                                  :+:      :+:    :+:   */
+/*   vec3_calc_double.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,22 @@
 
 #include "rtv1.h"
 
-float	vec_add_to_f(t_vec3 *v1, t_vec3 *v2)
+double	vec_add_to_d(t_vec3 *v1, t_vec3 *v2)
 {
 	return ((v1->x + v2->x) + (v1->y + v2->y) + (v1->z + v2->z));
 }
 
-float	vec_sub_to_f(t_vec3 *v1, t_vec3 *v2)
+double	vec_sub_to_d(t_vec3 *v1, t_vec3 *v2)
 {
 	return ((v1->x - v2->x) + (v1->y - v2->y) + (v1->z - v2->z));
 }
 
-float	vec_mul_to_f(t_vec3 *v1, t_vec3 *v2)
+double	vec_mul_to_d(t_vec3 *v1, t_vec3 *v2)
 {
 	return ((v1->x * v2->x) + (v1->y * v2->y) + (v1->z * v2->z));
 }
 
-float	vec_div_to_f(t_vec3 *v1, t_vec3 *v2)
+double	vec_div_to_d(t_vec3 *v1, t_vec3 *v2)
 {
 	return ((v1->x / v2->x) + (v1->y / v2->y) + (v1->z / v2->z));
 }

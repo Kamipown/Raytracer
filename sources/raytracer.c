@@ -33,6 +33,7 @@ void		raytrace(t_env *e)
 			});
 			if ((inter = throw_ray(e, ray, x, y)))
 			{
+				//ft_putendl("yo");
 				// calcul lights
 				free(inter);
 			}

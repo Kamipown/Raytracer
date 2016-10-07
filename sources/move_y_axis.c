@@ -18,6 +18,8 @@ void	move_up(t_env *e)
 	{
 		if (e->scene->selected->shape_type == SPHERE)
 			e->scene->selected->sphere->pos.y -= MOVE_SPEED;
+		else if (e->scene->selected->shape_type == PLANE)
+			e->scene->selected->plane->pos.y -= MOVE_SPEED;
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)
@@ -33,6 +35,8 @@ void	move_down(t_env *e)
 	{
 		if (e->scene->selected->shape_type == SPHERE)
 			e->scene->selected->sphere->pos.y += MOVE_SPEED;
+		else if (e->scene->selected->shape_type == PLANE)
+			e->scene->selected->plane->pos.y += MOVE_SPEED;
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)

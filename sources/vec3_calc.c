@@ -54,9 +54,9 @@ t_vec3		vec_div(t_vec3 *v1, t_vec3 *v2)
 
 void		vec_normalize(t_vec3 *v)
 {
-	float	n;
+	double	n;
 
-	n = sqrtf(v->x * v->x + v->y * v->y + v->z * v->z);
+	n = sqrt(v->x * v->x + v->y * v->y + v->z * v->z);
 	v->x /= n;
 	v->y /= n;
 	v->z /= n;

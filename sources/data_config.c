@@ -19,7 +19,7 @@ void		fill_camera_data(t_scene *s, char *data)
 	s->cam->pos = (t_vec3){0, 0, 0};
 	s->cam->fov = read_int_data(data, "config.camera.fov");
 	s->cam->fov = s->cam->fov < 1 || s->cam->fov > 90 ? FOV : s->cam->fov;
-	s->cam->focal_dist = (s->size.w / 2 / (fabs(tanf(s->cam->fov / 2))));
+	s->cam->focal_dist = (s->size.w / 2 / (fabs(tan(s->cam->fov / 2))));
 }
 
 static void	malloc_counts(t_scene *s)

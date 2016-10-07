@@ -18,6 +18,11 @@ void	move_left(t_env *e)
 	{
 		if (e->scene->selected->shape_type == SPHERE)
 			e->scene->selected->sphere->pos.x -= MOVE_SPEED;
+		else if (e->scene->selected->shape_type == PLANE)
+		{
+			e->scene->selected->plane->pos.x -= MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->pos.x);
+		}
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)
@@ -33,6 +38,11 @@ void	move_right(t_env *e)
 	{
 		if (e->scene->selected->shape_type == SPHERE)
 			e->scene->selected->sphere->pos.x += MOVE_SPEED;
+		else if (e->scene->selected->shape_type == PLANE)
+		{
+			e->scene->selected->plane->pos.x += MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->pos.x);
+		}
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)
