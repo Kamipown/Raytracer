@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:21:09 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/07 15:20:55 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/07 16:19:27 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_div_to_f(t_vec3 *v1, t_vec3 *v2);
 
 t_sphere			*inter_spheres(t_env *e, t_ray *ray, int x, int y);
-t_cylinder			*inter_cylinders(t_env *e, t_ray *ray);
-t_cone				*inter_cones(t_env *e, t_ray *ray);
-t_plane				*inter_planes(t_env *e, t_ray *ray);
+t_cylinder			*inter_cylinders(t_env *e, t_ray *ray, int x, int y);
+t_cone				*inter_cones(t_env *e, t_ray *ray, int x, int y);
+t_plane				*inter_planes(t_env *e, t_ray *ray, int x, int y);
 
 void				error(int n, char *mes);
 

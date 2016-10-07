@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 16:52:44 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/05 16:06:57 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/07 16:19:08 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ t_intersection			*throw_ray(t_env *e, t_ray *ray, int x, int y)
 	inter = create_intersection();
 	if ((inter->sphere = inter_spheres(e, ray, x, y)))
 		inter->shape_type = SPHERE;
-	if ((inter->cylinder = inter_cylinders(e, ray)))
+	if ((inter->cylinder = inter_cylinders(e, ray, x, y)))
 		inter->shape_type = CYLINDER;
-	if ((inter->cone = inter_cones(e, ray)))
+	if ((inter->cone = inter_cones(e, ray, x, y)))
 		inter->shape_type = CONE;
-	if ((inter->plane = inter_planes(e, ray)))
+	if ((inter->plane = inter_planes(e, ray, x, y)))
 		inter->shape_type = PLANE;
 	return (inter);
 }
