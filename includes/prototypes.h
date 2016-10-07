@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:21:09 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/05 17:43:41 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/07 15:20:55 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_mul(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_div(t_vec3 *v1, t_vec3 *v2);
 void				vec_normalize(t_vec3 *v);
-t_vec3				vector_normalize(t_vec3 *vec);
 float				vec_add_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_sub_to_f(t_vec3 *v1, t_vec3 *v2);
 float				vec_mul_to_f(t_vec3 *v1, t_vec3 *v2);
