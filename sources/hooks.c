@@ -13,70 +13,57 @@
 #include <stdio.h>
 #include "rtv1.h"
 
+static void	print_mode(t_bool mode)
+{
+	if (mode == MODE_NULL)
+		ft_putendl("Mode : Null");
+	else if (mode == MODE_CAMERA)
+		ft_putendl("Mode : Camera");
+	else if (mode == MODE_SELECT)
+		ft_putendl("Mode : Selections");
+}
+
+static void	change_mode(t_env *e, int mode)
+{
+	if (mode == MODE_CAMERA && e->options.mode != MODE_CAMERA)
+		e->options.mode = MODE_CAMERA;
+	else if (mode == MODE_SELECT && e->options.mode != MODE_SELECT)
+		e->options.mode = MODE_SELECT;
+	else if (mode == MODE_CAMERA && e->options.mode == MODE_CAMERA)
+		e->options.mode = MODE_NULL;
+	else if (mode == MODE_SELECT && e->options.mode == MODE_SELECT)
+		e->options.mode = MODE_NULL;
+	print_mode(e->options.mode);
+}
+
 void	key_hook(t_env *e)
 {
 	if (e->inputs.escape)
 		e->options.quit = TRUE;
-	if (e->inputs.key_f && !e->options.fullscreen)
-	{
-		e->options.fullscreen = TRUE;
-		e->options.need_redraw = TRUE;
-		SDL_SetWindowFullscreen(e->win, SDL_WINDOW_FULLSCREEN);
-	}
-	else if (e->inputs.key_f && e->options.fullscreen)
-	{
-		e->options.fullscreen = FALSE;
-		e->options.need_redraw = TRUE;
-		SDL_SetWindowFullscreen(e->win, 0);
-	}
-	if (e->inputs.key_left && e->scene->selected)
-	{
-		if (e->scene->selected->shape_type == SPHERE)
-		{
-			e->scene->selected->sphere->pos.x -= 20;
-			e->options.need_redraw = TRUE;
-		}
-	}
-	if (e->inputs.key_right && e->scene->selected)
-	{
-		if (e->scene->selected->shape_type == SPHERE)
-		{
-			e->scene->selected->sphere->pos.x += 20;
-			e->options.need_redraw = TRUE;
-		}
-	}
-	if (e->inputs.key_up && e->scene->selected)
-	{
-		if (e->scene->selected->shape_type == SPHERE)
-		{
-			e->scene->selected->sphere->pos.y -= 20;
-			e->options.need_redraw = TRUE;
-		}
-	}
-	if (e->inputs.key_down && e->scene->selected)
-	{
-		if (e->scene->selected->shape_type == SPHERE)
-		{
-			e->scene->selected->sphere->pos.y += 20;
-			e->options.need_redraw = TRUE;
-		}
-	}
-	if (e->inputs.key_z_more && e->scene->selected)
-	{
-		if (e->scene->selected->shape_type == SPHERE)
-		{
-			e->scene->selected->sphere->pos.z += 20;
-			e->options.need_redraw = TRUE;
-		}
-	}
-	if (e->inputs.key_z_less && e->scene->selected)
-	{
-		if (e->scene->selected->shape_type == SPHERE)
-		{
-			e->scene->selected->sphere->pos.z -= 20;
-			e->options.need_redraw = TRUE;
-		}
-	}
+
+	// Modes
+	if (e->inputs.key_1)
+		change_mode(e, MODE_CAMERA);
+	if (e->inputs.key_2)
+		change_mode(e, MODE_SELECT);
+
+	// Fullscreen
+	if (e->inputs.key_f)
+		toggle_fullscreen(e);
+
+	// Moves
+	if (e->inputs.key_left)
+		move_left(e);
+	if (e->inputs.key_right)
+		move_right(e);
+	if (e->inputs.key_up)
+		move_up(e);
+	if (e->inputs.key_down)
+		move_down(e);
+	if (e->inputs.key_forward)
+		move_forward(e);
+	if (e->inputs.key_backward)
+		move_backward(e);
 }
 
 void	mouse_hook(t_env *e)

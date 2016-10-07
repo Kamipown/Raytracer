@@ -9,7 +9,7 @@ config
 		cones:0
 		planes:0
 	camera
-		fov:30
+		fov:90
 
 lights
 	0
