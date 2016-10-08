@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:21:09 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/07 16:19:27 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/08 22:03:29 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void				parse_scene(t_scene *s, char *filename);
 char				*read_file(char *filename);
 char				*read_data(char *data, char *request);
 int					read_int_data(char *data, char *request);
+double		    	read_double_data(char *data, char *request);
 int					read_color_data(char *data, char *request);
 char				*construct_request_int(char *request, int n);
 
@@ -59,7 +60,7 @@ void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
 
-t_ray				*create_ray(t_vec3 *from, t_vec3 to);
+t_ray				*create_ray(t_vec3 *from, t_vec3 to, int print);
 t_intersection		*throw_ray(t_env *e, t_ray *ray, int x, int y);
 
 t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);

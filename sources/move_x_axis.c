@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_x_axis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 18:47:34 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/06 18:47:35 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/08 22:10:18 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	move_left(t_env *e)
 			e->scene->selected->sphere->pos.x -= MOVE_SPEED;
 		else if (e->scene->selected->shape_type == PLANE)
 		{
-			e->scene->selected->plane->pos.x -= MOVE_SPEED;
-			printf("%f\n", e->scene->selected->plane->pos.x);
+			e->scene->selected->plane->normal.x -= MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->normal.x);
 		}
 		e->options.need_redraw = TRUE;
 	}
@@ -40,8 +40,8 @@ void	move_right(t_env *e)
 			e->scene->selected->sphere->pos.x += MOVE_SPEED;
 		else if (e->scene->selected->shape_type == PLANE)
 		{
-			e->scene->selected->plane->pos.x += MOVE_SPEED;
-			printf("%f\n", e->scene->selected->plane->pos.x);
+			e->scene->selected->plane->normal.x += MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->normal.x);
 		}
 		e->options.need_redraw = TRUE;
 	}

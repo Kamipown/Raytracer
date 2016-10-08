@@ -16,10 +16,13 @@ void		fill_camera_data(t_scene *s, char *data)
 {
 	if (!(s->cam = (t_cam *)malloc(sizeof(t_cam))))
 		error(-16, "Unable to create camera.");
-	s->cam->pos = (t_vec3){0, 0, 0};
 	s->cam->fov = read_int_data(data, "config.camera.fov");
 	s->cam->fov = s->cam->fov < 1 || s->cam->fov > 90 ? FOV : s->cam->fov;
 	s->cam->focal_dist = (s->size.w / 2 / (fabs(tan(s->cam->fov / 2))));
+	s->cam->pos = (t_vec3){0, 0, -s->cam->focal_dist};
+	printf("FOV:        %d\n", s->cam->fov);
+	printf("Focal Dist: %f\n", s->cam->focal_dist);
+	printf("Position:   %f, %f, %f\n\n", s->cam->pos.x, s->cam->pos.y, s->cam->pos.z);
 }
 
 static void	malloc_counts(t_scene *s)

@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-t_ray					*create_ray(t_vec3 *from, t_vec3 to)
+t_ray					*create_ray(t_vec3 *from, t_vec3 to, int print)
 {
 	t_ray	*ray;
 
@@ -21,11 +21,20 @@ t_ray					*create_ray(t_vec3 *from, t_vec3 to)
 	ray->origin.x = from->x;
 	ray->origin.y = from->y;
 	ray->origin.z = from->z;
-	vec_normalize(&to);
+
+	if (print)
+	{
+		printf("%f, %f, %f\n", ray->origin.x, ray->origin.y, ray->origin.z);
+		printf("%f, %f, %f\n", to.x, to.y, to.z);
+	}
 	ray->dir.x = to.x - ray->origin.x;
 	ray->dir.y = to.y - ray->origin.y;
 	ray->dir.z = to.z - ray->origin.z;
 	vec_normalize(&ray->dir);
+	if (print)
+	{
+		printf("%f, %f, %f\n\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	}
 	return (ray);
 }
 

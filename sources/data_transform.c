@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_transform.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 06:40:29 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/08/23 06:40:30 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/08 22:49:48 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ int				read_color_data(char *data, char *request)
 	int_value = str_value ? data_to_hex(str_value) : 0xffffff;
 	free(str_value);
 	return (int_value);
+}
+
+double			read_double_data(char *data, char *request)
+{
+	char	*str_value;
+	double	double_value;
+
+	str_value = read_data(data, request);
+	double_value = str_value ? ft_atod(str_value) : 0;
+	free(str_value);
+	return (double_value);
 }
 
 int				read_int_data(char *data, char *request)

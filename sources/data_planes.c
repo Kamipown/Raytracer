@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_planes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 14:23:51 by dcognata          #+#    #+#             */
-/*   Updated: 2016/09/17 14:28:23 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/08 22:06:41 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,7 @@ static void	print_plans(t_scene *s)
 		ft_putnbr(s->planes[i].pos.y);
 		ft_putstr(", ");
 		ft_putnbr(s->planes[i].pos.z);
-		ft_putstr("\trot(");
-		ft_putnbr(s->planes[i].rot.x);
-		ft_putstr(", ");
-		ft_putnbr(s->planes[i].rot.y);
-		ft_putstr(", ");
-		ft_putnbr(s->planes[i].rot.z);
+		printf("\tnormal(%f, %f, %f", s->planes[i].normal.x, s->planes[i].normal.y, s->planes[i].normal.z);
 		ft_putstr(") color(");
 		print_plans_rest(s, i);
 		++i;
@@ -53,14 +48,14 @@ static void	print_plans(t_scene *s)
 
 static void	fill_planes_data_rest(t_scene *s, char *data, char *request, int i)
 {
-	request = construct_request_int("planes.#.rot.x", i);
-	s->planes[i].rot.x = read_int_data(data, request);
+	request = construct_request_int("planes.#.normal.x", i);
+	s->planes[i].normal.x = read_double_data(data, request);
 	free(request);
-	request = construct_request_int("planes.#.rot.y", i);
-	s->planes[i].rot.y = read_int_data(data, request);
+	request = construct_request_int("planes.#.normal.y", i);
+	s->planes[i].normal.y = read_double_data(data, request);
 	free(request);
-	request = construct_request_int("planes.#.rot.z", i);
-	s->planes[i].rot.z = read_int_data(data, request);
+	request = construct_request_int("planes.#.normal.z", i);
+	s->planes[i].normal.z = read_double_data(data, request);
 	free(request);
 	request = construct_request_int("planes.#.size.height", i);
 	s->planes[i].height = read_int_data(data, request);

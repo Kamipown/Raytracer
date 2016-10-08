@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_y_axis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 18:47:39 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/06 18:47:40 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/08 22:10:34 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	move_up(t_env *e)
 		if (e->scene->selected->shape_type == SPHERE)
 			e->scene->selected->sphere->pos.y -= MOVE_SPEED;
 		else if (e->scene->selected->shape_type == PLANE)
-			e->scene->selected->plane->pos.y -= MOVE_SPEED;
+		{
+			e->scene->selected->plane->normal.y -= MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->normal.y);
+		}
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)
@@ -36,7 +39,10 @@ void	move_down(t_env *e)
 		if (e->scene->selected->shape_type == SPHERE)
 			e->scene->selected->sphere->pos.y += MOVE_SPEED;
 		else if (e->scene->selected->shape_type == PLANE)
-			e->scene->selected->plane->pos.y += MOVE_SPEED;
+		{
+			e->scene->selected->plane->normal.y += MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->normal.y);
+		}
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)
