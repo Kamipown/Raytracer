@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
+# include <stdio.h> // TO DELETE
 
 # include "./sdl2/SDL.h"
 # include "libft.h"

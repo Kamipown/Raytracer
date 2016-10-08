@@ -29,8 +29,8 @@ void		raytrace(t_env *e)
 			{
 				x - (e->scene->size.w / 2),
 				y - (e->scene->size.h / 2),
-				e->scene->cam->focal_dist
-			});
+				0
+			}, 0);
 			if ((inter = throw_ray(e, ray, x, y)))
 			{
 				//ft_putendl("yo");

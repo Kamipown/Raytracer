@@ -13,40 +13,95 @@
 #include "rtv1.h"
 #include <stdio.h>
 
+static void	print_vec3(t_vec3 *v)
+{
+	printf("%f, %f, %f\n", v->x, v->y, v->z);
+}
+
+t_vec3		mul_d_to_vec(double d, t_vec3 *v)
+{
+	t_vec3 ret;
+
+	ret.x = v->x * d;
+	ret.y = v->y * d;
+	ret.z = v->z * d;
+	return (ret);
+}
+
 static int	test_hit(t_ray *ray, t_plane *p)
 {
-	t_vec3	tmp_p0;
-	t_vec3	tmp_l0;
-	t_vec3	p0l0;
-	t_vec3	n;
-	double	denom;
+	t_vec3	N;
+	double	m;
+	t_vec3	L;
+	double	d;
 	double	t;
+	t_vec3	ret;
+	t_vec3	tmp;
 
-	n = (t_vec3)
+	N = (t_vec3)
 	{
-		p->rot.x * M_PI / 180,
-		p->rot.y * M_PI / 180,
-		p->rot.z * M_PI / 180,
+		0.9,
+		0.1,
+		0
 	};
-	vec_normalize(&n);
-	denom = vec_mul_to_d(&n, &ray->dir);
-	if (denom > 0.000001)
-	{
-		tmp_p0 = (t_vec3){p->pos.x, p->pos.y, p->pos.z};
-		tmp_l0 = (t_vec3){ray->origin.x, ray->origin.y, ray->origin.z};
-		vec_normalize(&tmp_p0);
-		vec_normalize(&tmp_l0);
-		p0l0 = vec_sub(&tmp_p0, &tmp_l0);
-		if (denom > 0.1)
-		{
-			double a = vec_mul_to_d(&p0l0, &n);
-			//printf("%f\n", a);
-			t = a / denom;
-			//printf("denom: %f, t: %f\n", denom, t);
-			return (1);
-		}
-	}
-	return (0);
+	vec_normalize(&N);
+	//print_vec3(&N);
+
+
+	m = vec_mul_to_d(&N, &ray->dir);
+
+	if (fabs(m) < 0.000001)
+		return (0);
+	//ft_putchar('a');
+	L = vec_sub(&ray->origin, &p->pos);
+	d = vec_mul_to_d(&N, &L);
+	t = -d / m;
+	if (t <= 0)
+		return (0);
+	tmp = mul_d_to_vec(t, &ray->dir);
+	ret = vec_add(&ray->origin, &tmp);
+	printf("%f\n", ret.z);
+	return (1);
+
+	// version 1
+
+	// t_vec3	tmp_p0;
+	// t_vec3	tmp_l0;
+	// t_vec3	p0l0;
+	// t_vec3	n;
+	// double	denom;
+	// double	t;
+	// double	a;
+
+	// n = (t_vec3)
+	// {
+	// 	p->rot.x * M_PI / 180,
+	// 	p->rot.y * M_PI / 180,
+	// 	p->rot.z * M_PI / 180
+	// };
+	// vec_normalize(&n);
+	// denom = vec_mul_to_d(&n, &ray->dir);
+	// if (denom > 0.1)
+	// {
+	// 	tmp_p0 = (t_vec3){p->pos.x, p->pos.y, p->pos.z};
+	// 	tmp_l0 = (t_vec3){ray->origin.x, ray->origin.y, ray->origin.z};
+	// 	p0l0 = vec_sub(&tmp_p0, &tmp_l0);
+
+	// 	vec_normalize(&p0l0);
+
+	// 	//print_vec3(&tmp_p0); print_vec3(&tmp_l0); print_vec3(&p0l0);
+		
+	// 	a = vec_mul_to_d(&p0l0, &n);
+	// 	//printf("%f\n\n", a);
+	// 	t = a / denom;
+
+	// 	if (t >= 0.000001)
+	// 	{
+	// 		//if (t >= 0)
+	// 		return (1);	
+	// 	}
+		
+	// }
 }
 
 

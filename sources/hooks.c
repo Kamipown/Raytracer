@@ -76,10 +76,9 @@ void	mouse_hook(t_env *e)
 		{
 			e->inputs.mouse_x - (e->scene->size.w / 2),
 			e->inputs.mouse_y - (e->scene->size.h / 2),
-			e->scene->cam->focal_dist
-		});
+			0
+		}, 1);
 		e->scene->selected = throw_ray(e, ray, e->inputs.mouse_x, e->inputs.mouse_y);
-		ft_putendl("d");
 		if (e->scene->selected->shape_type == SPHERE)
 			ft_putendl("Sphere selected");
 		else if (e->scene->selected->shape_type == CYLINDER)

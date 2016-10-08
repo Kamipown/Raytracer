@@ -59,7 +59,7 @@ void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
 
-t_ray				*create_ray(t_vec3 *from, t_vec3 to);
+t_ray				*create_ray(t_vec3 *from, t_vec3 to, int print);
 t_intersection		*throw_ray(t_env *e, t_ray *ray, int x, int y);
 
 t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
