@@ -20,8 +20,8 @@ void	move_forward(t_env *e)
 			e->scene->selected->sphere->pos.z -= MOVE_SPEED;
 		else if (e->scene->selected->shape_type == PLANE)
 		{
-			e->scene->selected->plane->normal.z -= MOVE_SPEED;
-			printf("%f\n", e->scene->selected->plane->normal.z);
+			e->scene->selected->plane->pos.z -= MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->pos.z);
 		}
 		e->options.need_redraw = TRUE;
 	}
@@ -40,8 +40,8 @@ void	move_backward(t_env *e)
 			e->scene->selected->sphere->pos.z += MOVE_SPEED;
 		else if (e->scene->selected->shape_type == PLANE)
 		{
-			e->scene->selected->plane->normal.z += MOVE_SPEED;
-			printf("%f\n", e->scene->selected->plane->normal.z);
+			e->scene->selected->plane->pos.z += MOVE_SPEED;
+			printf("%f\n", e->scene->selected->plane->pos.z);
 		}
 		e->options.need_redraw = TRUE;
 	}

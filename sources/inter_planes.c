@@ -13,7 +13,7 @@
 #include "rtv1.h"
 #include <stdio.h>
 
-t_vec3		mul_d_to_vec(double d, t_vec3 *v)
+t_vec3			mul_d_to_vec(double d, t_vec3 *v)
 {
 	t_vec3 ret;
 
@@ -23,7 +23,7 @@ t_vec3		mul_d_to_vec(double d, t_vec3 *v)
 	return (ret);
 }
 
-static int	test_hit(t_ray *ray, t_plane *p)
+static int	test_hit(t_ray *ray, t_plane *p, double *z)
 {
 	t_vec3	N;
 	double	m;
@@ -35,9 +35,9 @@ static int	test_hit(t_ray *ray, t_plane *p)
 
 	N = (t_vec3)
 	{
-		1,
-		0,
-		0
+		p->normal.x,
+		p->normal.y,
+		p->normal.z
 	};
 	vec_normalize(&N);
 
@@ -53,24 +53,45 @@ static int	test_hit(t_ray *ray, t_plane *p)
 		return (0);
 	tmp = mul_d_to_vec(t, &ray->dir);
 	ret = vec_add(&ray->origin, &tmp);
-	// printf("%f\n", ret.z);
+	*z = ret.z;
+	//printf("%f\n", ret.z);
 	return (1);
 }
 
 
-t_plane		*inter_planes(t_env *e, t_ray *ray, int x, int y)
+t_plane			*inter_planes(t_env *e, t_ray *ray, int x, int y)
 {
 	int		i;
+	double	z;
+	t_plane	*plane;
+	double	nearest_z;
 
 	i = 0;
+	plane = 0;
 	while (i < e->scene->n_plane)
 	{
-		if (test_hit(ray, &e->scene->planes[i]))
+		if (test_hit(ray, &e->scene->planes[i], &z))
 		{
-			draw_pixel(e, (t_pixel){x, y, e->scene->planes[i].color});
-			return (&e->scene->planes[i]);
+			if (z >= 0.000001 && z < RAY_END)
+			{
+				if (!plane)
+				{
+					plane = &e->scene->planes[i];
+					nearest_z = z;
+				}
+				else
+				{
+					if (z < nearest_z)
+					{
+						plane = &e->scene->planes[i];
+						nearest_z = z;
+					}
+				}
+			}
 		}
 		++i;
 	}
-	return (0);
+	if (plane)
+		draw_pixel(e, (t_pixel){x, y, plane->color});
+	return (plane);
 }
