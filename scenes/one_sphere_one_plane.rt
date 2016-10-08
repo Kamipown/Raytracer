@@ -9,7 +9,7 @@ config
 		cones:0
 		planes:1
 	camera
-		fov:30
+		fov:90
 
 lights
 	0
@@ -32,13 +32,13 @@ spheres
 planes
 	0
 		pos
-			x:200
+			x:
 			y:0
-			z:0
+			z:400
 		normal
-			x:1
+			x:0
 			y:0
-			z:0
+			z:-1
 		size
 			width:500
 			height:500
