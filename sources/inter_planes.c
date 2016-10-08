@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 13:35:39 by dcognata          #+#    #+#             */
-/*   Updated: 2016/10/07 16:36:33 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/08 18:34:57 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,33 @@ static int	test_hit(t_ray *ray, t_plane *p)
 	t_vec3	p0l0;
 	t_vec3	n;
 	double	denom;
+	double 	num;
 	double	t;
 
+
+	num = 0;
 	n = (t_vec3)
 	{
 		p->rot.x * M_PI / 180,
 		p->rot.y * M_PI / 180,
-		p->rot.z * M_PI / 180,
+		p->rot.z * M_PI / 180
 	};
 	vec_normalize(&n);
 	denom = vec_mul_to_d(&n, &ray->dir);
-	if (denom > 0.000001)
+	tmp_p0 = (t_vec3){p->pos.x, p->pos.y, p->pos.z};
+	tmp_l0 = (t_vec3){ray->origin.x, ray->origin.y, ray->origin.z};
+	vec_normalize(&tmp_p0);
+	vec_normalize(&tmp_l0);
+	p0l0 = vec_sub(&tmp_p0, &tmp_l0);
+	num = vec_mul_to_d(&p0l0, &n);
+	if (denom == 0)
 	{
-		tmp_p0 = (t_vec3){p->pos.x, p->pos.y, p->pos.z};
-		tmp_l0 = (t_vec3){ray->origin.x, ray->origin.y, ray->origin.z};
-		vec_normalize(&tmp_p0);
-		vec_normalize(&tmp_l0);
-		p0l0 = vec_sub(&tmp_p0, &tmp_l0);
-		if (denom > 0.1)
-		{
-			double a = vec_mul_to_d(&p0l0, &n);
-			//printf("%f\n", a);
-			t = a / denom;
-			//printf("denom: %f, t: %f\n", denom, t);
-			return (1);
-		}
+		return (0);
+	}
+	t = num / denom;
+	if (denom > 0.1)
+	{
+		return (1);
 	}
 	return (0);
 }
