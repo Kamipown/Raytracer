@@ -108,5 +108,6 @@ int					ft_iswhitespace(const char c);
 char				*ft_skip_line(char *s);
 void				ft_putnbr_endl(int n);
 int					ft_isnumber(char *s);
+double				ft_atod(char *s);
 
 #endif

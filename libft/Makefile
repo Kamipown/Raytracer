@@ -91,7 +91,8 @@ SRC =		ft_memset.c \
 			ft_iswhitespace.c \
 			ft_skip_line.c \
 			ft_putnbr_endl.c \
-			ft_isnumber.c
+			ft_isnumber.c \
+			ft_atod.c
 
 OBJ =		$(SRC:.c=.o)
 
