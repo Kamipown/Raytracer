@@ -31,7 +31,7 @@ void		raytrace(t_env *e)
 				y - (e->scene->size.h / 2),
 				0
 			});
-			if ((inter = throw_ray(e, ray)))
+			if ((inter = throw_ray(e, ray, 0)))
 			{
 				// calcul lights
 				if (inter->shape_type == SPHERE)

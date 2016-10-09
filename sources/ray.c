@@ -46,10 +46,12 @@ static t_intersection	*create_intersection(void)
 	return (inter);
 }
 
-void					select_intersection(t_intersection *inter)
+static void				select_intersection(t_intersection *inter, int flag)
 {
 	if (inter->sphere)
 	{
+		if (flag == 1)
+			printf("z_sphere: %f, ", inter->z_sphere);
 		if (inter->z_sphere < inter->z_cylinder
 		&& inter->z_sphere < inter->z_cone
 		&& inter->z_sphere < inter->z_plane)
@@ -71,6 +73,8 @@ void					select_intersection(t_intersection *inter)
 	}
 	if (inter->plane)
 	{
+		if (flag == 1)
+			printf("z_plane: %f\n", inter->z_plane);
 		if (inter->z_plane < inter->z_sphere
 		&& inter->z_plane < inter->z_cylinder
 		&& inter->z_plane < inter->z_cone)
@@ -78,7 +82,7 @@ void					select_intersection(t_intersection *inter)
 	}
 }
 
-t_intersection			*throw_ray(t_env *e, t_ray *ray)
+t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
 {
 	t_intersection	*inter;
 
@@ -87,6 +91,6 @@ t_intersection			*throw_ray(t_env *e, t_ray *ray)
 	inter_cylinders(e, ray, inter);
 	inter_cones(e, ray, inter);
 	inter_planes(e, ray, inter);
-	select_intersection(inter);
+	select_intersection(inter, flag);
 	return (inter);
 }
