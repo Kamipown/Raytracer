@@ -32,9 +32,9 @@ spheres
 planes
 	0
 		pos
-			x:
+			x:0
 			y:0
-			z:400
+			z:1000
 		normal
 			x:0
 			y:0

@@ -30,11 +30,18 @@ void		raytrace(t_env *e)
 				x - (e->scene->size.w / 2),
 				y - (e->scene->size.h / 2),
 				0
-			}, 0);
-			if ((inter = throw_ray(e, ray, x, y)))
+			});
+			if ((inter = throw_ray(e, ray)))
 			{
-				//ft_putendl("yo");
 				// calcul lights
+				if (inter->shape_type == SPHERE)
+					draw_pixel(e, (t_pixel){x, y, inter->sphere->color});
+				else if (inter->shape_type == CYLINDER)
+					draw_pixel(e, (t_pixel){x, y, inter->cylinder->color});
+				else if (inter->shape_type == CONE)
+					draw_pixel(e, (t_pixel){x, y, inter->cone->color});
+				else if (inter->shape_type == PLANE)
+					draw_pixel(e, (t_pixel){x, y, inter->plane->color});
 				free(inter);
 			}
 			free(ray);

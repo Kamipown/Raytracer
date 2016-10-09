@@ -19,19 +19,21 @@ static int	test_hit(t_ray *ray, t_cone *c)
 	return (0);
 }
 
-t_cone		*inter_cones(t_env *e, t_ray *ray, int x, int y)
+void		inter_cones(t_env *e, t_ray *ray, t_intersection *inter)
 {
-	int		i;
+	// int		i;
 
-	i = 0;
-	while (i < e->scene->n_cone)
-	{
-		if (test_hit(ray, &e->scene->cones[i]))
-		{
-			draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
-			return (&e->scene->cones[i]);
-		}
-		++i;
-	}
-	return (0);
+	// i = 0;
+	// while (i < e->scene->n_cone)
+	// {
+	// 	if (test_hit(ray, &e->scene->cones[i]))
+	// 	{
+	// 		draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
+	// 		return (&e->scene->cones[i]);
+	// 	}
+	// 	++i;
+	// }
+	// return (0);
+	if (e && ray && inter)
+		return ;
 }

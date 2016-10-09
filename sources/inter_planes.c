@@ -54,44 +54,37 @@ static int	test_hit(t_ray *ray, t_plane *p, double *z)
 	tmp = mul_d_to_vec(t, &ray->dir);
 	ret = vec_add(&ray->origin, &tmp);
 	*z = ret.z;
-	//printf("%f\n", ret.z);
 	return (1);
 }
 
 
-t_plane			*inter_planes(t_env *e, t_ray *ray, int x, int y)
+void		inter_planes(t_env *e, t_ray *ray, t_intersection *inter)
 {
 	int		i;
 	double	z;
-	t_plane	*plane;
-	double	nearest_z;
 
 	i = 0;
-	plane = 0;
 	while (i < e->scene->n_plane)
 	{
 		if (test_hit(ray, &e->scene->planes[i], &z))
 		{
 			if (z >= 0.000001 && z < RAY_END)
 			{
-				if (!plane)
+				if (!inter->plane)
 				{
-					plane = &e->scene->planes[i];
-					nearest_z = z;
+					inter->plane = &e->scene->planes[i];
+					inter->z_plane = z;
 				}
 				else
 				{
-					if (z < nearest_z)
+					if (z < inter->z_plane)
 					{
-						plane = &e->scene->planes[i];
-						nearest_z = z;
+						inter->plane = &e->scene->planes[i];
+						inter->z_plane = z;
 					}
 				}
 			}
 		}
 		++i;
 	}
-	if (plane)
-		draw_pixel(e, (t_pixel){x, y, plane->color});
-	return (plane);
 }

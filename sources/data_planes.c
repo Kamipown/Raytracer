@@ -38,8 +38,6 @@ static void	print_plans(t_scene *s)
 		ft_putnbr(s->planes[i].pos.y);
 		ft_putstr(", ");
 		ft_putnbr(s->planes[i].pos.z);
-		printf("\tnormal(%f, %f, %f", s->planes[i].normal.x, s->planes[i].normal.y, s->planes[i].normal.z);
-		ft_putstr(") color(");
 		print_plans_rest(s, i);
 		++i;
 	}

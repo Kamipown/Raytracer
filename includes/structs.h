@@ -15,6 +15,12 @@
 
 typedef unsigned int	t_bool;
 
+typedef struct		s_vec2
+{
+	int				x;
+	int				y;
+}					t_vec2;
+
 typedef struct		s_vec3
 {
 	double			x;
@@ -68,6 +74,7 @@ typedef struct		s_cylinder
 	t_vec3			rot;
 	int				height;
 	int				radius;
+	int				color;
 }					t_cylinder;
 
 typedef struct		s_cone
@@ -75,6 +82,7 @@ typedef struct		s_cone
 	t_vec3			pos;
 	t_vec3			rot;
 	int				height;
+	int				color;
 }					t_cone;
 
 typedef struct		s_plane
@@ -92,7 +100,10 @@ typedef struct		s_intersection
 	t_cylinder		*cylinder;
 	t_cone			*cone;
 	t_plane			*plane;
-	//int				z;
+	double			z_sphere;
+	double			z_cylinder;
+	double			z_cone;
+	double			z_plane;
 	int				shape_type;
 }					t_intersection;
 

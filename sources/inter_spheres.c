@@ -13,7 +13,7 @@
 #include "rtv1.h"
 #include <stdio.h>
 
-static int	test_hit(t_ray *ray, t_sphere *s)
+static int	test_hit(t_ray *ray, t_sphere *s, double *z)
 {
 	t_vec3	dist;
 	double	b;
@@ -35,25 +35,47 @@ static int	test_hit(t_ray *ray, t_sphere *s)
 	// en faisant attention a RAY_END
 	//
 	if (z1 > 0.1 && z1 < RAY_END)
+	{
+		*z = z1;
+		//printf("z1: %f\n", z1);
 		return (1);
+	}
 	if (z2 > 0.0 && z2 < z1)
+	{
+		*z = z2;
+		//printf("z2: %f\n", z2);
 		return (1);
+	}
 	return (0);
 }
 
-t_sphere	*inter_spheres(t_env *e, t_ray *ray, int x, int y)
+void		inter_spheres(t_env *e, t_ray *ray, t_intersection *inter)
 {
 	int		i;
+	double	z;
 
 	i = 0;
 	while (i < e->scene->n_sphere)
 	{
-		if (test_hit(ray, &e->scene->spheres[i]))
+		if (test_hit(ray, &e->scene->spheres[i], &z))
 		{
-			draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
-			return (&e->scene->spheres[i]);
+			if (z >= 0.000001 && z < RAY_END)
+			{
+				if (!inter->sphere)
+				{
+					inter->sphere = &e->scene->spheres[i];
+					inter->z_sphere = z;
+				}
+				else
+				{
+					if (z < inter->z_sphere)
+					{
+						inter->sphere = &e->scene->spheres[i];
+						inter->z_sphere = z;
+					}
+				}
+			}
 		}
 		++i;
 	}
-	return (0);
 }

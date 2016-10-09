@@ -19,19 +19,21 @@ static int	test_hit(t_ray *ray, t_cylinder *c)
 	return (0);
 }
 
-t_cylinder	*inter_cylinders(t_env *e, t_ray *ray, int x, int y)
+void		inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter)
 {
-	int		i;
+	// int		i;
 
-	i = 0;
-	while (i < e->scene->n_cylinder)
-	{
-		if (test_hit(ray, &e->scene->cylinders[i]))
-		{
-			draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
-			return (&e->scene->cylinders[i]);
-		}
-		++i;
-	}
-	return (0);
+	// i = 0;
+	// while (i < e->scene->n_cylinder)
+	// {
+	// 	if (test_hit(ray, &e->scene->cylinders[i]))
+	// 	{
+	// 		draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
+	// 		return (&e->scene->cylinders[i]);
+	// 	}
+	// 	++i;
+	// }
+	// return (0);
+	if (e && ray && inter)
+		;
 }

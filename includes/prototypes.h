@@ -60,8 +60,8 @@ void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
 
-t_ray				*create_ray(t_vec3 *from, t_vec3 to, int print);
-t_intersection		*throw_ray(t_env *e, t_ray *ray, int x, int y);
+t_ray				*create_ray(t_vec3 *from, t_vec3 to);
+t_intersection		*throw_ray(t_env *e, t_ray *ray);
 
 t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
 t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
@@ -73,10 +73,10 @@ double				vec_sub_to_d(t_vec3 *v1, t_vec3 *v2);
 double				vec_mul_to_d(t_vec3 *v1, t_vec3 *v2);
 double				vec_div_to_d(t_vec3 *v1, t_vec3 *v2);
 
-t_sphere			*inter_spheres(t_env *e, t_ray *ray, int x, int y);
-t_cylinder			*inter_cylinders(t_env *e, t_ray *ray, int x, int y);
-t_cone				*inter_cones(t_env *e, t_ray *ray, int x, int y);
-t_plane				*inter_planes(t_env *e, t_ray *ray, int x, int y);
+void				inter_spheres(t_env *e, t_ray *ray, t_intersection *inter);
+void				inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter);
+void				inter_cones(t_env *e, t_ray *ray, t_intersection *inter);
+void				inter_planes(t_env *e, t_ray *ray, t_intersection *inter);
 
 void				error(int n, char *mes);
 
