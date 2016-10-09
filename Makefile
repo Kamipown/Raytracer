@@ -28,40 +28,55 @@ MLX = -framework OpenGL -framework AppKit
 
 LIBFT = -L./libft/ -lft
 
-SDLFT = -framework Cocoa -framework SDL2
+SDLFT =	-framework Cocoa -framework SDL2
 
-SRC =	main.c					\
-		errors.c				\
-		init.c					\
-		quit.c					\
-		parser.c				\
-		file_reader.c			\
-		request_constructor.c	\
-		data_reader.c			\
-		data_transform.c		\
-		data_config.c			\
-		data_lights.c			\
-		data_planes.c			\
-		data_spheres.c			\
-		objects_data.c			\
-		loop.c					\
-		inputs.c				\
-		inputs_keys.c			\
-		inputs_mouse.c			\
-		hooks.c					\
-		fullscreen.c			\
-		move_x_axis.c			\
-		move_y_axis.c			\
-		move_z_axis.c			\
-		draw.c					\
-		raytracer.c				\
-		ray.c					\
-		vec3_calc.c				\
-		vec3_calc_double.c		\
-		inter_spheres.c			\
-		inter_cylinders.c		\
-		inter_cones.c			\
-		inter_planes.c
+# SOURCES
+SRC =	main.c
+
+SRC +=	errors/errors.c
+
+SRC +=	init/init.c
+
+SRC +=	quit/quit.c
+
+SRC +=	parser/parser.c					\
+		parser/file_reader.c			\
+		parser/request_constructor.c	\
+		parser/data_reader.c			\
+		parser/data_transform.c			\
+		parser/data_config.c			\
+		parser/data_lights.c			\
+		parser/data_planes.c			\
+		parser/data_spheres.c			\
+		parser/objects_data.c
+
+SRC +=	loop/loop.c
+
+SRC +=	inputs/inputs.c					\
+		inputs/inputs_keys.c			\
+		inputs/inputs_mouse.c
+
+SRC+=	hooks/hooks.c
+
+SRC+=	fullscreen/fullscreen.c
+
+SRC+=	matrix/move_x_axis.c			\
+		matrix/move_y_axis.c			\
+		matrix/move_z_axis.c
+
+SRC+=	draw/draw.c
+
+SRC+=	raytracer/raytracer.c
+
+SRC+=	rays/ray.c
+
+SRC+=	vec3/vec3_calc.c				\
+		vec3/vec3_calc_double.c
+
+SRC+=	intersections/inter_spheres.c	\
+		intersections/inter_cylinders.c	\
+		intersections/inter_cones.c		\
+		intersections/inter_planes.c
 
 SRCS = $(addprefix $(PATH_SRC), $(SRC))
 
