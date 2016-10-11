@@ -72,7 +72,7 @@ void	mouse_hook(t_env *e)
 
 	if (e->inputs.mouse_left)
 	{
-		ray = create_ray(&e->scene->cam->pos, (t_vec3)
+		ray = create_ray(e->scene->cam, (t_vec3)
 		{
 			e->inputs.mouse_x - (e->scene->size.w / 2),
 			e->inputs.mouse_y - (e->scene->size.h / 2),
