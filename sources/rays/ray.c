@@ -34,9 +34,9 @@ t_ray					*create_ray(t_cam *cam, t_vec3 to)
 
 	if (!(ray = (t_ray *)malloc(sizeof(t_ray))))
 		error(-16, "Unable to create ray.");
-	ray->origin.x = to.x;
-	ray->origin.y = to.y;
-	ray->origin.z = 0;
+	ray->origin.x = cam->pos.x;
+	ray->origin.y = cam->pos.y;
+	ray->origin.z = cam->pos.z;
 	// ray->dir.x = to.x - ray->origin.x;
 	// ray->dir.y = to.y - ray->origin.y;
 	// ray->dir.z = to.z - ray->origin.z;
