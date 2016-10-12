@@ -18,20 +18,19 @@ static int	test_hit(t_ray *ray, t_cylinder *c, double *z)
 
 	ret = FALSE;
 	
-	return (ret));
+	return (ret);
 }
 
 void		inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter)
 {
 	int		i;
 	double	z;
-
 	i = 0;
 	while (i < e->scene->n_cylinder)
 	{
 		if (test_hit(ray, &e->scene->cylinders[i], &z))
 		{
-			draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
+			// draw_pixel(e, (t_pixel){ray->x, ray->y, e->scene->spheres[i].color});
 	// 		return (&e->scene->cylinders[i]);
 			if (z < RAY_END)
 			{
@@ -52,5 +51,4 @@ void		inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter)
 		}
 		++i;
 	}
-	return (0);
 }
