@@ -4,9 +4,9 @@ config
 		height:600
 	counts
 		lights:0
-		spheres:3
+		spheres:1
 		cylinders:0
-		cones:0
+		cones:1
 		planes:0
 	camera
 		fov:90
@@ -19,17 +19,11 @@ spheres
 			z:200
 		radius:100
 		color:#ffffff
-	1
+spheres
+	0
 		pos
-			x:-500
+			x:0
 			y:0
-			z:200
+			z:400
 		radius:100
-		color:#ffffff
-	2
-		pos
-			x:500
-			y:0
-			z:200
-		radius:100
-		color:#ffffff
+		color:#ee55ee

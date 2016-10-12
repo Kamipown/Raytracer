@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/12 16:34:59 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/12 20:46:22 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ typedef struct		s_cylinder
 {
 	t_vec3			pos;
 	t_vec3			rot;
-	int				height;
 	int				radius;
 	int				color;
 }					t_cylinder;
@@ -91,7 +90,8 @@ typedef struct		s_cone
 {
 	t_vec3			pos;
 	t_vec3			rot;
-	int				height;
+	t_vec3 			normal;
+	int				radius;
 	int				color;
 }					t_cone;
 

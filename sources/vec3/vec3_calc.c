@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_calc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 16:33:47 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/20 15:58:46 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/12 20:47:06 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,18 @@ t_vec3		vec_mul(t_vec3 *v1, t_vec3 *v2)
 	return (ret);
 }
 
-t_vec3		vec_div(t_vec3 *v1, t_vec3 *v2)
+double	vec_len(t_vec3 *v)
 {
-	t_vec3	ret;
+	double	x;
+	double	y;
+	double	z;
+	double	s;
 
-	ret.x = v1->x / v2->x;
-	ret.y = v1->y / v2->y;
-	ret.z = v1->z / v2->z;
-	return (ret);
+	x = pow(v->x, 2.0);
+	y = pow(v->y, 2.0);
+	z = pow(v->z, 2.0);
+	s = x + y + z;
+	return (s);
 }
 
 void		vec_normalize(t_vec3 *v)

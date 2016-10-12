@@ -53,6 +53,18 @@ void		fill_cones_data(t_scene *s, char *data)
 		request = construct_request_int("cones.#.pos.z", i);
 		s->cones[i].pos.z = read_int_data(data, request);
 		free(request);
+		request = construct_request_int("cones.#.normal.x", i);
+		s->cones[i].normal.x = read_int_data(data, request);
+		free(request);
+		request = construct_request_int("cones.#.normal.y", i);
+		s->cones[i].normal.y = read_int_data(data, request);
+		free(request);
+		request = construct_request_int("cones.#.normal.z", i);
+		s->cones[i].normal.z = read_int_data(data, request);
+		free(request);
+		request = construct_request_int("cones.#.radius", i);
+		s->cones[i].radius = read_int_data(data, request);
+		free(request);
 		request = construct_request_int("cones.#.color", i);
 		s->cones[i].color = read_color_data(data, request);
 		free(request);
