@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/08 22:09:19 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/12 16:34:59 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ typedef struct		s_vec3
 	double			y;
 	double			z;
 }					t_vec3;
+
+typedef struct 		s_equation
+{
+	double 			a;
+	double 			b;
+	double 			c;
+	double 			delta;
+	double 			z1;
+	double 			z2;
+}					t_equation;
 
 typedef struct		s_pixel
 {

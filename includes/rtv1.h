@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/05 15:46:01 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/12 16:37:45 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,9 @@
 # define MODE_SELECT    2
 
 # define MOVE_SPEED		20
+
+#define DELTA           (e.b * e.b - (4 * e.a * e.c))
+#define Z1              ((-e.b + sqrt(DELTA)) / (2.0 * e.a))
+#define Z2              ((-e.b - sqrt(DELTA)) / (2.0 * e.a))
 
 #endif
