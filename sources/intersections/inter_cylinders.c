@@ -21,7 +21,7 @@ static int	test_hit(t_ray *ray, t_cylinder *c)
 
 void		inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter)
 {
-	// int		i;
+		// int		i;
 
 	// i = 0;
 	// while (i < e->scene->n_cylinder)

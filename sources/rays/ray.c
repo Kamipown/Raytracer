@@ -125,6 +125,7 @@ t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
 	inter = create_intersection();
 	inter_spheres(e, ray, inter);
 	inter_cylinders(e, ray, inter);
+
 	inter_cones(e, ray, inter);
 	inter_planes(e, ray, inter);
 	select_intersection(inter, flag);

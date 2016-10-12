@@ -22,6 +22,7 @@ void		raytrace(t_env *e)
 	//printf("Camera: (%f, %f, %f)\n", e->scene->cam->pos.x, e->scene->cam->pos.y, e->scene->cam->pos.z);
 
 	y = 0;
+	printf("%f %f %f", e->scene->cylinders[0].pos.x, e->scene->cylinders[0].pos.y, e->scene->cylinders[0].pos.z);
 	while (y < e->scene->size.h)
 	{
 		x = 0;
