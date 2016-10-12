@@ -32,13 +32,13 @@ static int	test_hit(t_ray *ray, t_sphere *s, double *z)
 		+ (ray->origin.z - s->pos.z) * (ray->origin.z - s->pos.z);
 	e.c -= (s->radius * s->radius);
 
-	e.delta = DELTA;
+	e.delta = (e.b * e.b - (4 * e.a * e.c));
 	
 	if (e.delta < 0.0)
 		return (0);
 
-	e.z1 = Z1;
-	e.z2 = Z2;
+	e.z1 = ray->origin.z + ((-e.b + sqrt(e.delta)) / (2.0 * e.a)) * ray->dir.z;
+	e.z2 = ray->origin.z + ((-e.b - sqrt(e.delta)) / (2.0 * e.a)) * ray->dir.z;
 
 	ret = FALSE;
 	if (e.z1 > 0.1 && e.z1 > 0.000001)
