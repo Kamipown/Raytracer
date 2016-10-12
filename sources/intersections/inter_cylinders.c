@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 21:57:15 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/07 16:20:10 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/10 02:20:32 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,32 @@
 
 static int	test_hit(t_ray *ray, t_cylinder *c)
 {
-	if (ray && c)
+	double 	uZ;
+	double 	d;
+	double 	delta;
+	double 	l;
+	double 	a;
+	double 	z1;
+	double 	z2;
+
+
+	uZ = ray->dir.z * ray->dir.z;
+	d = (t_vec3){ray->dir.y, -ray->dir.x, 0} * ray->origin.z;
+	delta = (c->radius * c->radius) * (ray->dir.z * ray-dir.z) - (d * d);
+	
+	if (delta < 0)
+	{
 		return (0);
-	return (0);
+	}
+
+	l = ray->dir.z * ray->origin.z;
+	a = vec_mul_to_d(ray->origin, ray->origin.z);
+
+	if (l > 0 && a > (c->radius * c->radius))
+	{
+		return (0)
+	}
+
 }
 
 void		inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter)
