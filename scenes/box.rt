@@ -28,10 +28,10 @@ spheres
 		color:#5555cc
 	2
 		pos
-			x:-30
-			y:-20
+			x:50
+			y:0
 			z:200
-		radius:10
+		radius:50
 		color:#f5ab35
 
 planes

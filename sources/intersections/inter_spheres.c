@@ -11,12 +11,10 @@
 /* ************************************************************************** */
 
 #include "rtv1.h"
-#include <stdio.h>
 
-static int	test_hit(t_ray *ray, t_sphere *s, double *z)
+void	inter_spheres(t_ray *ray, t_obj *s, double *z)
 {
 	t_equation 		e;
-	unsigned int	ret;
 
 	e.a = ray->dir.x * ray->dir.x 
 		+ ray->dir.y * ray->dir.y
@@ -35,52 +33,13 @@ static int	test_hit(t_ray *ray, t_sphere *s, double *z)
 	e.delta = (e.b * e.b - (4 * e.a * e.c));
 	
 	if (e.delta < 0.0)
-		return (0);
+		return ;
 
 	e.z1 = ray->origin.z + ((-e.b + sqrt(e.delta)) / (2.0 * e.a)) * ray->dir.z;
 	e.z2 = ray->origin.z + ((-e.b - sqrt(e.delta)) / (2.0 * e.a)) * ray->dir.z;
 
-	ret = FALSE;
 	if (e.z1 > 0.1 && e.z1 > 0.000001)
-	{
 		*z = e.z1;
-		ret = TRUE;
-	}
 	if (e.z2 > 0.1 && e.z2 > 0.000001 && e.z2 < e.z1)
-	{
 		*z = e.z2;
-		ret = TRUE;
-	}
-	return (ret);
-}
-
-void		inter_spheres(t_env *e, t_ray *ray, t_intersection *inter)
-{
-	int		i;
-	double	z;
-
-	i = 0;
-	while (i < e->scene->n_sphere)
-	{
-		if (test_hit(ray, &e->scene->spheres[i], &z))
-		{
-			if (z < RAY_END)
-			{
-				if (!inter->sphere)
-				{
-					inter->sphere = &e->scene->spheres[i];
-					inter->z_sphere = z;
-				}
-				else
-				{
-					if (z < inter->z_sphere)
-					{
-						inter->sphere = &e->scene->spheres[i];
-						inter->z_sphere = z;
-					}
-				}
-			}
-		}
-		++i;
-	}
 }

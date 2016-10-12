@@ -12,56 +12,32 @@
 
 #include "rtv1.h"
 
-static void	print_cylinder(t_scene *s)
+void		fill_cylinders_data(t_scene *s, char *data, int counts[4])
 {
 	int		i;
-
-	i = 0;
-	while (i < s->n_cylinder)
-	{
-		ft_putstr("Cylinder ");
-		ft_putnbr(i);
-		ft_putstr(" : ");
-		ft_putstr("\tpos(");
-		ft_putnbr(s->cylinders[i].pos.x);
-		ft_putstr(", ");
-		ft_putnbr(s->cylinders[i].pos.y);
-		ft_putstr(", ");
-		ft_putnbr(s->cylinders[i].pos.z);
-		ft_putstr(") color(");
-		ft_putnbr(s->cylinders[i].color);
-		ft_putstr(") radius(");
-		ft_putnbr(s->cylinders[i].radius);
-		ft_putendl(")");
-		++i;
-	}
-	ft_putchar('\n');
-}
-
-void		fill_cylinders_data(t_scene *s, char *data)
-{
-	int		i;
+	int		j;
 	char	*request;
 
 	i = 0;
-	while (i < s->n_cylinder)
+	j = counts[0];
+	while (i < counts[1])
 	{
 		request = construct_request_int("cylinders.#.pos.x", i);
-		s->cylinders[i].pos.x = read_int_data(data, request);
+		s->objs[i + j].pos.x = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cylinders.#.pos.y", i);
-		s->cylinders[i].pos.y = read_int_data(data, request);
+		s->objs[i + j].pos.y = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cylinders.#.pos.z", i);
-		s->cylinders[i].pos.z = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("cylinders.#.color", i);
-		s->cylinders[i].color = read_color_data(data, request);
+		s->objs[i + j].pos.z = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cylinders.#.radius", i);
-		s->cylinders[i].radius = read_int_data(data, request);
+		s->objs[i + j].radius = read_int_data(data, request);
 		free(request);
+		request = construct_request_int("cylinders.#.color", i);
+		s->objs[i + j].color = read_color_data(data, request);
+		free(request);
+		s->objs[i + j].type = CYLINDER;
 		++i;
 	}
-	print_cylinder(s);
 }

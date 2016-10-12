@@ -74,7 +74,8 @@ SRC+=	rays/ray.c
 SRC+=	vec3/vec3_calc.c				\
 		vec3/vec3_calc_double.c
 
-SRC+=	intersections/inter_spheres.c	\
+SRC+=	intersections/inter.c	\
+		intersections/inter_spheres.c	\
 		intersections/inter_cylinders.c	\
 		intersections/inter_cones.c		\
 		intersections/inter_planes.c

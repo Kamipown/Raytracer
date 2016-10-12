@@ -12,6 +12,31 @@
 
 #include "rtv1.h"
 
+int			*fill_counts_data(t_scene *s, char *data)
+{
+	int		*counts;
+
+	counts = 0;
+	if (!(counts = (int *)malloc(sizeof(int) * 4)))
+		error(-1000, "Count error.");
+	s->n_light = read_int_data(data, "config.counts.lights");
+	s->n_light = s->n_light < 0 || s->n_light > 100 ? 0 : s->n_light;
+	s->lights = (t_light *)malloc(sizeof(t_light) * s->n_light);
+	counts[0] = read_int_data(data, "config.counts.spheres");
+	counts[1] = read_int_data(data, "config.counts.cylinders");
+	counts[2] = read_int_data(data, "config.counts.cones");
+	counts[3] = read_int_data(data, "config.counts.planes");
+	counts[0] = counts[0] < 0 || counts[0] > 100 ? 0 : counts[0];
+	counts[1] = counts[1] < 0 || counts[1] > 100 ? 0 : counts[1];
+	counts[2] = counts[2] < 0 || counts[2] > 100 ? 0 : counts[2];
+	counts[3] = counts[3] < 0 || counts[3] > 100 ? 0 : counts[3];
+	s->n_obj = counts[0] + counts[1] + counts[2] + counts[3];
+	s->objs = (t_obj *)malloc(sizeof(t_obj) * s->n_obj);
+	if (!s->lights || !s->objs)
+		error(-11, "Unable to create objects.");
+	return (counts);
+}
+
 void		fill_camera_data(t_scene *s, char *data)
 {
 	if (!(s->cam = (t_cam *)malloc(sizeof(t_cam))))
@@ -23,46 +48,6 @@ void		fill_camera_data(t_scene *s, char *data)
 	printf("FOV:        %d\n", s->cam->fov);
 	printf("Focal Dist: %f\n", s->cam->focal_dist);
 	printf("Position:   %f, %f, %f\n\n", s->cam->pos.x, s->cam->pos.y, s->cam->pos.z);
-}
-
-static void	malloc_counts(t_scene *s)
-{
-	if (s->n_light)
-		if (!(s->lights =
-			(t_light *)malloc(sizeof(t_light) * s->n_light)))
-			error(-11, "Unable to create lights.");
-	if (s->n_sphere)
-		if (!(s->spheres =
-			(t_sphere *)malloc(sizeof(t_sphere) * s->n_sphere)))
-			error(-12, "Unable to create spheres.");
-	if (s->n_cylinder)
-		if (!(s->cylinders =
-			(t_cylinder *)malloc(sizeof(t_cylinder) * s->n_cylinder)))
-			error(-13, "Unable to create cylinders.");
-	if (s->n_cone)
-		if (!(s->cones =
-			(t_cone *)malloc(sizeof(t_cone) * s->n_cone)))
-			error(-14, "Unable to create cones.");
-	if (s->n_plane)
-		if (!(s->planes =
-			(t_plane *)malloc(sizeof(t_plane) * s->n_plane)))
-			error(-15, "Unable to create planes.");
-}
-
-void		fill_counts_data(t_scene *s, char *data)
-{
-	s->n_light = read_int_data(data, "config.counts.lights");
-	s->n_sphere = read_int_data(data, "config.counts.spheres");
-	s->n_cylinder = read_int_data(data, "config.counts.cylinders");
-	s->n_cone = read_int_data(data, "config.counts.cones");
-	s->n_plane = read_int_data(data, "config.counts.planes");
-	s->n_light = s->n_light < 0 || s->n_light > 100 ? 0 : s->n_light;
-	s->n_sphere = s->n_sphere < 0 || s->n_sphere > 100 ? 0 : s->n_sphere;
-	s->n_cylinder = s->n_cylinder < 0 || s->n_cylinder > 100 ?
-		0 : s->n_cylinder;
-	s->n_cone = s->n_cone < 0 || s->n_cone > 100 ? 0 : s->n_cone;
-	s->n_plane = s->n_plane < 0 || s->n_plane > 100 ? 0 : s->n_plane;
-	malloc_counts(s);
 }
 
 void		fill_screen_data(t_scene *s, char *data)

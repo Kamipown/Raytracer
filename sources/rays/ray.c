@@ -46,13 +46,13 @@ t_ray					*create_ray(t_cam *cam, t_vec3 to)
 	vec_normalize(&ray->dir);
 
 	//rotate(&ray->dir);
-	if (to.x == 0 && to.y == 0)
-	{
-		printf("Distance focale:    (%f)\n", cam->focal_dist);
-		printf("Position camera:    (%f, %f, %f)\n", cam->pos.x, cam->pos.y, cam->pos.z);
-		printf("Pixel traverse:     (%f, %f, %f)\n", to.x, to.y, to.z);
-		printf("Direction calculee: (%f, %f, %f)\n", ray->dir.x, ray->dir.y, ray->dir.z);
-	}
+	// if (to.x == 0 && to.y == 0)
+	// {
+	// 	printf("Distance focale:    (%f)\n", cam->focal_dist);
+	// 	printf("Position camera:    (%f, %f, %f)\n", cam->pos.x, cam->pos.y, cam->pos.z);
+	// 	printf("Pixel traverse:     (%f, %f, %f)\n", to.x, to.y, to.z);
+	// 	printf("Direction calculee: (%f, %f, %f)\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	// }
 
 	return (ray);
 }
@@ -63,52 +63,10 @@ static t_intersection	*create_intersection(void)
 
 	if (!(inter = malloc(sizeof(t_intersection))))
 		error(-17, "Unable to create intersection.");
-	inter->sphere = 0;
-	inter->cylinder = 0;
-	inter->cone = 0;
-	inter->plane = 0;
-	inter->shape_type = 0;
-	inter->z_sphere = RAY_END + 1;
-	inter->z_cylinder = RAY_END + 1;
-	inter->z_cone = RAY_END + 1;
-	inter->z_plane = RAY_END + 1;
+	inter->obj = 0;
+	inter->z = RAY_END + 1;
+	inter->type = 0;
 	return (inter);
-}
-
-static void				select_intersection(t_intersection *inter, int flag)
-{
-	if (inter->sphere)
-	{
-		if (flag == 1)
-			printf("z_sphere: %f, ", inter->z_sphere);
-		if (inter->z_sphere < inter->z_cylinder
-		&& inter->z_sphere < inter->z_cone
-		&& inter->z_sphere < inter->z_plane)
-			inter->shape_type = SPHERE;
-	}
-	if (inter->cylinder)
-	{
-		if (inter->z_cylinder < inter->z_sphere
-		&& inter->z_cylinder < inter->z_cone
-		&& inter->z_cylinder < inter->z_plane)
-			inter->shape_type = CYLINDER;
-	}
-	if (inter->cone)
-	{
-		if (inter->z_cone < inter->z_sphere
-		&& inter->z_cone < inter->z_cylinder
-		&& inter->z_cone < inter->z_plane)
-			inter->shape_type = CONE;
-	}
-	if (inter->plane)
-	{
-		if (flag == 1)
-			printf("z_plane: %f\n", inter->z_plane);
-		if (inter->z_plane < inter->z_sphere
-		&& inter->z_plane < inter->z_cylinder
-		&& inter->z_plane < inter->z_cone)
-			inter->shape_type = PLANE;
-	}
 }
 
 t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
@@ -123,10 +81,8 @@ t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
 	}
 
 	inter = create_intersection();
-	inter_spheres(e, ray, inter);
-	inter_cylinders(e, ray, inter);
-	inter_cones(e, ray, inter);
-	inter_planes(e, ray, inter);
-	select_intersection(inter, flag);
+	intersect_objects(e, ray, inter);
+
+	//write(1, "LO))))))))))L\n", 14);
 	return (inter);
 }

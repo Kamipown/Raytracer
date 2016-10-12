@@ -25,14 +25,15 @@ int					read_color_data(char *data, char *request);
 char				*construct_request_int(char *request, int n);
 
 void				fill_screen_data(t_scene *s, char *data);
-void				fill_counts_data(t_scene *s, char *data);
 void				fill_camera_data(t_scene *s, char *data);
-void				fill_lights_data(t_scene *s, char *data);
-void				fill_spheres_data(t_scene *s, char *data);
+int					*fill_counts_data(t_scene *s, char *data);
 
-void				fill_cylinders_data(t_scene *s, char *data);
-void				fill_cones_data(t_scene *s, char *data);
-void				fill_planes_data(t_scene *s, char *data);
+void				fill_lights_data(t_scene *s, char *data);
+
+void				fill_spheres_data(t_scene *s, char *data, int counts[4]);
+void				fill_cylinders_data(t_scene *s, char *data, int counts[4]);
+void				fill_cones_data(t_scene *s, char *data, int counts[4]);
+void				fill_planes_data(t_scene *s, char *data, int counts[4]);
 
 void				loop(t_env *e);
 
@@ -73,10 +74,11 @@ double				vec_sub_to_d(t_vec3 *v1, t_vec3 *v2);
 double				vec_mul_to_d(t_vec3 *v1, t_vec3 *v2);
 double				vec_div_to_d(t_vec3 *v1, t_vec3 *v2);
 
-void				inter_spheres(t_env *e, t_ray *ray, t_intersection *inter);
-void				inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter);
-void				inter_cones(t_env *e, t_ray *ray, t_intersection *inter);
-void				inter_planes(t_env *e, t_ray *ray, t_intersection *inter);
+void				intersect_objects(t_env *e, t_ray *ray, t_intersection *inter);
+void				inter_spheres(t_ray *ray, t_obj *s, double *z);
+void				inter_cylinders(t_ray *ray, t_obj *c, double *z);
+void				inter_cones(t_ray *ray, t_obj *c, double *z);
+void				inter_planes(t_ray *ray, t_obj *p, double *z);
 
 void				error(int n, char *mes);
 

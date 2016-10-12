@@ -71,65 +71,62 @@ typedef struct		s_light
 	int				intensity;
 }					t_light;
 
-typedef struct		s_sphere
-{
-	t_vec3			pos;
-	int				color;
-	int				radius;
-}					t_sphere;
+// typedef struct		s_sphere
+// {
+// 	t_vec3			pos;
+// 	int				color;
+// 	int				radius;
+// }					t_sphere;
 
-typedef struct		s_cylinder
+// typedef struct		s_cylinder
+// {
+// 	t_vec3			pos;
+// 	t_vec3			rot;
+// 	int				radius;
+// 	int				color;
+// }					t_cylinder;
+
+// typedef struct		s_cone
+// {
+// 	t_vec3			pos;
+// 	t_vec3			rot;
+// 	t_vec3 			normal;
+// 	int				radius;
+// 	int				color;
+// }					t_cone;
+
+// typedef struct		s_plane
+// {
+// 	t_vec3			pos;
+// 	t_vec3			normal;
+// 	int				width;
+// 	int				height;
+// 	int				color;
+// }					t_plane;
+
+typedef struct		s_obj
 {
 	t_vec3			pos;
 	t_vec3			rot;
 	int				radius;
 	int				color;
-}					t_cylinder;
-
-typedef struct		s_cone
-{
-	t_vec3			pos;
-	t_vec3			rot;
-	t_vec3 			normal;
-	int				radius;
-	int				color;
-}					t_cone;
-
-typedef struct		s_plane
-{
-	t_vec3			pos;
-	t_vec3			normal;
-	int				width;
-	int				height;
-	int				color;
-}					t_plane;
+	int				type;
+}					t_obj;
 
 typedef struct		s_intersection
 {
-	t_sphere		*sphere;
-	t_cylinder		*cylinder;
-	t_cone			*cone;
-	t_plane			*plane;
-	double			z_sphere;
-	double			z_cylinder;
-	double			z_cone;
-	double			z_plane;
-	int				shape_type;
+	t_obj			*obj;
+	double			z;
+	int				type;
 }					t_intersection;
 
 typedef struct		s_scene
 {
 	t_cam			*cam;
 	t_light			*lights;
-	t_sphere		*spheres;
-	t_cylinder		*cylinders;
-	t_cone			*cones;
-	t_plane			*planes;
+	t_obj			*objs;
 	int				n_light;
-	int				n_sphere;
-	int				n_cylinder;
-	int				n_cone;
-	int				n_plane;
+	int				n_obj;
 	t_size			size;
 	t_intersection	*selected;
 }					t_scene;

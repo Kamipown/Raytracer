@@ -12,10 +12,9 @@
 
 #include "rtv1.h"
 
-static int	test_hit(t_ray *ray, t_cone *c, double *z)
+void	inter_cones(t_ray *ray, t_obj *c, double *z)
 {
-	t_equation 		e;
-	unsigned int	ret;
+	// t_equation 		e;
 	// double 			angle;
 
 	// angle = c->radius * (M_PI / 180);
@@ -51,52 +50,15 @@ static int	test_hit(t_ray *ray, t_cone *c, double *z)
 	// - (ray->origin.z * ray->origin.z)
 	// * pow(c->radius, 2);
 
-	e.delta = DELTA;
+	// e.delta = DELTA;
 
-	e.z1 = Z1;
-	e.z2 = Z2;
+	// e.z1 = Z1;
+	// e.z2 = Z2;
 
-	ret = FALSE;
-	if (e.z1 > 0.0)
-	{
-		*z = e.z1;
-		ret = TRUE;
-	}
-	if (e.z2 > 0.0 && e.z2 < e.z1)
-	{
-		*z = e.z2;
-		ret = TRUE;
-	}
-	return (ret);
-}
-
-void		inter_cones(t_env *e, t_ray *ray, t_intersection *inter)
-{
-	int		i;
-	double	z;
-
-	i = 0;
-	while (i < e->scene->n_cone)
-	{
-		if (test_hit(ray, &e->scene->cones[i], &z))
-		{
-			if (z < RAY_END)
-			{
-				if (!inter->cone)
-				{
-					inter->cone = &e->scene->cones[i];
-					inter->z_cone = z;
-				}
-				else
-				{
-					if (z < inter->z_cone)
-					{
-						inter->cone = &e->scene->cones[i];
-						inter->z_cone = z;
-					}
-				}
-			}
-		}
-		++i;
-	}
+	// if (e.z1 > 0.0)
+	// 	*z = e.z1;
+	// if (e.z2 > 0.0 && e.z2 < e.z1)
+	// 	*z = e.z2;
+	if (ray && c && z)
+		return ;
 }
