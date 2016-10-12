@@ -58,9 +58,7 @@ static int	test_hit(t_ray *ray, t_sphere *s, double *z)
 	// }
 	// return (ret);
 
-
-
-
+	//
 
 	// a = vec_mul_to_d(&ray->dir, &ray->dir);
 	// b = (2 * ray->origin.x * ray->dir.x)
@@ -88,9 +86,7 @@ static int	test_hit(t_ray *ray, t_sphere *s, double *z)
 	// }
 	// return (ret);
 
-
-
-
+	//
 
 	t_vec3	dist;
 	double	b;
