@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 21:57:15 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/12 16:05:25 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/07 16:20:10 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ void		inter_cylinders(t_env *e, t_ray *ray, t_intersection *inter)
 {
 	int		i;
 	double	z;
-
 	i = 0;
 	while (i < e->scene->n_cylinder)
 	{
 		if (test_hit(ray, &e->scene->cylinders[i], &z))
 		{
-			// draw_pixel(e, (t_pixel){x, y, e->scene->spheres[i].color});
+			// draw_pixel(e, (t_pixel){ray->x, ray->y, e->scene->spheres[i].color});
 	// 		return (&e->scene->cylinders[i]);
 			if (z < RAY_END)
 			{
