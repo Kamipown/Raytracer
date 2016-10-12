@@ -48,7 +48,8 @@ SRC +=	parser/parser.c					\
 		parser/data_lights.c			\
 		parser/data_planes.c			\
 		parser/data_spheres.c			\
-		parser/objects_data.c
+		parser/data_cones.c				\
+		parser/data_cylinders.c
 
 SRC +=	loop/loop.c
 

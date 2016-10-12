@@ -19,18 +19,23 @@ void		raytrace(t_env *e)
 	t_ray			*ray;
 	t_intersection	*inter;
 
+	//printf("Camera: (%f, %f, %f)\n", e->scene->cam->pos.x, e->scene->cam->pos.y, e->scene->cam->pos.z);
+
 	y = 0;
 	while (y < e->scene->size.h)
 	{
 		x = 0;
 		while (x < e->scene->size.w)
 		{
-			ray = create_ray(&e->scene->cam->pos, (t_vec3)
+			ray = create_ray(e->scene->cam, (t_vec3)
 			{
 				x - (e->scene->size.w / 2),
 				y - (e->scene->size.h / 2),
 				0
 			});
+
+			// printf("Origin: (%f, %f, %f)\n",
+			// 	ray->origin.x, ray->origin.y, ray->origin.z);
 			if ((inter = throw_ray(e, ray, 0)))
 			{
 				// calcul lights

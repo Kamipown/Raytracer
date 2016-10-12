@@ -12,19 +12,48 @@
 
 #include "rtv1.h"
 
-t_ray					*create_ray(t_vec3 *from, t_vec3 to)
+static double			deg_to_rad(double a)
+{
+	return (a * M_PI / 180);
+}
+
+static void				rotate(t_vec3 *v)
+{
+	t_vec3	t;
+
+	t.x = v->x;
+	t.y = v->y;
+	t.z = v->z;
+	v->x = t.x * cos(deg_to_rad(45)) + t.z * sin(deg_to_rad(45));
+	v->z = t.x * -(sin(deg_to_rad(45))) + t.z * cos(deg_to_rad(45));
+}
+
+t_ray					*create_ray(t_cam *cam, t_vec3 to)
 {
 	t_ray	*ray;
 
 	if (!(ray = (t_ray *)malloc(sizeof(t_ray))))
 		error(-16, "Unable to create ray.");
-	ray->origin.x = from->x;
-	ray->origin.y = from->y;
-	ray->origin.z = from->z;
-	ray->dir.x = to.x - ray->origin.x;
-	ray->dir.y = to.y - ray->origin.y;
-	ray->dir.z = to.z - ray->origin.z;
+	ray->origin.x = cam->pos.x;
+	ray->origin.y = cam->pos.y;
+	ray->origin.z = cam->pos.z;
+	// ray->dir.x = to.x - ray->origin.x;
+	// ray->dir.y = to.y - ray->origin.y;
+	// ray->dir.z = to.z - ray->origin.z;
+	ray->dir.x = to.x;
+	ray->dir.y = to.y;
+	ray->dir.z = cam->focal_dist;
 	vec_normalize(&ray->dir);
+
+	//rotate(&ray->dir);
+	if (to.x == 0 && to.y == 0)
+	{
+		printf("Distance focale:    (%f)\n", cam->focal_dist);
+		printf("Position camera:    (%f, %f, %f)\n", cam->pos.x, cam->pos.y, cam->pos.z);
+		printf("Pixel traverse:     (%f, %f, %f)\n", to.x, to.y, to.z);
+		printf("Direction calculee: (%f, %f, %f)\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	}
+
 	return (ray);
 }
 
@@ -85,6 +114,13 @@ static void				select_intersection(t_intersection *inter, int flag)
 t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
 {
 	t_intersection	*inter;
+
+	if (flag == 1)
+	{
+		printf("Camera:\nposition(%f, %f, %f)\ndirection(%f, %f, %f)\n\n",
+			ray->origin.x, ray->origin.y, ray->origin.z,
+			ray->dir.x, ray->dir.y, ray->dir.z);
+	}
 
 	inter = create_intersection();
 	inter_spheres(e, ray, inter);

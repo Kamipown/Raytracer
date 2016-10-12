@@ -41,14 +41,15 @@ static int	test_hit(t_ray *ray, t_plane *p, double *z)
 	};
 	vec_normalize(&N);
 
-
 	m = vec_mul_to_d(&N, &ray->dir);
 
 	if (fabs(m) < 0.000001)
 		return (0);
+
 	L = vec_sub(&ray->origin, &p->pos);
 	d = vec_mul_to_d(&N, &L);
 	t = -d / m;
+
 	if (t <= 0)
 		return (0);
 	tmp = mul_d_to_vec(t, &ray->dir);

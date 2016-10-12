@@ -1,0 +1,21 @@
+config
+	screen
+		width:800
+		height:600
+	counts
+		lights:0
+		spheres:0
+		cylinders:1
+		cones:0
+		planes:0
+	camera
+		fov:90
+
+cylinders
+	0
+		pos
+			x:0
+			y:0
+			z:200
+		radius:100
+		color:#ffffff
