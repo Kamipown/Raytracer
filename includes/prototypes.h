@@ -64,21 +64,23 @@ void				raytrace(t_env *e);
 t_ray				*create_ray(t_cam *cam, t_vec3 to);
 t_intersection		*throw_ray(t_env *e, t_ray *ray, int flag);
 
-t_vec3				vec_add(t_vec3 *v1, t_vec3 *v2);
-t_vec3				vec_sub(t_vec3 *v1, t_vec3 *v2);
-t_vec3				vec_mul(t_vec3 *v1, t_vec3 *v2);
-t_vec3				vec_div(t_vec3 *v1, t_vec3 *v2);
-void				vec_normalize(t_vec3 *v);
-double				vec_add_to_d(t_vec3 *v1, t_vec3 *v2);
-double				vec_sub_to_d(t_vec3 *v1, t_vec3 *v2);
-double				vec_mul_to_d(t_vec3 *v1, t_vec3 *v2);
-double				vec_div_to_d(t_vec3 *v1, t_vec3 *v2);
-
 void				intersect_objects(t_env *e, t_ray *ray, t_intersection *inter);
-void				inter_spheres(t_ray *ray, t_obj *s, double *z);
-void				inter_cylinders(t_ray *ray, t_obj *c, double *z);
-void				inter_cones(t_ray *ray, t_obj *c, double *z);
-void				inter_planes(t_ray *ray, t_obj *p, double *z);
+t_bool				inter_spheres(t_ray *ray, t_obj *s, double *z, double *t);
+t_bool				inter_cylinders(t_ray *ray, t_obj *c, double *z);
+t_bool				inter_cones(t_ray *ray, t_obj *c, double *z);
+t_bool				inter_planes(t_ray *ray, t_obj *p, double *z, double *t);
+
+void				process_lighting(t_env *e, t_ray *ray, t_intersection *inter);
+
+t_vec3				vec_add(t_vec3 v1, t_vec3 v2);
+t_vec3				vec_sub(t_vec3 v1, t_vec3 v2);
+t_vec3				vec_mul(t_vec3 v1, t_vec3 v2);
+t_vec3				vec_div(t_vec3 v1, t_vec3 v2);
+void				vec_normalize(t_vec3 *v);
+double				vec_add_to_d(t_vec3 v1, t_vec3 v2);
+double				vec_sub_to_d(t_vec3 v1, t_vec3 v2);
+double				vec_mul_to_d(t_vec3 v1, t_vec3 v2);
+t_vec3				vec_mul_d(t_vec3 v, double d);
 
 void				error(int n, char *mes);
 

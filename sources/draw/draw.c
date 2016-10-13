@@ -23,9 +23,9 @@ void			draw_pixel(t_env *e, t_pixel p)
 	if (p.x > 0 && p.x < e->scene->size.w && p.y > 0 && p.y < e->scene->size.h)
 	{
 		SDL_SetRenderDrawColor(e->renderer,
-			p.color >> 16,
-			p.color >> 8,
-			p.color,
+			p.color.r,
+			p.color.g,
+			p.color.b,
 			255);
 		SDL_RenderDrawPoint(e->renderer, p.x, p.y);
 	}

@@ -6,7 +6,7 @@
 #    By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/11 13:43:04 by dcognata          #+#    #+#              #
-#    Updated: 2016/10/05 16:40:33 by dcognata         ###   ########.fr        #
+#    Updated: 2016/10/13 05:18:39 by pdelobbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INCLUDES =	-I./libft/includes/		\
 			-I./includes 			\
 			-I./sdl2/include/
 
-FLG =	-Wall -Wextra -pedantic -O3 #-Werror
+FLG = -g	-Wall -Wextra -pedantic -O3 #-Werror
 
 CFLAGS = $(INCLUDES) $(FLG)
 
@@ -73,6 +73,8 @@ SRC+=	rays/ray.c
 
 SRC+=	vec3/vec3_calc.c				\
 		vec3/vec3_calc_double.c
+
+SRC+=	lighting/process_lighting.c
 
 SRC+=	intersections/inter.c	\
 		intersections/inter_spheres.c	\

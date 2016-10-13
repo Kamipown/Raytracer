@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-void	inter_cones(t_ray *ray, t_obj *c, double *z)
+t_bool	inter_cones(t_ray *ray, t_obj *c, double *z)
 {
 	// t_equation 		e;
 	// double 			angle;
@@ -60,5 +60,6 @@ void	inter_cones(t_ray *ray, t_obj *c, double *z)
 	// if (e.z2 > 0.0 && e.z2 < e.z1)
 	// 	*z = e.z2;
 	if (ray && c && z)
-		return ;
+		return (FALSE);
+	return (FALSE);
 }

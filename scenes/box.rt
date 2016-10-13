@@ -18,21 +18,33 @@ spheres
 			y:0
 			z:200
 		radius:50
-		color:#cc5555
+		color
+			x:1.0
+			y:0.2
+			z:0.2
+		refl:0.5
 	1
 		pos
 			x:210
 			y:150
 			z:120
 		radius:100
-		color:#5555cc
+		color
+			x:0.2
+			y:0.2
+			z:1.0
+		refl:0.5
 	2
 		pos
 			x:50
 			y:0
 			z:200
 		radius:50
-		color:#f5ab35
+		color
+			x:0.2
+			y:1.0
+			z:0.2
+		refl:0.5
 
 planes
 	0
@@ -44,7 +56,11 @@ planes
 			x:0
 			y:1
 			z:0
-		color:#019875
+		color
+			x:0.6
+			y:1.0
+			z:0.3
+		refl:0.3
 	1
 		pos
 			x:400
@@ -54,7 +70,11 @@ planes
 			x:-1
 			y:0
 			z:0
-		color:#4daf7c
+		color
+			x:0.8
+			y:0.4
+			z:0.1
+		refl:0.8
 	2
 		pos
 			x:0
@@ -64,7 +84,11 @@ planes
 			x:0
 			y:-1
 			z:0
-		color:#019875
+		color
+			x:0.2
+			y:1.0
+			z:0.9
+		refl:0.5
 	3
 		pos
 			x:-400
@@ -74,7 +98,11 @@ planes
 			x:1
 			y:0
 			z:0
-		color:#4daf7c
+		color
+			x:0.5
+			y:0.4
+			z:0.6
+		refl:0
 	4
 		pos
 			x:0
@@ -84,4 +112,8 @@ planes
 			x:0
 			y:0
 			z:-1
-		color:#03a678
+		color
+			x:0.1
+			y:0.1
+			z:0.1
+		refl:0.4

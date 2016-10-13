@@ -28,6 +28,13 @@ typedef struct		s_vec3
 	double			z;
 }					t_vec3;
 
+typedef struct		s_color
+{
+	double			r;
+	double			g;
+	double			b;
+}					t_color;
+
 typedef struct 		s_equation
 {
 	double 			a;
@@ -42,7 +49,7 @@ typedef struct		s_pixel
 {
 	int				x;
 	int				y;
-	int				color;
+	t_color			color;
 }					t_pixel;
 
 typedef struct		s_size
@@ -109,7 +116,8 @@ typedef struct		s_obj
 	t_vec3			pos;
 	t_vec3			rot;
 	int				radius;
-	int				color;
+	t_color			color;
+	double			refl;
 	int				type;
 }					t_obj;
 
@@ -117,6 +125,7 @@ typedef struct		s_intersection
 {
 	t_obj			*obj;
 	double			z;
+	double			t;
 	int				type;
 }					t_intersection;
 

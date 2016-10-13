@@ -31,9 +31,11 @@ void		raytrace(t_env *e)
 				y - (e->scene->size.h / 2),
 				0
 			});
-			if ((inter = throw_ray(e, ray, 0)))
+			inter = throw_ray(e, ray, 0);
+			if (inter->obj)
 			{
-				draw_pixel(e, (t_pixel){x, y, inter->obj->color});
+				process_lighting(e, ray, inter);
+				//draw_pixel(e, (t_pixel){x, y, inter->obj->color});
 				free(inter);
 			}
 			free(ray);
