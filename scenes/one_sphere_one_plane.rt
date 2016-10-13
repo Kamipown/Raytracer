@@ -7,17 +7,20 @@ config
 		spheres:1
 		cylinders:0
 		cones:0
-		planes:1
+		planes:0
 	camera
 		fov:90
 
 lights
 	0
 		pos
-			x:100
-			y:100
-			z:100
-		color:#cc5555
+			x:0
+			y:0
+			z:150
+		color
+			r:255
+			g:255
+			b:255
 		intensity:100
 
 spheres
@@ -25,21 +28,25 @@ spheres
 		pos
 			x:0
 			y:0
-			z:500
-		radius:100
-		color:#ffffff
+			z:350
+		radius:120
+		color
+			r:50
+			g:0
+			b:0
+		reflection:50
 
 planes
 	0
 		pos
-			x:0
+			x:-400
 			y:0
-			z:1000
+			z:300
 		normal
-			x:0
+			x:1
 			y:0
-			z:-1
-		size
-			width:500
-			height:500
-		color:#cc5555
+			z:0
+		color
+			r:100
+			g:100
+			b:100

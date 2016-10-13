@@ -73,7 +73,7 @@ t_bool				inter_cylinders(t_ray *ray, t_obj *c, double *z);
 t_bool				inter_cones(t_ray *ray, t_obj *c, double *z);
 t_bool				inter_planes(t_ray *ray, t_obj *p, double *z, double *t);
 
-void				process_lighting(t_env *e, t_ray *ray, t_intersection *inter);
+void				process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixel);
 
 t_vec3				vec_add(t_vec3 v1, t_vec3 v2);
 t_vec3				vec_sub(t_vec3 v1, t_vec3 v2);

@@ -14,7 +14,7 @@
 
 static void		draw_background(SDL_Renderer *renderer)
 {
-	SDL_SetRenderDrawColor(renderer, 17, 17, 17, 255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 }
 

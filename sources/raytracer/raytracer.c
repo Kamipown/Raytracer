@@ -18,6 +18,7 @@ void		raytrace(t_env *e)
 	int				y;
 	t_ray			*ray;
 	t_intersection	*inter;
+	t_pixel			pix;
 
 	y = 0;
 	while (y < e->scene->size.h)
@@ -34,13 +35,12 @@ void		raytrace(t_env *e)
 			inter = throw_ray(e, ray, 0);
 			if (inter->obj)
 			{
-				process_lighting(e, ray, inter);
-				t_pixel pix;
 				pix.x = x;
 				pix.y = y;
-				pix.color.r = inter->obj->color.r * 255.0;
-				pix.color.g = inter->obj->color.g * 255.0;
-				pix.color.b = inter->obj->color.b * 255.0;
+				process_lighting(e, ray, inter, &pix);
+				// pix.color.r = inter->obj->color.r * 255.0;
+				// pix.color.g = inter->obj->color.g * 255.0;
+				// pix.color.b = inter->obj->color.b * 255.0;
 				draw_pixel(e, pix);
 			}
 			free(inter);
