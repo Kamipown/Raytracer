@@ -27,5 +27,13 @@ void	parse_scene(t_scene *s, char *filename)
 	fill_cones_data(s, data, counts);
 	fill_planes_data(s, data, counts);
 	free(data);
+	free(counts);
 	
+
+	debug_print_screen(&s->size);
+	debug_print_camera(s->cam);
+	debug_print_counts(s);
+	debug_print_lights(s);
+	debug_print_spheres(s);
+	debug_print_planes(s);
 }

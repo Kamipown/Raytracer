@@ -109,5 +109,7 @@ char				*ft_skip_line(char *s);
 void				ft_putnbr_endl(int n);
 int					ft_isnumber(char *s);
 double				ft_atod(char *s);
+int					interval_i(int val, int min, int max);
+double				interval_d(double val, double min, double max);
 
 #endif

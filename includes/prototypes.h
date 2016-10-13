@@ -23,6 +23,9 @@ int					read_int_data(char *data, char *request);
 double		    	read_double_data(char *data, char *request);
 int					read_color_data(char *data, char *request);
 char				*construct_request_int(char *request, int n);
+int					data_get_i_constructed(char *data, char *request, int i);
+int					data_get_d_constructed(char *data, char *request, int i);
+
 
 void				fill_screen_data(t_scene *s, char *data);
 void				fill_camera_data(t_scene *s, char *data);
@@ -83,5 +86,12 @@ double				vec_mul_to_d(t_vec3 v1, t_vec3 v2);
 t_vec3				vec_mul_d(t_vec3 v, double d);
 
 void				error(int n, char *mes);
+
+void				debug_print_screen(t_size *size);
+void				debug_print_camera(t_cam *cam);
+void				debug_print_counts(t_scene *s);
+void				debug_print_lights(t_scene *s);
+void				debug_print_spheres(t_scene *s);
+void				debug_print_planes(t_scene *s);
 
 #endif

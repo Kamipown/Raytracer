@@ -18,9 +18,10 @@ lights
 			y:20
 			z:5
 		color
-			r:1.0
-			g:1.0
-			b:1.0
+			r:255
+			g:255
+			b:255
+		intensity:50
 
 spheres
 	0
@@ -30,10 +31,10 @@ spheres
 			z:200
 		radius:50
 		color
-			r:1.0
-			g:0.2
-			b:0.2
-		reflection:0.5
+			r:255
+			g:0
+			b:0
+		reflection:50
 	1
 		pos
 			x:210
@@ -41,10 +42,10 @@ spheres
 			z:120
 		radius:100
 		color
-			r:0.2
-			g:0.2
-			b:1.0
-		reflection:0.5
+			r:0
+			g:255
+			b:0
+		reflection:50
 	2
 		pos
 			x:50
@@ -52,7 +53,7 @@ spheres
 			z:200
 		radius:50
 		color
-			r:0.2
-			g:1.0
-			b:0.2
-		reflection:0.5
+			r:0
+			g:0
+			b:255
+		reflection:50

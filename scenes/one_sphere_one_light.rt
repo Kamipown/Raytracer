@@ -12,17 +12,23 @@ config
 lights
 	0
 		pos
-			x:0
-			y:0
-			z:0
-		color:#ffffff
-		intensity:100
+			x:-150
+			y:50
+			z:20
+		color
+			r:255
+			g:255
+			b:255
 
 spheres
 	0
 		pos
 			x:0
 			y:0
-			z:1000
-		radius:4
-		color:#cc5555
+			z:300
+		radius:50
+		color
+			r:-255
+			g:500
+			b:104
+		reflection:50

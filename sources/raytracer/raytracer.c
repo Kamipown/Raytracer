@@ -35,7 +35,13 @@ void		raytrace(t_env *e)
 			if (inter->obj)
 			{
 				process_lighting(e, ray, inter);
-				//draw_pixel(e, (t_pixel){x, y, inter->obj->color});
+				t_pixel pix;
+				pix.x = x;
+				pix.y = y;
+				pix.color.r = inter->obj->color.r * 255.0;
+				pix.color.g = inter->obj->color.g * 255.0;
+				pix.color.b = inter->obj->color.b * 255.0;
+				draw_pixel(e, pix);
 				free(inter);
 			}
 			free(ray);

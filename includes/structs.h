@@ -74,42 +74,9 @@ typedef struct		s_cam
 typedef struct		s_light
 {
 	t_vec3			pos;
-	int				color;
-	int				intensity;
+	t_color			color;
+	double			intensity;
 }					t_light;
-
-// typedef struct		s_sphere
-// {
-// 	t_vec3			pos;
-// 	int				color;
-// 	int				radius;
-// }					t_sphere;
-
-// typedef struct		s_cylinder
-// {
-// 	t_vec3			pos;
-// 	t_vec3			rot;
-// 	int				radius;
-// 	int				color;
-// }					t_cylinder;
-
-// typedef struct		s_cone
-// {
-// 	t_vec3			pos;
-// 	t_vec3			rot;
-// 	t_vec3 			normal;
-// 	int				radius;
-// 	int				color;
-// }					t_cone;
-
-// typedef struct		s_plane
-// {
-// 	t_vec3			pos;
-// 	t_vec3			normal;
-// 	int				width;
-// 	int				height;
-// 	int				color;
-// }					t_plane;
 
 typedef struct		s_obj
 {
