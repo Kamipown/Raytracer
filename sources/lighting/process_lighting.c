@@ -12,60 +12,82 @@
 
 #include "rtv1.h"
 
-void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
+void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixel)
 {
-	// t_vec3	start;
-	// t_vec3	n;
-	// double	tmp;
-	// double	coef = 1.0;
-	// t_color	color = {0.0, 0.0, 0.0};
-	// int		level = 0;
+	double			coef = 2.0;
+	double			refl;
+	int				level = 0;
 
-	// while (coef > 0.0000 && level < 10)
-	// {
-	// 	start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
-	// 	n = vec_sub(start, inter->obj->pos);
-	// 	tmp = vec_mul_to_d(n, n);
-	// 	if (tmp == 0.00000)
-	// 		return ;
-	// 	tmp = 1.0 / sqrtf(tmp);
-	// 	n = vec_mul_d(n, tmp);
+	t_vec3			new_start;
+	t_vec3			n;
+	double			tmp;
+	int				i;
 
-	// 	int		i;
-	// 	i = -1;
-	// 	while (++i < e->scene->n_light)
-	// 	{
-	// 		t_light	*current = &e->scene->lights[i];
+	t_light			*current;
+	t_vec3			dist;
+	double			t;
+	t_ray			light_ray;
+	t_intersection	*new_inter;
 
-	// 		t_vec3	dist = vec_sub(current->pos, start);
-	// 		if (vec_mul_to_d(n, dist) <= 0.000000)
-	// 			continue ;
-	// 		double	t = sqrtf(vec_mul_to_d(dist, dist));
-	// 		if (t <= 0.00000)
-	// 			continue ;
-	// 		t_ray	light_ray;
-	// 		light_ray.origin = start;
-	// 		light_ray.dir = vec_mul_d(dist, (1 / t));
-	// 		t_intersection *tmp_inter;
-	// 		tmp_inter = throw_ray(e, &light_ray, 0);
-	// 		if (!tmp_inter->obj)
-	// 		{
-	// 			double	lambert = vec_mul_to_d(light_ray.dir, n) * coef;
-	// 			// couleur
-	// 			color.r += lambert * current->color.r * inter->obj->color.r;
-	// 			color.g += lambert * current->color.g * inter->obj->color.g;
-	// 			color.b += lambert * current->color.b * inter->obj->color.b;
-	// 		}
-	// 	}
+	double			lambert;
+	pixel->color.r = inter->obj->color.r;
+	pixel->color.g = inter->obj->color.g;
+	pixel->color.b = inter->obj->color.b;
 
-	// 	coef *= inter->obj.refl;
-	// 	double refl = 2.0 * vec_mul_to_d(ray->dir, n);
-	// 	ray->origin = start;
-	// 	ray->dir = ray->dir - (refl * n);
-	// 	level++;
-	// }
-	if (e && ray && inter)
+	while (coef > 0.000000 && level < 10)
 	{
-		return;
+		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
+		n = vec_sub(new_start, inter->obj->pos);
+		tmp = vec_mul_to_d(n, n);
+		if (tmp == 0.00000)
+			return ;
+		tmp = 1.0 / sqrtf(tmp);
+		n = vec_mul_d(n, tmp);
+
+		i = 0;
+		while (i < e->scene->n_light)
+		{
+			current = &e->scene->lights[i];
+
+			dist = vec_sub(current->pos, new_start);
+			if (vec_mul_to_d(n, dist) > 0.000000)
+			{
+				t = sqrtf(vec_mul_to_d(dist, dist));
+				if (t > 0.00000)
+				{
+					light_ray.origin = new_start;
+					light_ray.dir = vec_mul_d(dist, (1 / t));
+					new_inter = throw_ray(e, &light_ray, 0);
+					if (!new_inter->obj)
+					{
+						//if (pixel->color.r > 0.001)
+							//printf("%f ", pixel->color.r);
+						lambert = vec_mul_to_d(light_ray.dir, n) * coef;
+						// couleur
+						pixel->color.r += lambert * current->color.r * inter->obj->color.r;
+						pixel->color.g += lambert * current->color.g * inter->obj->color.g;
+						pixel->color.b += lambert * current->color.b * inter->obj->color.b;
+						//if (pixel->color.r > 0.001)
+							//printf("%f\n", pixel->color.r);
+					}
+				}
+			}
+			
+			++i;
+		}
+
+		coef *= inter->obj->refl;
+		refl = 2.0 * vec_mul_to_d(ray->dir, n);
+		ray->origin = new_start;
+		n.x *= refl;
+		n.y *= refl;
+		n.z *= refl;
+		ray->dir = vec_sub(ray->dir, n);
+		
+		level++;
 	}
+
+	pixel->color.r = (pixel->color.r * 255 > 255) ? 255 : pixel->color.r * 255;
+	pixel->color.g = (pixel->color.g * 255 > 255) ? 255 : pixel->color.g * 255;
+	pixel->color.b = (pixel->color.b * 255 > 255) ? 255 : pixel->color.b * 255;
 }

@@ -3,13 +3,25 @@ config
 		width:800
 		height:600
 	counts
-		lights:0
+		lights:1
 		spheres:3
 		cylinders:0
 		cones:0
 		planes:5
 	camera
 		fov:90
+
+lights
+	0
+		pos
+			x:150
+			y:20
+			z:50
+		color
+			r:255
+			g:255
+			b:255
+		intensity:50
 
 spheres
 	0
@@ -19,9 +31,9 @@ spheres
 			z:200
 		radius:50
 		color
-			r:255
+			r:45
 			g:0
-			b:0
+			b:78
 		reflection:50
 	1
 		pos
@@ -30,9 +42,9 @@ spheres
 			z:120
 		radius:100
 		color
-			r:0
-			g:255
-			b:0
+			r:32
+			g:128
+			b:64
 		reflection:50
 	2
 		pos
@@ -41,9 +53,9 @@ spheres
 			z:200
 		radius:50
 		color
-			r:0
-			g:0
-			b:255
+			r:180
+			g:90
+			b:40
 		reflection:50
 
 planes
@@ -51,57 +63,57 @@ planes
 		pos
 			x:0
 			y:-300
-			z:0
+			z:50
 		normal
 			x:0
 			y:1
 			z:0
 		color
-			r:100
-			g:100
-			b:100
+			r:30
+			g:30
+			b:30
 		refl:30
 	1
 		pos
 			x:400
 			y:0
-			z:0
+			z:50
 		normal
 			x:-1
 			y:0
 			z:0
 		color
-			r:150
-			g:150
-			b:150
+			r:30
+			g:30
+			b:30
 		refl:80
 	2
 		pos
 			x:0
 			y:300
-			z:0
+			z:50
 		normal
 			x:0
 			y:-1
 			z:0
 		color
-			r:50
-			g:50
-			b:50
+			r:30
+			g:30
+			b:30
 		refl:50
 	3
 		pos
 			x:-400
 			y:0
-			z:0
+			z:50
 		normal
 			x:1
 			y:0
 			z:0
 		color
-			r:80
-			g:80
-			b:80
+			r:30
+			g:30
+			b:30
 		refl:0
 	4
 		pos
@@ -113,7 +125,7 @@ planes
 			y:0
 			z:-1
 		color
-			r:220
-			g:220
-			b:220
+			r:30
+			g:30
+			b:30
 		refl:40
