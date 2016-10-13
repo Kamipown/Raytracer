@@ -12,47 +12,62 @@
 
 #include "rtv1.h"
 
+static void	clean_planes(t_scene *s)
+{
+	int		i;
+
+	i = 0;
+	while (i < s->n_obj)
+	{
+		if (s->objs[i].type == PLANE)
+		{
+			s->objs[i].color.r = interval_d(s->objs[i].color.r, 0.0, 255.0);
+			s->objs[i].color.g = interval_d(s->objs[i].color.g, 0.0, 255.0);
+			s->objs[i].color.b = interval_d(s->objs[i].color.b, 0.0, 255.0);
+			s->objs[i].rot.x = interval_d(s->objs[i].rot.x, -1.0, 1.0);
+			s->objs[i].rot.y = interval_d(s->objs[i].rot.y, -1.0, 1.0);
+			s->objs[i].rot.z = interval_d(s->objs[i].rot.z, -1.0, 1.0);
+			s->objs[i].refl = interval_d(s->objs[i].refl, 0.0, 100.0);
+			s->objs[i].color.r /= 255.0;
+			s->objs[i].color.g /= 255.0;
+			s->objs[i].color.b /= 255.0;
+			s->objs[i].refl /= 100;
+		}
+		++i;
+	}
+}
+
 void		fill_planes_data(t_scene *s, char *data, int counts[4])
 {
 	int		i;
 	int		j;
-	char	*request;
 
 	i = 0;
 	j = counts[0] + counts[1] + counts[2];
 	while (i < counts[3])
 	{
-		request = construct_request_int("planes.#.pos.x", i);
-		s->objs[i + j].pos.x = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.pos.y", i);
-		s->objs[i + j].pos.y = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.pos.z", i);
-		s->objs[i + j].pos.z = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.normal.x", i);
-		s->objs[i + j].rot.x = read_double_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.normal.y", i);
-		s->objs[i + j].rot.y = read_double_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.normal.z", i);
-		s->objs[i + j].rot.z = read_double_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.color.r", i);
-		s->objs[i + j].color.r = read_color_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.color.g", i);
-		s->objs[i + j].color.g = read_color_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.color.b", i);
-		s->objs[i + j].color.b = read_color_data(data, request);
-		free(request);
-		request = construct_request_int("planes.#.reflection", i);
-		s->objs[i + j].refl = read_color_data(data, request);
-		free(request);
+		s->objs[i + j].pos.x =
+			data_get_i_constructed(data, "planes.#.pos.x", i);
+		s->objs[i + j].pos.y =
+			data_get_i_constructed(data, "planes.#.pos.y", i);
+		s->objs[i + j].pos.z =
+			data_get_i_constructed(data, "planes.#.pos.z", i);
+		s->objs[i + j].rot.x =
+			data_get_i_constructed(data, "planes.#.normal.x", i);
+		s->objs[i + j].rot.y =
+			data_get_i_constructed(data, "planes.#.normal.y", i);
+		s->objs[i + j].rot.z =
+			data_get_i_constructed(data, "planes.#.normal.z", i);
+		s->objs[i + j].color.r =
+			data_get_i_constructed(data, "planes.#.color.r", i);
+		s->objs[i + j].color.g =
+			data_get_i_constructed(data, "planes.#.color.g", i);
+		s->objs[i + j].color.b =
+			data_get_i_constructed(data, "planes.#.color.b", i);
+		s->objs[i + j].refl =
+			data_get_i_constructed(data, "planes.#.reflection", i);
 		s->objs[i + j].type = PLANE;
 		++i;
 	}
+	clean_planes(s);
 }

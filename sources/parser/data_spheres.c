@@ -12,39 +12,53 @@
 
 #include "rtv1.h"
 
+static void	clean_spheres(t_scene *s)
+{
+	int		i;
+
+	i = 0;
+	while (i < s->n_obj)
+	{
+		if (s->objs[i].type == SPHERE)
+		{
+			s->objs[i].color.r = interval_d(s->objs[i].color.r, 0.0, 255.0);
+			s->objs[i].color.g = interval_d(s->objs[i].color.g, 0.0, 255.0);
+			s->objs[i].color.b = interval_d(s->objs[i].color.b, 0.0, 255.0);
+			s->objs[i].refl = interval_d(s->objs[i].refl, 0.0, 100.0);
+			s->objs[i].color.r /= 255.0;
+			s->objs[i].color.g /= 255.0;
+			s->objs[i].color.b /= 255.0;
+			s->objs[i].refl /= 100;
+		}
+		++i;
+	}
+}
+
 void		fill_spheres_data(t_scene *s, char *data, int counts[4])
 {
 	int		i;
-	char	*request;
 
 	i = 0;
 	while (i < counts[0])
 	{
-		request = construct_request_int("spheres.#.pos.x", i);
-		s->objs[i].pos.x = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("spheres.#.pos.y", i);
-		s->objs[i].pos.y = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("spheres.#.pos.z", i);
-		s->objs[i].pos.z = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("spheres.#.radius", i);
-		s->objs[i].radius = read_int_data(data, request);
-		free(request);
-		request = construct_request_int("spheres.#.color.r", i);
-		s->objs[i].color.r = read_color_data(data, request);
-		free(request);
-		request = construct_request_int("spheres.#.color.g", i);
-		s->objs[i].color.g = read_color_data(data, request);
-		free(request);
-		request = construct_request_int("spheres.#.color.b", i);
-		s->objs[i].color.b = read_color_data(data, request);
-		free(request);
-		request = construct_request_int("spheres.#.reflection", i);
-		s->objs[i].refl = read_color_data(data, request);
-		free(request);
+		s->objs[i].pos.x =
+			data_get_i_constructed(data, "spheres.#.pos.x", i);
+		s->objs[i].pos.y =
+			data_get_i_constructed(data, "spheres.#.pos.y", i);
+		s->objs[i].pos.z =
+			data_get_i_constructed(data, "spheres.#.pos.z", i);
+		s->objs[i].radius =
+			data_get_i_constructed(data, "spheres.#.radius", i);
+		s->objs[i].color.r =
+			data_get_i_constructed(data, "spheres.#.color.r", i);
+		s->objs[i].color.g =
+			data_get_i_constructed(data, "spheres.#.color.g", i);
+		s->objs[i].color.b =
+			data_get_i_constructed(data, "spheres.#.color.b", i);
+		s->objs[i].refl =
+			data_get_i_constructed(data, "spheres.#.reflection", i);
 		s->objs[i].type = SPHERE;
 		++i;
 	}
+	clean_spheres(s);
 }

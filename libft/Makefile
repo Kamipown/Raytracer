@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/02 14:03:15 by pdelobbe          #+#    #+#              #
-#    Updated: 2016/08/17 19:18:10 by pdelobbe         ###   ########.fr        #
+#    Updated: 2016/10/13 21:19:26 by pdelobbe         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -92,7 +92,9 @@ SRC =		ft_memset.c \
 			ft_skip_line.c \
 			ft_putnbr_endl.c \
 			ft_isnumber.c \
-			ft_atod.c
+			ft_atod.c \
+			interval_i.c \
+			interval_d.c
 
 OBJ =		$(SRC:.c=.o)
 

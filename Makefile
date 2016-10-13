@@ -49,7 +49,8 @@ SRC +=	parser/parser.c					\
 		parser/data_planes.c			\
 		parser/data_spheres.c			\
 		parser/data_cones.c				\
-		parser/data_cylinders.c
+		parser/data_cylinders.c			\
+		parser/data_get.c
 
 SRC +=	loop/loop.c
 
@@ -81,6 +82,8 @@ SRC+=	intersections/inter.c	\
 		intersections/inter_cylinders.c	\
 		intersections/inter_cones.c		\
 		intersections/inter_planes.c
+
+SRC+=	debug/debug.c
 
 SRCS = $(addprefix $(PATH_SRC), $(SRC))
 
