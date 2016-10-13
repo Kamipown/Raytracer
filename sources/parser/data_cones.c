@@ -12,63 +12,50 @@
 
 #include "rtv1.h"
 
-static void	print_cone(t_scene *s)
+void		fill_cones_data(t_scene *s, char *data, int counts[4])
 {
 	int		i;
-
-	i = 0;
-	while (i < s->n_cone)
-	{
-		ft_putstr("cone ");
-		ft_putnbr(i);
-		ft_putstr(" : ");
-		ft_putstr("\tpos(");
-		ft_putnbr(s->cones[i].pos.x);
-		ft_putstr(", ");
-		ft_putnbr(s->cones[i].pos.y);
-		ft_putstr(", ");
-		ft_putnbr(s->cones[i].pos.z);
-		ft_putstr(") color(");
-		ft_putnbr(s->cones[i].color);
-		ft_putendl(")");
-		++i;
-	}
-	ft_putchar('\n');
-}
-
-void		fill_cones_data(t_scene *s, char *data)
-{
-	int		i;
+	int		j;
 	char	*request;
 
 	i = 0;
-	while (i < s->n_cone)
+	j = counts[0] + counts[1];
+	while (i < counts[2])
 	{
 		request = construct_request_int("cones.#.pos.x", i);
-		s->cones[i].pos.x = read_int_data(data, request);
+		s->objs[i + j].pos.x = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cones.#.pos.y", i);
-		s->cones[i].pos.y = read_int_data(data, request);
+		s->objs[i + j].pos.y = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cones.#.pos.z", i);
-		s->cones[i].pos.z = read_int_data(data, request);
+		s->objs[i + j].pos.z = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cones.#.normal.x", i);
-		s->cones[i].normal.x = read_int_data(data, request);
+		s->objs[i + j].rot.x = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cones.#.normal.y", i);
-		s->cones[i].normal.y = read_int_data(data, request);
+		s->objs[i + j].rot.y = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cones.#.normal.z", i);
-		s->cones[i].normal.z = read_int_data(data, request);
+		s->objs[i + j].rot.z = read_int_data(data, request);
 		free(request);
 		request = construct_request_int("cones.#.radius", i);
-		s->cones[i].radius = read_int_data(data, request);
+		s->objs[i + j].radius = read_int_data(data, request);
 		free(request);
-		request = construct_request_int("cones.#.color", i);
-		s->cones[i].color = read_color_data(data, request);
+		request = construct_request_int("cones.#.color.r", i);
+		s->objs[i + j].color.r = read_color_data(data, request);
 		free(request);
+		request = construct_request_int("cones.#.color.g", i);
+		s->objs[i + j].color.g = read_color_data(data, request);
+		free(request);
+		request = construct_request_int("cones.#.color.b", i);
+		s->objs[i + j].color.b = read_color_data(data, request);
+		free(request);
+		request = construct_request_int("cones.#.reflection", i);
+		s->objs[i + j].refl = read_color_data(data, request);
+		free(request);
+		s->objs[i + j].type = CONE;
 		++i;
 	}
-	print_cone(s);
 }

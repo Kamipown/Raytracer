@@ -4,7 +4,7 @@ config
 		height:600
 	counts
 		lights:1
-		spheres:2
+		spheres:3
 		cylinders:0
 		cones:0
 		planes:0
@@ -14,24 +14,45 @@ config
 lights
 	0
 		pos
-			x:0
-			y:0
-			z:0
-		color:#ffffff
-		intensity:100
+			x:-150
+			y:20
+			z:5
+		color
+			r:1.0
+			g:1.0
+			b:1.0
 
 spheres
 	0
 		pos
 			x:0
 			y:0
-			z:500
+			z:200
 		radius:50
-		color:#cc5555
+		color
+			r:1.0
+			g:0.2
+			b:0.2
+		reflection:0.5
 	1
 		pos
-			x:350
-			y:250
-			z:700
-		radius:150
-		color:#5555cc
+			x:210
+			y:150
+			z:120
+		radius:100
+		color
+			r:0.2
+			g:0.2
+			b:1.0
+		reflection:0.5
+	2
+		pos
+			x:50
+			y:0
+			z:200
+		radius:50
+		color
+			r:0.2
+			g:1.0
+			b:0.2
+		reflection:0.5

@@ -19,8 +19,6 @@ void		raytrace(t_env *e)
 	t_ray			*ray;
 	t_intersection	*inter;
 
-	//printf("Camera: (%f, %f, %f)\n", e->scene->cam->pos.x, e->scene->cam->pos.y, e->scene->cam->pos.z);
-
 	y = 0;
 	while (y < e->scene->size.h)
 	{
@@ -33,20 +31,11 @@ void		raytrace(t_env *e)
 				y - (e->scene->size.h / 2),
 				0
 			});
-
-			// printf("Origin: (%f, %f, %f)\n",
-			// 	ray->origin.x, ray->origin.y, ray->origin.z);
-			if ((inter = throw_ray(e, ray, 0)))
+			inter = throw_ray(e, ray, 0);
+			if (inter->obj)
 			{
-				// calcul lights
-				if (inter->shape_type == SPHERE)
-					draw_pixel(e, (t_pixel){x, y, inter->sphere->color});
-				else if (inter->shape_type == CYLINDER)
-					draw_pixel(e, (t_pixel){x, y, inter->cylinder->color});
-				else if (inter->shape_type == CONE)
-					draw_pixel(e, (t_pixel){x, y, inter->cone->color});
-				else if (inter->shape_type == PLANE)
-					draw_pixel(e, (t_pixel){x, y, inter->plane->color});
+				process_lighting(e, ray, inter);
+				//draw_pixel(e, (t_pixel){x, y, inter->obj->color});
 				free(inter);
 			}
 			free(ray);
