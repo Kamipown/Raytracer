@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 16:25:27 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/04/27 16:25:28 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/13 21:53:02 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	parse_scene(t_scene *s, char *filename)
 	fill_cylinders_data(s, data, counts);
 	fill_cones_data(s, data, counts);
 	fill_planes_data(s, data, counts);
+	free(counts);
 	free(data);
 	
 }
