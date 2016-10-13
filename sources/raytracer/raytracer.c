@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/05 16:06:16 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/13 22:49:04 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void		raytrace(t_env *e)
 				pix.color.g = inter->obj->color.g * 255.0;
 				pix.color.b = inter->obj->color.b * 255.0;
 				draw_pixel(e, pix);
-				free(inter);
 			}
+			free(inter);
 			free(ray);
 			++x;
 		}
