@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixel)
+t_color	process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
 {
 	double			coef = 2.0;
 	double			refl;
@@ -30,9 +30,10 @@ void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixe
 	t_intersection	*new_inter;
 
 	double			lambert;
-	pixel->color.r = inter->obj->color.r;
-	pixel->color.g = inter->obj->color.g;
-	pixel->color.b = inter->obj->color.b;
+	t_color			color;
+	color.r = inter->obj->color.r;
+	color.g = inter->obj->color.g;
+	color.b = inter->obj->color.b;
 
 	while (coef > 0.000000 && level < 10)
 	{
@@ -40,7 +41,7 @@ void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixe
 		n = vec_sub(new_start, inter->obj->pos);
 		tmp = vec_mul_to_d(n, n);
 		if (tmp == 0.00000)
-			return ;
+			return (color);
 		tmp = 1.0 / sqrtf(tmp);
 		n = vec_mul_d(n, tmp);
 
@@ -60,16 +61,12 @@ void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixe
 					new_inter = throw_ray(e, &light_ray, 0);
 					if (!new_inter->obj)
 					{
-						//if (pixel->color.r > 0.001)
-							//printf("%f ", pixel->color.r);
 						lambert = vec_mul_to_d(light_ray.dir, n) * coef;
-						// couleur
-						pixel->color.r += lambert * current->color.r * inter->obj->color.r;
-						pixel->color.g += lambert * current->color.g * inter->obj->color.g;
-						pixel->color.b += lambert * current->color.b * inter->obj->color.b;
-						//if (pixel->color.r > 0.001)
-							//printf("%f\n", pixel->color.r);
+						color.r += lambert * current->color.r * inter->obj->color.r;
+						color.g += lambert * current->color.g * inter->obj->color.g;
+						color.b += lambert * current->color.b * inter->obj->color.b;
 					}
+					free(new_inter);
 				}
 			}
 			
@@ -87,7 +84,8 @@ void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixe
 		level++;
 	}
 
-	pixel->color.r = (pixel->color.r * 255 > 255) ? 255 : pixel->color.r * 255;
-	pixel->color.g = (pixel->color.g * 255 > 255) ? 255 : pixel->color.g * 255;
-	pixel->color.b = (pixel->color.b * 255 > 255) ? 255 : pixel->color.b * 255;
+	color.r = (color.r * 255 > 255) ? 255 : color.r * 255;
+	color.g = (color.g * 255 > 255) ? 255 : color.g * 255;
+	color.b = (color.b * 255 > 255) ? 255 : color.b * 255;
+	return (color);
 }
