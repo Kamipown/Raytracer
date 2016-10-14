@@ -3,7 +3,7 @@ config
 		width:800
 		height:600
 	counts
-		lights:1
+		lights:2
 		spheres:3
 		cylinders:0
 		cones:0
@@ -14,9 +14,19 @@ config
 lights
 	0
 		pos
-			x:-150
-			y:20
-			z:5
+			x:-1000
+			y:0
+			z:-200
+		color
+			r:255
+			g:255
+			b:255
+		intensity:100
+	1
+		pos
+			x:0
+			y:0
+			z:-1000
 		color
 			r:255
 			g:255
@@ -27,33 +37,49 @@ spheres
 	0
 		pos
 			x:0
-			y:0
-			z:200
-		radius:120
+			y:-75
+			z:150
+		radius:100
 		color
 			r:50
 			g:0
 			b:0
-		reflection:50
+		reflection:20
 	1
 		pos
-			x:210
-			y:150
-			z:120
-		radius:120
+			x:-75
+			y:75
+			z:150
+		radius:100
 		color
-			r:200
+			r:10
 			g:10
-			b:200
-		reflection:50
+			b:10
+		reflection:10
 	2
 		pos
-			x:50
-			y:0
-			z:200
-		radius:120
+			x:75
+			y:75
+			z:150
+		radius:100
 		color
 			r:0
 			g:0
 			b:25
-		reflection:50
+		reflection:5
+
+planes
+	0
+		pos
+			x:0
+			y:0
+			z:400
+		normal
+			x:0
+			y:0
+			z:-1
+		color
+			r:200
+			g:200
+			b:200
+		refl:40
