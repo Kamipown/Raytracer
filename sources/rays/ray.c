@@ -37,23 +37,10 @@ t_ray					*create_ray(t_cam *cam, t_vec3 to)
 	ray->origin.x = cam->pos.x;
 	ray->origin.y = cam->pos.y;
 	ray->origin.z = cam->pos.z;
-	// ray->dir.x = to.x - ray->origin.x;
-	// ray->dir.y = to.y - ray->origin.y;
-	// ray->dir.z = to.z - ray->origin.z;
 	ray->dir.x = to.x;
 	ray->dir.y = to.y;
 	ray->dir.z = cam->focal_dist;
 	vec_normalize(&ray->dir);
-
-	//rotate(&ray->dir);
-	// if (to.x == 0 && to.y == 0)
-	// {
-	// 	printf("Distance focale:    (%f)\n", cam->focal_dist);
-	// 	printf("Position camera:    (%f, %f, %f)\n", cam->pos.x, cam->pos.y, cam->pos.z);
-	// 	printf("Pixel traverse:     (%f, %f, %f)\n", to.x, to.y, to.z);
-	// 	printf("Direction calculee: (%f, %f, %f)\n", ray->dir.x, ray->dir.y, ray->dir.z);
-	// }
-
 	return (ray);
 }
 
