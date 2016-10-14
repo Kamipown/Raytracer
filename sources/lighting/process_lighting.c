@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/13 21:49:50 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/14 03:16:13 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixe
 	{
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 		n = vec_sub(new_start, inter->obj->pos);
+		vec_normalize(&n);
 		tmp = vec_mul_to_d(n, n);
 		if (tmp == 0.00000)
 			return ;
@@ -67,6 +68,11 @@ void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixe
 						pixel->color.r += lambert * current->color.r * inter->obj->color.r;
 						pixel->color.g += lambert * current->color.g * inter->obj->color.g;
 						pixel->color.b += lambert * current->color.b * inter->obj->color.b;
+
+						double exposure = -0.6;
+						pixel->color.r = 1.0 - expf(pixel->color.r * exposure);
+						pixel->color.g = 1.0 - expf(pixel->color.g * exposure);
+						pixel->color.b = 1.0 - expf(pixel->color.b * exposure);
 						//if (pixel->color.r > 0.001)
 							//printf("%f\n", pixel->color.r);
 					}
@@ -77,7 +83,7 @@ void	process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_pixel *pixe
 		}
 
 		coef *= inter->obj->refl;
-		refl = 2.0 * vec_mul_to_d(ray->dir, n);
+		refl = 2 * vec_mul_to_d(ray->dir, n);
 		ray->origin = new_start;
 		n.x *= refl;
 		n.y *= refl;
