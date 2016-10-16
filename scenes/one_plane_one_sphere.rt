@@ -4,19 +4,17 @@ config
 		height:600
 	counts
 		lights:1
-		spheres:1
-		cylinders:0
-		cones:0
+		spheres:0
 		planes:1
 	camera
-		fov:100
+		fov:90
 
 lights
 	0
 		pos
 			x:0
 			y:0
-			z:-1000
+			z:0
 		color
 			r:255
 			g:255
@@ -28,12 +26,12 @@ spheres
 		pos
 			x:0
 			y:0
-			z:350
-		radius:50
+			z:100
 		color
-			r:50
+			r:255
 			g:0
 			b:0
+		radius:50
 		reflection:50
 
 planes
@@ -47,19 +45,6 @@ planes
 			y:0
 			z:-1
 		color
-			r:100
-			g:100
-			b:100
-	1
-		pos
-			x:0
-			y:0
-			z:500
-		normal
-			x:0
-			y:0
-			z:-1
-		color
-			r:100
+			r:255
 			g:100
 			b:100

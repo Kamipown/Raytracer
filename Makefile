@@ -20,13 +20,13 @@ INCLUDES =	-I./libft/includes/		\
 			-I./includes 			\
 			-I./sdl2/include/
 
-FLG = -g	-Wall -Wextra -pedantic -O3 #-Werror
+FLG =	-g	-Wall -Wextra -pedantic -O3 #-Werror
 
 CFLAGS = $(INCLUDES) $(FLG)
 
-MLX = -framework OpenGL -framework AppKit
+MLX =	-framework OpenGL -framework AppKit
 
-LIBFT = -L./libft/ -lft
+LIBFT =	-L./libft/ -lft
 
 SDLFT =	-framework Cocoa -framework SDL2
 
@@ -85,9 +85,9 @@ SRC+=	intersections/inter.c	\
 
 SRC+=	debug/debug.c
 
-SRCS = $(addprefix $(PATH_SRC), $(SRC))
+SRCS =	$(addprefix $(PATH_SRC), $(SRC))
 
-SRCO = $(SRCS:.c=.o)
+SRCO =	$(SRCS:.c=.o)
 
 all: libft $(NAME)
 

@@ -39,10 +39,11 @@ t_bool	inter_planes(t_ray *ray, t_obj *p, double *z, double *t)
 	L = vec_sub(ray->origin, p->pos);
 	d = vec_mul_to_d(N, L);
 	*t = -d / m;
-	if (*t <= 0)
+	if (*t <= 0.000001)
 		return (FALSE);
 	tmp = mul_d_to_vec(*t, ray->dir);
 	ret = vec_add(ray->origin, tmp);
 	*z = ret.z;
+	*t = *z / ray->dir.z;
 	return (TRUE);
 }

@@ -86,6 +86,7 @@ typedef struct		s_obj
 	t_color			color;
 	double			refl;
 	int				type;
+	int				id;
 }					t_obj;
 
 typedef struct		s_intersection

@@ -69,7 +69,5 @@ t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
 
 	inter = create_intersection();
 	intersect_objects(e, ray, inter);
-
-	//write(1, "LO))))))))))L\n", 14);
 	return (inter);
 }

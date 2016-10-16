@@ -67,6 +67,7 @@ void		fill_planes_data(t_scene *s, char *data, int counts[4])
 		s->objs[i + j].refl =
 			data_get_i_constructed(data, "planes.#.reflection", i);
 		s->objs[i + j].type = PLANE;
+		s->objs[i + j].id = i + j;
 		++i;
 	}
 	clean_planes(s);

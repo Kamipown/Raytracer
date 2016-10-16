@@ -58,6 +58,7 @@ void		fill_spheres_data(t_scene *s, char *data, int counts[4])
 		s->objs[i].refl =
 			data_get_i_constructed(data, "spheres.#.reflection", i);
 		s->objs[i].type = SPHERE;
+		s->objs[i].id = i;
 		++i;
 	}
 	clean_spheres(s);

@@ -56,6 +56,7 @@ void		fill_cones_data(t_scene *s, char *data, int counts[4])
 		s->objs[i + j].refl = read_color_data(data, request);
 		free(request);
 		s->objs[i + j].type = CONE;
+		s->objs[i + j].id = i + j;
 		++i;
 	}
 }

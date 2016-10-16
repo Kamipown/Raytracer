@@ -65,6 +65,7 @@ static void	raytrace_pixel(t_env *e, int x, int y)
 	t_intersection	*inter;
 	t_color			color;
 
+	//if (x != 50 || y != 50) return ;
 	ray = create_ray(
 		e->scene->cam,
 		(t_vec3){x - (e->scene->size.w / 2), y - (e->scene->size.h / 2), 0}
@@ -85,7 +86,7 @@ void		raytrace(t_env *e)
 	int				y;
 	t_bool			ssaa;
 
-	ssaa = TRUE;
+	ssaa = FALSE;
 	y = 0;
 	while (y < e->scene->size.h)
 	{
