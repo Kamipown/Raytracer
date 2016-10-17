@@ -12,9 +12,9 @@
 
 #include "rtv1.h"
 
-t_bool	inter_cylinders(t_ray *ray, t_obj *c, double *z)
+t_bool	inter_cylinders(t_ray *ray, t_obj *c, double *t)
 {
-	if (ray && c && z)
+	if (ray && c && t)
 		return (FALSE);
 	return (FALSE);
 }

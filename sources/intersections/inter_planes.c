@@ -22,14 +22,12 @@ t_vec3	mul_d_to_vec(double d, t_vec3 v)
 	return (ret);
 }
 
-t_bool	inter_planes(t_ray *ray, t_obj *p, double *z, double *t)
+t_bool	inter_planes(t_ray *ray, t_obj *p, double *t)
 {
 	t_vec3	N;
 	double	m;
 	t_vec3	L;
 	double	d;
-	t_vec3	ret;
-	t_vec3	tmp;
 
 	N = (t_vec3){p->rot.x, p->rot.y, p->rot.z};
 	vec_normalize(&N);
@@ -41,9 +39,5 @@ t_bool	inter_planes(t_ray *ray, t_obj *p, double *z, double *t)
 	*t = -d / m;
 	if (*t <= 0.000001)
 		return (FALSE);
-	tmp = mul_d_to_vec(*t, ray->dir);
-	ret = vec_add(ray->origin, tmp);
-	*z = ret.z;
-	*t = *z / ray->dir.z;
 	return (TRUE);
 }

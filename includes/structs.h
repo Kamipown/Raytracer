@@ -92,7 +92,6 @@ typedef struct		s_obj
 typedef struct		s_intersection
 {
 	t_obj			*obj;
-	double			z;
 	double			t;
 	int				type;
 }					t_intersection;

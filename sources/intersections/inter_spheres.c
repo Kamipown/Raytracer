@@ -12,9 +12,9 @@
 
 #include "rtv1.h"
 
-t_bool	inter_spheres(t_ray *ray, t_obj *s, double *z, double *t)
+t_bool	inter_spheres(t_ray *ray, t_obj *s, double *t)
 {
-	t_equation 		e;
+	t_equation		e;
 	t_bool			ret;
 
 	e.a = ray->dir.x * ray->dir.x 
@@ -40,16 +40,14 @@ t_bool	inter_spheres(t_ray *ray, t_obj *s, double *z, double *t)
 	e.z2 = (-e.b - sqrt(e.delta)) / (2.0 * e.a);
 
 	ret = FALSE;
-	if (e.z1 > 0.1 && e.z1 > 0.000001)
+	if (e.z1 > 0.1)
 	{
 		*t = e.z1;
-		*z = ray->origin.z + e.z1 * ray->dir.z;
 		ret = TRUE;
 	}
-	if (e.z2 > 0.1 && e.z2 > 0.000001 && e.z2 < e.z1)
+	if (e.z2 > 0.1 && e.z2 < e.z1)
 	{
 		*t = e.z2;
-		*z = ray->origin.z + e.z2 * ray->dir.z;
 		ret = TRUE;
 	}
 	return (ret);

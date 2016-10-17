@@ -61,43 +61,45 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	if (t <= 0.00000)
 		return ;
 	ray.origin = *new_start;
-	//printf("new_ray origin: %f, %f, %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
-	ray.dir = vec_mul_d(dist, (1 / t));
+	ray.dir = (t_vec3){dist.x, dist.y, dist.z};
+	vec_normalize(&ray.dir);
 	inter = throw_ray(e, &ray, 0);
-	// if (inter->obj)
-	// {
-	// 	if (calc_dist(l->pos, ))
-	// }
-	t_vec3 loldist;
+	//printf("shadow-ray-dir: %f, %f, %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	if (inter->obj)
 	{
-		// ft_putendl("INTER");
-		// ft_putnbr_endl(inter->obj->id);
-		// ft_putnbr_endl(inter->z);
-		// ft_putnbr_endl(inter->t);
-		// ft_putnbr_endl(calc_dist(&l->pos, new_start));
-		// ft_putnbr_endl(calc_dist(&l->pos, &loldist));
-		
+		ft_putnbr_endl(inter->obj->id);
+		ft_putchar('a');
+		free(inter);
+		return ;
+		t_vec3 impact;
+
+		impact = vec_add(ray.origin, vec_mul_d(ray.dir, t));
+		if (calc_dist(new_start, &impact) < calc_dist(new_start, &l->pos))
+		{
+			ft_putchar('a');
+			free(inter);
+			return ;
+		}
 	}
-	if (!inter->obj)
-	{
+	// if (!inter->obj)
+	// {
 		//ft_putendl("lol");
 		lambert = vec_mul_to_d(ray.dir, *n) * coef;
 		c->r += lambert * l->color.r * obj->color.r;
 		c->g += lambert * l->color.g * obj->color.g;
 		c->b += lambert * l->color.b * obj->color.b;
-	}
-	else
-	{
-		loldist = vec_mul_d(ray.dir, inter->t);
-		if (calc_dist(&l->pos, new_start) < calc_dist(&l->pos, &loldist))
-		{
-			lambert = vec_mul_to_d(ray.dir, *n) * coef;
-			c->r += lambert * l->color.r * obj->color.r;
-			c->g += lambert * l->color.g * obj->color.g;
-			c->b += lambert * l->color.b * obj->color.b;
-		}
-	}
+	// }
+	// else
+	// {
+	// 	loldist = vec_mul_d(ray.dir, inter->t);
+	// 	if (calc_dist(&l->pos, new_start) < calc_dist(&l->pos, &loldist))
+	// 	{
+	// 		lambert = vec_mul_to_d(ray.dir, *n) * coef;
+	// 		c->r += lambert * l->color.r * obj->color.r;
+	// 		c->g += lambert * l->color.g * obj->color.g;
+	// 		c->b += lambert * l->color.b * obj->color.b;
+	// 	}
+	// }
 	free(inter);
 }
 
@@ -131,18 +133,11 @@ t_color			process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
 	level = 0;
 	while (coef > 0.000000 && level < 10)
 	{
-		t_vec3 lel = vec_mul_d(ray->dir, inter->t);
-		//printf("lel: %f, %f, %f\n", lel.x, lel.y, lel.z);
-		
-		//new_start = vec_add(ray->origin, lel);
-		new_start = vec_mul_d(ray->dir, inter->t);
-		//printf("new_start: %f, %f, %f ||| %f\n", new_start.x, new_start.y, new_start.z, inter->t);
+		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 		n = get_normal(&new_start, inter->obj);
-		//printf("%f, %f, %f\n", n.x, n.y, n.z);
 		i = 0;
 		while (i < e->scene->n_light)
 			add_lambert_light_contribution(e, inter->obj, &e->scene->lights[i++], &new_start, &color, &n, coef);
-		//ft_putendl("Yo");
 		add_reflection_contribution(inter->obj, ray, &n, &coef);
 		ray->origin = new_start;
 		ray->dir = vec_sub(ray->dir, n);
