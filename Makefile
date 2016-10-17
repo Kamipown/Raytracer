@@ -10,6 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
+LOCALDIR = $(shell pwd)
+
+
+LIBS = -L libft/ -lft -L SDL2/lib/ -lSDL2
+
+
 NAME = rt
 
 CC = gcc
@@ -20,15 +26,11 @@ INCLUDES =	-I./libft/includes/		\
 			-I./includes 			\
 			-I./sdl2/include/
 
+INC = -I $(INCLUDES) -I libft/includes/ -I SDL2/include/
+
 FLG =	-g	-Wall -Wextra -pedantic -O3 #-Werror
 
 CFLAGS = $(INCLUDES) $(FLG)
-
-MLX =	-framework OpenGL -framework AppKit
-
-LIBFT =	-L./libft/ -lft
-
-SDLFT =	-framework Cocoa -framework SDL2
 
 # SOURCES
 SRC =	main.c
@@ -89,15 +91,24 @@ SRCS =	$(addprefix $(PATH_SRC), $(SRC))
 
 SRCO =	$(SRCS:.c=.o)
 
+
+
 all: libft $(NAME)
 
 $(NAME): $(SRCO)
 	@echo "\033[1;30mRT : Sources compiling...\033[0m"
-	@$(CC) $(FLAGS) -o $@ $(SRCO) $(LIBFT) $(SDLFT) $(MLX)
+	@$(CC) $(FLAGS) -o $@ $(SRCO) $(LIBS)
 	@echo "\033[0;36mRT compile with success !\033[0m"
 
 libft:
 	make -C libft
+
+install:
+	@mkdir -p SDL2
+	@echo "SDL2     : "
+	cd $(LOCALDIR)/lib && tar -zxvf SDL2-2.0.4.tar.gz
+	cd $(LOCALDIR)/lib/SDL2-2.0.4 && ./configure --prefix=$(LOCALDIR)/SDL2 && make install
+	rm -rf $(LOCALDIR)/lib/SDL2-2.0.4
 
 clean:
 	@make -C libft/ clean
