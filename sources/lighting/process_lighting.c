@@ -64,25 +64,28 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	ray.dir = (t_vec3){dist.x, dist.y, dist.z};
 	vec_normalize(&ray.dir);
 	inter = throw_ray(e, &ray, 0);
-	//printf("shadow-ray-dir: %f, %f, %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
+	// printf("shadow-ray-origin: %f, %f, %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
+	// printf("shadow-ray-dir: %f, %f, %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	if (inter->obj)
 	{
-		ft_putnbr_endl(inter->obj->id);
-		ft_putchar('a');
-		free(inter);
-		return ;
+		// printf("%f\n", inter->t);
 		t_vec3 impact;
 
-		impact = vec_add(ray.origin, vec_mul_d(ray.dir, t));
+		impact = vec_add(ray.origin, vec_mul_d(ray.dir, inter->t));
+		// printf("Impact: %f, %f, %f\n", impact.x, impact.y, impact.z);
 		if (calc_dist(new_start, &impact) < calc_dist(new_start, &l->pos))
 		{
-			ft_putchar('a');
+			// ft_putchar('b');
 			free(inter);
 			return ;
 		}
 	}
 	// if (!inter->obj)
 	// {
+		// double exposure = -0.8;
+		// c->r = 1.00000 - expf(c->r * exposure);
+		// c->g = 1.00000 - expf(c->g * exposure);
+		// c->b = 1.00000 - expf(c->b * exposure);
 		//ft_putendl("lol");
 		lambert = vec_mul_to_d(ray.dir, *n) * coef;
 		c->r += lambert * l->color.r * obj->color.r;
@@ -131,7 +134,7 @@ t_color			process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
 	color = get_global_illuminated_color(&inter->obj->color);
 	coef = 2.0;
 	level = 0;
-	while (coef > 0.000000 && level < 10)
+	while (coef > 0.00000 && level < 10)
 	{
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 		n = get_normal(&new_start, inter->obj);
@@ -141,6 +144,11 @@ t_color			process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
 		add_reflection_contribution(inter->obj, ray, &n, &coef);
 		ray->origin = new_start;
 		ray->dir = vec_sub(ray->dir, n);
+		// if (inter)
+		// 	free(inter);
+		inter = throw_ray(e, ray, 0);
+		if (!inter->obj)
+			break ;
 		level++;
 	}
 	flour_color(&color);

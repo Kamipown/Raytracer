@@ -48,7 +48,7 @@ planes
 			r:0
 			g:100
 			b:200
-		refl:30
+		reflection:30
 	1
 		pos
 			x:400
@@ -62,4 +62,4 @@ planes
 			r:50
 			g:200
 			b:100
-		refl:30
+		reflection:50

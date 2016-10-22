@@ -4,7 +4,7 @@ config
 		height:600
 	counts
 		lights:1
-		spheres:3
+		spheres:4
 		cylinders:0
 		cones:0
 		planes:5
@@ -14,7 +14,7 @@ config
 lights
 	0
 		pos
-			x:-100
+			x:0
 			y:0
 			z:-300
 		color
@@ -26,43 +26,54 @@ lights
 spheres
 	0
 		pos
-			x:0
-			y:0
-			z:200
-		radius:50
-		color
-			r:45
-			g:0
-			b:78
-		reflection:50
-	1
-		pos
-			x:210
-			y:150
-			z:120
+			x:100
+			y:-100
+			z:110
 		radius:100
 		color
-			r:32
-			g:128
-			b:64
-		reflection:50
+			r:150
+			g:200
+			b:80
+		reflection:95
+	1
+		pos
+			x:-100
+			y:-100
+			z:110
+		radius:100
+		color
+			r:150
+			g:80
+			b:200
+		reflection:95
 	2
 		pos
-			x:50
-			y:0
-			z:200
-		radius:50
+			x:100
+			y:100
+			z:110
+		radius:100
 		color
-			r:180
-			g:90
-			b:40
-		reflection:50
+			r:200
+			g:80
+			b:150
+		reflection:95
+	3
+		pos
+			x:-100
+			y:100
+			z:110
+		radius:100
+		color
+			r:80
+			g:200
+			b:150
+		reflection:95
 
 planes
 	0
 		pos
 			x:0
-			y:-300
+			y:-1000
 			z:50
 		normal
 			x:0
@@ -72,10 +83,10 @@ planes
 			r:30
 			g:30
 			b:30
-		refl:30
+		reflection:60
 	1
 		pos
-			x:400
+			x:1200
 			y:0
 			z:50
 		normal
@@ -86,11 +97,11 @@ planes
 			r:30
 			g:30
 			b:30
-		refl:80
+		reflection:60
 	2
 		pos
 			x:0
-			y:300
+			y:1000
 			z:50
 		normal
 			x:0
@@ -100,10 +111,10 @@ planes
 			r:30
 			g:30
 			b:30
-		refl:50
+		reflection:60
 	3
 		pos
-			x:-400
+			x:-1200
 			y:0
 			z:50
 		normal
@@ -114,7 +125,7 @@ planes
 			r:30
 			g:30
 			b:30
-		refl:0
+		reflection:60
 	4
 		pos
 			x:0
@@ -125,7 +136,21 @@ planes
 			y:0
 			z:-1
 		color
-			r:255
+			r:20
+			g:20
+			b:20
+		reflection:0
+	5
+		pos
+			x:0
+			y:0
+			z:-350
+		normal
+			x:0
+			y:0
+			z:1
+		color
+			r:30
 			g:30
 			b:30
-		refl:40
+		reflection:60

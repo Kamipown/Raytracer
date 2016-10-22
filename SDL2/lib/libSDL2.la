@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/nfs/2014/s/splace/RTGROUPS/SDL2/lib'
+libdir='/Users/pdelobbe/Workspace/Raytracer/SDL2/lib'

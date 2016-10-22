@@ -51,7 +51,7 @@ static void	raytrace_pixel_ssaa3(t_env *e, int x, int y)
 			else
 				color[tx + 3 * ty] = (t_color){0, 0, 0};
 			free(ray);
-			free(inter);
+			//free(inter);
 			++tx;
 		}
 		++ty;
@@ -77,7 +77,8 @@ static void	raytrace_pixel(t_env *e, int x, int y)
 		draw_pixel(e, (t_pixel){x, y, color});
 	}
 	free(ray);
-	free(inter);
+	// if (inter)
+	// 	free(inter);
 }
 
 void		raytrace(t_env *e)
@@ -86,7 +87,7 @@ void		raytrace(t_env *e)
 	int				y;
 	t_bool			ssaa;
 
-	ssaa = FALSE;
+	ssaa = TRUE;
 	y = 0;
 	while (y < e->scene->size.h)
 	{

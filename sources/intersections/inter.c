@@ -37,10 +37,6 @@ void	intersect_objects(t_env *e, t_ray *ray, t_intersection *inter, int flag)
 		}
 		++i;
 	}
-	if (!flag && inter->obj)
-	{
-		//ft_putchar('a');
-	}
 	if (flag && inter->obj)
 	{
 		printf("Intersection found:\n");
