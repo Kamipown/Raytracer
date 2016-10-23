@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/05 16:06:16 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/23 04:37:41 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ void		raytrace(t_env *e)
 	int				y;
 	t_bool			ssaa;
 
-	ssaa = TRUE;
+	ssaa =  FALSE;
 	y = 0;
+	debug_print_cylinder(e->scene);
 	while (y < e->scene->size.h)
 	{
 		x = 0;

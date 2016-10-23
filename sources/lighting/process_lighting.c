@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_lighting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/13 21:49:50 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/23 04:20:41 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj)
 {
 	t_vec3	normal;
 
-	normal = (t_vec3){0, 0, 0};
+	normal = (t_vec3){0, 0, 0};                                                                                                                                           
 	if (obj->type == SPHERE)
 	{
 		normal = vec_sub(*pos, obj->pos);
@@ -35,6 +35,11 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj)
 	else if (obj->type == PLANE)
 	{
 		normal = (t_vec3){obj->rot.x, obj->rot.y, obj->rot.z};
+	}
+	else if (obj->type == CYLINDER)
+	{
+		normal = vec_sub(*pos, obj->pos);
+		vec_normalize(&normal);
 	}
 	return (normal);
 }
@@ -64,45 +69,21 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	ray.dir = (t_vec3){dist.x, dist.y, dist.z};
 	vec_normalize(&ray.dir);
 	inter = throw_ray(e, &ray, 0);
-	// printf("shadow-ray-origin: %f, %f, %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
-	// printf("shadow-ray-dir: %f, %f, %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	if (inter->obj)
 	{
-		// printf("%f\n", inter->t);
 		t_vec3 impact;
 
 		impact = vec_add(ray.origin, vec_mul_d(ray.dir, inter->t));
-		// printf("Impact: %f, %f, %f\n", impact.x, impact.y, impact.z);
 		if (calc_dist(new_start, &impact) < calc_dist(new_start, &l->pos))
 		{
-			// ft_putchar('b');
 			free(inter);
 			return ;
 		}
 	}
-	// if (!inter->obj)
-	// {
-		// double exposure = -0.8;
-		// c->r = 1.00000 - expf(c->r * exposure);
-		// c->g = 1.00000 - expf(c->g * exposure);
-		// c->b = 1.00000 - expf(c->b * exposure);
-		//ft_putendl("lol");
-		lambert = vec_mul_to_d(ray.dir, *n) * coef;
-		c->r += lambert * l->color.r * obj->color.r;
-		c->g += lambert * l->color.g * obj->color.g;
-		c->b += lambert * l->color.b * obj->color.b;
-	// }
-	// else
-	// {
-	// 	loldist = vec_mul_d(ray.dir, inter->t);
-	// 	if (calc_dist(&l->pos, new_start) < calc_dist(&l->pos, &loldist))
-	// 	{
-	// 		lambert = vec_mul_to_d(ray.dir, *n) * coef;
-	// 		c->r += lambert * l->color.r * obj->color.r;
-	// 		c->g += lambert * l->color.g * obj->color.g;
-	// 		c->b += lambert * l->color.b * obj->color.b;
-	// 	}
-	// }
+	lambert = vec_mul_to_d(ray.dir, *n) * coef;
+	c->r += lambert * l->color.r * obj->color.r;
+	c->g += lambert * l->color.g * obj->color.g;
+	c->b += lambert * l->color.b * obj->color.b;
 	free(inter);
 }
 
