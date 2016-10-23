@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+         #
+#    By: splace <splace@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/11 13:43:04 by dcognata          #+#    #+#              #
-#    Updated: 2016/10/13 05:18:39 by pdelobbe         ###   ########.fr        #
+#    Updated: 2016/10/23 04:39:15 by splace           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,9 @@ install:
 	cd $(LOCALDIR)/lib && tar -zxvf SDL2-2.0.4.tar.gz
 	cd $(LOCALDIR)/lib/SDL2-2.0.4 && ./configure --prefix=$(LOCALDIR)/SDL2 && make install
 	rm -rf $(LOCALDIR)/lib/SDL2-2.0.4
-
+fmake:
+	@make
+	@make clean
 clean:
 	@make -C libft/ clean
 	@/bin/rm -f $(SRCO)

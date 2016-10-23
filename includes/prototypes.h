@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:21:09 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/08 22:03:29 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/23 04:37:03 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ void				debug_print_counts(t_scene *s);
 void				debug_print_lights(t_scene *s);
 void				debug_print_spheres(t_scene *s);
 void				debug_print_planes(t_scene *s);
-
+void				debug_print_cylinder(t_scene *s);
 #endif
