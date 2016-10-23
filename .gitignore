@@ -1,0 +1,13 @@
+#	Ignore les fichiers suivants :
+#		executable
+#		fichiers objets
+#		archives
+#		fichiers temporaires
+#		dossier tmp/
+
+rt
+**/*.[oa]
+**/*~
+**/.nfs*
+tmp/
+SDL2/

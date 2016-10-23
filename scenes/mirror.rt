@@ -1,0 +1,48 @@
+config
+	screen
+		width:800
+		height:600
+	counts
+		lights:1
+		spheres:2
+		cylinders:0
+		cones:0
+		planes:0
+	camera
+		fov:90
+
+lights
+	0
+		pos
+			x:-500
+			y:0
+			z:-500
+		color
+			r:255
+			g:255
+			b:255
+		intensity:100
+
+spheres
+	0
+		pos
+			x:0
+			y:0
+			z:200
+		radius:50
+		color
+			r:75
+			g:0
+			b:30
+		reflection:0
+	1
+		pos
+			x:0
+			y:0
+			z:1200
+		radius:500
+		color
+			r:75
+			g:0
+			b:30
+		reflection:0
