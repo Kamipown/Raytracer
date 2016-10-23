@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 19:51:54 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/13 19:51:56 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/23 18:22:44 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,34 @@ void	debug_print_cylinders(t_scene *s)
 {
 	int		i;
 
-	printf("SPHERES\n");
+	printf("CYLINDERS\n");
 	i = 0;
 	while (i < s->n_obj)
 	{
 		if (s->objs[i].type == CYLINDER)
 		{
 			printf("cylinder %d   :\n", i);
+			printf("    position    : %f, %f, %f\n", s->objs[i].pos.x, s->objs[i].pos.y, s->objs[i].pos.z);
+			printf("    rotation    : %f, %f, %f\n", s->objs[i].rot.x, s->objs[i].rot.y, s->objs[i].rot.z);
+			printf("    color       : %f, %f, %f\n", s->objs[i].color.r, s->objs[i].color.g, s->objs[i].color.b);
+			printf("    reflection  : %f\n", s->objs[i].refl);
+		}
+		++i;
+	}
+	printf("\n");
+}
+
+void	debug_print_cones(t_scene *s)
+{
+	int		i;
+
+	printf("CONES\n");
+	i = 0;
+	while (i < s->n_obj)
+	{
+		if (s->objs[i].type == CONE)
+		{
+			printf("cones %d   :\n", i);
 			printf("    position    : %f, %f, %f\n", s->objs[i].pos.x, s->objs[i].pos.y, s->objs[i].pos.z);
 			printf("    rotation    : %f, %f, %f\n", s->objs[i].rot.x, s->objs[i].rot.y, s->objs[i].rot.z);
 			printf("    color       : %f, %f, %f\n", s->objs[i].color.r, s->objs[i].color.g, s->objs[i].color.b);
