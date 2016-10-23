@@ -16,12 +16,22 @@
 // inter->x / vec->x;
 // inter->y / vec->y;
 
-t_bool	inter_cones(t_ray *ray, t_obj *c, double *t)
+t_bool	inter_cones(t_ray *ray, t_obj *s, double *t)
 {
-	// t_equation 		e;
+	 t_equation 		e;
 
-	if (ray && c && t)
-		return (FALSE);
+	e.a = ray->dir.x * ray->dir.x
+		- ray->dir.y * ray->dir.y
+		+ ray->dir.z * ray->dir.z;
 
-	// return(solve_quadratic(e, t));
+	e.b = ray->dir.x * (ray->origin.x - s->pos.x)
+		- ray->dir.y * (ray->origin.y - s->pos.y)
+		+ ray->dir.z * (ray->origin.z - s->pos.z);
+	e.b *= 2.0;
+
+	e.c = (ray->origin.x - s->pos.x) * (ray->origin.x - s->pos.x)
+		- (ray->origin.y - s->pos.y) * (ray->origin.y - s->pos.y)
+		+ (ray->origin.z - s->pos.z) * (ray->origin.z - s->pos.z);
+	e.c -= (s->radius * s->radius);
+	 return(solve_quadratic(e, t));
 }

@@ -21,12 +21,15 @@ cones
 			x:0
 			y:0
 			z:0
-		radius:50
-		color:#ffffff
+		radius:10
+		color
+			r:125
+			g:75
+			b:42
 lights
 	0
 		pos
-			x:-500
+			x:0
 			y:0
 			z:-500
 		color
@@ -95,7 +98,7 @@ planes
 		pos
 			x:0
 			y:0
-			z:350
+			z:1350
 		normal
 			x:0
 			y:0
