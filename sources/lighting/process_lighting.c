@@ -26,6 +26,7 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 {
 	t_vec3	normal;
 
+(void)ray;
 	normal = (t_vec3){0, 0, 0};
 	if (obj->type == SPHERE)
 	{
@@ -41,8 +42,18 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 		//normal = vec_sub(*pos, obj->pos);
 		//
 
-		//normal = (t_vec3){0, 0.1, -0.5};
-		normal = (t_vec3){0, -1 * ray->dir.y, -1 * ray->dir.z};
+		normal = vec_sub(*pos, obj->pos);
+		normal.y = 0;
+		//normal = (t_vec3){(obj->rot.x - 1) * ray->dir.x, (obj->rot.y - 1) * ray->dir.y, (obj->rot.z - 1) * ray->dir.z};
+		vec_normalize(&normal);
+	}
+	else if (obj->type == CONE)
+	{
+		//normal = vec_sub(*pos, obj->pos);
+		//
+		//normal = vec_sub(*pos, obj->pos);
+		normal = (t_vec3){ray->dir.x, 0, (1- tan(obj->radius)) * tan(obj->radius)};
+
 		vec_normalize(&normal);
 	}
 	return (normal);

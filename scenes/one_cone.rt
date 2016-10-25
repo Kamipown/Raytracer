@@ -16,21 +16,22 @@ cones
 		pos
 			x:0
 			y:0
-			z:0
+			z:480
 		normal:
 			x:0
 			y:0
 			z:0
-		radius:10
+		radius:45
 		color
 			r:125
 			g:75
 			b:42
+		reflection:0
 lights
 	0
 		pos
-			x:0
-			y:0
+			x:-100
+			y:-100
 			z:-500
 		color
 			r:255

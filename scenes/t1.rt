@@ -14,9 +14,9 @@ config
 lights
 	0
 		pos
-			x:-500
+			x:0
 			y:0
-			z:-500
+			z:0
 		color
 			r:255
 			g:255
@@ -84,7 +84,7 @@ planes
 		pos
 			x:0
 			y:0
-			z:350
+			z:1350
 		normal
 			x:0
 			y:0
