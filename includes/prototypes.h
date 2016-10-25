@@ -37,6 +37,7 @@ void				fill_spheres_data(t_scene *s, char *data, int counts[4]);
 void				fill_cylinders_data(t_scene *s, char *data, int counts[4]);
 void				fill_cones_data(t_scene *s, char *data, int counts[4]);
 void				fill_planes_data(t_scene *s, char *data, int counts[4]);
+void		        fill_screen_data(t_scene *s, char *data);
 
 void				loop(t_env *e);
 

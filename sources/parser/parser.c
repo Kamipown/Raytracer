@@ -19,6 +19,7 @@ void	parse_scene(t_scene *s, char *filename)
 
 	data = read_file(filename);
 	fill_screen_data(s, data);
+	fill_light_data(s, data);
 	fill_camera_data(s, data);
 	counts = fill_counts_data(s, data);
 	fill_lights_data(s, data);

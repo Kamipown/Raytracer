@@ -10,4 +10,5 @@ rt
 **/*~
 **/.nfs*
 tmp/
-SDL2/
+SLD2/
+SDL2/bin/

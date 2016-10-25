@@ -57,3 +57,8 @@ void		fill_screen_data(t_scene *s, char *data)
 	s->size.w = sw >= MIN_SCREEN_W && sw <= MAX_SCREEN_W ? sw : SCREEN_W;
 	s->size.h = sh >= MIN_SCREEN_H && sh <= MAX_SCREEN_H ? sh : SCREEN_H;
 }
+
+void		fill_light_data(t_scene *s, char *data)
+{
+	s->exposure = read_double_data(data, "config.light.exposure");
+}

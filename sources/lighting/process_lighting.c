@@ -82,11 +82,9 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	}
 	// if (!inter->obj)
 	// {
-		// double exposure = -0.8;
-		// c->r = 1.00000 - expf(c->r * exposure);
-		// c->g = 1.00000 - expf(c->g * exposure);
-		// c->b = 1.00000 - expf(c->b * exposure);
-		//ft_putendl("lol");
+		// c->r = 1.00000 - expf(c->r * e->scene->exposure);
+		// c->g = 1.00000 - expf(c->g * e->scene->exposure);
+		// c->b = 1.00000 - expf(c->b * e->scene->exposure);
 		lambert = vec_mul_to_d(ray.dir, *n) * coef;
 		c->r += lambert * l->color.r * obj->color.r;
 		c->g += lambert * l->color.g * obj->color.g;

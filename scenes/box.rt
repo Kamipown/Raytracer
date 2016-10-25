@@ -10,7 +10,8 @@ config
 		planes:5
 	camera
 		fov:90
-
+	light
+		exposure:-0.8
 lights
 	0
 		pos

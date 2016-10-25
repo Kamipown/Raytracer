@@ -101,6 +101,7 @@ typedef struct		s_scene
 	t_cam			*cam;
 	t_light			*lights;
 	t_obj			*objs;
+	double			exposure;
 	int				n_light;
 	int				n_obj;
 	t_size			size;
