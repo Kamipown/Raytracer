@@ -26,6 +26,7 @@ static t_options	get_options(void)
 void				loop(t_env *e)
 {
 	e->options = get_options();
+	init_inputs(&e->inputs);
 	while (e->options.quit == FALSE)
 	{
 		if (e->options.need_redraw)

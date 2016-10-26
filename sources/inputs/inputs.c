@@ -12,11 +12,12 @@
 
 #include "rtv1.h"
 
-static void	reset_inputs(t_inputs *inputs)
+void		init_inputs(t_inputs *inputs)
 {
 	inputs->escape = FALSE;
 	inputs->key_1 = FALSE;
 	inputs->key_2 = FALSE;
+	inputs->key_0 = FALSE;
 	inputs->key_f = FALSE;
 	inputs->key_left = FALSE;
 	inputs->key_right = FALSE;
@@ -29,6 +30,14 @@ static void	reset_inputs(t_inputs *inputs)
 	inputs->mouse_y = 0;
 }
 
+static void	reset_inputs(t_inputs *inputs)
+{
+	inputs->key_1 = FALSE;
+	inputs->key_2 = FALSE;
+	inputs->key_0 = FALSE;
+	inputs->mouse_left = FALSE;
+}
+
 void		get_inputs(t_env *e)
 {
 	reset_inputs(&e->inputs);
@@ -37,7 +46,9 @@ void		get_inputs(t_env *e)
 		if (e->event.type == SDL_QUIT)
 			e->options.quit = TRUE;
 		else if (e->event.type == SDL_KEYDOWN)
-			get_inputs_keys(e);
+			get_inputs_keys(e, TRUE);
+		else if (e->event.type == SDL_KEYUP)
+			get_inputs_keys(e, FALSE);
 		else if (e->event.type == SDL_MOUSEBUTTONDOWN)
 			get_inputs_mouse(e);
 	}

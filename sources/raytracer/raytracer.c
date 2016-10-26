@@ -27,7 +27,6 @@ static t_color	color_median(t_color c[9])
 
 static void	raytrace_pixel_ssaa3(t_env *e, int x, int y)
 {
-	t_ray			*ray;
 	t_intersection	*inter;
 	t_color			color[9];
 	int				tx;
@@ -39,18 +38,17 @@ static void	raytrace_pixel_ssaa3(t_env *e, int x, int y)
 		tx = 0;
 		while (tx < 3)
 		{
-			ray = create_ray(e->scene->cam, (t_vec3)
+			create_ray(&e->scene, (t_vec3)
 			{
-				(x - (e->scene->size.w / 2)) + (tx * 0.333),
-				(y - (e->scene->size.h / 2)) + (ty * 0.333),
+				(x - (e->scene.current_mode->w / 2)) + (tx * 0.333),
+				(y - (e->scene.current_mode->h / 2)) + (ty * 0.333),
 				0
 			});
-			inter = throw_ray(e, ray, 0);
+			inter = throw_ray(e, &e->scene.ray, 0);
 			if (inter->obj)
-				color[tx + 3 * ty] = process_lighting(e, ray, inter);
+				color[tx + 3 * ty] = process_lighting(e, &e->scene.ray, inter);
 			else
 				color[tx + 3 * ty] = (t_color){0, 0, 0};
-			free(ray);
 			//free(inter);
 			++tx;
 		}
@@ -61,22 +59,22 @@ static void	raytrace_pixel_ssaa3(t_env *e, int x, int y)
 
 static void	raytrace_pixel(t_env *e, int x, int y)
 {
-	t_ray			*ray;
 	t_intersection	*inter;
 	t_color			color;
 
 	//if (x != 50 || y != 50) return ;
-	ray = create_ray(
-		e->scene->cam,
-		(t_vec3){x - (e->scene->size.w / 2), y - (e->scene->size.h / 2), 0}
-	);
-	inter = throw_ray(e, ray, 0);
+	create_ray(&e->scene, (t_vec3)
+	{
+		x - (e->scene.current_mode->w / 2),
+		y - (e->scene.current_mode->h / 2),
+		0
+	});
+	inter = throw_ray(e, &e->scene.ray, 0);
 	if (inter->obj)
 	{
-		color = process_lighting(e, ray, inter);
+		color = process_lighting(e, &e->scene.ray, inter);
 		draw_pixel(e, (t_pixel){x, y, color});
 	}
-	free(ray);
 	// if (inter)
 	// 	free(inter);
 }
@@ -87,12 +85,12 @@ void		raytrace(t_env *e)
 	int				y;
 	t_bool			ssaa;
 
-	ssaa = TRUE;
+	ssaa = FALSE;
 	y = 0;
-	while (y < e->scene->size.h)
+	while (y < e->scene.current_mode->h)
 	{
 		x = 0;
-		while (x < e->scene->size.w)
+		while (x < e->scene.current_mode->w)
 		{
 			if (ssaa)
 				raytrace_pixel_ssaa3(e, x, y);

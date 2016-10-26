@@ -39,12 +39,10 @@ int			*fill_counts_data(t_scene *s, char *data)
 
 void		fill_camera_data(t_scene *s, char *data)
 {
-	if (!(s->cam = (t_cam *)malloc(sizeof(t_cam))))
-		error(-16, "Unable to create camera.");
-	s->cam->fov = read_int_data(data, "config.camera.fov");
-	s->cam->fov = s->cam->fov < 1 || s->cam->fov > 90 ? FOV : s->cam->fov;
-	s->cam->focal_dist = (s->size.w / 2 / (fabs(tan(s->cam->fov / 2))));
-	s->cam->pos = (t_vec3){0, 0, -s->cam->focal_dist};
+	s->cam.fov = read_int_data(data, "config.camera.fov");
+	s->cam.fov = s->cam.fov < 1 || s->cam.fov > 90 ? FOV : s->cam.fov;
+	s->cam.focal_dist = (s->size.w / 2 / (fabs(tan(s->cam.fov / 2))));
+	s->cam.pos = (t_vec3){0, 0, -s->cam.focal_dist};
 }
 
 void		fill_screen_data(t_scene *s, char *data)

@@ -49,7 +49,6 @@ double			calc_dist(t_vec3 *v1, t_vec3 *v2)
 void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *new_start, t_color *c, t_vec3 *n, double coef)
 {
 	t_vec3			dist;
-	t_ray			ray;
 	t_intersection	*inter;
 	double			t;
 	double			lambert;
@@ -60,32 +59,27 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	t = sqrtf(vec_mul_to_d(dist, dist));
 	if (t <= 0.00000)
 		return ;
-	ray.origin = *new_start;
-	ray.dir = (t_vec3){dist.x, dist.y, dist.z};
-	vec_normalize(&ray.dir);
-	inter = throw_ray(e, &ray, 0);
-	// printf("shadow-ray-origin: %f, %f, %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
-	// printf("shadow-ray-dir: %f, %f, %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
+	e->scene.light_ray.origin = *new_start;
+	e->scene.light_ray.dir = (t_vec3){dist.x, dist.y, dist.z};
+	vec_normalize(&e->scene.light_ray.dir);
+	inter = throw_ray(e, &e->scene.light_ray, 0);
 	if (inter->obj)
 	{
-		// printf("%f\n", inter->t);
 		t_vec3 impact;
 
-		impact = vec_add(ray.origin, vec_mul_d(ray.dir, inter->t));
-		// printf("Impact: %f, %f, %f\n", impact.x, impact.y, impact.z);
+		impact = vec_add(e->scene.light_ray.origin, vec_mul_d(e->scene.light_ray.dir, inter->t));
 		if (calc_dist(new_start, &impact) < calc_dist(new_start, &l->pos))
 		{
-			// ft_putchar('b');
 			free(inter);
 			return ;
 		}
 	}
 	// if (!inter->obj)
 	// {
-		// c->r = 1.00000 - expf(c->r * e->scene->exposure);
-		// c->g = 1.00000 - expf(c->g * e->scene->exposure);
-		// c->b = 1.00000 - expf(c->b * e->scene->exposure);
-		lambert = vec_mul_to_d(ray.dir, *n) * coef;
+		// c->r = 1.00000 - expf(c->r * e->scene.exposure);
+		// c->g = 1.00000 - expf(c->g * e->scene.exposure);
+		// c->b = 1.00000 - expf(c->b * e->scene.exposure);
+		lambert = vec_mul_to_d(e->scene.light_ray.dir, *n) * coef;
 		c->r += lambert * l->color.r * obj->color.r;
 		c->g += lambert * l->color.g * obj->color.g;
 		c->b += lambert * l->color.b * obj->color.b;
@@ -137,8 +131,8 @@ t_color			process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 		n = get_normal(&new_start, inter->obj);
 		i = 0;
-		while (i < e->scene->n_light)
-			add_lambert_light_contribution(e, inter->obj, &e->scene->lights[i++], &new_start, &color, &n, coef);
+		while (i < e->scene.n_light)
+			add_lambert_light_contribution(e, inter->obj, &e->scene.lights[i++], &new_start, &color, &n, coef);
 		add_reflection_contribution(inter->obj, ray, &n, &coef);
 		ray->origin = new_start;
 		ray->dir = vec_sub(ray->dir, n);

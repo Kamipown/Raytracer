@@ -20,18 +20,19 @@ static void	init_sdl(void)
 
 static void	init_scene(t_env *e, char *filename)
 {
-	if (!(e->scene = (t_scene *)malloc(sizeof(t_scene))))
-		error(-4, "Unable to create the scene.");
-	parse_scene(e->scene, filename);
-	e->scene->selected = 0;
+	parse_scene(&e->scene, filename);
+	e->scene.selected = 0;
 }
 
 static void	init_window(t_env *e)
 {
 	if ((e->win = SDL_CreateWindow("RT - 42", SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, e->scene->size.w, e->scene->size.h,
+		SDL_WINDOWPOS_UNDEFINED, e->scene.size.w, e->scene.size.h,
 		0)) == NULL)
 		error(-21, (char *)SDL_GetError());
+	SDL_GetWindowDisplayMode(e->win, &e->scene.mode_win);
+	SDL_GetDesktopDisplayMode(0, &e->scene.mode_fs);
+	e->scene.current_mode = &e->scene.mode_win;
 }
 
 static void	init_image(t_env *e)

@@ -68,25 +68,22 @@ void	key_hook(t_env *e)
 
 void	mouse_hook(t_env *e)
 {
-	t_ray	*ray;
-
 	if (e->inputs.mouse_left)
 	{
-		ray = create_ray(e->scene->cam, (t_vec3)
+		create_ray(&e->scene, (t_vec3)
 		{
-			e->inputs.mouse_x - (e->scene->size.w / 2),
-			e->inputs.mouse_y - (e->scene->size.h / 2),
+			e->inputs.mouse_x - (e->scene.current_mode->w / 2),
+			e->inputs.mouse_y - (e->scene.current_mode->h / 2),
 			0
 		});
-		e->scene->selected = throw_ray(e, ray, 1);
-		if (e->scene->selected->type == SPHERE)
+		e->scene.selected = throw_ray(e, &e->scene.ray, 1);
+		if (e->scene.selected->type == SPHERE)
 			ft_putendl("Sphere selected");
-		else if (e->scene->selected->type == CYLINDER)
+		else if (e->scene.selected->type == CYLINDER)
 			ft_putendl("Cylinder selected");
-		else if (e->scene->selected->type == CONE)
+		else if (e->scene.selected->type == CONE)
 			ft_putendl("Cone selected");
-		else if (e->scene->selected->type == PLANE)
+		else if (e->scene.selected->type == PLANE)
 			ft_putendl("Plane selected");
-		free(ray);
 	}
 }

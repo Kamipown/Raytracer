@@ -20,7 +20,8 @@ static void		draw_background(SDL_Renderer *renderer)
 
 void			draw_pixel(t_env *e, t_pixel p)
 {
-	if (p.x > 0 && p.x < e->scene->size.w && p.y > 0 && p.y < e->scene->size.h)
+	if (p.x > 0 && p.x < e->scene.current_mode->w
+		&& p.y > 0 && p.y < e->scene.current_mode->h)
 	{
 		SDL_SetRenderDrawColor(e->renderer,
 			p.color.r,

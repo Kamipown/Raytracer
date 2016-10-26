@@ -17,13 +17,18 @@ void	toggle_fullscreen(t_env *e)
 	if (e->options.fullscreen)
 	{
 		e->options.fullscreen = FALSE;
-		e->options.need_redraw = TRUE;
 		SDL_SetWindowFullscreen(e->win, 0);
+		e->scene.current_mode = &e->scene.mode_win;
+		e->scene.cam.focal_dist = (e->scene.current_mode->w / 2 / (fabs(tan(e->scene.cam.fov / 2))));
+		e->scene.cam.pos = (t_vec3){0, 0, -e->scene.cam.focal_dist};
 	}
 	else
 	{
 		e->options.fullscreen = TRUE;
-		e->options.need_redraw = TRUE;
-		SDL_SetWindowFullscreen(e->win, SDL_WINDOW_FULLSCREEN);
+		SDL_SetWindowFullscreen(e->win, SDL_WINDOW_FULLSCREEN_DESKTOP);
+		e->scene.current_mode = &e->scene.mode_fs;
+		e->scene.cam.focal_dist = (e->scene.current_mode->w / 2 / (fabs(tan(e->scene.cam.fov / 2))));
+		e->scene.cam.pos = (t_vec3){0, 0, -e->scene.cam.focal_dist};
 	}
+	e->options.need_redraw = TRUE;
 }

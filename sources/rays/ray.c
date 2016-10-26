@@ -28,20 +28,15 @@
 // 	v->z = t.x * -(sin(deg_to_rad(45))) + t.z * cos(deg_to_rad(45));
 // }
 
-t_ray					*create_ray(t_cam *cam, t_vec3 to)
+void	create_ray(t_scene *scene, t_vec3 to)
 {
-	t_ray	*ray;
-
-	if (!(ray = (t_ray *)malloc(sizeof(t_ray))))
-		error(-16, "Unable to create ray.");
-	ray->origin.x = cam->pos.x;
-	ray->origin.y = cam->pos.y;
-	ray->origin.z = cam->pos.z;
-	ray->dir.x = to.x;
-	ray->dir.y = to.y;
-	ray->dir.z = cam->focal_dist;
-	vec_normalize(&ray->dir);
-	return (ray);
+	scene->ray.origin.x = scene->cam.pos.x;
+	scene->ray.origin.y = scene->cam.pos.y;
+	scene->ray.origin.z = scene->cam.pos.z;
+	scene->ray.dir.x = to.x;
+	scene->ray.dir.y = to.y;
+	scene->ray.dir.z = scene->cam.focal_dist;
+	vec_normalize(&scene->ray.dir);
 }
 
 static t_intersection	*create_intersection(void)

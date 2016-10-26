@@ -42,8 +42,9 @@ void		        fill_light_data(t_scene *s, char *data);
 
 void				loop(t_env *e);
 
+void				init_inputs(t_inputs *inputs);
 void				get_inputs(t_env *e);
-void				get_inputs_keys(t_env *e);
+void				get_inputs_keys(t_env *e, t_bool pressed);
 void				get_inputs_mouse(t_env *e);
 
 void				switch_mode(t_env *e);
@@ -66,7 +67,7 @@ void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
 
-t_ray				*create_ray(t_cam *cam, t_vec3 to);
+void				create_ray(t_scene *scene, t_vec3 to);
 t_intersection		*throw_ray(t_env *e, t_ray *ray, int flag);
 
 void				intersect_objects(t_env *e, t_ray *ray, t_intersection *inter, int flag);

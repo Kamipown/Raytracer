@@ -98,13 +98,18 @@ typedef struct		s_intersection
 
 typedef struct		s_scene
 {
-	t_cam			*cam;
+	SDL_DisplayMode	mode_win;
+	SDL_DisplayMode	mode_fs;
+	SDL_DisplayMode	*current_mode;
+	t_cam			cam;
 	t_light			*lights;
 	t_obj			*objs;
 	double			exposure;
 	int				n_light;
 	int				n_obj;
 	t_size			size;
+	t_ray			ray;
+	t_ray			light_ray;
 	t_intersection	*selected;
 }					t_scene;
 
@@ -113,6 +118,7 @@ typedef struct		s_inputs
 	t_bool			escape;
 	t_bool			key_1;
 	t_bool			key_2;
+	t_bool			key_0;
 	t_bool			key_f;
 	t_bool			key_left;
 	t_bool			key_right;
@@ -135,10 +141,10 @@ typedef struct		s_options
 
 typedef struct		s_env
 {
-	t_scene			*scene;
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
 	SDL_Event		event;
+	t_scene			scene;
 	t_inputs		inputs;
 	t_options		options;
 }					t_env;

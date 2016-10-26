@@ -48,9 +48,10 @@
 # define CONE			3
 # define PLANE			4
 
-# define MODE_NULL      0
-# define MODE_CAMERA    1
-# define MODE_SELECT    2
+# define MODE_NULL      	0
+# define MODE_CAMERA    	1
+# define MODE_CAMERA_ROT    2
+# define MODE_SELECT    	3
 
 # define MOVE_SPEED		20
 
