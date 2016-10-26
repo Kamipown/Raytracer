@@ -67,6 +67,7 @@ typedef struct		s_ray
 typedef struct		s_cam
 {
 	t_vec3			pos;
+	t_vec3			rot;
 	int				fov;
 	double			focal_dist;
 }					t_cam;
@@ -116,9 +117,10 @@ typedef struct		s_scene
 typedef struct		s_inputs
 {
 	t_bool			escape;
+	t_bool			key_0;
 	t_bool			key_1;
 	t_bool			key_2;
-	t_bool			key_0;
+	t_bool			key_3;
 	t_bool			key_f;
 	t_bool			key_left;
 	t_bool			key_right;

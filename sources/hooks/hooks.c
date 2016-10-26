@@ -19,20 +19,15 @@ static void	print_mode(t_bool mode)
 		ft_putendl("Mode : Null");
 	else if (mode == MODE_CAMERA)
 		ft_putendl("Mode : Camera");
+	else if (mode == MODE_CAMERA_ROT)
+		ft_putendl("Mode : Camera Rotation");
 	else if (mode == MODE_SELECT)
 		ft_putendl("Mode : Selections");
 }
 
 static void	change_mode(t_env *e, int mode)
 {
-	if (mode == MODE_CAMERA && e->options.mode != MODE_CAMERA)
-		e->options.mode = MODE_CAMERA;
-	else if (mode == MODE_SELECT && e->options.mode != MODE_SELECT)
-		e->options.mode = MODE_SELECT;
-	else if (mode == MODE_CAMERA && e->options.mode == MODE_CAMERA)
-		e->options.mode = MODE_NULL;
-	else if (mode == MODE_SELECT && e->options.mode == MODE_SELECT)
-		e->options.mode = MODE_NULL;
+	e->options.mode = mode;
 	print_mode(e->options.mode);
 }
 
@@ -42,9 +37,13 @@ void	key_hook(t_env *e)
 		e->options.quit = TRUE;
 
 	// Modes
+	if (e->inputs.key_0)
+		change_mode(e, MODE_NULL);
 	if (e->inputs.key_1)
 		change_mode(e, MODE_CAMERA);
 	if (e->inputs.key_2)
+		change_mode(e, MODE_CAMERA_ROT);
+	if (e->inputs.key_3)
 		change_mode(e, MODE_SELECT);
 
 	// Fullscreen

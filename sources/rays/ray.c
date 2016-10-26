@@ -12,21 +12,38 @@
 
 #include "rtv1.h"
 
-// static double			deg_to_rad(double a)
-// {
-// 	return (a * M_PI / 180);
-// }
+static double			deg_to_rad(double a)
+{
+	return (a * M_PI / 180);
+}
 
-// static void				rotate(t_vec3 *v)
+// static void				rotate(t_vec3 *v, double ang)
 // {
 // 	t_vec3	t;
 
 // 	t.x = v->x;
 // 	t.y = v->y;
 // 	t.z = v->z;
-// 	v->x = t.x * cos(deg_to_rad(45)) + t.z * sin(deg_to_rad(45));
-// 	v->z = t.x * -(sin(deg_to_rad(45))) + t.z * cos(deg_to_rad(45));
+// 	v->x = t.x * cos(deg_to_rad(ang)) + t.z * sin(deg_to_rad(ang));
+// 	v->z = t.x * -(sin(deg_to_rad(ang))) + t.z * cos(deg_to_rad(ang));
 // }
+
+static void	apply_rotations(t_scene *s)
+{
+	double	t;
+
+	t = s->ray.dir.y;
+	s->ray.dir.y = s->ray.dir.y * cos(deg_to_rad(s->cam.rot.x)) + s->ray.dir.z * -(sin(deg_to_rad(s->cam.rot.x)));
+	s->ray.dir.z = t * sin(deg_to_rad(s->cam.rot.x)) + s->ray.dir.z * cos(deg_to_rad(s->cam.rot.x));
+
+	t = s->ray.dir.x;
+	s->ray.dir.x = s->ray.dir.x * cos(deg_to_rad(s->cam.rot.y)) + s->ray.dir.z * sin(deg_to_rad(s->cam.rot.y));
+	s->ray.dir.z = t * -(sin(deg_to_rad(s->cam.rot.y))) + s->ray.dir.z * cos(deg_to_rad(s->cam.rot.y));
+
+	t = s->ray.dir.x;
+	s->ray.dir.x = s->ray.dir.x * cos(deg_to_rad(s->cam.rot.z)) + s->ray.dir.y * -(sin(deg_to_rad(s->cam.rot.z)));
+	s->ray.dir.y = t * sin(deg_to_rad(s->cam.rot.z)) + s->ray.dir.y * cos(deg_to_rad(s->cam.rot.z));
+}
 
 void	create_ray(t_scene *scene, t_vec3 to)
 {
@@ -37,6 +54,8 @@ void	create_ray(t_scene *scene, t_vec3 to)
 	scene->ray.dir.y = to.y;
 	scene->ray.dir.z = scene->cam.focal_dist;
 	vec_normalize(&scene->ray.dir);
+	apply_rotations(scene);
+	// apply_rotations(scene);
 }
 
 static t_intersection	*create_intersection(void)

@@ -43,6 +43,7 @@ void		fill_camera_data(t_scene *s, char *data)
 	s->cam.fov = s->cam.fov < 1 || s->cam.fov > 90 ? FOV : s->cam.fov;
 	s->cam.focal_dist = (s->size.w / 2 / (fabs(tan(s->cam.fov / 2))));
 	s->cam.pos = (t_vec3){0, 0, -s->cam.focal_dist};
+	s->cam.rot = (t_vec3){0, 0, 0};
 }
 
 void		fill_screen_data(t_scene *s, char *data)

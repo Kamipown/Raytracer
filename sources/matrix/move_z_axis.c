@@ -24,6 +24,13 @@ void	move_forward(t_env *e)
 		e->scene.cam.pos.z += MOVE_SPEED;
 		e->options.need_redraw = TRUE;
 	}
+	else if (e->options.mode == MODE_CAMERA_ROT)
+	{
+		e->scene.cam.rot.z -= ROT_SPEED;
+		if (e->scene.cam.rot.z < 0)
+			e->scene.cam.rot.z = 360 + e->scene.cam.rot.z;
+		e->options.need_redraw = TRUE;
+	}
 }
 
 void	move_backward(t_env *e)
@@ -36,6 +43,13 @@ void	move_backward(t_env *e)
 	else if (e->options.mode == MODE_CAMERA)
 	{
 		e->scene.cam.pos.z -= MOVE_SPEED;
+		e->options.need_redraw = TRUE;
+	}
+	else if (e->options.mode == MODE_CAMERA_ROT)
+	{
+		e->scene.cam.rot.z += ROT_SPEED;
+		if (e->scene.cam.rot.z >= 360)
+			e->scene.cam.rot.z -= 360;
 		e->options.need_redraw = TRUE;
 	}
 }

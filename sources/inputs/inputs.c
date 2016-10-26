@@ -15,9 +15,10 @@
 void		init_inputs(t_inputs *inputs)
 {
 	inputs->escape = FALSE;
+	inputs->key_0 = FALSE;
 	inputs->key_1 = FALSE;
 	inputs->key_2 = FALSE;
-	inputs->key_0 = FALSE;
+	inputs->key_3 = FALSE;
 	inputs->key_f = FALSE;
 	inputs->key_left = FALSE;
 	inputs->key_right = FALSE;
@@ -32,9 +33,10 @@ void		init_inputs(t_inputs *inputs)
 
 static void	reset_inputs(t_inputs *inputs)
 {
+	inputs->key_0 = FALSE;
 	inputs->key_1 = FALSE;
 	inputs->key_2 = FALSE;
-	inputs->key_0 = FALSE;
+	inputs->key_3 = FALSE;
 	inputs->mouse_left = FALSE;
 }
 

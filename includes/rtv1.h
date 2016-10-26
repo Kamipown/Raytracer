@@ -54,6 +54,7 @@
 # define MODE_SELECT    	3
 
 # define MOVE_SPEED		20
+# define ROT_SPEED		10
 
 #define DELTA           (e.b * e.b - (4 * e.a * e.c))
 #define Z1              ((-e.b + sqrt(DELTA)) / (2.0 * e.a))

@@ -18,12 +18,14 @@ void		get_inputs_keys(t_env *e, t_bool pressed)
 		e->inputs.escape = pressed;
 
 	// Numbers
+	else if (e->event.key.keysym.sym == SDLK_0)
+		e->inputs.key_0 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_1)
 		e->inputs.key_1 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_2)
 		e->inputs.key_2 = pressed;
-	else if (e->event.key.keysym.sym == SDLK_0)
-		e->inputs.key_0 = pressed;
+	else if (e->event.key.keysym.sym == SDLK_3)
+		e->inputs.key_3 = pressed;
 
 	// Letters
 	else if (e->event.key.keysym.sym == SDLK_f)
