@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcognata <dcognata@student.42.fr>          +#+  +:+       +#+         #
+#    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/12/11 13:43:04 by dcognata          #+#    #+#              #
-#    Updated: 2016/10/13 05:18:39 by pdelobbe         ###   ########.fr        #
+#    Created: 2016/10/26 23:42:40 by gromon            #+#    #+#              #
+#    Updated: 2016/10/26 23:42:43 by gromon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,8 @@ SRC+=	intersections/inter.c	\
 		intersections/inter_planes.c
 
 SRC+=	debug/debug.c
+
+SRC+=	utilities/solve.c
 
 SRCS =	$(addprefix $(PATH_SRC), $(SRC))
 

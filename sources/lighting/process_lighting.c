@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/13 21:49:50 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/26 23:52:04 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_color	get_global_illuminated_color(t_color *c)
 	return (color);
 }
 
-t_vec3			get_normal(t_vec3 *pos, t_obj *obj)
+t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 {
 	t_vec3	normal;
 
@@ -35,6 +35,17 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj)
 	else if (obj->type == PLANE)
 	{
 		normal = (t_vec3){obj->rot.x, obj->rot.y, obj->rot.z};
+	}
+	else if (obj->type == CYLINDER)
+	{
+		normal = vec_sub(*pos, obj->pos);
+		normal.y = 0;
+		vec_normalize(&normal);
+	}
+	else if (obj->type == CONE)
+	{
+		normal = (t_vec3){ray->dir.x, 0, (1- tan(obj->radius)) * tan(obj->radius)};
+		vec_normalize(&normal);
 	}
 	return (normal);
 }
@@ -129,7 +140,7 @@ t_color			process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
 	while (coef > 0.00000 && level < 10)
 	{
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
-		n = get_normal(&new_start, inter->obj);
+		n = get_normal(&new_start, inter->obj, ray);
 		i = 0;
 		while (i < e->scene.n_light)
 			add_lambert_light_contribution(e, inter->obj, &e->scene.lights[i++], &new_start, &color, &n, coef);

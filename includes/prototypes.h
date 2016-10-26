@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/04 22:21:09 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/08 22:03:29 by gromon           ###   ########.fr       */
+/*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
+/*   Updated: 2016/10/26 23:50:55 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef PROTOTYPES_H
 # define PROTOTYPES_H
@@ -68,6 +69,7 @@ void				draw_pixel(t_env *e, t_pixel p);
 void				raytrace(t_env *e);
 
 void				create_ray(t_scene *scene, t_vec3 to);
+
 t_intersection		*throw_ray(t_env *e, t_ray *ray, int flag);
 
 void				intersect_objects(t_env *e, t_ray *ray, t_intersection *inter, int flag);
@@ -75,6 +77,7 @@ t_bool				inter_spheres(t_ray *ray, t_obj *s, double *t);
 t_bool				inter_cylinders(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_cones(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_planes(t_ray *ray, t_obj *p, double *t);
+t_bool				solve_quadratic(t_equation e, double *t);
 
 t_color				process_lighting(t_env *e, t_ray *ray, t_intersection *inter);
 
@@ -96,5 +99,7 @@ void				debug_print_counts(t_scene *s);
 void				debug_print_lights(t_scene *s);
 void				debug_print_spheres(t_scene *s);
 void				debug_print_planes(t_scene *s);
+void				debug_print_cylinders(t_scene *s);
+void				debug_print_cones(t_scene *s);
 
 #endif

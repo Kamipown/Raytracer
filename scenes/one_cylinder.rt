@@ -18,4 +18,7 @@ cylinders
 			y:0
 			z:200
 		radius:100
-		color:#ffffff
+		color
+			r:255
+			g:100
+			b:50

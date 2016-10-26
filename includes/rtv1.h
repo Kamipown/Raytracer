@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/12 16:37:45 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/26 23:49:27 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 # define CYLINDER		2
 # define CONE			3
 # define PLANE			4
-
 # define MODE_NULL      	0
 # define MODE_CAMERA    	1
 # define MODE_CAMERA_ROT    2
