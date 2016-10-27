@@ -28,7 +28,7 @@ INCLUDES =	-I./libft/includes/		\
 
 INC = -I $(INCLUDES) -I libft/includes/ -I SDL2/include/
 
-FLG =	-g	-Wall -Wextra -pedantic -O3 #-Werror
+FLG =  -g -Wall -Wextra -pedantic #-Werror 
 
 CFLAGS = $(INCLUDES) $(FLG)
 

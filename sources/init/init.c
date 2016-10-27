@@ -33,6 +33,13 @@ static void	init_window(t_env *e)
 	SDL_GetWindowDisplayMode(e->win, &e->scene.mode_win);
 	SDL_GetDesktopDisplayMode(0, &e->scene.mode_fs);
 	e->scene.current_mode = &e->scene.mode_win;
+
+	
+	SDL_Surface *surface;
+	if ((surface = SDL_LoadBMP("./resources/icon.bmp")) == 0)
+		printf("fdp");
+	SDL_SetWindowIcon(e->win, surface);
+	SDL_FreeSurface(surface);
 }
 
 static void	init_image(t_env *e)
