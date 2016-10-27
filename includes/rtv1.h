@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/26 23:49:27 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/27 21:24:35 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "./sdl2/SDL.h"
 # include "libft.h"
 # include "structs.h"
+# include "perlin.h"
 # include "prototypes.h"
 
 # define BUFF_SIZE		32

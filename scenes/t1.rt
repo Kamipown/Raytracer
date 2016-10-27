@@ -38,6 +38,7 @@ planes
 			g:100
 			b:100
 		reflection:0
+		textures:2
 	1
 		pos
 			x:600
@@ -52,6 +53,7 @@ planes
 			g:50
 			b:50
 		reflection:0
+		textures:2
 	2
 		pos
 			x:0
@@ -66,6 +68,7 @@ planes
 			g:100
 			b:70
 		reflection:0
+		textures:2
 	3
 		pos
 			x:-600
@@ -80,6 +83,7 @@ planes
 			g:100
 			b:50
 		reflection:0
+		textures:2
 	4
 		pos
 			x:0
@@ -94,6 +98,7 @@ planes
 			g:100
 			b:100
 		reflection:0
+		textures:2
 	5
 		pos
 			x:0
@@ -108,6 +113,7 @@ planes
 			g:50
 			b:100
 		reflection:0
+		textures:2
 cylinders
 	0
 		pos
@@ -124,3 +130,4 @@ cylinders
 			g:155
 			b:20
 		reflection:0
+		textures:1

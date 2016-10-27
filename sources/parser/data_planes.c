@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 14:23:51 by dcognata          #+#    #+#             */
-/*   Updated: 2016/10/08 22:06:41 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 00:02:38 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void		fill_planes_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "planes.#.color.b", i);
 		s->objs[i + j].refl =
 			data_get_i_constructed(data, "planes.#.reflection", i);
+		s->objs[i + j].textures =
+			data_get_i_constructed(data, "planes.#.textures", i);
 		s->objs[i + j].type = PLANE;
 		s->objs[i + j].id = i + j;
 		++i;

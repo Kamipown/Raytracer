@@ -6,61 +6,17 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/26 23:52:04 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/27 22:22:10 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static t_color	get_global_illuminated_color(t_color *c)
-{
-	t_color	color;
-
-	color.r = c->r * 0.1;
-	color.g = c->g * 0.1;
-	color.b = c->b * 0.1;
-	return (color);
-}
-
-t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
-{
-	t_vec3	normal;
-
-	normal = (t_vec3){0, 0, 0};
-	if (obj->type == SPHERE)
-	{
-		normal = vec_sub(*pos, obj->pos);
-		vec_normalize(&normal);
-	}
-	else if (obj->type == PLANE)
-	{
-		normal = (t_vec3){obj->rot.x, obj->rot.y, obj->rot.z};
-	}
-	else if (obj->type == CYLINDER)
-	{
-		normal = vec_sub(*pos, obj->pos);
-		normal.y = 0;
-		vec_normalize(&normal);
-	}
-	else if (obj->type == CONE)
-	{
-		normal = (t_vec3){ray->dir.x, 0, (1- tan(obj->radius)) * tan(obj->radius)};
-		vec_normalize(&normal);
-	}
-	return (normal);
-}
-
-double			calc_dist(t_vec3 *v1, t_vec3 *v2)
-{
-	return (sqrtf((v1->x - v2->x) * (v1->x - v2->x)
-				+ (v1->y - v2->y) * (v1->y - v2->y)
-				+ (v1->z - v2->z) * (v1->z - v2->z)));
-}
-
 void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *new_start, t_color *c, t_vec3 *n, double coef)
 {
 	t_vec3			dist;
 	t_intersection	*inter;
+	t_vec3 			impact;
 	double			t;
 	double			lambert;
 
@@ -76,8 +32,6 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	inter = throw_ray(e, &e->scene.light_ray, 0);
 	if (inter->obj)
 	{
-		t_vec3 impact;
-
 		impact = vec_add(e->scene.light_ray.origin, vec_mul_d(e->scene.light_ray.dir, inter->t));
 		if (calc_dist(new_start, &impact) < calc_dist(new_start, &l->pos))
 		{
@@ -85,27 +39,10 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 			return ;
 		}
 	}
-	// if (!inter->obj)
-	// {
-		// c->r = 1.00000 - expf(c->r * e->scene.exposure);
-		// c->g = 1.00000 - expf(c->g * e->scene.exposure);
-		// c->b = 1.00000 - expf(c->b * e->scene.exposure);
-		lambert = vec_mul_to_d(e->scene.light_ray.dir, *n) * coef;
-		c->r += lambert * l->color.r * obj->color.r;
-		c->g += lambert * l->color.g * obj->color.g;
-		c->b += lambert * l->color.b * obj->color.b;
-	// }
-	// else
-	// {
-	// 	loldist = vec_mul_d(ray.dir, inter->t);
-	// 	if (calc_dist(&l->pos, new_start) < calc_dist(&l->pos, &loldist))
-	// 	{
-	// 		lambert = vec_mul_to_d(ray.dir, *n) * coef;
-	// 		c->r += lambert * l->color.r * obj->color.r;
-	// 		c->g += lambert * l->color.g * obj->color.g;
-	// 		c->b += lambert * l->color.b * obj->color.b;
-	// 	}
-	// }
+	lambert = vec_mul_to_d(e->scene.light_ray.dir, *n) * coef;
+	c->r += lambert * l->color.r * obj->color.r;
+	c->g += lambert * l->color.g * obj->color.g;
+	c->b += lambert * l->color.b * obj->color.b;
 	free(inter);
 }
 
@@ -118,23 +55,14 @@ void			add_reflection_contribution(t_obj *obj, t_ray *ray, t_vec3 *n, double *co
 	*n = vec_mul_d(*n, refl);
 }
 
-void			flour_color(t_color *color)
+void			process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_color *color)
 {
-	color->r = (color->r * 255 > 255) ? 255 : color->r * 255;
-	color->g = (color->g * 255 > 255) ? 255 : color->g * 255;
-	color->b = (color->b * 255 > 255) ? 255 : color->b * 255;
-}
-
-t_color			process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
-{
-	t_color			color;
 	double			coef;
 	int				level;
 	t_vec3			new_start;
 	t_vec3			n;
 	int				i;
 
-	color = get_global_illuminated_color(&inter->obj->color);
 	coef = 2.0;
 	level = 0;
 	while (coef > 0.00000 && level < 10)
@@ -143,17 +71,14 @@ t_color			process_lighting(t_env *e, t_ray *ray, t_intersection *inter)
 		n = get_normal(&new_start, inter->obj, ray);
 		i = 0;
 		while (i < e->scene.n_light)
-			add_lambert_light_contribution(e, inter->obj, &e->scene.lights[i++], &new_start, &color, &n, coef);
+			add_lambert_light_contribution(e, inter->obj, &e->scene.lights[i++], &new_start, color, &n, coef);
 		add_reflection_contribution(inter->obj, ray, &n, &coef);
 		ray->origin = new_start;
 		ray->dir = vec_sub(ray->dir, n);
-		// if (inter)
-		// 	free(inter);
 		inter = throw_ray(e, ray, 0);
 		if (!inter->obj)
 			break ;
 		level++;
 	}
-	flour_color(&color);
-	return (color);
+	flour_color(color);
 }

@@ -6,7 +6,7 @@
 #    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/26 23:42:40 by gromon            #+#    #+#              #
-#    Updated: 2016/10/26 23:42:43 by gromon           ###   ########.fr        #
+#    Updated: 2016/10/27 21:33:23 by gromon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,13 @@ SRC+=	intersections/inter.c	\
 
 SRC+=	debug/debug.c
 
-SRC+=	utilities/solve.c
+SRC+=	utilities/math_utilities.c			\
+		utilities/color_utilities.c
+
+SRC+=	textures/textures.c					\
+		textures/perlin_noise.c				\
+		textures/get_perlin_parameters.c	\
+		textures/setup_perlin.c
 
 SRCS =	$(addprefix $(PATH_SRC), $(SRC))
 

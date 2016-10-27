@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/26 23:50:55 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/27 22:21:48 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,12 @@ t_bool				inter_cylinders(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_cones(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_planes(t_ray *ray, t_obj *p, double *t);
 t_bool				solve_quadratic(t_equation e, double *t);
+double			    calc_dist(t_vec3 *v1, t_vec3 *v2);
+t_vec3			    get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
+t_color	            get_global_illuminated_color(t_color *c);
+void			    flour_color(t_color *color);
 
-t_color				process_lighting(t_env *e, t_ray *ray, t_intersection *inter);
+void				process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_color *color);
 
 t_vec3				vec_add(t_vec3 v1, t_vec3 v2);
 t_vec3				vec_sub(t_vec3 v1, t_vec3 v2);
