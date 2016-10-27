@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_calc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 16:33:47 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/12 20:47:06 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 00:32:46 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vec3		vec_mul(t_vec3 v1, t_vec3 v2)
 	return (ret);
 }
 
-double	vec_len(t_vec3 v)
+double		vec_len(t_vec3 v)
 {
 	double	x;
 	double	y;

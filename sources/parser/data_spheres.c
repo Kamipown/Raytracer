@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_spheres.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 19:18:06 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 00:09:39 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 00:49:07 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,22 @@ static void	clean_spheres(t_scene *s)
 	}
 }
 
+static void	clean_spheres2(t_scene *s, char *data, int i)
+{
+	s->objs[i].color.r =
+		data_get_i_constructed(data, "spheres.#.color.r", i);
+	s->objs[i].color.g =
+		data_get_i_constructed(data, "spheres.#.color.g", i);
+	s->objs[i].color.b =
+		data_get_i_constructed(data, "spheres.#.color.b", i);
+	s->objs[i].refl =
+		data_get_i_constructed(data, "spheres.#.reflection", i);
+	s->objs[i].textures =
+		data_get_i_constructed(data, "spheres.#.textures", i);
+	s->objs[i].type = SPHERE;
+	s->objs[i].id = i;
+}
+
 void		fill_spheres_data(t_scene *s, char *data, int counts[4])
 {
 	int		i;
@@ -49,18 +65,7 @@ void		fill_spheres_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "spheres.#.pos.z", i);
 		s->objs[i].radius =
 			data_get_i_constructed(data, "spheres.#.radius", i);
-		s->objs[i].color.r =
-			data_get_i_constructed(data, "spheres.#.color.r", i);
-		s->objs[i].color.g =
-			data_get_i_constructed(data, "spheres.#.color.g", i);
-		s->objs[i].color.b =
-			data_get_i_constructed(data, "spheres.#.color.b", i);
-		s->objs[i].refl =
-			data_get_i_constructed(data, "spheres.#.reflection", i);
-		s->objs[i].textures =
-			data_get_i_constructed(data, "spheres.#.textures", i);
-		s->objs[i].type = SPHERE;
-		s->objs[i].id = i;
+		clean_spheres2(s, data, i);
 		++i;
 	}
 	clean_spheres(s);

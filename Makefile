@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
+#    By: splace <splace@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/26 23:42:40 by gromon            #+#    #+#              #
-#    Updated: 2016/10/27 21:33:23 by gromon           ###   ########.fr        #
+#    Updated: 2016/10/28 01:13:42 by splace           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ SRC+=	intersections/inter.c	\
 		intersections/inter_cones.c		\
 		intersections/inter_planes.c
 
-SRC+=	debug/debug.c
+SRC+=	debug/debug.c debug/debug2.c
 
 SRC+=	utilities/math_utilities.c			\
 		utilities/color_utilities.c

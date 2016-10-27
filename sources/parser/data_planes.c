@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_planes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 14:23:51 by dcognata          #+#    #+#             */
-/*   Updated: 2016/10/28 00:02:38 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 00:47:59 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,24 @@ static void	clean_planes(t_scene *s)
 	}
 }
 
+static void	clean_planes2(t_scene *s, char *data, int i, int j)
+{
+	s->objs[i + j].rot.z =
+		data_get_i_constructed(data, "planes.#.normal.z", i);
+	s->objs[i + j].color.r =
+		data_get_i_constructed(data, "planes.#.color.r", i);
+	s->objs[i + j].color.g =
+		data_get_i_constructed(data, "planes.#.color.g", i);
+	s->objs[i + j].color.b =
+		data_get_i_constructed(data, "planes.#.color.b", i);
+	s->objs[i + j].refl =
+		data_get_i_constructed(data, "planes.#.reflection", i);
+	s->objs[i + j].textures =
+		data_get_i_constructed(data, "planes.#.textures", i);
+	s->objs[i + j].type = PLANE;
+	s->objs[i + j].id = i + j;
+}
+
 void		fill_planes_data(t_scene *s, char *data, int counts[4])
 {
 	int		i;
@@ -56,20 +74,7 @@ void		fill_planes_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "planes.#.normal.x", i);
 		s->objs[i + j].rot.y =
 			data_get_i_constructed(data, "planes.#.normal.y", i);
-		s->objs[i + j].rot.z =
-			data_get_i_constructed(data, "planes.#.normal.z", i);
-		s->objs[i + j].color.r =
-			data_get_i_constructed(data, "planes.#.color.r", i);
-		s->objs[i + j].color.g =
-			data_get_i_constructed(data, "planes.#.color.g", i);
-		s->objs[i + j].color.b =
-			data_get_i_constructed(data, "planes.#.color.b", i);
-		s->objs[i + j].refl =
-			data_get_i_constructed(data, "planes.#.reflection", i);
-		s->objs[i + j].textures =
-			data_get_i_constructed(data, "planes.#.textures", i);
-		s->objs[i + j].type = PLANE;
-		s->objs[i + j].id = i + j;
+		clean_planes2(s, data, i, j);
 		++i;
 	}
 	clean_planes(s);
