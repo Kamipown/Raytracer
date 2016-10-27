@@ -32,6 +32,12 @@ static void	init_window(t_env *e)
 		SDL_WINDOWPOS_UNDEFINED, e->scene->size.w, e->scene->size.h,
 		0)) == NULL)
 		error(-21, (char *)SDL_GetError());
+	
+	SDL_Surface *surface;
+	if ((surface = SDL_LoadBMP("./resources/icon.bmp")) == 0)
+		printf("fdp");
+	SDL_SetWindowIcon(e->win, surface);
+	SDL_FreeSurface(surface);
 }
 
 static void	init_image(t_env *e)
