@@ -6,13 +6,9 @@
 #		dossier tmp/
 
 rt
+SLD2
 **/*.[oa]
 **/*~
 **/.nfs*
 tmp/
-<<<<<<< HEAD
-SLD2/
-SDL2/bin/
-=======
-SDL2/
->>>>>>> vmontroll
+.DS_Store
