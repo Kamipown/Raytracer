@@ -28,7 +28,9 @@ int			main(int argc, char *argv[])
 	if (!(e = (t_env *)malloc(sizeof(t_env))))
 		error(-3, "Unable to initialize environment.");
 	init(e, argv[1]);
+	load_textures(e);
 	loop(e);
+	free_textures(e);
 	quit(e);
 	return (0);
 }

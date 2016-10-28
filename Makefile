@@ -60,6 +60,10 @@ SRC +=	inputs/inputs.c					\
 		inputs/inputs_keys.c			\
 		inputs/inputs_mouse.c
 
+
+SRC +=	load/load_textures.c			\
+		load/free_textures.c
+
 SRC+=	hooks/hooks.c
 
 SRC+=	fullscreen/fullscreen.c
