@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 19:18:06 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 00:09:39 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 03:54:41 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void		fill_spheres_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "spheres.#.reflection", i);
 		s->objs[i].textures =
 			data_get_i_constructed(data, "spheres.#.textures", i);
+		s->objs[i].bump =
+			data_get_d_constructed(data, "spheres.#.bump", i);
 		s->objs[i].type = SPHERE;
 		s->objs[i].id = i;
 		++i;

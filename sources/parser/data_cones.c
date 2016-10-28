@@ -68,6 +68,8 @@ void		fill_cones_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "cones.#.reflection", i);
 		s->objs[i + j].textures =
 			data_get_i_constructed(data, "cones.#.textures", i);
+		s->objs[i + j].bump =
+			data_get_d_constructed(data, "cones.#.bump", i);
 		s->objs[i + j].type = CONE;
 		s->objs[i + j].id = i;
 		++i;

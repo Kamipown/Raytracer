@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 00:21:57 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 06:50:23 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void		raytrace(t_env *e)
 	int				y;
 	t_bool			ssaa;
 
-	ssaa = FALSE;
+	ssaa = TRUE;
 	y = 0;
 	while (y < e->scene.current_mode->h)
 	{

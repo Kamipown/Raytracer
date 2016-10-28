@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 00:03:28 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 03:44:29 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct		s_obj
 	int				type;
 	int				id;
 	int 			textures;
+	double 			bump;
 }					t_obj;
 
 typedef struct		s_intersection

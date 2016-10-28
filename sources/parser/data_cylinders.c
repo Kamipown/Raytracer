@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 19:18:06 by dcognata          #+#    #+#             */
-/*   Updated: 2016/10/28 00:02:14 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 03:54:21 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void		fill_cylinders_data(t_scene *s, char *data, int counts[4])
 				data_get_i_constructed(data, "cylinders.#.reflection", i);
 			s->objs[i + j].textures =
 				data_get_i_constructed(data, "cylinders.#.textures", i);
+			s->objs[i + j].bump =
+				data_get_d_constructed(data, "cylinders.#.bump", i);
 			s->objs[i + j].type = CYLINDER;
 			s->objs[i + j].id = i;
 			++i;

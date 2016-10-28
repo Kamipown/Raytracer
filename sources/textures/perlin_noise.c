@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:25:19 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/27 22:43:09 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 03:47:40 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	init_perlin(void)
 	g_start = 0;
 }
 
-double		noise3(t_vec3 *vec)
+double		noise3(t_vec3 vec)
 {
 	t_noise	n;
 	int		i;

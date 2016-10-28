@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 02:03:09 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/28 00:07:15 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 03:48:23 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,16 @@ typedef struct	s_noise
 	double		v;
 }				t_noise;
 
-void			setup_x(t_noise *n, t_vec3 *vec);
-void			setup_y(t_noise *n, t_vec3 *vec);
-void			setup_z(t_noise *n, t_vec3 *vec);
+void			setup_x(t_noise *n, t_vec3 vec);
+void			setup_y(t_noise *n, t_vec3 vec);
+void			setup_z(t_noise *n, t_vec3 vec);
 void			get_a(t_noise *n, int i, t_vec3 g_g3[B + B + 2]);
 void			get_c(t_noise *n, t_vec3 g_g3[B + B + 2]);
 void			get_d(t_noise *n, t_vec3 g_g3[B + B + 2]);
-double			noise3(t_vec3 *vec);
+double			noise3(t_vec3 vec);
+void			perlin_noise(t_intersection *inter, t_color *c, t_ray *ray);
 void			perlin_lines(t_intersection *inter, t_color *c, t_ray *ray);
-void			perlin_chess(t_intersection *inter, t_color *c, t_ray *ray);
+void			perlin_marble(t_intersection *inter, t_color *c, t_ray *ray);
 void			select_textures(t_intersection *inter, t_color *c, t_ray *ray);
+void        	bump_mapping(t_intersection *inter, t_ray *ray, t_vec3 *n);
 #endif
