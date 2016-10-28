@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 16:52:44 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/07 16:19:08 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 00:42:26 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,28 @@ static double			deg_to_rad(double a)
 // 	v->z = t.x * -(sin(deg_to_rad(ang))) + t.z * cos(deg_to_rad(ang));
 // }
 
-static void	apply_rotations(t_scene *s)
+static void				apply_rotations(t_scene *s)
 {
 	double	t;
 
 	t = s->ray.dir.y;
-	s->ray.dir.y = s->ray.dir.y * cos(deg_to_rad(s->cam.rot.x)) + s->ray.dir.z * -(sin(deg_to_rad(s->cam.rot.x)));
-	s->ray.dir.z = t * sin(deg_to_rad(s->cam.rot.x)) + s->ray.dir.z * cos(deg_to_rad(s->cam.rot.x));
-
+	s->ray.dir.y = s->ray.dir.y * cos(deg_to_rad(s->cam.rot.x)) + s->ray.dir.z
+					* -(sin(deg_to_rad(s->cam.rot.x)));
+	s->ray.dir.z = t * sin(deg_to_rad(s->cam.rot.x)) + s->ray.dir.z
+					* cos(deg_to_rad(s->cam.rot.x));
 	t = s->ray.dir.x;
-	s->ray.dir.x = s->ray.dir.x * cos(deg_to_rad(s->cam.rot.y)) + s->ray.dir.z * sin(deg_to_rad(s->cam.rot.y));
-	s->ray.dir.z = t * -(sin(deg_to_rad(s->cam.rot.y))) + s->ray.dir.z * cos(deg_to_rad(s->cam.rot.y));
-
+	s->ray.dir.x = s->ray.dir.x * cos(deg_to_rad(s->cam.rot.y)) + s->ray.dir.z
+					* sin(deg_to_rad(s->cam.rot.y));
+	s->ray.dir.z = t * -(sin(deg_to_rad(s->cam.rot.y))) + s->ray.dir.z
+					* cos(deg_to_rad(s->cam.rot.y));
 	t = s->ray.dir.x;
-	s->ray.dir.x = s->ray.dir.x * cos(deg_to_rad(s->cam.rot.z)) + s->ray.dir.y * -(sin(deg_to_rad(s->cam.rot.z)));
-	s->ray.dir.y = t * sin(deg_to_rad(s->cam.rot.z)) + s->ray.dir.y * cos(deg_to_rad(s->cam.rot.z));
+	s->ray.dir.x = s->ray.dir.x * cos(deg_to_rad(s->cam.rot.z)) + s->ray.dir.y
+					* -(sin(deg_to_rad(s->cam.rot.z)));
+	s->ray.dir.y = t * sin(deg_to_rad(s->cam.rot.z)) + s->ray.dir.y
+					* cos(deg_to_rad(s->cam.rot.z));
 }
 
-void	create_ray(t_scene *scene, t_vec3 to)
+void					create_ray(t_scene *scene, t_vec3 to)
 {
 	scene->ray.origin.x = scene->cam.pos.x;
 	scene->ray.origin.y = scene->cam.pos.y;
@@ -55,7 +59,6 @@ void	create_ray(t_scene *scene, t_vec3 to)
 	scene->ray.dir.z = scene->cam.focal_dist;
 	vec_normalize(&scene->ray.dir);
 	apply_rotations(scene);
-	// apply_rotations(scene);
 }
 
 static t_intersection	*create_intersection(void)
@@ -80,7 +83,6 @@ t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
 	// 		ray->origin.x, ray->origin.y, ray->origin.z,
 	// 		ray->dir.x, ray->dir.y, ray->dir.z);
 	// }
-
 	inter = create_intersection();
 	intersect_objects(e, ray, inter, flag);
 	return (inter);

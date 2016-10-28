@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:56 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/05 17:47:02 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/10/28 01:11:42 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,8 @@ static void	change_mode(t_env *e, int mode)
 	print_mode(e->options.mode);
 }
 
-void	key_hook(t_env *e)
+static void	key_hook_move(t_env *e)
 {
-	if (e->inputs.escape)
-		e->options.quit = TRUE;
-
-	// Modes
-	if (e->inputs.key_0)
-		change_mode(e, MODE_NULL);
-	if (e->inputs.key_1)
-		change_mode(e, MODE_CAMERA);
-	if (e->inputs.key_2)
-		change_mode(e, MODE_CAMERA_ROT);
-	if (e->inputs.key_3)
-		change_mode(e, MODE_SELECT);
-
-	// Fullscreen
-	if (e->inputs.key_f)
-		toggle_fullscreen(e);
-
-	// Moves
 	if (e->inputs.key_left)
 		move_left(e);
 	if (e->inputs.key_right)
@@ -65,7 +47,24 @@ void	key_hook(t_env *e)
 		move_backward(e);
 }
 
-void	mouse_hook(t_env *e)
+void		key_hook(t_env *e)
+{
+	if (e->inputs.escape)
+		e->options.quit = TRUE;
+	if (e->inputs.key_0)
+		change_mode(e, MODE_NULL);
+	if (e->inputs.key_1)
+		change_mode(e, MODE_CAMERA);
+	if (e->inputs.key_2)
+		change_mode(e, MODE_CAMERA_ROT);
+	if (e->inputs.key_3)
+		change_mode(e, MODE_SELECT);
+	if (e->inputs.key_f)
+		toggle_fullscreen(e);
+	key_hook_move(e);
+}
+
+void		mouse_hook(t_env *e)
 {
 	if (e->inputs.mouse_left)
 	{

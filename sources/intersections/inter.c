@@ -3,16 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 00:11:09 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/13 00:11:10 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/28 01:10:58 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	intersect_objects(t_env *e, t_ray *ray, t_intersection *inter, int flag)
+static void	intersect_objects2(t_ray *ray, t_intersection *inter, int flag)
+{
+	if (flag && inter->obj)
+	{
+		printf("Intersection found:\n");
+		printf("Ray start:     %f, %f, %f\n", ray->origin.x, ray->origin.y,
+			ray->origin.z);
+		printf("Ray direction: %f, %f, %f\n", ray->dir.x, ray->dir.y,
+			ray->dir.z);
+		printf("T:             %f\n", inter->t);
+		printf("T impact:      %f, %f, %f\n\n",
+		ray->origin.x + ray->dir.x * inter->t,
+		ray->origin.y + ray->dir.y * inter->t,
+		ray->origin.z + ray->dir.z * inter->t);
+	}
+}
+
+void		intersect_objects(t_env *e, t_ray *ray, t_intersection *inter,
+				int flag)
 {
 	int		i;
 	double	t;
@@ -37,15 +55,5 @@ void	intersect_objects(t_env *e, t_ray *ray, t_intersection *inter, int flag)
 		}
 		++i;
 	}
-	if (flag && inter->obj)
-	{
-		printf("Intersection found:\n");
-		printf("Ray start:     %f, %f, %f\n", ray->origin.x, ray->origin.y, ray->origin.z);
-		printf("Ray direction: %f, %f, %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
-		printf("T:             %f\n", inter->t);
-		printf("T impact:      %f, %f, %f\n\n",
-			ray->origin.x + ray->dir.x * inter->t,
-			ray->origin.y + ray->dir.y * inter->t,
-			ray->origin.z + ray->dir.z * inter->t);
-	}
+	intersect_objects2(ray, inter, flag);
 }
