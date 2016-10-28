@@ -143,6 +143,11 @@ typedef struct		s_options
 	t_bool			mode;
 }					t_options;
 
+typedef struct		s_textures
+{
+	SDL_Surface 	*marble;
+}					t_textures;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -151,6 +156,7 @@ typedef struct		s_env
 	t_scene			scene;
 	t_inputs		inputs;
 	t_options		options;
+	t_textures		textures;
 }					t_env;
 
 #endif

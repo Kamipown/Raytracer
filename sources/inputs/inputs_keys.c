@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inputs_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 17:32:07 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/06 17:32:09 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/10/28 01:07:13 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void		get_inputs_keys(t_env *e, t_bool pressed)
 {
 	if (e->event.key.keysym.sym == SDLK_ESCAPE)
 		e->inputs.escape = pressed;
-
-	// Numbers
 	else if (e->event.key.keysym.sym == SDLK_0)
 		e->inputs.key_0 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_1)
@@ -26,12 +24,8 @@ void		get_inputs_keys(t_env *e, t_bool pressed)
 		e->inputs.key_2 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_3)
 		e->inputs.key_3 = pressed;
-
-	// Letters
 	else if (e->event.key.keysym.sym == SDLK_f)
 		e->inputs.key_f = pressed;
-
-	// Keypad
 	else if (e->event.key.keysym.sym == SDLK_KP_4)
 		e->inputs.key_left = pressed;
 	else if (e->event.key.keysym.sym == SDLK_KP_6)

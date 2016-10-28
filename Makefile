@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/10/26 23:42:40 by gromon            #+#    #+#              #
-#    Updated: 2016/10/28 03:36:23 by gromon           ###   ########.fr        #
+#    Created: 2016/10/28 07:03:27 by gromon            #+#    #+#              #
+#    Updated: 2016/10/28 07:03:30 by gromon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,10 @@ SRC +=	inputs/inputs.c					\
 		inputs/inputs_keys.c			\
 		inputs/inputs_mouse.c
 
+
+SRC +=	load/load_textures.c			\
+		load/free_textures.c
+
 SRC+=	hooks/hooks.c
 
 SRC+=	fullscreen/fullscreen.c
@@ -85,7 +89,7 @@ SRC+=	intersections/inter.c	\
 		intersections/inter_cones.c		\
 		intersections/inter_planes.c
 
-SRC+=	debug/debug.c
+SRC+=	debug/debug.c debug/debug2.c
 
 SRC+=	utilities/math_utilities.c			\
 		utilities/color_utilities.c

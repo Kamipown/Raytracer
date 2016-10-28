@@ -27,6 +27,8 @@ char				*construct_request_int(char *request, int n);
 int					data_get_i_constructed(char *data, char *request, int i);
 int					data_get_d_constructed(char *data, char *request, int i);
 
+void                load_textures(t_env *e);
+void                free_textures(t_env *e);
 
 void				fill_screen_data(t_scene *s, char *data);
 void				fill_camera_data(t_scene *s, char *data);

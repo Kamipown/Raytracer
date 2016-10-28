@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 16:25:27 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/26 23:38:37 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/28 00:49:26 by splace           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,4 @@ void	parse_scene(t_scene *s, char *filename)
 	fill_planes_data(s, data, counts);
 	free(counts);
 	free(data);
-
-	// debug_print_screen(&s->size);
-	// debug_print_camera(s->cam);
-	// debug_print_counts(s);
-	// debug_print_lights(s);
-	// debug_print_spheres(s);
-	// debug_print_planes(s);
 }

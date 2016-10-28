@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quit.c                                             :+:      :+:    :+:   */
+/*   free_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcognata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/15 17:26:57 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 01:16:18 by splace           ###   ########.fr       */
+/*   Created: 2016/04/18 19:49:14 by dcognata          #+#    #+#             */
+/*   Updated: 2016/04/18 19:49:15 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	quit(t_env *e)
+void		free_textures(t_env *e)
 {
-	SDL_DestroyWindow(e->win);
-	SDL_Quit();
+	SDL_FreeSurface(e->textures.marble);
 }
