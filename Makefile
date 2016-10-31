@@ -99,12 +99,13 @@ SRC+=	textures/textures.c					\
 		textures/setup_perlin.c				\
 		textures/bump_mapping.c
 
-SRC+=	write/write_informations.c			\
+SRC+=	write/write_informations.c
+
+SRC+=	screenshoot/screenshoot.c			\
 
 SRCS =	$(addprefix $(PATH_SRC), $(SRC))
 
 SRCO =	$(SRCS:.c=.o)
-
 
 
 all: libft $(NAME)

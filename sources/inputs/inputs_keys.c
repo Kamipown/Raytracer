@@ -38,4 +38,6 @@ void		get_inputs_keys(t_env *e, t_bool pressed)
 		e->inputs.key_forward = pressed;
 	else if (e->event.key.keysym.sym == SDLK_KP_7)
 		e->inputs.key_backward = pressed;
+	else if (e->event.key.keysym.sym == SDLK_9)
+		e->inputs.key_screenshoot = pressed;
 }

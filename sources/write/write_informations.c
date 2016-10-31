@@ -37,7 +37,7 @@ void			write_informations(t_env *e)
     struct tm * timeinfo;
     time(&rawtime);
     timeinfo = localtime(&rawtime);
-	SDL_SaveBMP(surface_message, ft_strjoin(ft_strjoin(ft_itoa(timeinfo->tm_min), ft_itoa(timeinfo->tm_sec)), ".png"));
+	// SDL_SaveBMP(surface_message, ft_strjoin(ft_strjoin(ft_itoa(timeinfo->tm_min), ft_itoa(timeinfo->tm_sec)), ".png"));
 
 	SDL_DestroyTexture(message);
 	SDL_FreeSurface(surface_message);

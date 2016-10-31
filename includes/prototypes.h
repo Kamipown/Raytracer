@@ -110,4 +110,6 @@ void				debug_print_cones(t_scene *s);
 
 void                write_informations(t_env *e);
 
+void		    	take_screenshoot(t_env *e);
+
 #endif
