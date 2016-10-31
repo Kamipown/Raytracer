@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 01:02:03 by splace           ###   ########.fr       */
+/*   Updated: 2016/10/31 22:12:17 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@
 # define MODE_CAMERA    	1
 # define MODE_CAMERA_ROT    2
 # define MODE_SELECT    	3
+# define MODE_TEXTURES    	4
+# define MODE_BUMPMAPPING   5
 
 # define MOVE_SPEED		20
 # define ROT_SPEED		10

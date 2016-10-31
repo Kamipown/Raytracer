@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/10/28 06:50:23 by gromon           ###   ########.fr       */
-=======
-/*   Updated: 2016/10/28 00:43:00 by splace           ###   ########.fr       */
->>>>>>> 02ad923f3d52870f5376c4b1668a005366227ece
+/*   Created: 2016/10/31 21:40:54 by gromon            #+#    #+#             */
+/*   Updated: 2016/10/31 22:01:23 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +20,8 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	if (inter->obj)
 	{
 		color = get_global_illuminated_color(&inter->obj->color);
-		select_textures(inter, &color, &e->scene.ray);
+		if (e->options.mode == 4)
+			select_textures(inter, &color, &e->scene.ray);
 		process_lighting(e, &e->scene.ray, inter, &color);
 	}
 	return (color);
@@ -97,7 +94,7 @@ void			raytrace(t_env *e)
 	int				y;
 	t_bool			ssaa;
 
-	ssaa = TRUE;
+	ssaa = FALSE;
 	y = 0;
 	while (y < e->scene.current_mode->h)
 	{

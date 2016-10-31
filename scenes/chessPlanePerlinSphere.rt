@@ -36,7 +36,7 @@ planes
 			r:50
 			g:100
 			b:100
-		reflection:99
+		reflection:0
 		textures:2
 		bump:0
 
@@ -53,7 +53,7 @@ planes
 			r:220
 			g:50
 			b:50
-		reflection:99
+		reflection:0
 		textures:0
 		bump:0
 spheres
@@ -80,7 +80,7 @@ spheres
 			r:20
 			g:200
 			b:80
-		reflection:99
+		reflection:0
 		textures:3
 		bump:0
 cylinders
@@ -98,6 +98,6 @@ cylinders
 			r:255
 			g:155
 			b:20
-		reflection:99
+		reflection:0
 		textures:1
 		bump:0

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inputs_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 17:32:07 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 01:07:13 by splace           ###   ########.fr       */
+/*   Updated: 2016/10/31 22:21:15 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void		get_inputs_keys(t_env *e, t_bool pressed)
 		e->inputs.key_2 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_3)
 		e->inputs.key_3 = pressed;
+	else if (e->event.key.keysym.sym == SDLK_4)
+		e->inputs.key_4 = pressed;
+	else if (e->event.key.keysym.sym == SDLK_5)
+		e->inputs.key_5 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_f)
 		e->inputs.key_f = pressed;
 	else if (e->event.key.keysym.sym == SDLK_KP_4)

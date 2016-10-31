@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 03:44:29 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/31 22:11:50 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ typedef struct		s_inputs
 	t_bool			key_1;
 	t_bool			key_2;
 	t_bool			key_3;
+	t_bool			key_4;
+	t_bool			key_5;
 	t_bool			key_f;
 	t_bool			key_left;
 	t_bool			key_right;
