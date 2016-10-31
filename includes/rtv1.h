@@ -17,9 +17,11 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
+# include <time.h>
 # include <stdio.h> // TO DELETE
 
 # include "./sdl2/SDL.h"
+# include "./sdl2/SDL_ttf.h"
 # include "libft.h"
 # include "structs.h"
 # include "perlin.h"

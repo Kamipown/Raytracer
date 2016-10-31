@@ -36,5 +36,6 @@ void			draw(t_env *e)
 {
 	draw_background(e->renderer);
 	raytrace(e);
+	write_informations(e);
 	SDL_RenderPresent(e->renderer);
 }
