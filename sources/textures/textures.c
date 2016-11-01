@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:28:06 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/01 00:28:29 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/01 23:02:56 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	perlin_marble(t_intersection *inter, t_color *c, t_ray *ray)
 // 	// c->b = inter->obj->color.g - 20;
 // }
 
-void			select_textures(t_intersection *inter, t_color *c, t_ray *ray, t_obj *obj)
+void			select_textures(t_intersection *inter, t_color *c, t_ray *ray)
 {
 	if (inter->obj->textures == 0)
 		return;
@@ -112,6 +112,6 @@ void			select_textures(t_intersection *inter, t_color *c, t_ray *ray, t_obj *obj
 		perlin_lines(inter, c, ray);
 	else if (inter->obj->textures == 3)
 		perlin_marble(inter, c, ray);
-	else if (inter->obj->textures == 4)
-		earth_texture(inter, c, ray, obj);
+	// else if (inter->obj->textures == 4)
+	// 	earth_texture(inter, c, ray, obj);
 }
