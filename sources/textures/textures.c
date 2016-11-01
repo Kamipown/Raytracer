@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:28:06 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/28 03:49:47 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/01 00:28:29 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,32 @@ void	perlin_marble(t_intersection *inter, t_color *c, t_ray *ray)
 	c->b = inter->obj->color.b  * noise_coef + (1.0 - noise_coef);
 }
 
-void			select_textures(t_intersection *inter, t_color *c, t_ray *ray)
+// void	earth_texture(t_intersection *inter, t_color *c, t_ray *ray, t_obj 	*obj)
+// {
+// 	double	u;
+// 	t_env 	*e;
+// 	double	v;
+// 	t_vec3	n;
+// 	t_vec3 	pos;
+// 	Uint32	pixel;
+	
+// 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
+// 	if (e->scene.objs->type != SPHERE)
+// 		return;
+// 	n = get_normal(&pos, obj, ray);
+// 	u = ((0.5 + atanf(n.x / -n.z) / (2 * M_PI)) * obj->bmp->w);
+// 	v = ((0.5 - asin(n.y) / M_PI) * obj->bmp->h);
+// 	u = fmod(u, obj->bmp->w - 1);
+// 	v = fmod(v, obj->bmp->h - 1);
+// 	pixel = *((Uint32 *)(obj->bmp->pixels + (Uint32)v * (Uint32)obj->bmp->pitch + (Uint32)u * obj->bmp->format->BytesPerPixel));
+// 	printf("%f", pixel);
+// 	// c.doubleColor = pixel;
+// 	// c->r = inter->obj->color.r - 20;
+// 	// c->g = inter->obj->color.b - 20;
+// 	// c->b = inter->obj->color.g - 20;
+// }
+
+void			select_textures(t_intersection *inter, t_color *c, t_ray *ray, t_obj *obj)
 {
 	if (inter->obj->textures == 0)
 		return;
@@ -87,4 +112,6 @@ void			select_textures(t_intersection *inter, t_color *c, t_ray *ray)
 		perlin_lines(inter, c, ray);
 	else if (inter->obj->textures == 3)
 		perlin_marble(inter, c, ray);
+	else if (inter->obj->textures == 4)
+		earth_texture(inter, c, ray, obj);
 }
