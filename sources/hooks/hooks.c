@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:56 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 01:11:42 by splace           ###   ########.fr       */
+/*   Updated: 2016/10/31 22:41:13 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@ static void	print_mode(t_bool mode)
 		ft_putendl("Mode : Camera Rotation");
 	else if (mode == MODE_SELECT)
 		ft_putendl("Mode : Selections");
+	else if (mode == MODE_TEXTURES)
+		ft_putendl("Mode : Textures");
+	else if (mode == MODE_BUMPMAPPING)
+		ft_putendl("Mode : Bumpmapping");
 }
 
 static void	change_mode(t_env *e, int mode)
 {
 	e->options.mode = mode;
 	print_mode(e->options.mode);
+	if (mode == MODE_TEXTURES)
+		e->options.need_redraw = TRUE;
+	if (mode == MODE_BUMPMAPPING)
+		e->options.need_redraw = TRUE;
 }
 
 static void	key_hook_move(t_env *e)
@@ -59,6 +67,10 @@ void		key_hook(t_env *e)
 		change_mode(e, MODE_CAMERA_ROT);
 	if (e->inputs.key_3)
 		change_mode(e, MODE_SELECT);
+	if (e->inputs.key_4)
+		change_mode(e, MODE_TEXTURES);
+	if (e->inputs.key_5)
+		change_mode(e, MODE_BUMPMAPPING);
 	if (e->inputs.key_f)
 		toggle_fullscreen(e);
 	key_hook_move(e);

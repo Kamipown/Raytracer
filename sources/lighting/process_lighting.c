@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 05:57:04 by gromon           ###   ########.fr       */
+/*   Updated: 2016/10/31 22:16:17 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,8 @@ void			process_lighting(t_env *e, t_ray *ray, t_intersection inter, t_color *col
 	{
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter.t));
 		n = get_normal(&new_start, inter.obj, ray);
-		bump_mapping(&inter, ray, &n);
+		if (e->options.mode == 5)
+			bump_mapping(&inter, ray, &n);
 		i = 0;
 		while (i < e->scene.n_light)
 			add_lambert_light_contribution(e, inter.obj, &e->scene.lights[i++], &new_start, color, &n, coef);
