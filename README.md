@@ -11,7 +11,7 @@ Compilation ->
 - [ ] Rotations
 - [ ] Position caméra dans parsing
 - [x] Effets
-- [ ] Leaks
+- [x] Leaks
 - [x] Brillance
 
 ## Bonus
@@ -27,6 +27,6 @@ Compilation ->
 - [x] Perturbation de la normale et de la couleur
 - [ ] Plus d'objets
 - [x] Objets limités
-- [ ] Refraction / Transparence
+- [x] Refraction / Transparence
 - [ ] Modification de l’ombre selon la refraction des objets
 - [x] Multi-spots (Gestion des ombres si deux ombres se superposent)
