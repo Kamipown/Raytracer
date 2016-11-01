@@ -63,6 +63,7 @@ void			perlin_noise(t_intersection *inter, t_color *c, t_ray *ray);
 void			perlin_lines(t_intersection *inter, t_color *c, t_ray *ray);
 void			perlin_marble(t_intersection *inter, t_color *c, t_ray *ray);
 void			earth_texture(t_intersection *inter, t_color *c, t_ray *ray, t_obj *obj);
-void			select_textures(t_intersection *inter, t_color *c, t_ray *ray, t_obj *obj);
+void			select_textures(t_intersection *inter, t_color *c, t_ray *ray);
 void        	bump_mapping(t_intersection *inter, t_ray *ray, t_vec3 *n);
+
 #endif

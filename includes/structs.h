@@ -134,6 +134,7 @@ typedef struct		s_inputs
 	t_bool			key_forward;
 	t_bool			key_backward;
 	t_bool			mouse_left;
+	t_bool			key_screenshoot;
 	int				mouse_x;
 	int				mouse_y;
 }					t_inputs;

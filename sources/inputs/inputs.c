@@ -31,6 +31,7 @@ void		init_inputs(t_inputs *inputs)
 	inputs->mouse_left = FALSE;
 	inputs->mouse_x = 0;
 	inputs->mouse_y = 0;
+	inputs->key_screenshoot = FALSE;
 }
 
 static void	reset_inputs(t_inputs *inputs)
@@ -42,6 +43,7 @@ static void	reset_inputs(t_inputs *inputs)
 	inputs->key_4 = FALSE;
 	inputs->key_5 = FALSE;
 	inputs->mouse_left = FALSE;
+	inputs->key_screenshoot = FALSE;
 }
 
 void		get_inputs(t_env *e)

@@ -73,6 +73,8 @@ void		key_hook(t_env *e)
 		change_mode(e, MODE_BUMPMAPPING);
 	if (e->inputs.key_f)
 		toggle_fullscreen(e);
+	if (e->inputs.key_screenshoot)
+		take_screenshoot(e);
 	key_hook_move(e);
 }
 
