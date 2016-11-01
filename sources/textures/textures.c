@@ -18,7 +18,7 @@ void	perlin_noise(t_intersection *inter, t_color *c, t_ray *ray)
 	int		level;
 	t_vec3 	vec;
 	t_vec3 	pos;
-	
+
 	noise_coef = 0;
 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 	vec.x = pos.x * 0.5;
@@ -85,7 +85,7 @@ void	perlin_marble(t_intersection *inter, t_color *c, t_ray *ray)
 // 	t_vec3	n;
 // 	t_vec3 	pos;
 // 	Uint32	pixel;
-	
+
 // 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 // 	if (e->scene.objs->type != SPHERE)
 // 		return;
