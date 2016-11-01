@@ -14,9 +14,9 @@
 
 void	move_left(t_env *e)
 {
-	if (e->options.mode == MODE_SELECT && e->scene.selected)
+	if (e->options.mode == MODE_SELECT && e->scene.selected.obj)
 	{
-		e->scene.selected->obj->pos.x -= MOVE_SPEED;
+		e->scene.selected.obj->pos.x -= MOVE_SPEED;
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)
@@ -35,9 +35,9 @@ void	move_left(t_env *e)
 
 void	move_right(t_env *e)
 {
-	if (e->options.mode == MODE_SELECT && e->scene.selected)
+	if (e->options.mode == MODE_SELECT && e->scene.selected.obj)
 	{
-		e->scene.selected->obj->pos.x += MOVE_SPEED;
+		e->scene.selected.obj->pos.x += MOVE_SPEED;
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)

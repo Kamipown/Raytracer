@@ -61,6 +61,8 @@ void		fill_spheres_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "spheres.#.textures", i);
 		s->objs[i].bump =
 			data_get_d_constructed(data, "spheres.#.bump", i);
+		s->objs[i].refr =
+			data_get_d_constructed(data, "spheres.#.refraction", i);
 		s->objs[i].type = SPHERE;
 		s->objs[i].id = i;
 		++i;

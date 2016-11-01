@@ -28,6 +28,7 @@ t_bool	inter_planes(t_ray *ray, t_obj *p, double *t)
 	double	m;
 	t_vec3	l;
 	double	d;
+	t_vec3	pos;
 
 	n = (t_vec3){p->rot.x, p->rot.y, p->rot.z};
 	vec_normalize(&n);
@@ -37,6 +38,11 @@ t_bool	inter_planes(t_ray *ray, t_obj *p, double *t)
 	l = vec_sub(ray->origin, p->pos);
 	d = vec_mul_to_d(n, l);
 	*t = -d / m;
+	pos = vec_add(ray->origin, vec_mul_d(ray->dir, *t));
+	if (p->radius != 0 && (fabs(pos.z - p->pos.z) > p->radius
+		|| fabs(pos.y - p->pos.y) > p->radius
+		|| fabs(pos.x - p->pos.x) > p->radius))
+		*t = 0.000001;
 	if (*t <= 0.000001)
 		return (FALSE);
 	return (TRUE);

@@ -38,7 +38,7 @@ planes
 			g:100
 			b:100
 		reflection:0
-		textures:2
+		textures:0
 	1
 		pos
 			x:600
@@ -53,7 +53,7 @@ planes
 			g:50
 			b:50
 		reflection:0
-		textures:2
+		textures:0
 	2
 		pos
 			x:0
@@ -68,7 +68,7 @@ planes
 			g:100
 			b:70
 		reflection:0
-		textures:2
+		textures:0
 	3
 		pos
 			x:-600
@@ -83,7 +83,7 @@ planes
 			g:100
 			b:50
 		reflection:0
-		textures:2
+		textures:0
 	4
 		pos
 			x:0
@@ -98,7 +98,7 @@ planes
 			g:100
 			b:100
 		reflection:0
-		textures:2
+		textures:0
 	5
 		pos
 			x:0
@@ -113,7 +113,7 @@ planes
 			g:50
 			b:100
 		reflection:0
-		textures:2
+		textures:0
 cones
 	0
 		pos
@@ -130,4 +130,4 @@ cones
 			g:155
 			b:20
 		reflection:0
-		textures:1
+		textures:0

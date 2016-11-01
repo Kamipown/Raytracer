@@ -74,6 +74,8 @@ void		fill_cylinders_data(t_scene *s, char *data, int counts[4])
 				data_get_i_constructed(data, "cylinders.#.textures", i);
 			s->objs[i + j].bump =
 				data_get_d_constructed(data, "cylinders.#.bump", i);
+			s->objs[i + j].refr =
+				data_get_d_constructed(data, "cylinders.#.refraction", i);
 			s->objs[i + j].type = CYLINDER;
 			s->objs[i + j].id = i;
 			++i;

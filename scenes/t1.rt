@@ -4,10 +4,10 @@ config
 		height:600
 	counts
 		lights:1
-		spheres:0
-		cylinders:1
+		spheres:1
+		cylinders:0
 		cones:0
-		planes:5
+		planes:7
 	camera
 		fov:90
 
@@ -27,8 +27,8 @@ planes
 	0
 		pos
 			x:0
-			y:-400
-			z:0
+			y:-200
+			z:300
 		normal
 			x:0
 			y:1
@@ -38,12 +38,13 @@ planes
 			g:100
 			b:100
 		reflection:0
-		textures:2
+		textures:1
+		size:200
 	1
 		pos
-			x:600
+			x:200
 			y:0
-			z:0
+			z:300
 		normal
 			x:-1
 			y:0
@@ -53,12 +54,13 @@ planes
 			g:50
 			b:50
 		reflection:0
-		textures:2
+		textures:1
+		size:200
 	2
 		pos
 			x:0
-			y:400
-			z:0
+			y:200
+			z:300
 		normal
 			x:0
 			y:-1
@@ -68,12 +70,13 @@ planes
 			g:100
 			b:70
 		reflection:0
-		textures:2
+		textures:1
+		size:200
 	3
 		pos
-			x:-600
+			x:-200
 			y:0
-			z:0
+			z:300
 		normal
 			x:1
 			y:0
@@ -83,12 +86,13 @@ planes
 			g:100
 			b:50
 		reflection:0
-		textures:2
+		textures:1
+		size:200
 	4
 		pos
 			x:0
 			y:0
-			z:1350
+			z:500
 		normal
 			x:0
 			y:0
@@ -98,28 +102,32 @@ planes
 			g:100
 			b:100
 		reflection:0
-		textures:2
-	5
+		textures:1
+		size:200
+
+	6
 		pos
 			x:0
-			y:0
-			z:-350
+			y:250
+			z:0
 		normal
 			x:0
-			y:0
-			z:1
+			y:1
+			z:0
 		color
 			r:100
 			g:50
 			b:100
 		reflection:0
 		textures:2
-cylinders
+		size:0
+
+spheres
 	0
 		pos
 			x:10
 			y:0
-			z:200
+			z:150
 		normal
 			x:0
 			y:1

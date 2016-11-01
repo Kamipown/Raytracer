@@ -17,6 +17,7 @@
 # define PN 0x1000
 # define NP 12
 # define NM 0xfff
+# define EPSILON 0.000001
 # define S_CURVE(t) ( t * t * (3. - 2. * t) )
 # define LERP(t, a, b) ( a + t * (b - a) )
 # define AT3(rx,ry,rz) ( rx * n.q.x + ry * n.q.y + rz * n.q.z )

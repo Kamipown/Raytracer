@@ -86,6 +86,7 @@ typedef struct		s_obj
 	int				radius;
 	t_color			color;
 	double			refl;
+	double			refr;
 	int				type;
 	int				id;
 	int 			textures;
@@ -113,7 +114,7 @@ typedef struct		s_scene
 	t_size			size;
 	t_ray			ray;
 	t_ray			light_ray;
-	t_intersection	*selected;
+	t_intersection	selected;
 }					t_scene;
 
 typedef struct		s_inputs

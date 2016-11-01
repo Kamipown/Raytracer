@@ -61,21 +61,19 @@ void					create_ray(t_scene *scene, t_vec3 to)
 	apply_rotations(scene);
 }
 
-static t_intersection	*create_intersection(void)
+static t_intersection	create_intersection(void)
 {
-	t_intersection	*inter;
+	t_intersection	inter;
 
-	if (!(inter = malloc(sizeof(t_intersection))))
-		error(-17, "Unable to create intersection.");
-	inter->obj = 0;
-	inter->type = 0;
-	inter->t = RAY_END + 1;
+	inter.obj = 0;
+	inter.type = 0;
+	inter.t = RAY_END + 1;
 	return (inter);
 }
 
-t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
+t_intersection			throw_ray(t_env *e, t_ray *ray, int flag)
 {
-	t_intersection	*inter;
+	t_intersection	inter;
 
 	// if (flag == 1)
 	// {
@@ -84,6 +82,6 @@ t_intersection			*throw_ray(t_env *e, t_ray *ray, int flag)
 	// 		ray->dir.x, ray->dir.y, ray->dir.z);
 	// }
 	inter = create_intersection();
-	intersect_objects(e, ray, inter, flag);
+	intersect_objects(e, ray, &inter, flag);
 	return (inter);
 }

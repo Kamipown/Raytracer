@@ -70,6 +70,10 @@ void		fill_planes_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "planes.#.textures", i);
 		s->objs[i + j].bump =
 			data_get_d_constructed(data, "planes.#.bump", i);
+		s->objs[i + j].radius =
+			data_get_i_constructed(data, "planes.#.size", i);
+		s->objs[i + j].refr =
+			data_get_d_constructed(data, "planes.#.refraction", i);
 		s->objs[i + j].type = PLANE;
 		s->objs[i + j].id = i + j;
 		++i;

@@ -21,7 +21,7 @@ static void	init_sdl(void)
 static void	init_scene(t_env *e, char *filename)
 {
 	parse_scene(&e->scene, filename);
-	e->scene.selected = 0;
+	e->scene.selected.obj = 0;
 }
 
 static void	init_window(t_env *e)

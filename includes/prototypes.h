@@ -72,7 +72,7 @@ void				raytrace(t_env *e);
 
 void				create_ray(t_scene *scene, t_vec3 to);
 
-t_intersection		*throw_ray(t_env *e, t_ray *ray, int flag);
+t_intersection		throw_ray(t_env *e, t_ray *ray, int flag);
 
 void				intersect_objects(t_env *e, t_ray *ray, t_intersection *inter, int flag);
 t_bool				inter_spheres(t_ray *ray, t_obj *s, double *t);
@@ -85,7 +85,7 @@ t_vec3			    get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
 t_color	            get_global_illuminated_color(t_color *c);
 void			    flour_color(t_color *color);
 
-void				process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_color *color);
+void				process_lighting(t_env *e, t_ray *ray, t_intersection inter, t_color *color);
 
 t_vec3				vec_add(t_vec3 v1, t_vec3 v2);
 t_vec3				vec_sub(t_vec3 v1, t_vec3 v2);

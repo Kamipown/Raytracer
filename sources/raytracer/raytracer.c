@@ -6,11 +6,7 @@
 /*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2016/10/28 06:50:23 by gromon           ###   ########.fr       */
-=======
-/*   Updated: 2016/10/28 00:43:00 by splace           ###   ########.fr       */
->>>>>>> 02ad923f3d52870f5376c4b1668a005366227ece
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +21,8 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	{
 		color = get_global_illuminated_color(&inter->obj->color);
 		select_textures(inter, &color, &e->scene.ray);
-		process_lighting(e, &e->scene.ray, inter, &color);
+		process_lighting(e, &e->scene.ray, *inter, &color);
+		flour_color(&color);
 	}
 	return (color);
 }
@@ -45,7 +42,7 @@ static t_color	color_median(t_color c[9])
 
 static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 {
-	t_intersection	*inter;
+	t_intersection	inter;
 	t_color			color[9];
 	int				tx;
 	int				ty;
@@ -63,7 +60,7 @@ static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 				0
 			});
 			inter = throw_ray(e, &e->scene.ray, 0);
-			color[tx + 3 * ty] = get_pixel_color(inter, e);
+			color[tx + 3 * ty] = get_pixel_color(&inter, e);
 			//free(inter);
 			++tx;
 		}
@@ -74,7 +71,7 @@ static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 
 static void		raytrace_pixel(t_env *e, int x, int y)
 {
-	t_intersection	*inter;
+	t_intersection	inter;
 	t_color			color;
 
 	// if (x != 50 || y != 50) return ;
@@ -85,7 +82,7 @@ static void		raytrace_pixel(t_env *e, int x, int y)
 		0
 	});
 	inter = throw_ray(e, &e->scene.ray, 0);
-	color = get_pixel_color(inter, e);
+	color = get_pixel_color(&inter, e);
 	draw_pixel(e, (t_pixel){x, y, color});
 	// if (inter)
 	// 	free(inter);
@@ -97,7 +94,7 @@ void			raytrace(t_env *e)
 	int				y;
 	t_bool			ssaa;
 
-	ssaa = TRUE;
+	ssaa = FALSE;
 	y = 0;
 	while (y < e->scene.current_mode->h)
 	{

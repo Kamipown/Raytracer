@@ -75,13 +75,13 @@ void		mouse_hook(t_env *e)
 			0
 		});
 		e->scene.selected = throw_ray(e, &e->scene.ray, 1);
-		if (e->scene.selected->type == SPHERE)
+		if (e->scene.selected.type == SPHERE)
 			ft_putendl("Sphere selected");
-		else if (e->scene.selected->type == CYLINDER)
+		else if (e->scene.selected.type == CYLINDER)
 			ft_putendl("Cylinder selected");
-		else if (e->scene.selected->type == CONE)
+		else if (e->scene.selected.type == CONE)
 			ft_putendl("Cone selected");
-		else if (e->scene.selected->type == PLANE)
+		else if (e->scene.selected.type == PLANE)
 			ft_putendl("Plane selected");
 	}
 }

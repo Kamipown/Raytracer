@@ -17,7 +17,7 @@ static void	clean_cones(t_scene *s)
 		int		i;
 
 		i = 0;
-		
+
 		while (i < s->n_obj)
 		{
 			if (s->objs[i].type == CONE)
@@ -70,6 +70,8 @@ void		fill_cones_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "cones.#.textures", i);
 		s->objs[i + j].bump =
 			data_get_d_constructed(data, "cones.#.bump", i);
+		s->objs[i + j].refr =
+			data_get_d_constructed(data, "cones.#.refraction", i);
 		s->objs[i + j].type = CONE;
 		s->objs[i + j].id = i;
 		++i;
