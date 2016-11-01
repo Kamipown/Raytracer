@@ -17,13 +17,19 @@ void		    take_screenshoot(t_env *e)
     time_t      rawtime;
     struct tm   *timeinfo;
     char        *name;
-    // SDL_Surface *juda;
 
     time(&rawtime);
     timeinfo = localtime(&rawtime);
-    name = ft_strjoin(ft_strjoin(ft_itoa(timeinfo->tm_min), ft_itoa(timeinfo->tm_sec)), ".png\"");
+    name = ft_strjoin("screenshoots/", ft_strjoin(ft_strjoin(ft_itoa(timeinfo->tm_min), ft_itoa(timeinfo->tm_sec)), ".png"));
     ft_putstr("New screenshoot taked : \"");
-    ft_putendl(name);
-
-	// SDL_SaveBMP(SDL_GetWindowSurface(e->win), name);
+    ft_putstr(name);
+    ft_putstr("\"\n");
+    SDL_Surface *screen;
+    screen = SDL_GetWindowSurface(e->win);
+    if (screen != NULL)
+    	SDL_SaveBMP(screen, name);
+    else
+        ft_putendl("error screenshoot");
+    SDL_FreeSurface(screen);
+    free(name);
 }
