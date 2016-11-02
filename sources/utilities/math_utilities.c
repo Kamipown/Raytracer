@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utilities.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:50:41 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/28 00:29:29 by splace           ###   ########.fr       */
+/*   Updated: 2016/11/02 23:23:18 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,15 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 		vec_normalize(&normal);
 	}
 	return (normal);
+}
+
+
+t_color  Uint32_to_color(Uint32 color)
+{
+	t_color c;
+
+	c.r = (color / 0x100) % 0xff;
+	c.g = (color / (0x100 * 0x100)) % 0xff;
+	c.b = (color / (0x100 * 0x100 * 0x100)) % 0xff;
+	return c;
 }

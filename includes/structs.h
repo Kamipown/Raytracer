@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/01 00:05:21 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/02 20:39:46 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ typedef struct		s_options
 
 typedef struct		s_textures
 {
-	SDL_Surface 	*marble;
+	SDL_Surface 	*map;
 }					t_textures;
 
 typedef struct		s_env
