@@ -29,6 +29,9 @@
 
 # define BUFF_SIZE		32
 
+# define MAIN_POS_X		600
+# define MAIN_POS_Y		300
+
 # define MIN_SCREEN_W	640
 # define MIN_SCREEN_H	480
 # define SCREEN_W		800

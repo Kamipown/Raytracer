@@ -108,8 +108,10 @@ void				debug_print_planes(t_scene *s);
 void				debug_print_cylinders(t_scene *s);
 void				debug_print_cones(t_scene *s);
 
-void        write_informations(t_env *e);
+void				write_informations(t_env *e);
 
-void		    take_screenshoot(t_env *e);
+void				take_screenshoot(t_env *e);
+
+void				mouse_interface(t_env *e);
 
 #endif

@@ -21,7 +21,7 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	{
 		color = get_global_illuminated_color(&inter->obj->color);
 		if (e->options.mode == 4)
-			select_textures(inter, &color, &e->scene.ray, inter->obj);
+			select_textures(inter, &color, &e->scene.ray);
 		process_lighting(e, &e->scene.ray, inter, &color);
 	}
 	return (color);
