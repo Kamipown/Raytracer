@@ -14,10 +14,7 @@
 
 static int	interface_mode_switch(t_env *e)
 {
-	if ((e->inputs.mouse_x >= 257 && e->inputs.mouse_x <= 287)
-		&& (e->inputs.mouse_y >= 17 && e->inputs.mouse_y <= 47))
-		take_screenshoot(e);
-	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
+	if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
 		&& (e->inputs.mouse_y >= 364 && e->inputs.mouse_y <= 381))
 		e->options.mode = MODE_SELECT;
 	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
@@ -26,7 +23,14 @@ static int	interface_mode_switch(t_env *e)
 	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
 		&& (e->inputs.mouse_y >= 427 && e->inputs.mouse_y <= 445))
 		e->options.mode = MODE_CAMERA_ROT;
-	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
+	else
+		return (0);
+	return (1);
+}
+
+static int	interface_mode_draw(t_env *e)
+{
+	if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
 		&& (e->inputs.mouse_y >= 500 && e->inputs.mouse_y <= 516))
 		e->options.mode = MODE_TEXTURES;
 	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
@@ -64,7 +68,15 @@ static int	interface_move(t_env *e)
 
 void		mouse_interface(t_env *e)
 {
+	if ((e->inputs.mouse_x >= 257 && e->inputs.mouse_x <= 287)
+		&& (e->inputs.mouse_y >= 17 && e->inputs.mouse_y <= 47))
+		take_screenshoot(e);
 	if (interface_move(e))
+	{
+		e->options.need_redraw_sub = FALSE;
+		e->options.need_redraw = TRUE;
+	}
+	if (interface_mode_draw(e))
 	{
 		e->options.need_redraw_sub = TRUE;
 		e->options.need_redraw = TRUE;
@@ -72,6 +84,6 @@ void		mouse_interface(t_env *e)
 	if (interface_mode_switch(e))
 	{
 		e->options.need_redraw_sub = TRUE;
-		e->options.need_redraw = TRUE;
+		e->options.need_redraw = FALSE;
 	}
 }
