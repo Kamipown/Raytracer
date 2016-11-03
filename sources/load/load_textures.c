@@ -18,9 +18,7 @@ void		load_textures(t_env *e)
 	SDL_Surface	*background;
 	SDL_Surface	*checkbox;
 
-	// if ((e->textures.marble =
-	// 	SDL_LoadBMP("./resources/textures/marble.bmp")) == 0)
-	if ((e->textures.map = SDL_LoadBMP("earth.bmp")) == 0)
+	if ((e->textures.map = SDL_LoadBMP("./resources/textures/earth.bmp")) == 0)
 		error(-21, (char *)SDL_GetError());
 	if ((background = SDL_LoadBMP("./resources/interface/background.bmp")) == 0)
 		error(-21, (char *)SDL_GetError());
