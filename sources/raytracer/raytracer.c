@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 21:40:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/02 23:31:00 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/02 23:45:05 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,9 @@ static void		raytrace_pixel(t_env *e, int x, int y)
 	t_intersection	*inter;
 	t_color			color;
 
-	if (x != 50 || y != 50)
-	{
-		return ;
-	} 
-	Uint32 pixel; 
-	pixel = *((Uint32 *)(e->textures.map->pixels));
-	printf("%u\n", pixel);
+	// Uint32 pixel; 
+	// pixel = *((Uint32 *)(e->textures.map->pixels));
+	// printf("%u\n", pixel);
 	create_ray(&e->scene, (t_vec3)
 	{
 		x - (e->scene.current_mode->w / 2),

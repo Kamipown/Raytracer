@@ -10,12 +10,6 @@ config
 		planes:5
 	camera
 		fov:90
-<<<<<<< HEAD
-	light
-		exposure:-0.8
-=======
-
->>>>>>> vmontroll
 lights
 	0
 		pos

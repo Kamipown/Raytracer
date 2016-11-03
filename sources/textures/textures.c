@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:28:06 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/02 23:24:48 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 01:31:01 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,23 +84,15 @@ void	earth_texture(t_intersection *inter, t_color *c, t_ray *ray, t_obj 	*obj)
 	t_vec3	n;
 	t_vec3 	pos;
 	Uint32	pixel;
-	t_color color;
-	
-	if (obj->type != 1)
-		return;
+
 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 	n = get_normal(&pos, obj, ray);
 	u = ((0.5 + atan(n.x / -n.z) / (2 * M_PI)) * obj->bmp->w);
 	v = ((0.5 - asin(n.y) / M_PI) * obj->bmp->h);
 	u = fmod(u, obj->bmp->w - 1);
-	v = fmod(v, obj->bmp->h - 1);
+	v = obj->bmp->h - fmod(v, obj->bmp->h - 1);
 	pixel = *((Uint32 *)(obj->bmp->pixels + (Uint32)v * (Uint32)obj->bmp->pitch + (Uint32)u * obj->bmp->format->BytesPerPixel));
-			// *((Uint32 *)(rt->tobj[o].bmp->pixels + (Uint32)v * (Uint32)rt->tobj[o].bmp->pitch + (Uint32)u * rt->tobj[o].bmp->format->BytesPerPixel));
-	color = Uint32_to_color(pixel);
-	// printf("----------->%f, %f, %f\n", color.r, color.g, color.b);
-	c->r = (color.r ) / 255;
-	c->g = (color.g ) / 255;
-	c->b = (color.b ) / 255;
+	*c = Uint32_to_color(pixel, obj->bmp);
 }
 
 void			select_textures(t_intersection *inter, t_color *c, t_env *e, t_obj *obj)
