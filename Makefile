@@ -13,7 +13,7 @@
 LOCALDIR = $(shell pwd)
 
 
-LIBS = -L libft/ -lft -L SDL2/lib/ -lSDL2
+LIBS = -L libft/ -lft -L SDL2/lib/ -lSDL2 -L SDL2/lib/ -lSDL2_ttf
 
 
 NAME = rt
@@ -28,7 +28,7 @@ INCLUDES =	-I./libft/includes/		\
 
 INC = -I $(INCLUDES) -I libft/includes/ -I SDL2/include/
 
-FLG =  -g -Wall -Wextra -pedantic #-Werror 
+FLG =  -g -Wall -Wextra -pedantic #-Werror
 
 CFLAGS = $(INCLUDES) $(FLG)
 
@@ -100,6 +100,10 @@ SRC+=	textures/textures.c					\
 		textures/setup_perlin.c				\
 		textures/bump_mapping.c
 
+SRC+=	write/write_informations.c
+
+SRC+=	screenshoot/screenshoot.c
+
 SRCS =	$(addprefix $(PATH_SRC), $(SRC))
 
 SRCO =	$(SRCS:.c=.o)
@@ -117,11 +121,16 @@ libft:
 	make -C libft
 
 install:
+	@brew install freetype
+	@brew install pkg-config
 	@mkdir -p SDL2
 	@echo "SDL2     : "
 	cd $(LOCALDIR)/lib && tar -zxvf SDL2-2.0.4.tar.gz
 	cd $(LOCALDIR)/lib/SDL2-2.0.4 && ./configure --prefix=$(LOCALDIR)/SDL2 && make install
 	rm -rf $(LOCALDIR)/lib/SDL2-2.0.4
+	cd $(LOCALDIR)/lib && tar -zxvf SDL2_ttf-2.0.14.zip
+	cd $(LOCALDIR)/lib/SDL2_ttf-2.0.14 && ./configure --prefix=$(LOCALDIR)/SDL2 && make install
+	rm -rf $(LOCALDIR)/lib/SDL2_ttf-2.0.14
 
 clean:
 	@make -C libft/ clean

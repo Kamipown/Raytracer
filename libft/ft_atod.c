@@ -58,7 +58,7 @@ double				ft_atod(char *s)
 	if (!(str = ft_atod_copy(s)))
 		return (0);
 	divider = ft_atod_decimals(s);
-	ret = (double)atoi(str) / (double)divider;
+	ret = (double)ft_atoi(str) / (double)divider;
 	free(str);
 	return (ret);
 }

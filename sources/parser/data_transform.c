@@ -57,7 +57,7 @@ double			read_double_data(char *data, char *request)
 	double	double_value;
 
 	str_value = read_data(data, request);
-	double_value = str_value ? ft_atod(str_value) : 0;
+	double_value = (str_value ? ft_atod(str_value) : 0);
 	free(str_value);
 	return (double_value);
 }
@@ -68,7 +68,7 @@ int				read_int_data(char *data, char *request)
 	int		int_value;
 
 	str_value = read_data(data, request);
-	int_value = str_value ? ft_atoi(str_value) : 0;
+	int_value = (str_value ? ft_atoi(str_value) : 0);
 	free(str_value);
 	return (int_value);
 }

@@ -121,8 +121,7 @@ void			process_lighting(t_env *e, t_ray *ray, t_intersection inter, t_color *col
 	{
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter.t));
 		n = get_normal(&new_start, inter.obj, ray);
-		if (e->options.mode == 5)
-			bump_mapping(&inter, ray, &n);
+		bump_mapping(&inter, ray, &n);
 		i = 0;
 		while (i < e->scene.n_light)
 			add_lambert_light_contribution(e, inter.obj, &e->scene.lights[i++], &new_start, color, &n, coef);

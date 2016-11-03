@@ -23,7 +23,7 @@ int		data_get_i_constructed(char *data, char *request, int i)
 	return (ret);
 }
 
-int		data_get_d_constructed(char *data, char *request, int i)
+double	data_get_d_constructed(char *data, char *request, int i)
 {
 	double	ret;
 	char	*tmp_req;

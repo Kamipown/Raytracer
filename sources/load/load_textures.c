@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_texture.c                                     :+:      :+:    :+:   */
+/*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcognata <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:49:14 by dcognata          #+#    #+#             */
-/*   Updated: 2016/04/18 19:49:15 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/11/02 23:19:00 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 void		load_textures(t_env *e)
 {
-    /*
-     * SDL_Surface 	*marble;
-     * getpixel(SDL_Surface *surface, int x, int y)
-     */
-	if ((e->textures.marble = SDL_LoadBMP("./resources/textures/marble.bmp")) == 0)
+	if ((e->textures.map = SDL_LoadBMP("./resources/icon.bmp")) == 0)
 		error(-21, (char *)SDL_GetError());
 }

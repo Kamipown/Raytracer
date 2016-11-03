@@ -1,0 +1,36 @@
+config
+	screen
+		width:1600
+		height:1200
+	counts
+		lights:1
+		spheres:1
+	camera
+		fov:90
+
+lights
+	0
+		pos
+			x:0
+			y:0
+			z:-1000
+		color
+			r:255
+			g:255
+			b:255
+		intensity:100
+
+spheres
+	0
+		pos
+			x:0
+			y:0
+			z:400
+		radius:600
+		color
+			r:50
+			g:50
+			b:50
+		reflection:80
+		textures:4
+		bump:0
