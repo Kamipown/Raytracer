@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:50:41 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/02 23:23:18 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 01:19:42 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 }
 
 
-t_color  Uint32_to_color(Uint32 color)
+t_color  Uint32_to_color(Uint32 color, SDL_Surface *bmp)
 {
 	t_color c;
+	Uint8	trueColor[3];
 
-	c.r = (color / 0x100) % 0xff;
-	c.g = (color / (0x100 * 0x100)) % 0xff;
-	c.b = (color / (0x100 * 0x100 * 0x100)) % 0xff;
-	return c;
+	SDL_GetRGB(color, bmp->format, &trueColor[0], &trueColor[1], &trueColor[2]);
+	c = (t_color){trueColor[0] / 255.0, trueColor[1] / 255.0, trueColor[2] / 255.0};
+	return (c);
 }

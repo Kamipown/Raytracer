@@ -14,7 +14,7 @@
 
 static void	init_sdl(void)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		error(-20, (char *)SDL_GetError());
 }
 
@@ -28,8 +28,8 @@ static void	init_window(t_env *e)
 {
 	SDL_Surface *surface;
 
-	if ((e->win = SDL_CreateWindow("RT - 42", SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, e->scene.size.w, e->scene.size.h,
+	if ((e->win = SDL_CreateWindow("RT - 42", MAIN_POS_X,
+		MAIN_POS_Y, e->scene.size.w, e->scene.size.h,
 		0)) == NULL)
 		error(-21, (char *)SDL_GetError());
 	SDL_GetWindowDisplayMode(e->win, &e->scene.mode_win);
@@ -39,12 +39,18 @@ static void	init_window(t_env *e)
 		error(-21, (char *)SDL_GetError());
 	SDL_SetWindowIcon(e->win, surface);
 	SDL_FreeSurface(surface);
+	if ((e->win_sub = SDL_CreateWindow("Yatangaki Center", MAIN_POS_X - 300, MAIN_POS_Y, 300,
+		600, 0)) == NULL)
+		error(-21, (char *)SDL_GetError());
 }
 
 static void	init_image(t_env *e)
 {
-	if ((e->renderer =
-		SDL_CreateRenderer(e->win, -1, SDL_RENDERER_SOFTWARE)) == NULL)
+	if ((e->renderer = SDL_CreateRenderer(e->win, -1, SDL_RENDERER_SOFTWARE))
+		== NULL)
+		error(-22, (char *)SDL_GetError());
+	if ((e->renderer_sub =
+		SDL_CreateRenderer(e->win_sub, -1, SDL_RENDERER_ACCELERATED)) == NULL)
 		error(-22, (char *)SDL_GetError());
 }
 

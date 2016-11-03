@@ -104,6 +104,8 @@ SRC+=	write/write_informations.c
 
 SRC+=	screenshoot/screenshoot.c
 
+SRC+=	interface/mouse_interface.c
+
 SRCS =	$(addprefix $(PATH_SRC), $(SRC))
 
 SRCO =	$(SRCS:.c=.o)

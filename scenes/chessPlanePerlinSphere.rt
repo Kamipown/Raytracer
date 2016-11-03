@@ -36,9 +36,9 @@ planes
 			r:50
 			g:100
 			b:100
-		reflection:0
-		textures:2
-		bump:0.9
+		reflection:99
+		textures:1
+		bump:0.1
 
 	1
 		pos
@@ -64,9 +64,9 @@ spheres
 			z:0
 		radius:200
 		color
-			r:120
-			g:120
-			b:120
+			r:0
+			g:0
+			b:0
 		reflection:50
 		textures:4
 		bump:0
@@ -80,8 +80,8 @@ spheres
 			r:20
 			g:200
 			b:80
-		reflection:0
-		textures:2
+		reflection:99
+		textures:1
 		bump:0
 cylinders
 	0
@@ -98,6 +98,6 @@ cylinders
 			r:255
 			g:155
 			b:20
-		reflection:0
-		textures:1
+		reflection:99
+		textures:4
 		bump:0
