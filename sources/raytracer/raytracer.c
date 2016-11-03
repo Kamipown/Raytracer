@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 21:40:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/02 23:45:05 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 02:14:23 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	if (inter->obj)
 	{
 		color = get_global_illuminated_color(&inter->obj->color);
-		if (e->options.mode == 4)
-		{
-			select_textures(inter, &color, e, inter->obj);
-		}
+		// select_textures(inter, &color, e, inter->obj);
 		process_lighting(e, &e->scene.ray, inter, &color);
 	}
 	return (color);
