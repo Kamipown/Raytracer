@@ -15,4 +15,7 @@
 void		free_textures(t_env *e)
 {
 	SDL_FreeSurface(e->textures.map);
+	SDL_DestroyTexture(e->interface.background);
+	SDL_DestroyTexture(e->interface.checkbox);
+	SDL_FreeSurface(e->textures.marble);
 }

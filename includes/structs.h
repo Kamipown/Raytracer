@@ -144,6 +144,7 @@ typedef struct		s_options
 	t_bool			fullscreen;
 	t_bool			quit;
 	t_bool			need_redraw;
+	t_bool			need_redraw_sub;
 	t_bool			mode;
 }					t_options;
 
@@ -152,15 +153,24 @@ typedef struct		s_textures
 	SDL_Surface 	*map;
 }					t_textures;
 
+typedef struct		s_interface
+{
+	SDL_Texture 	*background;
+	SDL_Texture 	*checkbox;
+}					t_interface;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
+	SDL_Window		*win_sub;
 	SDL_Renderer	*renderer;
+	SDL_Renderer	*renderer_sub;
 	SDL_Event		event;
 	t_scene			scene;
 	t_inputs		inputs;
 	t_options		options;
 	t_textures		textures;
+	t_interface		interface;
 }					t_env;
 
 #endif

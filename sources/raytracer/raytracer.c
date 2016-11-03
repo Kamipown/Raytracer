@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 21:40:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/03 02:14:23 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 02:32:54 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	if (inter->obj)
 	{
 		color = get_global_illuminated_color(&inter->obj->color);
-		// select_textures(inter, &color, e, inter->obj);
+		select_textures(inter, &color, e, inter->obj);
 		process_lighting(e, &e->scene.ray, inter, &color);
 	}
 	return (color);
@@ -73,7 +73,7 @@ static void		raytrace_pixel(t_env *e, int x, int y)
 	t_intersection	*inter;
 	t_color			color;
 
-	// Uint32 pixel; 
+	// Uint32 pixel;
 	// pixel = *((Uint32 *)(e->textures.map->pixels));
 	// printf("%u\n", pixel);
 	create_ray(&e->scene, (t_vec3)

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "rtv1.h"
 
 static void	print_mode(t_bool mode)
@@ -33,10 +32,13 @@ static void	change_mode(t_env *e, int mode)
 {
 	e->options.mode = mode;
 	print_mode(e->options.mode);
-	if (mode == MODE_TEXTURES)
+	if (mode == MODE_TEXTURES || mode == MODE_BUMPMAPPING)
+	{
+		e->options.need_redraw_sub = TRUE;
 		e->options.need_redraw = TRUE;
-	if (mode == MODE_BUMPMAPPING)
-		e->options.need_redraw = TRUE;
+	}
+	else
+		e->options.need_redraw_sub = TRUE;
 }
 
 static void	key_hook_move(t_env *e)
@@ -80,7 +82,7 @@ void		key_hook(t_env *e)
 
 void		mouse_hook(t_env *e)
 {
-	if (e->inputs.mouse_left)
+	if (e->inputs.mouse_left && e->event.window.windowID == 1)
 	{
 		create_ray(&e->scene, (t_vec3)
 		{
@@ -98,4 +100,6 @@ void		mouse_hook(t_env *e)
 		else if (e->scene.selected->type == PLANE)
 			ft_putendl("Plane selected");
 	}
+	else if (e->inputs.mouse_left && e->event.window.windowID == 2)
+		mouse_interface(e);
 }

@@ -20,6 +20,7 @@ static t_options	get_options(void)
 	opt.quit = FALSE;
 	opt.mode = MODE_NULL;
 	opt.need_redraw = TRUE;
+	opt.need_redraw_sub = TRUE;
 	return (opt);
 }
 
@@ -29,10 +30,11 @@ void				loop(t_env *e)
 	init_inputs(&e->inputs);
 	while (e->options.quit == FALSE)
 	{
-		if (e->options.need_redraw)
+		if (e->options.need_redraw || e->options.need_redraw_sub)
 		{
 			draw(e);
 			e->options.need_redraw = FALSE;
+			e->options.need_redraw_sub = FALSE;
 		}
 		get_inputs(e);
 		key_hook(e);
