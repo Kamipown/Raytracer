@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/27 22:21:48 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 01:20:51 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_bool				inter_cones(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_planes(t_ray *ray, t_obj *p, double *t);
 t_bool				solve_quadratic(t_equation e, double *t);
 double			    calc_dist(t_vec3 *v1, t_vec3 *v2);
+t_color             Uint32_to_color(Uint32 color, SDL_Surface *bmp);
 t_vec3			    get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
 t_color	            get_global_illuminated_color(t_color *c);
 void			    flour_color(t_color *color);

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#fix_brew.sh - mcartier
+#fix_brew.sh
 
 
 #you can keep ur brew if u need ur formulas

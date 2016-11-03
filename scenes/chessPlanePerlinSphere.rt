@@ -16,9 +16,9 @@ lights
 		pos
 			x:0
 			y:0
-			z:-600
+			z:-1000
 		color
-			r:150
+			r:100
 			g:150
 			b:150
 		intensity:100
@@ -36,9 +36,9 @@ planes
 			r:50
 			g:100
 			b:100
-		reflection:0
-		textures:2
-		bump:0
+		reflection:99
+		textures:1
+		bump:1.1
 
 	1
 		pos
@@ -54,7 +54,7 @@ planes
 			g:50
 			b:50
 		reflection:0
-		textures:0
+		textures:2
 		bump:0
 spheres
 	0
@@ -64,12 +64,12 @@ spheres
 			z:0
 		radius:200
 		color
-			r:150
-			g:150
-			b:255
-		reflection:20
-		textures:0
-		bump:1.1
+			r:0
+			g:0
+			b:0
+		reflection:50
+		textures:4
+		bump:0
 	1
 		pos
 			x:-200
@@ -80,8 +80,8 @@ spheres
 			r:20
 			g:200
 			b:80
-		reflection:0
-		textures:3
+		reflection:99
+		textures:1
 		bump:0
 cylinders
 	0
@@ -98,6 +98,6 @@ cylinders
 			r:255
 			g:155
 			b:20
-		reflection:0
-		textures:1
+		reflection:99
+		textures:4
 		bump:0

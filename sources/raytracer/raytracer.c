@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 21:40:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/01 00:17:00 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/02 23:45:05 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	if (inter->obj)
 	{
 		color = get_global_illuminated_color(&inter->obj->color);
-		if (e->options.mode == 4)
-			select_textures(inter, &color, &e->scene.ray);
+		select_textures(inter, &color, e, inter->obj);
 		process_lighting(e, &e->scene.ray, inter, &color);
 	}
 	return (color);
@@ -61,7 +60,7 @@ static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 			});
 			inter = throw_ray(e, &e->scene.ray, 0);
 			color[tx + 3 * ty] = get_pixel_color(inter, e);
-			//free(inter);
+			// free(inter);
 			++tx;
 		}
 		++ty;
@@ -74,7 +73,9 @@ static void		raytrace_pixel(t_env *e, int x, int y)
 	t_intersection	*inter;
 	t_color			color;
 
-	// if (x != 50 || y != 50) return ;
+	// Uint32 pixel;
+	// pixel = *((Uint32 *)(e->textures.map->pixels));
+	// printf("%u\n", pixel);
 	create_ray(&e->scene, (t_vec3)
 	{
 		x - (e->scene.current_mode->w / 2),

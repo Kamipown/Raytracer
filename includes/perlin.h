@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 02:03:09 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/01 23:03:14 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/02 20:45:28 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			perlin_noise(t_intersection *inter, t_color *c, t_ray *ray);
 void			perlin_lines(t_intersection *inter, t_color *c, t_ray *ray);
 void			perlin_marble(t_intersection *inter, t_color *c, t_ray *ray);
 void			earth_texture(t_intersection *inter, t_color *c, t_ray *ray, t_obj *obj);
-void			select_textures(t_intersection *inter, t_color *c, t_ray *ray);
+void			select_textures(t_intersection *inter, t_color *c, t_env *e, t_obj *obj);
 void        	bump_mapping(t_intersection *inter, t_ray *ray, t_vec3 *n);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utilities.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:50:41 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/28 00:29:29 by splace           ###   ########.fr       */
+/*   Updated: 2016/11/03 01:19:42 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,15 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 		vec_normalize(&normal);
 	}
 	return (normal);
+}
+
+
+t_color  Uint32_to_color(Uint32 color, SDL_Surface *bmp)
+{
+	t_color c;
+	Uint8	trueColor[3];
+
+	SDL_GetRGB(color, bmp->format, &trueColor[0], &trueColor[1], &trueColor[2]);
+	c = (t_color){trueColor[0] / 255.0, trueColor[1] / 255.0, trueColor[2] / 255.0};
+	return (c);
 }
