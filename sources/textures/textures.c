@@ -83,16 +83,16 @@ void	earth_texture(t_intersection *inter, t_color *c, t_ray *ray, t_obj 	*obj)
 	double	v;
 	t_vec3	n;
 	t_vec3 	pos;
-	Uint32	pixel;
+	Uint32	*pixel;
 
 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 	n = get_normal(&pos, obj, ray);
-	u = ((0.5 + atan(n.x / -n.z) / (2 * M_PI)) * obj->bmp->w) * 10;
-	v = ((0.5 - asin(n.y) / M_PI) * obj->bmp->h) * 10;
+	u = ((0.5 + atan(n.x / -n.z) / (2 * M_PI)) * obj->bmp->w);
+	v = ((0.5 - asin(n.y) / M_PI) * obj->bmp->h);
 	u = fmod(u, obj->bmp->w - 1);
 	v = obj->bmp->h - fmod(v, obj->bmp->h - 1);
-	pixel = *((Uint32 *)(obj->bmp->pixels + (Uint32)v * (Uint32)obj->bmp->pitch + (Uint32)u * obj->bmp->format->BytesPerPixel));
-	*c = Uint32_to_color(pixel, obj->bmp);
+	pixel = (Uint32 *)((char *)obj->bmp->pixels + (Uint32)v * (Uint32)obj->bmp->pitch + (Uint32)u * obj->bmp->format->BytesPerPixel);
+	*c = Uint32_to_color(*pixel, obj->bmp);
 }
 
 void			select_textures(t_intersection *inter, t_color *c, t_env *e, t_obj *obj)

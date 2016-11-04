@@ -29,7 +29,7 @@ void	move_left(t_env *e)
 		}
 		else if(e->options.mode == MODE_BUMPMAPPING)
 		{
-			e->scene.selected.obj->textures -= 0.1;
+			e->scene.selected.obj->bump -= 0.1;
 			e->options.need_redraw = TRUE;
 		}
 	}
