@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/30 22:40:18 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/31 22:11:27 by gromon           ###   ########.fr       */
+/*   Created: 2016/11/04 01:20:20 by gromon            #+#    #+#             */
+/*   Updated: 2016/11/04 01:20:22 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,15 @@ void		get_inputs(t_env *e)
 		if (e->event.type == SDL_QUIT)
 			e->options.quit = TRUE;
 		else if (e->event.type == SDL_KEYDOWN)
+		{
 			get_inputs_keys(e, TRUE);
+			get_inputs_keys2(e, TRUE);
+		}
 		else if (e->event.type == SDL_KEYUP)
+		{
 			get_inputs_keys(e, FALSE);
+			get_inputs_keys2(e, TRUE);
+		}
 		else if (e->event.type == SDL_MOUSEBUTTONDOWN)
 			get_inputs_mouse(e);
 	}

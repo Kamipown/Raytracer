@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:50:41 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/03 01:19:42 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/04 00:11:46 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool			solve_quadratic(t_equation e, double *t)
 {
-	t_bool	ret;
+	t_bool		ret;
 
 	e.delta = (e.b * e.b - (4 * e.a * e.c));
 	if (e.delta < 0.0)
@@ -44,7 +44,7 @@ double			calc_dist(t_vec3 *v1, t_vec3 *v2)
 
 t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 {
-	t_vec3	normal;
+	t_vec3		normal;
 
 	normal = (t_vec3){0, 0, 0};
 	if (obj->type == SPHERE)
@@ -71,13 +71,13 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 	return (normal);
 }
 
-
-t_color  Uint32_to_color(Uint32 color, SDL_Surface *bmp)
+t_color			uint32_to_color(Uint32 color, SDL_Surface *bmp)
 {
-	t_color c;
-	Uint8	trueColor[3];
+	t_color		c;
+	Uint8		truecolor[3];
 
-	SDL_GetRGB(color, bmp->format, &trueColor[0], &trueColor[1], &trueColor[2]);
-	c = (t_color){trueColor[0] / 255.0, trueColor[1] / 255.0, trueColor[2] / 255.0};
+	SDL_GetRGB(color, bmp->format, &truecolor[0], &truecolor[1], &truecolor[2]);
+	c = (t_color){truecolor[0] / 255.0,
+	truecolor[1] / 255.0, truecolor[2] / 255.0};
 	return (c);
 }

@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/06 17:32:07 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/31 22:21:15 by gromon           ###   ########.fr       */
+/*   Created: 2016/11/04 01:20:30 by gromon            #+#    #+#             */
+/*   Updated: 2016/11/04 01:20:34 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void		get_inputs_keys(t_env *e, t_bool pressed)
+void	get_inputs_keys(t_env *e, t_bool pressed)
 {
 	if (e->event.key.keysym.sym == SDLK_ESCAPE)
 		e->inputs.escape = pressed;
@@ -32,7 +32,11 @@ void		get_inputs_keys(t_env *e, t_bool pressed)
 		e->inputs.key_6 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_f)
 		e->inputs.key_f = pressed;
-	else if (e->event.key.keysym.sym == SDLK_KP_4)
+}
+
+void	get_inputs_keys2(t_env *e, t_bool pressed)
+{
+	if (e->event.key.keysym.sym == SDLK_KP_4)
 		e->inputs.key_left = pressed;
 	else if (e->event.key.keysym.sym == SDLK_KP_6)
 		e->inputs.key_right = pressed;
