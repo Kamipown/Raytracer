@@ -70,7 +70,10 @@ SRC+=	fullscreen/fullscreen.c
 
 SRC+=	matrix/move_x_axis.c			\
 		matrix/move_y_axis.c			\
-		matrix/move_z_axis.c
+		matrix/move_z_axis.c			\
+		matrix/rotate_x_axis.c			\
+		matrix/rotate_y_axis.c			\
+		matrix/rotate_z_axis.c
 
 SRC+=	draw/draw.c
 

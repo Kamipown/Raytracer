@@ -60,13 +60,20 @@ void				mouse_hook(t_env *e);
 void				toggle_fullscreen(t_env *e);
 
 void				move_left(t_env *e);
-void	            move_left2(t_env *e);
+void				move_left2(t_env *e);
 void				move_right(t_env *e);
 void				move_right2(t_env *e);
 void				move_up(t_env *e);
 void				move_down(t_env *e);
 void				move_forward(t_env *e);
 void				move_backward(t_env *e);
+
+void				rotate_left(t_vec3 *v);
+void				rotate_right(t_vec3 *v);
+void				rotate_up(t_vec3 *v);
+void				rotate_down(t_vec3 *v);
+void				rotate_forward(t_vec3 *v);
+void				rotate_backward(t_vec3 *v);
 
 void				draw(t_env *e);
 void				draw_pixel(t_env *e, t_pixel p);
