@@ -28,6 +28,8 @@ void		get_inputs_keys(t_env *e, t_bool pressed)
 		e->inputs.key_4 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_5)
 		e->inputs.key_5 = pressed;
+	else if (e->event.key.keysym.sym == SDLK_6)
+		e->inputs.key_6 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_f)
 		e->inputs.key_f = pressed;
 	else if (e->event.key.keysym.sym == SDLK_KP_4)

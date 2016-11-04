@@ -21,6 +21,7 @@ void		init_inputs(t_inputs *inputs)
 	inputs->key_3 = FALSE;
 	inputs->key_4 = FALSE;
 	inputs->key_5 = FALSE;
+	inputs->key_6 = FALSE;
 	inputs->key_f = FALSE;
 	inputs->key_left = FALSE;
 	inputs->key_right = FALSE;
@@ -42,6 +43,7 @@ static void	reset_inputs(t_inputs *inputs)
 	inputs->key_3 = FALSE;
 	inputs->key_4 = FALSE;
 	inputs->key_5 = FALSE;
+	inputs->key_6 = FALSE;
 	inputs->mouse_left = FALSE;
 	inputs->key_screenshoot = FALSE;
 }

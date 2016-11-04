@@ -57,14 +57,13 @@
 # define MODE_CAMERA    	1
 # define MODE_CAMERA_ROT    2
 # define MODE_SELECT    	3
-# define MODE_TEXTURES    	4
-# define MODE_BUMPMAPPING   5
+# define MODE_SELECT_ROT  	4
+# define MODE_TEXTURES    	5
+# define MODE_BUMPMAPPING   6
 
 # define MOVE_SPEED		20
 # define ROT_SPEED		10
 
 #define DELTA           (e.b * e.b - (4 * e.a * e.c))
-#define Z1              ((-e.b + sqrt(DELTA)) / (2.0 * e.a))
-#define Z2              ((-e.b - sqrt(DELTA)) / (2.0 * e.a))
 
 #endif

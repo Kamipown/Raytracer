@@ -1,6 +1,6 @@
 # sdl pkg-config source file
 
-prefix=/Users/dcognata/Rt/SDL2
+prefix=/Users/pdelobbe/Workspace/Raytracer/SDL2
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
