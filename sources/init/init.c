@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:49:14 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/04/18 19:49:15 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/11/03 23:29:33 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	init_window(t_env *e)
 		error(-21, (char *)SDL_GetError());
 	SDL_SetWindowIcon(e->win, surface);
 	SDL_FreeSurface(surface);
-	if ((e->win_sub = SDL_CreateWindow("Yatangaki Center", MAIN_POS_X - 300, MAIN_POS_Y, 300,
-		600, 0)) == NULL)
+	if ((e->win_sub = SDL_CreateWindow("Yatangaki Center", MAIN_POS_X - 300,
+	MAIN_POS_Y, 300, 600, 0)) == NULL)
 		error(-21, (char *)SDL_GetError());
 }
 

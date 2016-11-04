@@ -6,7 +6,7 @@
 #    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/28 07:03:27 by gromon            #+#    #+#              #
-#    Updated: 2016/10/28 07:03:30 by gromon           ###   ########.fr        #
+#    Updated: 2016/11/04 01:03:58 by gromon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,8 +89,6 @@ SRC+=	intersections/inter.c	\
 		intersections/inter_cones.c		\
 		intersections/inter_planes.c
 
-SRC+=	debug/debug.c debug/debug2.c
-
 SRC+=	utilities/math_utilities.c			\
 		utilities/color_utilities.c
 
@@ -99,8 +97,6 @@ SRC+=	textures/textures.c					\
 		textures/get_perlin_parameters.c	\
 		textures/setup_perlin.c				\
 		textures/bump_mapping.c
-
-SRC+=	write/write_informations.c
 
 SRC+=	screenshoot/screenshoot.c
 

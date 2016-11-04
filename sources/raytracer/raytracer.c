@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 21:40:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/03 02:32:54 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 23:53:54 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 				(y - (e->scene.current_mode->h / 2)) + (ty * 0.333),
 				0
 			});
-			inter = throw_ray(e, &e->scene.ray, 0);
+			inter = throw_ray(e, &e->scene.ray);
 			color[tx + 3 * ty] = get_pixel_color(inter, e);
-			// free(inter);
 			++tx;
 		}
 		++ty;
@@ -73,20 +72,15 @@ static void		raytrace_pixel(t_env *e, int x, int y)
 	t_intersection	*inter;
 	t_color			color;
 
-	// Uint32 pixel;
-	// pixel = *((Uint32 *)(e->textures.map->pixels));
-	// printf("%u\n", pixel);
 	create_ray(&e->scene, (t_vec3)
 	{
 		x - (e->scene.current_mode->w / 2),
 		y - (e->scene.current_mode->h / 2),
 		0
 	});
-	inter = throw_ray(e, &e->scene.ray, 0);
+	inter = throw_ray(e, &e->scene.ray);
 	color = get_pixel_color(inter, e);
 	draw_pixel(e, (t_pixel){x, y, color});
-	// if (inter)
-	// 	free(inter);
 }
 
 void			raytrace(t_env *e)
