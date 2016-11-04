@@ -37,7 +37,7 @@ planes
 			g:100
 			b:100
 		reflection:99
-		textures:1
+		textures:0
 		bump:0.1
 
 	1
@@ -56,6 +56,7 @@ planes
 		reflection:0
 		textures:0
 		bump:1.1
+
 spheres
 	0
 		pos
@@ -68,7 +69,7 @@ spheres
 			g:0
 			b:0
 		reflection:50
-		textures:4
+		textures:0
 		bump:0
 	1
 		pos
@@ -81,7 +82,7 @@ spheres
 			g:200
 			b:80
 		reflection:99
-		textures:1
+		textures:0
 		bump:0
 cylinders
 	0

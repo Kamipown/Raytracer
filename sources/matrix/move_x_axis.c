@@ -6,34 +6,39 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 18:47:34 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/03 02:08:42 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/04 01:23:10 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	move_left(t_env *e)
+void	move_left2(t_env *e)
 {
 
 	if (e->scene.selected.obj)
 	{
-		if(e->options.mode == MODE_SELECT)
+		if (e->options.mode == MODE_SELECT)
 		{
 			e->scene.selected.obj->pos.x -= MOVE_SPEED;
 			e->options.need_redraw = TRUE;
 		}
-		else if(e->options.mode == MODE_TEXTURES)
+		else if (e->options.mode == MODE_TEXTURES)
 		{
 			e->scene.selected.obj->textures -= 1;
 			e->options.need_redraw = TRUE;
 		}
-		else if(e->options.mode == MODE_BUMPMAPPING)
+		else if (e->options.mode == MODE_BUMPMAPPING)
 		{
 			e->scene.selected.obj->bump -= 0.1;
 			e->options.need_redraw = TRUE;
 		}
 	}
-	else if (e->options.mode == MODE_CAMERA)
+}
+
+void	move_left(t_env *e)
+{
+	move_left2(e);
+	if (e->options.mode == MODE_CAMERA)
 	{
 		e->scene.cam.pos.x -= MOVE_SPEED;
 		e->options.need_redraw = TRUE;
@@ -47,29 +52,34 @@ void	move_left(t_env *e)
 	}
 }
 
-void	move_right(t_env *e)
+void	move_right2(t_env *e)
 {
 
 	if (e->scene.selected.obj)
 	{
-		if(e->options.mode == MODE_SELECT)
+		if (e->options.mode == MODE_SELECT)
 		{
 			e->scene.selected.obj->pos.x += MOVE_SPEED;
 			e->options.need_redraw = TRUE;
 		}
-		else if(e->options.mode == MODE_TEXTURES)
+		else if (e->options.mode == MODE_TEXTURES)
 		{
 			e->scene.selected.obj->textures += 1;
 			e->options.need_redraw = TRUE;
 		}
-		else if(e->options.mode == MODE_BUMPMAPPING)
+		else if (e->options.mode == MODE_BUMPMAPPING)
 		{
 			e->scene.selected.obj->bump += 0.1;
 			e->options.need_redraw = TRUE;
 		}
 
 	}
-	else if (e->options.mode == MODE_CAMERA)
+}
+
+void	move_right(t_env *e)
+{
+	move_right2(e);
+	if (e->options.mode == MODE_CAMERA)
 	{
 		e->scene.cam.pos.x += MOVE_SPEED;
 		e->options.need_redraw = TRUE;

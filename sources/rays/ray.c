@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splace <splace@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 16:52:44 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 00:42:26 by splace           ###   ########.fr       */
+/*   Updated: 2016/11/03 23:53:19 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,6 @@ static double			deg_to_rad(double a)
 {
 	return (a * M_PI / 180);
 }
-
-// static void				rotate(t_vec3 *v, double ang)
-// {
-// 	t_vec3	t;
-
-// 	t.x = v->x;
-// 	t.y = v->y;
-// 	t.z = v->z;
-// 	v->x = t.x * cos(deg_to_rad(ang)) + t.z * sin(deg_to_rad(ang));
-// 	v->z = t.x * -(sin(deg_to_rad(ang))) + t.z * cos(deg_to_rad(ang));
-// }
 
 static void				apply_rotations(t_scene *s)
 {
@@ -71,17 +60,11 @@ static t_intersection	create_intersection(void)
 	return (inter);
 }
 
-t_intersection			throw_ray(t_env *e, t_ray *ray, int flag)
+t_intersection			throw_ray(t_env *e, t_ray *ray)
 {
 	t_intersection	inter;
 
-	// if (flag == 1)
-	// {
-	// 	printf("Camera:\nposition(%f, %f, %f)\ndirection(%f, %f, %f)\n\n",
-	// 		ray->origin.x, ray->origin.y, ray->origin.z,
-	// 		ray->dir.x, ray->dir.y, ray->dir.z);
-	// }
 	inter = create_intersection();
-	intersect_objects(e, ray, &inter, flag);
+	intersect_objects(e, ray, &inter);
 	return (inter);
 }

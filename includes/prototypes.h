@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/03 01:20:51 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/04 01:23:34 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ double		    	read_double_data(char *data, char *request);
 int					read_color_data(char *data, char *request);
 char				*construct_request_int(char *request, int n);
 int					data_get_i_constructed(char *data, char *request, int i);
-double				data_get_d_constructed(char *data, char *request, int i);
+int				    data_get_d_constructed(char *data, char *request, int i);
+
 
 void                load_textures(t_env *e);
 void                free_textures(t_env *e);
@@ -48,6 +49,7 @@ void				loop(t_env *e);
 void				init_inputs(t_inputs *inputs);
 void				get_inputs(t_env *e);
 void				get_inputs_keys(t_env *e, t_bool pressed);
+void	            get_inputs_keys2(t_env *e, t_bool pressed);
 void				get_inputs_mouse(t_env *e);
 
 void				switch_mode(t_env *e);
@@ -59,7 +61,9 @@ void				mouse_hook(t_env *e);
 void				toggle_fullscreen(t_env *e);
 
 void				move_left(t_env *e);
+void	            move_left2(t_env *e);
 void				move_right(t_env *e);
+void				move_right2(t_env *e);
 void				move_up(t_env *e);
 void				move_down(t_env *e);
 void				move_forward(t_env *e);
@@ -72,16 +76,18 @@ void				raytrace(t_env *e);
 
 void				create_ray(t_scene *scene, t_vec3 to);
 
-t_intersection		throw_ray(t_env *e, t_ray *ray, int flag);
 
-void				intersect_objects(t_env *e, t_ray *ray, t_intersection *inter, int flag);
+t_intersection		throw_ray(t_env *e, t_ray *ray);
+
+
+void				intersect_objects(t_env *e, t_ray *ray, t_intersection *inter);
 t_bool				inter_spheres(t_ray *ray, t_obj *s, double *t);
 t_bool				inter_cylinders(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_cones(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_planes(t_ray *ray, t_obj *p, double *t);
 t_bool				solve_quadratic(t_equation e, double *t);
 double			    calc_dist(t_vec3 *v1, t_vec3 *v2);
-t_color             Uint32_to_color(Uint32 color, SDL_Surface *bmp);
+t_color             uint32_to_color(Uint32 color, SDL_Surface *bmp);
 t_vec3			    get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
 t_color	            get_global_illuminated_color(t_color *c);
 void			    flour_color(t_color *color);

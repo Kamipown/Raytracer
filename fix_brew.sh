@@ -2,7 +2,6 @@
 
 #fix_brew.sh
 
-
 #you can keep ur brew if u need ur formulas
 if [ "$1" = "--keep" ];
   then

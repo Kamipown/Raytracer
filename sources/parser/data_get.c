@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_get.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 20:31:12 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/13 20:31:13 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/11/03 02:54:19 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		data_get_i_constructed(char *data, char *request, int i)
 	return (ret);
 }
 
-double	data_get_d_constructed(char *data, char *request, int i)
+int		data_get_d_constructed(char *data, char *request, int i)
 {
 	double	ret;
 	char	*tmp_req;

@@ -6,15 +6,15 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 19:18:06 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 03:54:41 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/04 01:19:10 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	clean_spheres(t_scene *s)
+static void			clean_spheres(t_scene *s)
 {
-	int		i;
+	int				i;
 
 	i = 0;
 	while (i < s->n_obj)
@@ -34,9 +34,27 @@ static void	clean_spheres(t_scene *s)
 	}
 }
 
-void		fill_spheres_data(t_scene *s, char *data, int counts[4])
+static void			fill_spheres_data2(t_scene *s, char *data, int i)
 {
-	int		i;
+	s->objs[i].radius =
+		data_get_i_constructed(data, "spheres.#.radius", i);
+	s->objs[i].color.r =
+		data_get_i_constructed(data, "spheres.#.color.r", i);
+	s->objs[i].color.g =
+		data_get_i_constructed(data, "spheres.#.color.g", i);
+	s->objs[i].color.b =
+		data_get_i_constructed(data, "spheres.#.color.b", i);
+	s->objs[i].refl =
+		data_get_i_constructed(data, "spheres.#.reflection", i);
+	s->objs[i].textures =
+		data_get_i_constructed(data, "spheres.#.textures", i);
+	s->objs[i].bump =
+		data_get_d_constructed(data, "spheres.#.bump", i);
+}
+
+void				fill_spheres_data(t_scene *s, char *data, int counts[4])
+{
+	int				i;
 
 	i = 0;
 	while (i < counts[0])
@@ -47,22 +65,7 @@ void		fill_spheres_data(t_scene *s, char *data, int counts[4])
 			data_get_i_constructed(data, "spheres.#.pos.y", i);
 		s->objs[i].pos.z =
 			data_get_i_constructed(data, "spheres.#.pos.z", i);
-		s->objs[i].radius =
-			data_get_i_constructed(data, "spheres.#.radius", i);
-		s->objs[i].color.r =
-			data_get_i_constructed(data, "spheres.#.color.r", i);
-		s->objs[i].color.g =
-			data_get_i_constructed(data, "spheres.#.color.g", i);
-		s->objs[i].color.b =
-			data_get_i_constructed(data, "spheres.#.color.b", i);
-		s->objs[i].refl =
-			data_get_i_constructed(data, "spheres.#.reflection", i);
-		s->objs[i].textures =
-			data_get_i_constructed(data, "spheres.#.textures", i);
-		s->objs[i].bump =
-			data_get_d_constructed(data, "spheres.#.bump", i);
-		s->objs[i].refr =
-			data_get_d_constructed(data, "spheres.#.refraction", i);
+		fill_spheres_data2(s, data, i);
 		s->objs[i].type = SPHERE;
 		s->objs[i].id = i;
 		++i;

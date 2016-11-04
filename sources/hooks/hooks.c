@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:56 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/31 22:41:13 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 23:54:20 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void		mouse_hook(t_env *e)
 			e->inputs.mouse_y - (e->scene.current_mode->h / 2),
 			0
 		});
-		e->scene.selected = throw_ray(e, &e->scene.ray, 1);
+
+		e->scene.selected = throw_ray(e, &e->scene.ray);
 		if (e->scene.selected.type == SPHERE)
 			ft_putendl("Sphere selected");
 		else if (e->scene.selected.type == CYLINDER)

@@ -59,10 +59,8 @@ static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 				(y - (e->scene.current_mode->h / 2)) + (ty * 0.333),
 				0
 			});
-			inter = throw_ray(e, &e->scene.ray, 0);
+			inter = throw_ray(e, &e->scene.ray);
 			color[tx + 3 * ty] = get_pixel_color(&inter, e);
-			// free(inter);
-
 			++tx;
 		}
 		++ty;
@@ -81,11 +79,9 @@ static void		raytrace_pixel(t_env *e, int x, int y)
 		y - (e->scene.current_mode->h / 2),
 		0
 	});
-	inter = throw_ray(e, &e->scene.ray, 0);
+	inter = throw_ray(e, &e->scene.ray);
 	color = get_pixel_color(&inter, e);
 	draw_pixel(e, (t_pixel){x, y, color});
-	// if (inter)
-	// 	free(inter);
 }
 
 void			raytrace(t_env *e)

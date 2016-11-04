@@ -6,13 +6,14 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/03 02:02:38 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/03 23:57:09 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *new_start, t_color *c, t_vec3 *n, double coef)
+void				add_lambert_light_contribution(t_env *e, t_obj *obj,
+		t_light *l, t_vec3 *new_start, t_color *c, t_vec3 *n, double coef)
 {
 	t_vec3			dist;
 	t_intersection	inter;
@@ -29,16 +30,11 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	e->scene.light_ray.origin = *new_start;
 	e->scene.light_ray.dir = (t_vec3){dist.x, dist.y, dist.z};
 	vec_normalize(&e->scene.light_ray.dir);
-	inter = throw_ray(e, &e->scene.light_ray, 0);
+	inter = throw_ray(e, &e->scene.light_ray);
 	if (inter.obj)
 	{
-		if (inter.obj->refr == 1.0)
-		{
-
-			return ;
-		}
-
-		impact = vec_add(e->scene.light_ray.origin, vec_mul_d(e->scene.light_ray.dir, inter.t));
+		impact = vec_add(e->scene.light_ray.origin,
+		vec_mul_d(e->scene.light_ray.dir, inter.t));
 		if (calc_dist(new_start, &impact) < calc_dist(new_start, &l->pos))
 			return ;
 	}
@@ -48,14 +44,16 @@ void			add_lambert_light_contribution(t_env *e, t_obj *obj, t_light *l, t_vec3 *
 	c->b += lambert * l->color.b * obj->color.b;
 }
 
-void			add_reflection_contribution(t_obj *obj, t_ray *ray, t_vec3 *n, double *coef)
+void				add_reflection_contribution(t_obj *obj, t_ray *ray,
+						t_vec3 *n, double *coef)
 {
-	double	refl;
+	double			refl;
 
 	*coef *= obj->refl;
 	refl = 2.0 * vec_mul_to_d(ray->dir, *n);
 	*n = vec_mul_d(*n, refl);
 }
+
 
 t_bool			add_refraction_contribution(t_ray *ray, t_vec3 n, double change/*(n1 / n2)*/, t_vec3 *result)
 {
@@ -105,7 +103,9 @@ t_bool			add_refraction_contribution(t_ray *ray, t_vec3 n, double change/*(n1 / 
 }*/
 
 
-void			process_lighting(t_env *e, t_ray *ray, t_intersection inter, t_color *color)
+
+void				process_lighting(t_env *e, t_ray *ray,
+						t_intersection inter, t_color *color)
 {
 	double			coef;
 	int				level;
@@ -123,7 +123,8 @@ void			process_lighting(t_env *e, t_ray *ray, t_intersection inter, t_color *col
 		n = get_normal(&new_start, inter.obj, ray);
 		bump_mapping(&inter, ray, &n);
 		i = 0;
-		while (i < e->scene.n_light)
+/*		while (i < e->scene.n_light)
+/*<<<<<<< HEAD
 			add_lambert_light_contribution(e, inter.obj, &e->scene.lights[i++], &new_start, color, &n, coef);
 		if (inter.obj->refr == 1.0)
 		{
@@ -144,6 +145,15 @@ void			process_lighting(t_env *e, t_ray *ray, t_intersection inter, t_color *col
 		add_reflection_contribution(inter.obj, ray, &n, &coef);
 		ray->origin = new_start;
 		inter = throw_ray(e, ray, 0);
+		if (!inter.obj)
+=======*/
+		while (i < e->scene.n_light)
+			add_lambert_light_contribution(e, inter.obj,
+			&e->scene.lights[i++], &new_start, color, &n, coef);
+		add_reflection_contribution(inter.obj, ray, &n, &coef);
+		ray->origin = new_start;
+		ray->dir = vec_sub(ray->dir, n);
+		inter = throw_ray(e, ray);
 		if (!inter.obj)
 			break ;
 		level++;
