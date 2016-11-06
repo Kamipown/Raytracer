@@ -12,6 +12,7 @@
 
 #ifndef PERLIN_H
 # define PERLIN_H
+
 # define B 0x100
 # define BM 0xff
 # define PN 0x1000

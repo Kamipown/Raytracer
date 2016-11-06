@@ -127,6 +127,7 @@ typedef struct		s_inputs
 	t_bool			key_3;
 	t_bool			key_4;
 	t_bool			key_5;
+	t_bool			key_6;
 	t_bool			key_f;
 	t_bool			key_left;
 	t_bool			key_right;

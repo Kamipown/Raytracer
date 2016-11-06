@@ -48,6 +48,7 @@ t_bool	inter_cylinders(t_ray *ray, t_obj *s, double *t)
 	double		th;
 	double		y0;
 	double		y1;
+	double		test;
 
 	double size = 100;
 	e.a = (1 - s->rot.x) * (ray->dir.x * ray->dir.x) + (1 - s->rot.y)
@@ -65,27 +66,34 @@ t_bool	inter_cylinders(t_ray *ray, t_obj *s, double *t)
 			* (ray->origin.z - s->pos.z));
 	e.c -= (s->radius * s->radius);
 	def_res = get_quadratic(&e, t);
-	if (def_res == TRUE)
-		return TRUE;
+	//return def_res;
+	if (def_res == FALSE)
+		return FALSE;
 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, *t));
-	if (sqrt((s->rot.x) * ((s->pos.x - pos.x) * (s->pos.x - pos.x))
-		+ (s->rot.y) * ((s->pos.y - pos.y) * (s->pos.y - pos.y))
-		+ (s->rot.z) * ((s->pos.z - pos.z) * (s->pos.z - pos.z))) < size)
-		return TRUE;
-	if (e.z1 > e.z2)
+	if (e.z1 != *t)
 	{
 		*t = e.z2;
 		e.z2 = e.z1;
 		e.z1 = *t;
 	}
-	y0 = ray->origin.y * (ray->dir.y + e.z1);
-	y1 = ray->origin.y * (ray->dir.y + e.z2);
-	th = e.z1 + (e.z2 -e.z1) * (y0+1) / (y0-y1);
-	if (((e.z1 < -1 && e.z2 > -1) || (e.z1 > 1 && e.z2 < 1)) && th > 0)
+	if (sqrt((s->rot.x) * ((s->pos.x - pos.x) * (s->pos.x - pos.x))
+		+ (s->rot.y) * ((s->pos.y - pos.y) * (s->pos.y - pos.y))
+		+ (s->rot.z) * ((s->pos.z - pos.z) * (s->pos.z - pos.z))) < size)
+		return TRUE;
+	test = ray->origin.y + (((e.z2 + e.z1) / 2) * ray->dir.y);
+	y0 = ray->origin.y + (e.z1 * ray->dir.y);
+	y1 = ray->origin.y + (e.z2 * ray->dir.y);
+	th = e.z1 + (e.z2 -e.z1) * (y0 - s->radius) / (y0-y1);
+	/*printf_vec3("vec", pos);
+	printf_vec3("obj", s->pos);
+	printf_vec3("ray", ray->origin);
+	printf_vec3("dir", ray->dir);
+	printf("th %f | %f> {y}(%f, %f) {e}(%f, %f)\n", th, test, y0, y1, e.z1, e.z2);*/
+	if (sqrt((s->pos.y - test) * (s->pos.y - test)) < size)
 	{
-		printf_vec3("pos", pos);
-		printf("%f> %f %f\n", th, y0, y1);
-		*t = th;
+		/*printf_vec3("GG !!! vec", pos);
+		printf("%f> %f %f\n", th, e.z1, e.z2);*/
+		*t = (e.z2 + e.z1) / 2;
 		return TRUE;
 	}
 	*t = 0.00001;

@@ -4,7 +4,7 @@ config
 		height:600
 	counts
 		lights:1
-		spheres:1
+		spheres:0
 		cylinders:1
 		cones:0
 		planes:1
@@ -59,9 +59,9 @@ cylinders
 	0
 		pos
 			x:0
-			y:200
-			z:200
-		radius:25
+			y:0
+			z:-100
+		radius:10
 		normal
 			x:0
 			y:1

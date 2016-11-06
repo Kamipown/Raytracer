@@ -58,7 +58,7 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 	}
 	else if (obj->type == CYLINDER)
 	{
-		/*if (sqrt((obj->rot.x) * ((obj->pos.x - pos->x) * (obj->pos.x - pos->x))
+		if (sqrt((obj->rot.x) * ((obj->pos.x - pos->x) * (obj->pos.x - pos->x))
 			+ (obj->rot.y) * ((obj->pos.y - pos->y) * (obj->pos.y - pos->y))
 			+ (obj->rot.z) * ((obj->pos.z - pos->z) * (obj->pos.z - pos->z))) == 50)
 		{
@@ -69,7 +69,7 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 			normal = vec_sub(*pos, obj->pos);
 			normal.y = 0;
 		}
-		vec_normalize(&normal);*/
+		vec_normalize(&normal);
 	}
 	else if (obj->type == CONE)
 	{
