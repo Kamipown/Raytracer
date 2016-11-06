@@ -147,6 +147,7 @@ typedef struct		s_options
 	t_bool			need_redraw;
 	t_bool			need_redraw_sub;
 	t_bool			mode;
+	t_bool			first_loop;
 }					t_options;
 
 typedef struct		s_textures

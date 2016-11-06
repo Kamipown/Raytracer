@@ -69,7 +69,7 @@ void				process_lighting(t_env *e, t_ray *ray,
 
 	coef = 2.0;
 	level = 0;
-	while (coef > 0.00000 && level < 10)
+	while (coef > 0.00000 && ++level < 10)
 	{
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 		n = get_normal(&new_start, inter->obj, ray);
@@ -84,7 +84,6 @@ void				process_lighting(t_env *e, t_ray *ray,
 		inter = throw_ray(e, ray);
 		if (!inter->obj)
 			break ;
-		level++;
 	}
 	flour_color(color);
 }

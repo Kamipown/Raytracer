@@ -6,7 +6,7 @@
 #    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/28 07:03:27 by gromon            #+#    #+#              #
-#    Updated: 2016/11/04 01:03:58 by gromon           ###   ########.fr        #
+#    Updated: 2016/11/06 18:24:11 by dcognata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ INCLUDES =	-I./libft/includes/		\
 
 INC = -I $(INCLUDES) -I libft/includes/ -I SDL2/include/
 
-FLG =  -g -Wall -Wextra -pedantic #-Werror
+FLG =  -g -Wall -Wextra #-Werror
 
 CFLAGS = $(INCLUDES) $(FLG)
 
@@ -116,6 +116,7 @@ all: libft $(NAME)
 $(NAME): $(SRCO)
 	@echo "\033[1;30mRT : Sources compiling...\033[0m"
 	@$(CC) $(FLAGS) -o $@ $(SRCO) $(LIBS)
+	@mkdir -p screenshoots
 	@echo "\033[0;36mRT compile with success !\033[0m"
 
 libft:
@@ -141,6 +142,7 @@ clean:
 fclean: clean
 	@make -C libft/ fclean
 	@/bin/rm -f $(NAME)
+	@/bin/rm -rf screenshoots/
 	@echo "\033[0;36mRT binary removed...\033[0m"
 
 re: fclean all

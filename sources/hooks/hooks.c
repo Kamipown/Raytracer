@@ -30,15 +30,17 @@ static void	print_mode(t_bool mode)
 		ft_putendl("Mode : Bumpmapping");
 }
 
+/*
+** first if change_mode
+** e->options.need_redraw = TRUE;
+*/
+
 static void	change_mode(t_env *e, int mode)
 {
 	e->options.mode = mode;
 	print_mode(e->options.mode);
 	if (mode == MODE_TEXTURES || mode == MODE_BUMPMAPPING)
-	{
 		e->options.need_redraw_sub = TRUE;
-		//e->options.need_redraw = TRUE;
-	}
 	else
 		e->options.need_redraw_sub = TRUE;
 }
