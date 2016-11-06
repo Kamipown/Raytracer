@@ -14,7 +14,6 @@
 
 void			load_textures(t_env *e)
 {
-
 	SDL_Surface	*background;
 	SDL_Surface	*checkbox;
 

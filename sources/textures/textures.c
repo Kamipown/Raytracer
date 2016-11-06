@@ -84,9 +84,8 @@ void		earth_texture(t_intersection *inter, t_color *c,
 	double	u;
 	double	v;
 	t_vec3	n;
-	t_vec3 	pos;
+	t_vec3	pos;
 	Uint32	*pixel;
-
 
 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
 	n = get_normal(&pos, obj, ray);
@@ -115,5 +114,4 @@ void		select_textures(t_intersection *inter, t_color *c,
 		obj->bmp = e->textures.map;
 		earth_texture(inter, c, &e->scene.ray, obj);
 	}
-
 }
