@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/04 04:06:43 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/06 21:51:30 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct		s_light
 	int 			type;
 	t_vec3 			dir;
 	double 			radius;
-	double			intensity;
 }					t_light;
 
 typedef struct		s_obj
@@ -133,6 +132,7 @@ typedef struct		s_scene
 	t_ray			ray;
 	t_ray			light_ray;
 	t_intersection	*selected;
+	t_color			ambient;
 }					t_scene;
 
 typedef struct		s_inputs

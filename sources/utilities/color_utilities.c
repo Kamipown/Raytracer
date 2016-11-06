@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:51:17 by gromon            #+#    #+#             */
-/*   Updated: 2016/10/28 05:46:45 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/06 21:45:14 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void			flour_color(t_color *color)
 	color->b = (color->b * 255 > 255) ? 255 : color->b * 255;
 }
 
-t_color			get_global_illuminated_color(t_color *c)
+t_color			get_global_illuminated_color(t_color *c, t_color *ambient)
 {
 	t_color	color;
 
-	color.r = c->r * 0.2;
-	color.g = c->g * 0.2;
-	color.b = c->b * 0.2;
+	color.r = c->r * ambient->r;
+	color.g = c->g * ambient->g;
+	color.b = c->b * ambient->b;
 	return (color);
 }
