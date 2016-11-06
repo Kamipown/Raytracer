@@ -144,6 +144,7 @@ typedef struct		s_inputs
 	t_bool			key_3;
 	t_bool			key_4;
 	t_bool			key_5;
+	t_bool			key_6;
 	t_bool			key_f;
 	t_bool			key_left;
 	t_bool			key_right;
@@ -164,6 +165,7 @@ typedef struct		s_options
 	t_bool			need_redraw;
 	t_bool			need_redraw_sub;
 	t_bool			mode;
+	t_bool			first_loop;
 }					t_options;
 
 typedef struct		s_textures

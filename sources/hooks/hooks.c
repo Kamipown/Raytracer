@@ -21,22 +21,26 @@ static void	print_mode(t_bool mode)
 	else if (mode == MODE_CAMERA_ROT)
 		ft_putendl("Mode : Camera Rotation");
 	else if (mode == MODE_SELECT)
-		ft_putendl("Mode : Selections");
+		ft_putendl("Mode : Selection");
+	else if (mode == MODE_SELECT_ROT)
+		ft_putendl("Mode : Selection Rotation");
 	else if (mode == MODE_TEXTURES)
 		ft_putendl("Mode : Textures");
 	else if (mode == MODE_BUMPMAPPING)
 		ft_putendl("Mode : Bumpmapping");
 }
 
+/*
+** first if change_mode
+** e->options.need_redraw = TRUE;
+*/
+
 static void	change_mode(t_env *e, int mode)
 {
 	e->options.mode = mode;
 	print_mode(e->options.mode);
 	if (mode == MODE_TEXTURES || mode == MODE_BUMPMAPPING)
-	{
 		e->options.need_redraw_sub = TRUE;
-		e->options.need_redraw = TRUE;
-	}
 	else
 		e->options.need_redraw_sub = TRUE;
 }
@@ -70,8 +74,10 @@ void		key_hook(t_env *e)
 	if (e->inputs.key_3)
 		change_mode(e, MODE_SELECT);
 	if (e->inputs.key_4)
-		change_mode(e, MODE_TEXTURES);
+		change_mode(e, MODE_SELECT_ROT);
 	if (e->inputs.key_5)
+		change_mode(e, MODE_TEXTURES);
+	if (e->inputs.key_6)
 		change_mode(e, MODE_BUMPMAPPING);
 	if (e->inputs.key_f)
 		toggle_fullscreen(e);

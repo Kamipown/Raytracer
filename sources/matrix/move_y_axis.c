@@ -19,6 +19,11 @@ void	move_up(t_env *e)
 		e->scene.selected->obj->pos.y -= MOVE_SPEED;
 		e->options.need_redraw = TRUE;
 	}
+	else if (e->options.mode == MODE_SELECT_ROT && e->scene.selected)
+	{
+		rotate_down(&e->scene.selected->obj->rot);
+		e->options.need_redraw = TRUE;
+	}
 	else if (e->options.mode == MODE_CAMERA)
 	{
 		e->scene.cam.pos.y -= MOVE_SPEED;
@@ -38,6 +43,11 @@ void	move_down(t_env *e)
 	if (e->options.mode == MODE_SELECT && e->scene.selected)
 	{
 		e->scene.selected->obj->pos.y += MOVE_SPEED;
+		e->options.need_redraw = TRUE;
+	}
+	else if (e->options.mode == MODE_SELECT_ROT && e->scene.selected)
+	{
+		rotate_up(&e->scene.selected->obj->rot);
 		e->options.need_redraw = TRUE;
 	}
 	else if (e->options.mode == MODE_CAMERA)
