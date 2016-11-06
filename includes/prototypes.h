@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/04 01:23:34 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/06 22:44:09 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ double		    	read_double_data(char *data, char *request);
 int					read_color_data(char *data, char *request);
 char				*construct_request_int(char *request, int n);
 int					data_get_i_constructed(char *data, char *request, int i);
-int				    data_get_d_constructed(char *data, char *request, int i);
+double			    data_get_d_constructed(char *data, char *request, int i);
 
 void                load_textures(t_env *e);
 void                free_textures(t_env *e);
@@ -93,10 +93,13 @@ t_bool				solve_quadratic(t_equation e, double *t);
 double			    calc_dist(t_vec3 *v1, t_vec3 *v2);
 t_color             uint32_to_color(Uint32 color, SDL_Surface *bmp);
 t_vec3			    get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
-t_color	            get_global_illuminated_color(t_color *c);
+t_color	            get_global_illuminated_color(t_color *c, t_color *ambient);
 void			    flour_color(t_color *color);
 
 void				process_lighting(t_env *e, t_ray *ray, t_intersection *inter, t_color *color);
+void                lambert_point(t_env *e, t_lambert *lamb);
+void                lambert_directional(t_env *e, t_lambert *lamb);
+void                lambert_spot(t_env *e, t_lambert *lamb);
 
 t_vec3				vec_add(t_vec3 v1, t_vec3 v2);
 t_vec3				vec_sub(t_vec3 v1, t_vec3 v2);
@@ -109,15 +112,6 @@ double				vec_mul_to_d(t_vec3 v1, t_vec3 v2);
 t_vec3				vec_mul_d(t_vec3 v, double d);
 
 void				error(int n, char *mes);
-
-void				debug_print_screen(t_size *size);
-void				debug_print_camera(t_cam *cam);
-void				debug_print_counts(t_scene *s);
-void				debug_print_lights(t_scene *s);
-void				debug_print_spheres(t_scene *s);
-void				debug_print_planes(t_scene *s);
-void				debug_print_cylinders(t_scene *s);
-void				debug_print_cones(t_scene *s);
 
 void				write_informations(t_env *e);
 
