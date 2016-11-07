@@ -6,11 +6,17 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 03:42:21 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/06 22:00:40 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/07 01:24:31 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+double	dir_angle(t_vec3 v1, t_vec3 v2)
+{
+	v2 = vec_mul_d(v2, -1);
+	return (acosf(vec_mul_to_d(v1, v2)) * 180 / M_PI);
+}
 
 void	lambert_spot(t_env *e, t_lambert *lamb)
 {
@@ -23,6 +29,8 @@ void	lambert_spot(t_env *e, t_lambert *lamb)
 	e->scene.light_ray.origin = *lamb->new_start;
 	e->scene.light_ray.dir = (t_vec3){lamb->dist.x, lamb->dist.y, lamb->dist.z};
 	vec_normalize(&e->scene.light_ray.dir);
+	if (dir_angle(lamb->l->dir, e->scene.light_ray.dir) > lamb->l->radius / 2)
+		return ;
 	lamb->inter = throw_ray(e, &e->scene.light_ray);
 	if (lamb->inter->obj)
 	{

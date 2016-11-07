@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/06 23:15:45 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/07 01:28:26 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 # define MODE_TEXTURES    	5
 # define MODE_BUMPMAPPING   6
 
-# define MOVE_SPEED		    1000
+# define MOVE_SPEED		    50
 # define ROT_SPEED		    10
 
 #define POINT_LIGHT         0
