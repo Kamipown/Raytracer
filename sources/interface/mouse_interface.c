@@ -79,7 +79,7 @@ void		mouse_interface(t_env *e)
 	if (interface_mode_draw(e))
 	{
 		e->options.need_redraw_sub = TRUE;
-		e->options.need_redraw = TRUE;
+		e->options.need_redraw = FALSE;
 	}
 	if (interface_mode_switch(e))
 	{

@@ -27,4 +27,6 @@ void			load_textures(t_env *e)
 	background);
 	e->interface.checkbox = SDL_CreateTextureFromSurface(e->renderer_sub,
 	checkbox);
+	SDL_FreeSurface(background);
+	SDL_FreeSurface(checkbox);
 }

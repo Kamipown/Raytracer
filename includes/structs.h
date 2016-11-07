@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/02 20:39:46 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/04 04:06:43 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ typedef struct		s_light
 {
 	t_vec3			pos;
 	t_color			color;
+	int 			type;
+	t_vec3 			dir;
+	double 			radius;
 	double			intensity;
 }					t_light;
 
@@ -100,6 +103,21 @@ typedef struct		s_intersection
 	double			t;
 	int				type;
 }					t_intersection;
+
+typedef struct		s_lambert
+{
+	t_obj 			*obj;
+	t_light 		*l;
+	t_vec3 			*new_start;
+	t_vec3 			*n;
+	t_vec3			dist;
+	t_vec3			impact;
+	t_color 		*c;
+	t_intersection	inter;
+	double 			coef;
+	double			t;
+	double			lambert;
+}					t_lambert;
 
 typedef struct		s_scene
 {

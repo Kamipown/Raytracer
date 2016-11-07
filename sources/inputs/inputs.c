@@ -63,7 +63,7 @@ void		get_inputs(t_env *e)
 		else if (e->event.type == SDL_KEYUP)
 		{
 			get_inputs_keys(e, FALSE);
-			get_inputs_keys2(e, TRUE);
+			get_inputs_keys2(e, FALSE);
 		}
 		else if (e->event.type == SDL_MOUSEBUTTONDOWN)
 			get_inputs_mouse(e);
