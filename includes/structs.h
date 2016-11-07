@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/04 04:06:43 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/07 02:33:36 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ typedef struct		s_color
 	double			b;
 }					t_color;
 
-typedef struct 		s_equation
+typedef struct		s_equation
 {
-	double 			a;
-	double 			b;
-	double 			c;
-	double 			delta;
-	double 			z1;
-	double 			z2;
+	double			a;
+	double			b;
+	double			c;
+	double			delta;
+	double			z1;
+	double			z2;
 }					t_equation;
 
 typedef struct		s_pixel
@@ -76,10 +76,9 @@ typedef struct		s_light
 {
 	t_vec3			pos;
 	t_color			color;
-	int 			type;
-	t_vec3 			dir;
-	double 			radius;
-	double			intensity;
+	int				type;
+	t_vec3			dir;
+	double			radius;
 }					t_light;
 
 typedef struct		s_obj
@@ -92,8 +91,8 @@ typedef struct		s_obj
 	double			refr;
 	int				type;
 	int				id;
-	int 			textures;
-	double 			bump;
+	int				textures;
+	double			bump;
 	SDL_Surface		*bmp;
 }					t_obj;
 
@@ -106,15 +105,15 @@ typedef struct		s_intersection
 
 typedef struct		s_lambert
 {
-	t_obj 			*obj;
-	t_light 		*l;
-	t_vec3 			*new_start;
-	t_vec3 			*n;
+	t_obj			*obj;
+	t_light			*l;
+	t_vec3			*new_start;
+	t_vec3			*n;
 	t_vec3			dist;
 	t_vec3			impact;
-	t_color 		*c;
+	t_color			*c;
 	t_intersection	inter;
-	double 			coef;
+	double			coef;
 	double			t;
 	double			lambert;
 }					t_lambert;
@@ -134,6 +133,8 @@ typedef struct		s_scene
 	t_ray			ray;
 	t_ray			light_ray;
 	t_intersection	selected;
+	t_color			ambient;
+
 }					t_scene;
 
 typedef struct		s_inputs
@@ -171,13 +172,13 @@ typedef struct		s_options
 
 typedef struct		s_textures
 {
-	SDL_Surface 	*map;
+	SDL_Surface		*map;
 }					t_textures;
 
 typedef struct		s_interface
 {
-	SDL_Texture 	*background;
-	SDL_Texture 	*checkbox;
+	SDL_Texture		*background;
+	SDL_Texture		*checkbox;
 }					t_interface;
 
 typedef struct		s_env

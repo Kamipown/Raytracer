@@ -14,14 +14,17 @@
 
 static int	interface_mode_switch(t_env *e)
 {
-	if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
-		&& (e->inputs.mouse_y >= 364 && e->inputs.mouse_y <= 381))
+	if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 160)
+		&& (e->inputs.mouse_y >= 356 && e->inputs.mouse_y <= 380))
 		e->options.mode = MODE_SELECT;
-	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
-		&& (e->inputs.mouse_y >= 395 && e->inputs.mouse_y <= 412))
+	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 211)
+		&& (e->inputs.mouse_y >= 422 && e->inputs.mouse_y <= 444))
 		e->options.mode = MODE_CAMERA;
-	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
-		&& (e->inputs.mouse_y >= 427 && e->inputs.mouse_y <= 445))
+	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 255)
+		&& (e->inputs.mouse_y >= 390 && e->inputs.mouse_y <= 413))
+		e->options.mode = MODE_SELECT_ROT;
+	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 239)
+		&& (e->inputs.mouse_y >= 455 && e->inputs.mouse_y <= 474))
 		e->options.mode = MODE_CAMERA_ROT;
 	else
 		return (0);
@@ -30,11 +33,11 @@ static int	interface_mode_switch(t_env *e)
 
 static int	interface_mode_draw(t_env *e)
 {
-	if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
-		&& (e->inputs.mouse_y >= 500 && e->inputs.mouse_y <= 516))
+	if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 152)
+		&& (e->inputs.mouse_y >= 522 && e->inputs.mouse_y <= 545))
 		e->options.mode = MODE_TEXTURES;
-	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 45)
-		&& (e->inputs.mouse_y >= 532 && e->inputs.mouse_y <= 548))
+	else if ((e->inputs.mouse_x >= 28 && e->inputs.mouse_x <= 208)
+		&& (e->inputs.mouse_y >= 555 && e->inputs.mouse_y <= 575))
 		e->options.mode = MODE_BUMPMAPPING;
 	else
 		return (0);

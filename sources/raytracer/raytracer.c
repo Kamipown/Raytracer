@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/28 06:50:23 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/07 02:03:54 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	color = (t_color){0, 0, 0};
 	if (inter->obj)
 	{
-		color = get_global_illuminated_color(&inter->obj->color);
+		color = get_global_illuminated_color(&inter->obj->color,
+			&e->scene.ambient);
 		select_textures(inter, &color, e, inter->obj);
 		process_lighting(e, &e->scene.ray, *inter, &color);
 		flour_color(&color);

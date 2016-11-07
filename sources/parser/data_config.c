@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 10:36:15 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/09/20 15:37:20 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/11/07 02:02:49 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,14 @@ void		fill_camera_data(t_scene *s, char *data)
 	s->cam.fov = read_int_data(data, "config.camera.fov");
 	s->cam.fov = s->cam.fov < 1 || s->cam.fov > 90 ? FOV : s->cam.fov;
 	s->cam.focal_dist = (s->size.w / 2 / (fabs(tan(s->cam.fov / 2))));
-	s->cam.pos = (t_vec3){0, 0, -s->cam.focal_dist};
-	s->cam.rot = (t_vec3){0, 0, 0};
+	s->cam.pos.x = read_int_data(data, "config.camera.pos.x");
+	s->cam.pos.y = read_int_data(data, "config.camera.pos.y");
+	s->cam.pos.z = read_int_data(data, "config.camera.pos.z") -
+		s->cam.focal_dist;
+	s->cam.rot.x = read_int_data(data, "config.camera.rot.x");
+	s->cam.rot.y = read_int_data(data, "config.camera.rot.y");
+	s->cam.rot.z = read_int_data(data, "config.camera.rot.z");
+	printf("%f, %f, %f lolilol\n", s->cam.rot.x, s->cam.rot.y, s->cam.rot.z);
 }
 
 void		fill_screen_data(t_scene *s, char *data)

@@ -24,21 +24,23 @@ static void		draw_interface(t_env *e)
 		&((SDL_Rect){0, 0, 300, 600}));
 	if (e->options.mode == MODE_CAMERA)
 		SDL_RenderCopy(e->renderer_sub, e->interface.checkbox, NULL,
-			&((SDL_Rect){27, 392, 18, 18}));
+			&((SDL_Rect){27, 419, 18, 18}));
 	else if (e->options.mode == MODE_CAMERA_ROT)
 		SDL_RenderCopy(e->renderer_sub, e->interface.checkbox, NULL,
-			&((SDL_Rect){27, 424, 18, 18}));
+			&((SDL_Rect){27, 451, 18, 18}));
+	else if (e->options.mode == MODE_SELECT_ROT)
+		SDL_RenderCopy(e->renderer_sub, e->interface.checkbox, NULL,
+			&((SDL_Rect){27, 387, 18, 18}));
 	else if (e->options.mode == MODE_SELECT)
 		SDL_RenderCopy(e->renderer_sub, e->interface.checkbox, NULL,
-			&((SDL_Rect){27, 360, 18, 18}));
+			&((SDL_Rect){27, 353, 18, 18}));
 	if (e->options.mode == MODE_TEXTURES)
 		SDL_RenderCopy(e->renderer_sub, e->interface.checkbox, NULL,
-			&((SDL_Rect){27, 495, 18, 18}));
+			&((SDL_Rect){25, 518, 18, 18}));
 	else if (e->options.mode == MODE_BUMPMAPPING)
 		SDL_RenderCopy(e->renderer_sub, e->interface.checkbox, NULL,
-			&((SDL_Rect){27, 527, 18, 18}));
+			&((SDL_Rect){25, 550, 18, 18}));
 	SDL_RenderPresent(e->renderer_sub);
-	e->options.need_redraw_sub = FALSE;
 }
 
 void			draw_pixel(t_env *e, t_pixel p)
@@ -64,5 +66,8 @@ void			draw(t_env *e)
 		SDL_RenderPresent(e->renderer);
 	}
 	if (e->options.need_redraw_sub)
+	{
 		draw_interface(e);
+		e->options.need_redraw_sub = FALSE;
+	}
 }
