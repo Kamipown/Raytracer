@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/10/28 07:03:27 by gromon            #+#    #+#              #
-#    Updated: 2016/11/08 02:32:06 by gromon           ###   ########.fr        #
+#    Created: 2016/11/08 02:35:08 by gromon            #+#    #+#              #
+#    Updated: 2016/11/08 02:35:11 by gromon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,16 +127,11 @@ libft:
 	make -C libft
 
 install:
-	@brew install freetype
-	@brew install pkg-config
 	@mkdir -p SDL2
 	@echo "SDL2     : "
 	cd $(LOCALDIR)/lib && tar -zxvf SDL2-2.0.4.tar.gz
 	cd $(LOCALDIR)/lib/SDL2-2.0.4 && ./configure --prefix=$(LOCALDIR)/SDL2 && make install
 	rm -rf $(LOCALDIR)/lib/SDL2-2.0.4
-	cd $(LOCALDIR)/lib && tar -zxvf SDL2_ttf-2.0.14.zip
-	cd $(LOCALDIR)/lib/SDL2_ttf-2.0.14 && ./configure --prefix=$(LOCALDIR)/SDL2 && make install
-	rm -rf $(LOCALDIR)/lib/SDL2_ttf-2.0.14
 
 clean:
 	@make -C libft/ clean
