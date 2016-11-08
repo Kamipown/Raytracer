@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:28:06 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/04 00:10:03 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 01:50:13 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		earth_texture(t_intersection *inter, t_color *c,
 	Uint32	*pixel;
 
 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
-	n = get_normal(&pos, obj, ray);
+	n = get_normal(&pos, obj);
 	u = ((0.5 + atan(n.x / -n.z) / (2 * M_PI)) * obj->bmp->w);
 	v = ((0.5 - asin(n.y) / M_PI) * obj->bmp->h);
 	u = fmod(u, obj->bmp->w - 1);

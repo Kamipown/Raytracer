@@ -9,19 +9,34 @@ config
 		cones:0
 		planes:0
 	camera
+		pos
+			x:0
+			y:0
+			z:0
+		rot
+			x:0
+			y:0
+			z:0
 		fov:90
+	lighting
+		ambient
+			r:30
+			g:30
+			b:30
 
 lights
 	0
 		pos
-			x:-10000
+			x:-500
 			y:0
-			z:-10000
+			z:-1000
 		color
 			r:255
 			g:255
 			b:255
 		intensity:100
+		radius:0
+		type:0
 spheres
 	0
 		pos

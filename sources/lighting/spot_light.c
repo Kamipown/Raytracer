@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 03:42:21 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/07 02:01:28 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/08 02:32:59 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void	lambert_spot(t_env *e, t_lambert *lamb)
 	lamb->c->r += lamb->lambert * lamb->l->color.r * lamb->obj->color.r;
 	lamb->c->g += lamb->lambert * lamb->l->color.g * lamb->obj->color.g;
 	lamb->c->b += lamb->lambert * lamb->l->color.b * lamb->obj->color.b;
+	get_brightness(e, lamb);
 }

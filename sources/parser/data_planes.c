@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 14:23:51 by dcognata          #+#    #+#             */
-/*   Updated: 2016/11/04 01:17:34 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/07 21:13:33 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void			clean_planes(t_scene *s)
 
 static void			fill_planes_data2(t_scene *s, char *data, int i, int j)
 {
+	s->objs[i + j].radius = 0;
 	s->objs[i + j].color.r =
 		data_get_i_constructed(data, "planes.#.color.r", i);
 	s->objs[i + j].color.g =
@@ -51,6 +52,8 @@ static void			fill_planes_data2(t_scene *s, char *data, int i, int j)
 		data_get_i_constructed(data, "planes.#.textures", i);
 	s->objs[i + j].bump =
 		data_get_d_constructed(data, "planes.#.bump", i);
+	s->objs[i + j].radius =
+		data_get_i_constructed(data, "planes.#.size", i);
 }
 
 void				fill_planes_data(t_scene *s, char *data, int counts[4])

@@ -6,7 +6,7 @@
 #    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/28 07:03:27 by gromon            #+#    #+#              #
-#    Updated: 2016/11/06 21:58:58 by gromon           ###   ########.fr        #
+#    Updated: 2016/11/08 02:32:06 by gromon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,8 @@ SRC+=	vec3/vec3_calc.c				\
 SRC+=	lighting/process_lighting.c			\
 		lighting/point_light.c				\
 		lighting/directional_light.c		\
-		lighting/spot_light.c
+		lighting/spot_light.c				\
+		lighting/brightness.c
 
 SRC+=	intersections/inter.c	\
 		intersections/inter_spheres.c	\

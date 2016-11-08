@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 03:42:25 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/06 22:59:26 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 02:33:04 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	lambert_directional(t_env *e, t_lambert *lamb)
 	lamb->c->r += lamb->lambert * lamb->l->color.r * lamb->obj->color.r;
 	lamb->c->g += lamb->lambert * lamb->l->color.g * lamb->obj->color.g;
 	lamb->c->b += lamb->lambert * lamb->l->color.b * lamb->obj->color.b;
+	get_brightness(e, lamb);
 }

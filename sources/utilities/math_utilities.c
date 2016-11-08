@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:50:41 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/04 00:11:46 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 01:49:07 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,26 @@ double			calc_dist(t_vec3 *v1, t_vec3 *v2)
 				+ (v1->z - v2->z) * (v1->z - v2->z)));
 }
 
-t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
+t_vec3 			get_cone_normal(t_vec3 *pos, t_obj *obj)
+{
+	t_vec3		normal;
+	t_vec3 	v;
+	double	m;
+
+	v.x = pos->x - obj->pos.x;
+	v.y = 0;
+	v.z = pos->z - obj->pos.z;
+	m = sqrtf(v.x * v.x + v.z * v.z);
+	v.x /= m;
+	v.z /= m;
+	normal.x = v.x * 40 / obj->radius;
+	normal.y = obj->radius / 40;
+	normal.z = v.z * 40 / obj->radius;
+	vec_normalize(&normal);
+	return (normal);
+}
+
+t_vec3			get_normal(t_vec3 *pos, t_obj *obj)
 {
 	t_vec3		normal;
 
@@ -62,11 +81,9 @@ t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
 		normal.y = 0;
 		vec_normalize(&normal);
 	}
-	else if (obj->type == CONE)
+	if (obj->type == CONE)
 	{
-		normal = (t_vec3){ray->dir.x, 0, (1 - tan(obj->radius))
-					* tan(obj->radius)};
-		vec_normalize(&normal);
+		normal = get_cone_normal(pos, obj);
 	}
 	return (normal);
 }
