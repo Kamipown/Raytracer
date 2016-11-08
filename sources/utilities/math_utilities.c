@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:50:41 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/08 01:49:07 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 04:32:22 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ double			calc_dist(t_vec3 *v1, t_vec3 *v2)
 				+ (v1->z - v2->z) * (v1->z - v2->z)));
 }
 
-t_vec3 			get_cone_normal(t_vec3 *pos, t_obj *obj)
+t_vec3			get_cone_normal(t_vec3 *pos, t_obj *obj)
 {
 	t_vec3		normal;
-	t_vec3 	v;
-	double	m;
+	t_vec3		v;
+	double		m;
 
 	v.x = pos->x - obj->pos.x;
 	v.y = 0;

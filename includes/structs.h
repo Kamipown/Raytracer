@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:01:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/07 02:33:36 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/08 04:11:16 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct		s_scene
 	t_ray			light_ray;
 	t_intersection	selected;
 	t_color			ambient;
+	int				effect;
 
 }					t_scene;
 
@@ -148,6 +149,7 @@ typedef struct		s_inputs
 	t_bool			key_5;
 	t_bool			key_6;
 	t_bool			key_f;
+	t_bool			key_e;
 	t_bool			key_left;
 	t_bool			key_right;
 	t_bool			key_up;

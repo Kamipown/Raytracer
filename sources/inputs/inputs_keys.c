@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 01:20:30 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/04 01:20:34 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 04:16:08 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	get_inputs_keys(t_env *e, t_bool pressed)
 		e->inputs.key_6 = pressed;
 	else if (e->event.key.keysym.sym == SDLK_f)
 		e->inputs.key_f = pressed;
+	else if (e->event.key.keysym.sym == SDLK_e)
+		e->inputs.key_e = pressed;
 }
 
 void	get_inputs_keys2(t_env *e, t_bool pressed)

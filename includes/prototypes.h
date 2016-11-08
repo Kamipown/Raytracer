@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/08 02:29:26 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 04:30:43 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ t_bool				inter_planes(t_ray *ray, t_obj *p, double *t);
 t_bool				solve_quadratic(t_equation e, double *t);
 double				calc_dist(t_vec3 *v1, t_vec3 *v2);
 t_color				uint32_to_color(Uint32 color, SDL_Surface *bmp);
+double				pick_value(double value, double min, double max);
 t_vec3				get_normal(t_vec3 *pos, t_obj *obj);
 t_color				get_global_illuminated_color(t_color *c, t_color *ambient);
 void				flour_color(t_color *color);
@@ -120,5 +121,8 @@ void				write_informations(t_env *e);
 void				take_screenshoot(t_env *e);
 
 void				mouse_interface(t_env *e);
+
+void				select_effects(t_env *e, t_color *color);
+void				change_effects(t_env *e);
 
 #endif

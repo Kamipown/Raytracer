@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:56 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/03 23:54:20 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 04:30:28 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void		key_hook(t_env *e)
 		change_mode(e, MODE_BUMPMAPPING);
 	if (e->inputs.key_f)
 		toggle_fullscreen(e);
+	if (e->inputs.key_e)
+		change_effects(e);
 	if (e->inputs.key_screenshoot)
 		take_screenshoot(e);
 	key_hook_move(e);

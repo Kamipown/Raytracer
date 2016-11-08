@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:49:14 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/03 23:29:33 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 04:04:49 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	init_scene(t_env *e, char *filename)
 {
 	parse_scene(&e->scene, filename);
 	e->scene.selected.obj = 0;
+	e->scene.effect = 0;
 }
 
 static void	init_window(t_env *e)

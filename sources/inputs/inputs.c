@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 01:20:20 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/06 23:30:28 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 04:15:44 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void		init_inputs(t_inputs *inputs)
 	inputs->key_5 = FALSE;
 	inputs->key_6 = FALSE;
 	inputs->key_f = FALSE;
+	inputs->key_e = FALSE;
 	inputs->key_left = FALSE;
 	inputs->key_right = FALSE;
 	inputs->key_up = FALSE;
