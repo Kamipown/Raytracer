@@ -6,15 +6,14 @@
 #    By: gromon <gromon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 02:35:08 by gromon            #+#    #+#              #
-#    Updated: 2016/11/08 04:03:51 by gromon           ###   ########.fr        #
+#    Updated: 2016/11/08 22:14:04 by dcognata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LOCALDIR = $(shell pwd)
 
 
-LIBS = -L libft/ -lft -L SDL2/lib/ -lSDL2 -L SDL2/lib/ -lSDL2_ttf
-
+LIBS = -L libft/ -lft -framework SDL2
 
 NAME = rt
 
@@ -27,8 +26,7 @@ INCLUDES =	-I./libft/includes/		\
 			-I./sdl2/include/
 
 INC = -I $(INCLUDES) -I libft/includes/ -I SDL2/include/
-
-FLG =  -g -Wall -Wextra #-Werror
+FLG =  -g -Wall -Wextra -Werror -O3
 
 CFLAGS = $(INCLUDES) $(FLG)
 
@@ -126,13 +124,6 @@ $(NAME): $(SRCO)
 
 libft:
 	make -C libft
-
-install:
-	@mkdir -p SDL2
-	@echo "SDL2     : "
-	cd $(LOCALDIR)/lib && tar -zxvf SDL2-2.0.4.tar.gz
-	cd $(LOCALDIR)/lib/SDL2-2.0.4 && ./configure --prefix=$(LOCALDIR)/SDL2 && make install
-	rm -rf $(LOCALDIR)/lib/SDL2-2.0.4
 
 clean:
 	@make -C libft/ clean

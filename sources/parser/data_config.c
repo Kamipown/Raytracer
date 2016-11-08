@@ -49,7 +49,7 @@ void		fill_camera_data(t_scene *s, char *data)
 	s->cam.rot.x = read_int_data(data, "config.camera.rot.x");
 	s->cam.rot.y = read_int_data(data, "config.camera.rot.y");
 	s->cam.rot.z = read_int_data(data, "config.camera.rot.z");
-	printf("%f, %f, %f lolilol\n", s->cam.rot.x, s->cam.rot.y, s->cam.rot.z);
+	// printf("%f, %f, %f lolilol\n", s->cam.rot.x, s->cam.rot.y, s->cam.rot.z);
 }
 
 void		fill_screen_data(t_scene *s, char *data)

@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:45 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/07 02:34:23 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/08 22:30:04 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 # include <unistd.h>
 # include <math.h>
 # include <time.h>
-# include <stdio.h> // TO DELETE
 
 # include "./sdl2/SDL.h"
-# include "./sdl2/SDL_ttf.h"
 # include "libft.h"
 # include "structs.h"
 # include "perlin.h"

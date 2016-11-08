@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/08 04:30:43 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/08 22:29:56 by dcognata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void				process_lighting(t_env *e, t_ray *ray, t_intersection inter,
 void				lambert_point(t_env *e, t_lambert *lamb);
 void				lambert_directional(t_env *e, t_lambert *lamb);
 void				lambert_spot(t_env *e, t_lambert *lamb);
-void 				get_brightness(t_env *e, t_lambert *lamb);
+void				get_brightness(t_env *e, t_lambert *lamb);
 
 t_vec3				vec_add(t_vec3 v1, t_vec3 v2);
 t_vec3				vec_sub(t_vec3 v1, t_vec3 v2);
