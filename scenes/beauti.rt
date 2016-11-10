@@ -107,9 +107,9 @@ spheres
 cylinders
 	0
 		pos
-			x:-600
+			x:0
 			y:0
-			z:300
+			z:0
 		normal
 			x:-0.6
 			y:1

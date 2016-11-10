@@ -12,11 +12,6 @@
 
 #include "rtv1.h"
 
-static double			deg_to_rad(double a)
-{
-	return (a * M_PI / 180);
-}
-
 static void				apply_rotations(t_scene *s)
 {
 	double	t;

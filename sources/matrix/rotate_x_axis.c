@@ -14,6 +14,13 @@
 
 void	rotate_left(t_vec3 *v)
 {
+	v->x += ROT_SPEED;
+	if (v->x >= 360)
+		v->x -= 360;
+}
+
+void	rotate_normal_left(t_vec3 *v)
+{
 	double	t;
 
 	t = v->x;
@@ -24,6 +31,13 @@ void	rotate_left(t_vec3 *v)
 }
 
 void	rotate_right(t_vec3 *v)
+{
+	v->x -= ROT_SPEED;
+	if (v->x < 0)
+		v->x += 360;
+}
+
+void	rotate_normal_right(t_vec3 *v)
 {
 	double	t;
 

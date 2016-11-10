@@ -17,25 +17,25 @@ void	move_left2(t_env *e)
 	if (e->scene.selected.obj)
 	{
 		if (e->options.mode == MODE_SELECT)
-		{
 			e->scene.selected.obj->pos.x -= MOVE_SPEED;
-			e->options.need_redraw = TRUE;
-		}
 		else if (e->options.mode == MODE_SELECT_ROT)
 		{
-			rotate_left(&e->scene.selected.obj->rot);
-			e->options.need_redraw = TRUE;
+			if (e->scene.selected.obj->type == PLANE)
+				rotate_normal_left(&e->scene.selected.obj->rot);
+			else
+				rotate_left(&e->scene.selected.obj->rot);
 		}
 		else if (e->options.mode == MODE_TEXTURES)
-		{
 			e->scene.selected.obj->textures -= 1;
-			e->options.need_redraw = TRUE;
-		}
 		else if (e->options.mode == MODE_BUMPMAPPING)
 		{
 			e->scene.selected.obj->bump -= 0.1;
-			e->options.need_redraw = TRUE;
 		}
+		if (e->options.mode == MODE_SELECT
+			|| e->options.mode == MODE_SELECT_ROT
+			|| e->options.mode == MODE_TEXTURES
+			|| e->options.mode == MODE_BUMPMAPPING)
+			e->options.need_redraw = TRUE;
 	}
 }
 
@@ -61,25 +61,23 @@ void	move_right2(t_env *e)
 	if (e->scene.selected.obj)
 	{
 		if (e->options.mode == MODE_SELECT)
-		{
 			e->scene.selected.obj->pos.x += MOVE_SPEED;
-			e->options.need_redraw = TRUE;
-		}
 		else if (e->options.mode == MODE_SELECT_ROT)
 		{
-			rotate_right(&e->scene.selected.obj->rot);
-			e->options.need_redraw = TRUE;
+			if (e->scene.selected.obj->type == PLANE)
+				rotate_normal_right(&e->scene.selected.obj->rot);
+			else
+				rotate_right(&e->scene.selected.obj->rot);
 		}
 		else if (e->options.mode == MODE_TEXTURES)
-		{
 			e->scene.selected.obj->textures += 1;
-			e->options.need_redraw = TRUE;
-		}
 		else if (e->options.mode == MODE_BUMPMAPPING)
-		{
 			e->scene.selected.obj->bump += 0.1;
+		if (e->options.mode == MODE_SELECT
+			|| e->options.mode == MODE_SELECT_ROT
+			|| e->options.mode == MODE_TEXTURES
+			|| e->options.mode == MODE_BUMPMAPPING)
 			e->options.need_redraw = TRUE;
-		}
 	}
 }
 

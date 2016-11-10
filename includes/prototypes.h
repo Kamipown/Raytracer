@@ -68,11 +68,17 @@ void				move_forward(t_env *e);
 void				move_backward(t_env *e);
 
 void				rotate_left(t_vec3 *v);
+void				rotate_normal_left(t_vec3 *v);
 void				rotate_right(t_vec3 *v);
+void				rotate_normal_right(t_vec3 *v);
 void				rotate_up(t_vec3 *v);
+void				rotate_normal_up(t_vec3 *v);
 void				rotate_down(t_vec3 *v);
+void				rotate_normal_down(t_vec3 *v);
 void				rotate_forward(t_vec3 *v);
+void				rotate_normal_forward(t_vec3 *v);
 void				rotate_backward(t_vec3 *v);
+void				rotate_normal_backward(t_vec3 *v);
 
 void				draw(t_env *e);
 void				draw_pixel(t_env *e, t_pixel p);
@@ -89,13 +95,22 @@ t_bool				inter_spheres(t_ray *ray, t_obj *s, double *t);
 t_bool				inter_cylinders(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_cones(t_ray *ray, t_obj *c, double *t);
 t_bool				inter_planes(t_ray *ray, t_obj *p, double *t);
+
 t_bool				solve_quadratic(t_equation e, double *t);
-double				calc_dist(t_vec3 *v1, t_vec3 *v2);
 t_color				uint32_to_color(Uint32 color, SDL_Surface *bmp);
+double				calc_dist(t_vec3 *v1, t_vec3 *v2);
+double				deg_to_rad(double deg);
+double				rad_to_deg(double rad);
+
 double				pick_value(double value, double min, double max);
-t_vec3				get_normal(t_vec3 *pos, t_obj *obj);
+
+t_vec3				get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
 t_color				get_global_illuminated_color(t_color *c, t_color *ambient);
 void				flour_color(t_color *color);
+
+void				vector_rotate_x(t_vec3 *v, double ang);
+void				vector_rotate_y(t_vec3 *v, double ang);
+void				vector_rotate_z(t_vec3 *v, double ang);
 
 void				process_lighting(t_env *e, t_ray *ray, t_intersection inter,
 						t_color *color);

@@ -6,8 +6,8 @@ config
 		lights:1
 		spheres:0
 		planes:1
-		cylinders:1
-		cones:0
+		cylinders:0
+		cones:1
 	camera
 		pos
 			x:0
@@ -60,21 +60,21 @@ planes
 		bump:0.1
 		size:0
 
-cylinders
+cones
 	0
 		pos
 			x:0
 			y:0
 			z:500
 		normal
-			x:1
-			y:0.1
+			x:0
+			y:1
 			z:0
-		radius:150
+		radius:30
 		color
-			r:255
-			g:10
-			b:250
+			r:252
+			g:246
+			b:20
 		reflection:0
 		textures:0
-		bump:0
+        bump:0

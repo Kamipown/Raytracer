@@ -14,6 +14,13 @@
 
 void	rotate_up(t_vec3 *v)
 {
+	v->y += ROT_SPEED;
+	if (v->y >= 360)
+		v->y -= 360;
+}
+
+void	rotate_normal_up(t_vec3 *v)
+{
 	double	t;
 
 	t = v->y;
@@ -24,6 +31,13 @@ void	rotate_up(t_vec3 *v)
 }
 
 void	rotate_down(t_vec3 *v)
+{
+	v->y -= ROT_SPEED;
+	if (v->y < 0)
+		v->y += 360;
+}
+
+void	rotate_normal_down(t_vec3 *v)
 {
 	double	t;
 

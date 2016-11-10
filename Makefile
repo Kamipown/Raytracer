@@ -86,17 +86,19 @@ SRC+=	lighting/process_lighting.c			\
 		lighting/point_light.c				\
 		lighting/directional_light.c		\
 		lighting/spot_light.c				\
-		lighting/effect.c				\
+		lighting/effect.c					\
 		lighting/brightness.c
 
-SRC+=	intersections/inter.c	\
+SRC+=	intersections/inter.c			\
 		intersections/inter_spheres.c	\
 		intersections/inter_cylinders.c	\
 		intersections/inter_cones.c		\
 		intersections/inter_planes.c
 
 SRC+=	utilities/math_utilities.c			\
-		utilities/color_utilities.c
+		utilities/color_utilities.c			\
+		utilities/rotations_utilities.c		\
+		utilities/normal_utilities.c
 
 SRC+=	textures/textures.c					\
 		textures/perlin_noise.c				\
