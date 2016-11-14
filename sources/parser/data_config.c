@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 10:36:15 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/07 02:02:49 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/14 03:50:14 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void		fill_camera_data(t_scene *s, char *data)
 	s->cam.rot.x = read_int_data(data, "config.camera.rot.x");
 	s->cam.rot.y = read_int_data(data, "config.camera.rot.y");
 	s->cam.rot.z = read_int_data(data, "config.camera.rot.z");
-	// printf("%f, %f, %f lolilol\n", s->cam.rot.x, s->cam.rot.y, s->cam.rot.z);
 }
 
 void		fill_screen_data(t_scene *s, char *data)

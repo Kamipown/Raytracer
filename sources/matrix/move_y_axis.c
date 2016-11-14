@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_y_axis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 18:47:39 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/10/08 22:10:34 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/14 03:54:59 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	move_down(t_env *e)
 		e->scene.selected.obj->pos.y += MOVE_SPEED;
 	else if (e->options.mode == MODE_SELECT_ROT && e->scene.selected.obj)
 	{
-	if (e->scene.selected.obj->type == PLANE)
-		rotate_normal_up(&e->scene.selected.obj->rot);
-	else
-		rotate_up(&e->scene.selected.obj->rot);
+		if (e->scene.selected.obj->type == PLANE)
+			rotate_normal_up(&e->scene.selected.obj->rot);
+		else
+			rotate_up(&e->scene.selected.obj->rot);
 	}
 	else if (e->options.mode == MODE_CAMERA)
 		e->scene.cam.pos.y += MOVE_SPEED;

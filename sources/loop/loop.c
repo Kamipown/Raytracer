@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:47:43 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/09 23:59:02 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/14 03:49:37 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void				loop(t_env *e)
 		if ((e->options.need_redraw || e->options.need_redraw_sub)
 			&& e->options.first_loop == FALSE)
 		{
-			if (e->scene.selected.obj)
-				printf("%f %f %f\n", e->scene.selected.obj->rot.x,e->scene.selected.obj->rot.y,e->scene.selected.obj->rot.z);
 			draw(e);
 			e->options.need_redraw = FALSE;
 			e->options.need_redraw_sub = FALSE;

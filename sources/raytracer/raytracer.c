@@ -6,15 +6,15 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/14 00:38:40 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/14 03:52:29 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static t_color	get_pixel_color(t_intersection *inter, t_env *e)
+static t_color		get_pixel_color(t_intersection *inter, t_env *e)
 {
-	t_color color;
+	t_color			color;
 
 	color = (t_color){0, 0, 0};
 	if (inter->obj)
@@ -31,9 +31,9 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	return (color);
 }
 
-static t_color	color_median(t_color c[9])
+static t_color		color_median(t_color c[9])
 {
-	t_color	ret;
+	t_color			ret;
 
 	ret.r = (c[0].r + c[1].r + c[2].r + c[3].r + c[4].r + c[5].r + c[6].r
 			+ c[7].r + c[8].r) / 9;
@@ -44,7 +44,7 @@ static t_color	color_median(t_color c[9])
 	return (ret);
 }
 
-static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
+static void			raytrace_pixel_ssaa3(t_env *e, int x, int y)
 {
 	t_intersection	inter;
 	t_color			color[9];
@@ -72,7 +72,7 @@ static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 	draw_pixel(e, (t_pixel){x, y, color_median(color)});
 }
 
-void		raytrace_pixel(t_env *e, int x, int y)
+static void			raytrace_pixel(t_env *e, int x, int y)
 {
 	t_intersection	inter;
 	t_color			color;
@@ -88,7 +88,7 @@ void		raytrace_pixel(t_env *e, int x, int y)
 	draw_pixel(e, (t_pixel){x, y, color});
 }
 
-void			raytrace(t_env *e)
+void				raytrace(t_env *e)
 {
 	int				x;
 	int				y;
