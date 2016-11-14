@@ -14,22 +14,22 @@
 
 void		get_brightness(t_env *e, t_lambert *lamb)
 {
-	(void)e;
-	(void)lamb;
-/*	t_vec3	blinndir;
-	double	projection;
-	double	tmp;
-	double	blinn;
+	t_color	tmp_c;
+	double	angle;
 
-	projection = vec_mul_to_d(e->scene.ray.dir, *lamb->n);
-	blinndir = vec_sub(e->scene.light_ray.dir, e->scene.ray.dir);
-	tmp = vec_mul_to_d(blinndir, blinndir);
-	if (tmp != 0.000000)
+	angle = acos(vec_mul_to_d(e->scene.light_ray.dir, *lamb->n)
+		/ (sqrt(e->scene.light_ray.dir.x * e->scene.light_ray.dir.x
+			+ e->scene.light_ray.dir.y * e->scene.light_ray.dir.y
+			+ e->scene.light_ray.dir.z * e->scene.light_ray.dir.z
+		* sqrt(lamb->n->x * lamb->n->x
+			+ lamb->n->y * lamb->n->y
+			+ lamb->n->z * lamb->n->z))));
+	angle = fabs(rad_to_deg(angle));
+	if (angle < e->scene.brightness)
 	{
-		blinn = 1 / sqrtf(tmp) * fmax(0.9 - projection, 0.00000);
-		blinn = lamb->coef * powf(blinn, 60);
-		lamb->c->r += blinn * 1.0 * 1.2;
-		lamb->c->g += blinn * 1.0 * 1.2;
-		lamb->c->b += blinn * 1.0 * 1.2;
+		tmp_c = (t_color){1 - lamb->c->r, 1 - lamb->c->g, 1 - lamb->c->b};
+		lamb->c->r += tmp_c.r * (1 - (angle / e->scene.brightness));
+		lamb->c->g += tmp_c.g * (1 - (angle / e->scene.brightness));
+		lamb->c->b += tmp_c.b * (1 - (angle / e->scene.brightness));
 	}
-*/}
+}

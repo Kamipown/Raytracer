@@ -26,7 +26,7 @@ INCLUDES =	-I./libft/includes/		\
 			-I./sdl2/include/
 
 INC = -I $(INCLUDES) -I libft/includes/ -I SDL2/include/
-FLG =  -g -Wall -Wextra -Werror -O3
+FLG = -Wall -Wextra -Werror -O3
 
 CFLAGS = $(INCLUDES) $(FLG)
 
@@ -80,7 +80,8 @@ SRC+=	raytracer/raytracer.c
 SRC+=	rays/ray.c
 
 SRC+=	vec3/vec3_calc.c				\
-		vec3/vec3_calc_double.c
+		vec3/vec3_calc_double.c			\
+		vec3/vec3_rotate.c
 
 SRC+=	lighting/process_lighting.c			\
 		lighting/point_light.c				\
@@ -97,7 +98,6 @@ SRC+=	intersections/inter.c			\
 
 SRC+=	utilities/math_utilities.c			\
 		utilities/color_utilities.c			\
-		utilities/rotations_utilities.c		\
 		utilities/normal_utilities.c
 
 SRC+=	textures/textures.c					\

@@ -12,7 +12,7 @@ config
 		pos
 			x:0
 			y:0
-			z:-500
+			z:-1000
 		rot
 			x:0
 			y:0
@@ -52,9 +52,9 @@ planes
 			y:-1
 			z:0
 		color
-			r:180
-			g:180
-			b:180
+			r:120
+			g:120
+			b:120
 		reflection:99
 		textures:0
 		bump:0.1
@@ -134,8 +134,8 @@ cones
 			z:0
 		radius:30
 		color
-			r:252
-			g:246
+			r:150
+			g:140
 			b:20
 		reflection:0
 		textures:0

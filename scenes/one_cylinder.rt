@@ -72,9 +72,9 @@ cylinders
 			z:0
 		radius:150
 		color
-			r:255
+			r:90
 			g:10
-			b:250
+			b:90
 		reflection:0
 		textures:0
 		bump:0

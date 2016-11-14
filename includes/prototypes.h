@@ -104,7 +104,7 @@ double				rad_to_deg(double rad);
 
 double				pick_value(double value, double min, double max);
 
-t_vec3				get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
+t_vec3				get_normal(t_vec3 *pos, t_obj *obj);
 t_color				get_global_illuminated_color(t_color *c, t_color *ambient);
 void				flour_color(t_color *color);
 

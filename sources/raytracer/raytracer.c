@@ -90,18 +90,16 @@ static void			raytrace_pixel(t_env *e, int x, int y)
 
 void				raytrace(t_env *e)
 {
-	int				x;
-	int				y;
-	t_bool			ssaa;
+	int		x;
+	int		y;
 
-	ssaa = FALSE;
 	y = 0;
 	while (y < e->scene.current_mode->h)
 	{
 		x = 0;
 		while (x < e->scene.current_mode->w)
 		{
-			if (ssaa)
+			if (e->scene.ssaa)
 				raytrace_pixel_ssaa3(e, x, y);
 			else
 				raytrace_pixel(e, x, y);

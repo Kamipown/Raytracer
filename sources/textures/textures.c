@@ -88,7 +88,7 @@ void		earth_texture(t_intersection *inter, t_color *c,
 	Uint32	*pixel;
 
 	pos = vec_add(ray->origin, vec_mul_d(ray->dir, inter->t));
-	n = get_normal(&pos, obj, ray);
+	n = get_normal(&pos, obj);
 	u = ((0.5 + atan(n.x / -n.z) / (2 * M_PI)) * obj->bmp->w);
 	v = ((0.5 - asin(n.y) / M_PI) * obj->bmp->h);
 	u = fmod(u, obj->bmp->w - 1);

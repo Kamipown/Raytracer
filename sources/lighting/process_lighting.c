@@ -61,7 +61,7 @@ void					process_lighting(t_env *e, t_ray *ray,
 	while (coef > 0.00000 && c[0]++ < 10)
 	{
 		new_start = vec_add(ray->origin, vec_mul_d(ray->dir, inter.t));
-		n = get_normal(&new_start, inter.obj, ray);
+		n = get_normal(&new_start, inter.obj);
 		bump_mapping(&inter, ray, &n);
 		c[1] = 0;
 		while (c[1] < e->scene.n_light)

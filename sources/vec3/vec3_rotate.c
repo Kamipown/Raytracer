@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotations_utilities.c                              :+:      :+:    :+:   */
+/*   vec3_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:46:03 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/12 02:32:37 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/10 03:46:05 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	vec_rotate(t_vec3 *v, t_vec3 rot)
 
 void	vec_unrotate(t_vec3 *v, t_vec3 rot)
 {
-	vec_rotate_z(v, -deg_to_rad(rot.z));
-	vec_rotate_y(v, -deg_to_rad(rot.y));
 	vec_rotate_x(v, -deg_to_rad(rot.x));
+	vec_rotate_y(v, -deg_to_rad(rot.y));
+	vec_rotate_z(v, -deg_to_rad(rot.z));
 }

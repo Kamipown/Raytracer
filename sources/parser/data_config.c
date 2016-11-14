@@ -60,6 +60,8 @@ void		fill_screen_data(t_scene *s, char *data)
 	sh = read_int_data(data, "config.screen.height");
 	s->size.w = sw >= MIN_SCREEN_W && sw <= MAX_SCREEN_W ? sw : SCREEN_W;
 	s->size.h = sh >= MIN_SCREEN_H && sh <= MAX_SCREEN_H ? sh : SCREEN_H;
+	s->ssaa = read_int_data(data, "config.screen.ssaa");
+	s->ssaa = interval_i(s->ssaa, 0, 1);
 }
 
 void		fill_light_data(t_scene *s, char *data)

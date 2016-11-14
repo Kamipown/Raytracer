@@ -134,8 +134,9 @@ typedef struct		s_scene
 	t_ray			light_ray;
 	t_intersection	selected;
 	t_color			ambient;
+	int				brightness;
 	int				effect;
-
+	t_bool			ssaa;
 }					t_scene;
 
 typedef struct		s_inputs

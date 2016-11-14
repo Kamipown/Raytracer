@@ -54,10 +54,8 @@ static t_vec3	plane_normal(t_obj *obj)
 	return (normal);
 }
 
-t_vec3			get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray)
+t_vec3			get_normal(t_vec3 *pos, t_obj *obj)
 {
-	if (ray)
-		;
 	if (obj->type == SPHERE)
 		return (sphere_normal(pos, obj));
 	else if (obj->type == CYLINDER)

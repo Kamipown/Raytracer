@@ -36,6 +36,7 @@ static void		clean_lights(t_scene *s)
 	s->ambient.r /= 255.0;
 	s->ambient.g /= 255.0;
 	s->ambient.b /= 255.0;
+	s->brightness = interval_i(s->brightness, 0, 359);
 }
 
 static void		fill_lights_data2(t_scene *s, char *data, int i)
@@ -50,6 +51,14 @@ static void		fill_lights_data2(t_scene *s, char *data, int i)
 		data_get_i_constructed(data, "lights.#.type", i);
 	s->lights[i].radius =
 		data_get_d_constructed(data, "lights.#.radius", i);
+}
+
+static void		fill_lights_config(t_scene *s, char *data)
+{
+	s->ambient.r = read_double_data(data, "config.lighting.ambient.r");
+	s->ambient.g = read_double_data(data, "config.lighting.ambient.g");
+	s->ambient.b = read_double_data(data, "config.lighting.ambient.b");
+	s->brightness = read_int_data(data, "config.lighting.brightness");
 }
 
 void			fill_lights_data(t_scene *s, char *data)
@@ -74,8 +83,6 @@ void			fill_lights_data(t_scene *s, char *data)
 		fill_lights_data2(s, data, i);
 		++i;
 	}
-	s->ambient.r = read_double_data(data, "config.lighting.ambient.r");
-	s->ambient.g = read_double_data(data, "config.lighting.ambient.g");
-	s->ambient.b = read_double_data(data, "config.lighting.ambient.b");
+	fill_lights_config(s, data);
 	clean_lights(s);
 }

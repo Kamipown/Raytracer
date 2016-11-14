@@ -21,7 +21,7 @@ t_bool	inter_cones(t_ray *ray, t_obj *s, double *t)
 	p = vec_sub(ray->origin, s->pos);
 	vec_rotate(&p, s->rot);
 	vec_rotate(&ray->dir, s->rot);
-	rayon = sin(DEG_TO_RAD(s->radius)) * sin(DEG_TO_RAD(s->radius));
+	rayon = sin(deg_to_rad(s->radius)) * sin(deg_to_rad(s->radius));
 	e.a = ray->dir.x * ray->dir.x
 		- ray->dir.y * ray->dir.y * rayon
 		+ ray->dir.z * ray->dir.z;
