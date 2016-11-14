@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cylinders.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 21:57:15 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/08 03:06:18 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/13 22:47:48 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ t_bool			inter_cylinders(t_ray *ray, t_obj *s, double *t)
 {
 	t_equation	e;
 	t_bool		def_res;
-	// t_vec3		tmp_dir;
+	 t_vec3		tmp_dir;
 
-	// tmp_dir = (t_vec3){ray->dir.x, ray->dir.y, ray->dir.z};
+	tmp_dir = (t_vec3){ray->dir.x, ray->dir.y, ray->dir.z};
+	vec_rotate(&tmp_dir, s->rot);
 	// apply_rotations(&tmp_dir);
-	e.a = (ray->dir.x * ray->dir.x) + (ray->dir.z * ray->dir.z);
-	e.b = (ray->dir.x * (ray->origin.x - s->pos.x))
-		+ (ray->dir.z * (ray->origin.z - s->pos.z));
+	e.a = (tmp_dir.x * tmp_dir.x) + (tmp_dir.z * tmp_dir.z);
+	e.b = (tmp_dir.x * (ray->origin.x - s->pos.x))
+		+ (tmp_dir.z * (ray->origin.z - s->pos.z));
 	e.b *= 2.0;
 	e.c =  (ray->origin.x - s->pos.x)
 			* (ray->origin.x - s->pos.x)

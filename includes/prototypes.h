@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/08 22:29:56 by dcognata         ###   ########.fr       */
+/*   Updated: 2016/11/12 23:23:04 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,11 @@ t_vec3				get_normal(t_vec3 *pos, t_obj *obj, t_ray *ray);
 t_color				get_global_illuminated_color(t_color *c, t_color *ambient);
 void				flour_color(t_color *color);
 
-void				vector_rotate_x(t_vec3 *v, double ang);
-void				vector_rotate_y(t_vec3 *v, double ang);
-void				vector_rotate_z(t_vec3 *v, double ang);
+void				vec_rotate_x(t_vec3 *v, double ang);
+void				vec_rotate_y(t_vec3 *v, double ang);
+void				vec_rotate_z(t_vec3 *v, double ang);
+void				vec_rotate(t_vec3 *v, t_vec3 rot);
+void				vec_unrotate(t_vec3 *v, t_vec3 rot);
 
 void				process_lighting(t_env *e, t_ray *ray, t_intersection inter,
 						t_color *color);

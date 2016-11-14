@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:59:51 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/10 03:59:52 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2016/11/12 04:35:45 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static t_vec3	cylinder_normal(t_vec3 *pos, t_obj *obj)
 	t_vec3		normal;
 
 	normal = vec_sub(*pos, obj->pos);
+	vec_rotate(&normal, obj->rot);
 	normal.y = 0;
+	vec_unrotate(&normal, obj->rot);
 	vec_normalize(&normal);
 	return (normal);
 }
@@ -34,18 +36,11 @@ static t_vec3	cylinder_normal(t_vec3 *pos, t_obj *obj)
 static t_vec3	cone_normal(t_vec3 *pos, t_obj *obj)
 {
 	t_vec3		normal;
-	t_vec3		v;
-	double		m;
 
-	v.x = pos->x - obj->pos.x;
-	v.y = 0;
-	v.z = pos->z - obj->pos.z;
-	m = sqrtf(v.x * v.x + v.z * v.z);
-	v.x /= m;
-	v.z /= m;
-	normal.x = v.x * 40 / obj->radius;
-	normal.y = obj->radius / 40;
-	normal.z = v.z * 40 / obj->radius;
+	normal = vec_sub(*pos, obj->pos);
+	vec_rotate(&normal, obj->rot);
+	normal.y *= -1;
+	vec_unrotate(&normal, obj->rot);
 	vec_normalize(&normal);
 	return (normal);
 }

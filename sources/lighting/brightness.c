@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 02:28:01 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/08 02:38:05 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/12 03:03:01 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void		get_brightness(t_env *e, t_lambert *lamb)
 {
-	t_vec3	blinndir;
+	(void)e;
+	(void)lamb;
+/*	t_vec3	blinndir;
 	double	projection;
 	double	tmp;
 	double	blinn;
@@ -30,4 +32,4 @@ void		get_brightness(t_env *e, t_lambert *lamb)
 		lamb->c->g += blinn * 1.0 * 1.2;
 		lamb->c->b += blinn * 1.0 * 1.2;
 	}
-}
+*/}

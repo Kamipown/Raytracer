@@ -34,9 +34,13 @@ lights
 			r:255
 			g:255
 			b:255
+		color
+			x:0
+			y:0
+			z:1
 		intensity:100
 		radius:0
-		type:0
+		type:1
 spheres
 	0
 		pos

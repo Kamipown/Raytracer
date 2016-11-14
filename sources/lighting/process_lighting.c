@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_lighting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/08 03:16:41 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/14 00:46:14 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void				add_reflection_contribution(t_obj *obj, t_ray *ray,
 	*n = vec_mul_d(*n, refl);
 }
 
-static t_intersection	launch_refraction(t_env *e, t_vec3 *n,
+static t_intersection	launch_reflection(t_env *e, t_vec3 *n,
 							t_intersection inter, double *coef)
 {
 	t_vec3				new_start;
@@ -71,7 +71,7 @@ void					process_lighting(t_env *e, t_ray *ray,
 					inter, coef, inter.t, 0};
 			add_lambert_light_contribution(e, &lamb);
 		}
-		inter = launch_refraction(e, &n, inter, &coef);
+		inter = launch_reflection(e, &n, inter, &coef);
 		if (!inter.obj)
 			break ;
 	}

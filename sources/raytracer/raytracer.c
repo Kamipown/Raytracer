@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/07 02:03:54 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/14 00:38:40 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ static t_color	get_pixel_color(t_intersection *inter, t_env *e)
 	{
 		color = get_global_illuminated_color(&inter->obj->color,
 			&e->scene.ambient);
+		color.r = inter->obj->color.r;
+		color.g = inter->obj->color.g;
+		color.b = inter->obj->color.b;
 		select_textures(inter, &color, e, inter->obj);
 		process_lighting(e, &e->scene.ray, *inter, &color);
 		flour_color(&color);
@@ -69,7 +72,7 @@ static void		raytrace_pixel_ssaa3(t_env *e, int x, int y)
 	draw_pixel(e, (t_pixel){x, y, color_median(color)});
 }
 
-static void		raytrace_pixel(t_env *e, int x, int y)
+void		raytrace_pixel(t_env *e, int x, int y)
 {
 	t_intersection	inter;
 	t_color			color;

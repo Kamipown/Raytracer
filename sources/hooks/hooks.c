@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 19:46:56 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/08 04:30:28 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/12 05:36:02 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,13 @@ void		key_hook(t_env *e)
 	key_hook_move(e);
 }
 
+void raytrace_pixel(t_env *e, int x, int y);
+
 void		mouse_hook(t_env *e)
 {
 	if (e->inputs.mouse_left && e->event.window.windowID == 1)
 	{
+		raytrace_pixel(e, e->inputs.mouse_x, e->inputs.mouse_y);
 		create_ray(&e->scene, (t_vec3)
 		{
 			e->inputs.mouse_x - (e->scene.current_mode->w / 2),

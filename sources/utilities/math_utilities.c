@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 03:50:41 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/08 04:32:22 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/14 02:58:40 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_bool			solve_quadratic(t_equation e, double *t)
 		*t = e.z1;
 		ret = TRUE;
 	}
-	if (e.z2 > 0.1 && e.z2 < e.z1)
+	if (e.z2 > 0.1 && (e.z2 < e.z1 || e.z1 <= 0.1))
 	{
 		*t = e.z2;
 		ret = TRUE;
