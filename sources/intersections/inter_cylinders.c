@@ -22,7 +22,7 @@ t_bool			inter_cylinders(t_ray *ray, t_obj *s, double *t)
 	vec_unrotate(&ray->dir, s->rot);
 	e.a = (ray->dir.x * ray->dir.x) + (ray->dir.z * ray->dir.z);
 	e.b = (ray->dir.x * p.x + ray->dir.z * p.z) * 2.0;
-	e.c =  (p.x * p.x + p.z * p.z) - s->radius * s->radius;
+	e.c = (p.x * p.x + p.z * p.z) - s->radius * s->radius;
 	vec_rotate(&ray->dir, s->rot);
 	return (solve_quadratic(e, t));
 }

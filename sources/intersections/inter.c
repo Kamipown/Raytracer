@@ -29,10 +29,8 @@ void		intersect_objects(t_env *e, t_ray *ray, t_intersection *inter)
 			inter_cones(ray, &e->scene.objs[i], &t);
 		else if (e->scene.objs[i].type == PLANE)
 			inter_planes(ray, &e->scene.objs[i], &t);
-		//printf(">(%d) %f\n",e->scene.objs[i].type, t);
 		if (t < inter->t && t > 0.00001)
 		{
-			//printf("(TAKED) %f\n", t);
 			inter->obj = &e->scene.objs[i];
 			inter->type = e->scene.objs[i].type;
 			inter->t = t;

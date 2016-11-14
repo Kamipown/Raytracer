@@ -12,17 +12,6 @@
 
 #include "rtv1.h"
 
-// static void				apply_rotations(t_vec3 *v)
-// {
-// 	double	t;
-
-// 	t = v->y;
-// 	v->y = v->y * cos(deg_to_rad(45)) + v->z
-// 					* -(sin(deg_to_rad(45)));
-// 	v->z = t * sin(deg_to_rad(45)) + v->z
-// 					* cos(deg_to_rad(45));
-// }
-
 t_vec3	mul_d_to_vec(double d, t_vec3 v)
 {
 	t_vec3 ret;

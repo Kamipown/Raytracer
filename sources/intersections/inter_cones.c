@@ -14,7 +14,7 @@
 
 t_bool	inter_cones(t_ray *ray, t_obj *s, double *t)
 {
-	t_equation  e;
+	t_equation	e;
 	t_vec3		p;
 	double		rayon;
 
