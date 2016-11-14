@@ -140,4 +140,7 @@ fclean: clean
 
 re: fclean all
 
+norme:
+	norminette sources/ includes/*.h libft/*.c libft/includes
+
 .PHONY: clean fclean libft all $(NAME)
