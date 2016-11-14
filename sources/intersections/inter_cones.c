@@ -25,7 +25,8 @@ t_bool	inter_cones(t_ray *ray, t_obj *s, double *t)
 	e.a = ray->dir.x * ray->dir.x
 		- ray->dir.y * ray->dir.y * rayon
 		+ ray->dir.z * ray->dir.z;
-	e.b = (ray->dir.x * p.x - ray->dir.y * p.y * rayon + ray->dir.z * p.z) * 2.0;
+	e.b = (ray->dir.x * p.x - ray->dir.y * p.y * rayon + ray->dir.z * p.z)
+		* 2.0;
 	e.c = p.x * p.x - p.y * p.y * rayon + p.z * p.z;
 	vec_rotate(&ray->dir, s->rot);
 	return (solve_quadratic(e, t));
