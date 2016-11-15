@@ -2,11 +2,11 @@ config
 	screen
 		width:800
 		height:600
-		ssaa:0
+		ssaa:1
 	counts
 		lights:3
-		spheres:10
-		planes:10
+		spheres:1
+		planes:1
 		cylinders:0
 		cones:0
 	camera
