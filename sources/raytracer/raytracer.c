@@ -88,12 +88,40 @@ static void			raytrace_pixel(t_env *e, int x, int y)
 	draw_pixel(e, (t_pixel){x, y, color});
 }
 
+static void			drawloader(t_env *e, int prc)
+{
+		SDL_SetRenderDrawColor(e->renderer_sub,
+			124,
+			252,
+			0,
+			255);
+		int x = 0;
+		int y = 5;
+		while (x < prc * 3)
+		{
+			x++;
+			while (y > 0)
+			{
+				SDL_RenderDrawPoint(e->renderer_sub, x, y);
+				y--;
+			}
+			y = 5;
+		}
+		SDL_RenderPresent(e->renderer_sub);
+}
+
 void				raytrace(t_env *e)
 {
 	int		x;
 	int		y;
 
-	y = 0;
+	//mdr
+	int pc = e->scene.current_mode->h * e->scene.current_mode->w;
+	int i = 0;
+	int old = 0;
+	int tmp = 0;
+
+	y = 0;	
 	while (y < e->scene.current_mode->h)
 	{
 		x = 0;
@@ -103,6 +131,14 @@ void				raytrace(t_env *e)
 				raytrace_pixel_ssaa3(e, x, y);
 			else
 				raytrace_pixel(e, x, y);
+
+			//mdr
+			old = tmp;
+			tmp = (100 * i / pc);
+			if (old != tmp)
+				drawloader(e, tmp);
+			i++;
+
 			++x;
 		}
 		++y;

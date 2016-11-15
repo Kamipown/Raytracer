@@ -14,8 +14,8 @@
 
 static void		draw_background(SDL_Renderer *renderer)
 {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 }
 
 static void		draw_interface(t_env *e)
@@ -64,9 +64,12 @@ void			draw(t_env *e)
 		draw_background(e->renderer);
 		raytrace(e);
 		SDL_RenderPresent(e->renderer);
+		draw_background(e->renderer_sub);
+		draw_interface(e);
 	}
 	if (e->options.need_redraw_sub)
 	{
+		draw_background(e->renderer_sub);
 		draw_interface(e);
 		e->options.need_redraw_sub = FALSE;
 	}
