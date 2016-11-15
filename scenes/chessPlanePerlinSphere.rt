@@ -8,7 +8,20 @@ config
 		planes:2
 		cylinders:1
 	camera
+		pos
+			x:0
+			y:0
+			z:0
+		rot
+			x:0
+			y:0
+			z:0
 		fov:90
+	lighting
+		ambient
+			r:30
+			g:30
+			b:30
 
 
 lights
@@ -53,7 +66,7 @@ planes
 			r:220
 			g:50
 			b:50
-		reflection:0
+		reflection:99
 		textures:0
 		bump:0
 
@@ -68,7 +81,7 @@ spheres
 			r:0
 			g:0
 			b:0
-		reflection:50
+		reflection:99
 		textures:0
 		bump:0
 	1
@@ -98,7 +111,7 @@ cylinders
 		color
 			r:255
 			g:155
-			b:20
+			b:155
 		reflection:99
 		textures:0
 		bump:0
