@@ -16,7 +16,7 @@ void		get_brightness(t_env *e, t_lambert *lamb)
 {
 	t_color	tmp_c;
 	double	angle;
-	
+
 	angle = acos(vec_mul_to_d(e->scene.light_ray.dir, *lamb->n)
 		/ (sqrt(e->scene.light_ray.dir.x * e->scene.light_ray.dir.x
 			+ e->scene.light_ray.dir.y * e->scene.light_ray.dir.y

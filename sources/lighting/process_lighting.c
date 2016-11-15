@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-void 					final_pixel_color(t_env *e, t_lambert *lamb)
+void					final_pixel_color(t_env *e, t_lambert *lamb)
 {
 	lamb->lambert = vec_mul_to_d(e->scene.light_ray.dir, *lamb->n) * lamb->coef;
 	lamb->c->r += lamb->lambert * lamb->l->color.r

@@ -75,7 +75,8 @@ SRC+=	matrix/move_x_axis.c			\
 
 SRC+=	draw/draw.c
 
-SRC+=	raytracer/raytracer.c
+SRC+=	raytracer/raytracer.c			\
+		raytracer/raytracer_color.c		\
 
 SRC+=	rays/ray.c
 

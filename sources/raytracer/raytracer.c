@@ -12,35 +12,6 @@
 
 #include "rtv1.h"
 
-static t_color		get_pixel_color(t_intersection *inter, t_env *e)
-{
-	t_color			color;
-
-	color = (t_color){0, 0, 0};
-	if (inter->obj)
-	{
-		color = get_global_illuminated_color(&inter->obj->color,
-			&e->scene.ambient);
-		select_textures(inter, &color, e, inter->obj);
-		process_lighting(e, &e->scene.ray, *inter, &color);
-		flour_color(&color);
-	}
-	return (color);
-}
-
-static t_color		color_median(t_color c[9])
-{
-	t_color			ret;
-
-	ret.r = (c[0].r + c[1].r + c[2].r + c[3].r + c[4].r + c[5].r + c[6].r
-			+ c[7].r + c[8].r) / 9;
-	ret.g = (c[0].g + c[1].g + c[2].g + c[3].g + c[4].g + c[5].g + c[6].g
-			+ c[7].g + c[8].g) / 9;
-	ret.b = (c[0].b + c[1].b + c[2].b + c[3].b + c[4].b + c[5].b + c[6].b
-			+ c[7].b + c[8].b) / 9;
-	return (ret);
-}
-
 static void			raytrace_pixel_ssaa3(t_env *e, int x, int y)
 {
 	t_intersection	inter;
@@ -85,9 +56,7 @@ static void			raytrace_pixel(t_env *e, int x, int y)
 	draw_pixel(e, (t_pixel){x, y, color});
 }
 
-
-
-static void			drawloader(t_env *e, int prc)
+static void			draw_loader(t_env *e, int prc)
 {
 	SDL_SetRenderDrawColor(e->renderer_sub,
 		124,
@@ -100,34 +69,29 @@ static void			drawloader(t_env *e, int prc)
 
 void				raytrace(t_env *e)
 {
-	int		x;
-	int		y;
-	int		i;
-	int		old;
-	int		tmp;
-	int		pc;
+	t_rtc	rtc;
 
-	pc = e->scene.current_mode->h * e->scene.current_mode->w;
-	i = 0;
-	old = 0;
-	tmp = 0;
-	y = 0;	
-	while (y < e->scene.current_mode->h)
+	rtc.pc = e->scene.current_mode->h * e->scene.current_mode->w;
+	rtc.i = 0;
+	rtc.old = 0;
+	rtc.tmp = 0;
+	rtc.y = 0;
+	while (rtc.y < e->scene.current_mode->h)
 	{
-		x = 0;
-		while (x < e->scene.current_mode->w)
+		rtc.x = 0;
+		while (rtc.x < e->scene.current_mode->w)
 		{
 			if (e->scene.ssaa)
-				raytrace_pixel_ssaa3(e, x, y);
+				raytrace_pixel_ssaa3(e, rtc.x, rtc.y);
 			else
-				raytrace_pixel(e, x, y);
-			old = tmp;
-			tmp = (100 * i / pc);
-			if (old != tmp)
-				drawloader(e, tmp);
-			i++;
-			++x;
+				raytrace_pixel(e, rtc.x, rtc.y);
+			rtc.old = rtc.tmp;
+			rtc.tmp = (100 * rtc.i / rtc.pc);
+			if (rtc.old != rtc.tmp)
+				draw_loader(e, rtc.tmp);
+			rtc.i++;
+			++rtc.x;
 		}
-		++y;
+		++rtc.y;
 	}
 }

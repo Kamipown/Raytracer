@@ -84,6 +84,8 @@ void				draw(t_env *e);
 void				draw_pixel(t_env *e, t_pixel p);
 
 void				raytrace(t_env *e);
+t_color				get_pixel_color(t_intersection *inter, t_env *e);
+t_color				color_median(t_color c[9]);
 
 void				create_ray(t_scene *scene, t_vec3 to);
 
@@ -114,9 +116,9 @@ void				vec_rotate_z(t_vec3 *v, double ang);
 void				vec_rotate(t_vec3 *v, t_vec3 rot);
 void				vec_unrotate(t_vec3 *v, t_vec3 rot);
 
-void				process_lighting(t_env *e, t_ray *ray, t_intersection inter,
-						t_color *color);
-void 				final_pixel_color(t_env *e, t_lambert *lamb);
+void				process_lighting(t_env *e, t_ray *ray,
+									t_intersection inter, t_color *color);
+void				final_pixel_color(t_env *e, t_lambert *lamb);
 void				lambert_point(t_env *e, t_lambert *lamb);
 void				lambert_directional(t_env *e, t_lambert *lamb);
 void				lambert_spot(t_env *e, t_lambert *lamb);

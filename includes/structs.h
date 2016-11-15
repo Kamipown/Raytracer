@@ -104,6 +104,16 @@ typedef struct		s_intersection
 	int				type;
 }					t_intersection;
 
+typedef struct		s_rtc
+{
+	int				x;
+	int				y;
+	int				i;
+	int				old;
+	int				tmp;
+	int				pc;
+}					t_rtc;
+
 typedef struct		s_lambert
 {
 	t_obj			*obj;
