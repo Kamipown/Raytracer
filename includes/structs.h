@@ -79,6 +79,7 @@ typedef struct		s_light
 	int				type;
 	t_vec3			dir;
 	double			radius;
+	double			intensity;
 }					t_light;
 
 typedef struct		s_obj

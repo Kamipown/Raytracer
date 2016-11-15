@@ -2,11 +2,18 @@ config
 	screen
 		width:800
 		height:600
+		ssaa:0
 	counts
 		lights:1
+		spheres:4
+		cylinders:0
+		cones:0
 		planes:5
 	camera
 		fov:90
+	light
+		brigthness:5
+		exposure:-0.8
 lights
 	0
 		pos
@@ -19,11 +26,57 @@ lights
 			b:255
 		intensity:50
 
+spheres
+	0
+		pos
+			x:100
+			y:-100
+			z:110
+		radius:100
+		color
+			r:150
+			g:200
+			b:80
+		reflection:95
+	1
+		pos
+			x:-100
+			y:-100
+			z:110
+		radius:100
+		color
+			r:150
+			g:80
+			b:200
+		reflection:95
+	2
+		pos
+			x:100
+			y:100
+			z:110
+		radius:100
+		color
+			r:200
+			g:80
+			b:150
+		reflection:95
+	3
+		pos
+			x:-100
+			y:100
+			z:110
+		radius:100
+		color
+			r:80
+			g:200
+			b:150
+		reflection:95
+
 planes
 	0
 		pos
 			x:0
-			y:-300
+			y:-1000
 			z:50
 		normal
 			x:0
@@ -36,7 +89,7 @@ planes
 		reflection:60
 	1
 		pos
-			x:400
+			x:1200
 			y:0
 			z:50
 		normal
@@ -51,7 +104,7 @@ planes
 	2
 		pos
 			x:0
-			y:300
+			y:1000
 			z:50
 		normal
 			x:0
@@ -64,7 +117,7 @@ planes
 		reflection:60
 	3
 		pos
-			x:-400
+			x:-1200
 			y:0
 			z:50
 		normal
@@ -90,3 +143,17 @@ planes
 			g:20
 			b:20
 		reflection:0
+	5
+		pos
+			x:0
+			y:0
+			z:-350
+		normal
+			x:0
+			y:0
+			z:1
+		color
+			r:30
+			g:30
+			b:30
+		reflection:60

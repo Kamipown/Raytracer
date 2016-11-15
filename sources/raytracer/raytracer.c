@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/03 19:40:21 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/14 03:52:29 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/15 02:20:06 by vmontagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ static t_color		get_pixel_color(t_intersection *inter, t_env *e)
 	{
 		color = get_global_illuminated_color(&inter->obj->color,
 			&e->scene.ambient);
-		color.r = inter->obj->color.r;
-		color.g = inter->obj->color.g;
-		color.b = inter->obj->color.b;
 		select_textures(inter, &color, e, inter->obj);
 		process_lighting(e, &e->scene.ray, *inter, &color);
 		flour_color(&color);
