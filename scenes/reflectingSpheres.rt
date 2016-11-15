@@ -10,6 +10,14 @@ config
 		cones:0
 		planes:5
 	camera
+		pos
+			x:0
+			y:0
+			z:-500
+		rot
+			x:0
+			y:0
+			z:0
 		fov:90
 	light
 		brigthness:5
@@ -142,7 +150,7 @@ planes
 			r:20
 			g:20
 			b:20
-		reflection:0
+		reflection:60
 	5
 		pos
 			x:0
