@@ -62,10 +62,10 @@ void			draw(t_env *e)
 	if (e->options.need_redraw)
 	{
 		draw_background(e->renderer);
-		raytrace(e);
-		SDL_RenderPresent(e->renderer);
-		draw_background(e->renderer_sub);
 		draw_interface(e);
+		raytrace(e);
+		draw_interface(e);
+		SDL_RenderPresent(e->renderer);
 	}
 	if (e->options.need_redraw_sub)
 	{
