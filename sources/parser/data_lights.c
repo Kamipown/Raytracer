@@ -28,6 +28,8 @@ static void		clean_lights(t_scene *s)
 		s->lights[i].color.r /= 255.0;
 		s->lights[i].color.g /= 255.0;
 		s->lights[i].color.b /= 255.0;
+		s->lights[i].intensity = interval_i(s->lights[i].intensity, 0, 100);
+		s->lights[i].intensity /= 100.0;
 		++i;
 	}
 	s->ambient.r = interval_d(s->ambient.r, 0.0, 255.0);
@@ -51,6 +53,8 @@ static void		fill_lights_data2(t_scene *s, char *data, int i)
 		data_get_i_constructed(data, "lights.#.type", i);
 	s->lights[i].radius =
 		data_get_d_constructed(data, "lights.#.radius", i);
+	s->lights[i].intensity =
+		data_get_i_constructed(data, "lights.#.intensity", i);
 }
 
 static void		fill_lights_config(t_scene *s, char *data)
