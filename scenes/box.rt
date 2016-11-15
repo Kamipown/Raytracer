@@ -2,6 +2,7 @@ config
 	screen
 		width:800
 		height:600
+		ssaa:0
 	counts
 		lights:1
 		spheres:4
@@ -11,6 +12,7 @@ config
 	camera
 		fov:90
 	light
+		brigthness:5
 		exposure:-0.8
 lights
 	0

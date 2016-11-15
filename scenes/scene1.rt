@@ -3,7 +3,7 @@ config
 		width:1600
 		height:1200
 	counts
-		lights:1
+		lights:2
 		spheres:2
 		planes:2
 		cylinders:1
@@ -19,6 +19,7 @@ config
 			z:0
 		fov:90
 	lighting
+		brightness:20
 		ambient
 			r:30
 			g:30
@@ -27,17 +28,32 @@ config
 lights
 	0
 		pos
-			x:0
-			y:-300
+			x:-850
+			y:-200
 			z:-500
 		dir
 			x:0
 			y:0
 			z:1
 		color
-			r:100
-			g:100
-			b:100
+			r:50
+			g:50
+			b:50
+		radius:50
+		type:0
+	1
+		pos
+			x:850
+			y:-600
+			z:-500
+		dir
+			x:0
+			y:0
+			z:1
+		color
+			r:50
+			g:50
+			b:50
 		radius:50
 		type:0
 
@@ -52,9 +68,9 @@ planes
 			y:-1
 			z:0
 		color
-			r:180
-			g:180
-			b:180
+			r:120
+			g:120
+			b:120
 		reflection:0
 		textures:0
 		bump:0
@@ -70,19 +86,19 @@ planes
 			z:-1
 		color
 			r:43
-			g:113
-			b:220
+			g:80
+			b:150
 		reflection:0
 		textures:0
 		bump:0
 		size:0
-		
+
 spheres
 	0
 		pos
-			x:-1000
-			y:50
-			z:0
+			x:-980
+			y:80
+			z:-90
 		radius:250
 		color
 			r:255
@@ -107,13 +123,13 @@ spheres
 cylinders
 	0
 		pos
-			x:-600
+			x:-400
 			y:0
-			z:300
+			z:100
 		normal
-			x:-0.6
-			y:1
-			z:0
+			x:0
+			y:0
+			z:-45
 		radius:150
 		color
 			r:255
@@ -125,14 +141,14 @@ cylinders
 cones
 	0
 		pos
-			x:800
+			x:500
 			y:0
-			z:300
+			z:220
 		normal
 			x:0
-			y:1
-			z:0
-		radius:30
+			y:0
+			z:45
+		radius:20
 		color
 			r:252
 			g:246
