@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 03:42:25 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/08 02:33:04 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/15 02:39:31 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,5 @@ void	lambert_directional(t_env *e, t_lambert *lamb)
 	lamb->inter = throw_ray(e, &e->scene.light_ray);
 	if (lamb->inter.obj)
 		return ;
-	lamb->lambert = vec_mul_to_d(e->scene.light_ray.dir, *lamb->n) * lamb->coef;
-	lamb->c->r += lamb->lambert * lamb->l->color.r * lamb->obj->color.r;
-	lamb->c->g += lamb->lambert * lamb->l->color.g * lamb->obj->color.g;
-	lamb->c->b += lamb->lambert * lamb->l->color.b * lamb->obj->color.b;
-	get_brightness(e, lamb);
+	final_pixel_color(e, lamb);
 }

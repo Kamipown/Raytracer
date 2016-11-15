@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   process_lighting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:30:26 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/14 00:46:14 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/15 02:40:02 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+void 					final_pixel_color(t_env *e, t_lambert *lamb)
+{
+	lamb->lambert = vec_mul_to_d(e->scene.light_ray.dir, *lamb->n) * lamb->coef;
+	lamb->c->r += lamb->lambert * lamb->l->color.r
+		* lamb->obj->color.r * lamb->l->intensity;
+	lamb->c->g += lamb->lambert * lamb->l->color.g
+		* lamb->obj->color.g * lamb->l->intensity;
+	lamb->c->b += lamb->lambert * lamb->l->color.b
+		* lamb->obj->color.b * lamb->l->intensity;
+	get_brightness(e, lamb);
+	select_effects(e, lamb->c);
+}
 
 static void				add_lambert_light_contribution(t_env *e,
 							t_lambert *lamb)

@@ -2,7 +2,7 @@ config
 	screen
 		width:1600
 		height:1200
-		ssaa:0
+		ssaa:1
 	counts
 		lights:2
 		spheres:2
@@ -11,12 +11,12 @@ config
 		cones:1
 	camera
 		pos
-			x:0
-			y:0
-			z:-500
+			x:-1000
+			y:-200
+			z:400
 		rot
 			x:0
-			y:0
+			y:90
 			z:0
 		fov:90
 	lighting
@@ -30,8 +30,8 @@ lights
 	0
 		pos
 			x:-850
-			y:-200
-			z:-500
+			y:-1000
+			z:-2000
 		dir
 			x:0
 			y:0
@@ -46,8 +46,8 @@ lights
 	1
 		pos
 			x:850
-			y:-600
-			z:-500
+			y:-1000
+			z:-2000
 		dir
 			x:0
 			y:0
@@ -114,7 +114,7 @@ spheres
 		pos
 			x:1000
 			y:50
-			z:0
+			z:-250
 		radius:250
 		color
 			r:10

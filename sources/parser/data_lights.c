@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 11:01:15 by pdelobbe          #+#    #+#             */
-/*   Updated: 2016/11/06 22:43:22 by gromon           ###   ########.fr       */
+/*   Updated: 2016/11/15 02:44:01 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		clean_lights(t_scene *s)
 		s->lights[i].color.r /= 255.0;
 		s->lights[i].color.g /= 255.0;
 		s->lights[i].color.b /= 255.0;
-		s->lights[i].intensity = interval_i(s->lights[i].intensity, 0, 100);
+		s->lights[i].intensity = interval_i(s->lights[i].intensity, 0, 200);
 		s->lights[i].intensity /= 100.0;
 		++i;
 	}

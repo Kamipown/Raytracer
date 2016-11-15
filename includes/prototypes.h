@@ -6,7 +6,7 @@
 /*   By: gromon <gromon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 23:50:54 by gromon            #+#    #+#             */
-/*   Updated: 2016/11/12 23:23:04 by vmontagn         ###   ########.fr       */
+/*   Updated: 2016/11/15 02:40:26 by gromon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void				vec_unrotate(t_vec3 *v, t_vec3 rot);
 
 void				process_lighting(t_env *e, t_ray *ray, t_intersection inter,
 						t_color *color);
+void 				final_pixel_color(t_env *e, t_lambert *lamb);
 void				lambert_point(t_env *e, t_lambert *lamb);
 void				lambert_directional(t_env *e, t_lambert *lamb);
 void				lambert_spot(t_env *e, t_lambert *lamb);
